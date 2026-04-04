@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PALDYN — The force that accompanies</title>
+  <meta name="description" content="PALDYN - The force that accompanies. 함께하는 힘, 팔딘.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --bg-subtle: #0a0a0a;
+      --surface: #111111;
+      --border: #1a1a1a;
+      --text: #e8e8e8;
+      --text-dim: #888888;
+      --accent: #c0c0c0;
+      --accent-bright: #ffffff;
+      --gradient-silver: linear-gradient(135deg, #666 0%, #ccc 40%, #fff 50%, #ccc 60%, #666 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      height: 40px;
+    }
+
+    .nav-logo img {
+      height: 100%;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--accent-bright); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 24px;
+      height: 1.5px;
+      background: var(--text);
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 160px;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-title {
+      height: 40px;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1.2s ease-out 0.2s both;
+    }
+
+    .hero-title img {
+      height: 100%;
+      width: auto;
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      animation: fadeInUp 1.2s ease-out 0.4s both;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeInUp 1.2s ease-out 0.8s both;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--text-dim), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* Sections Common */
+    section {
+      padding: 8rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    /* Divider */
+    .divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .about-visual {
+      aspect-ratio: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual .ring {
+      position: absolute;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      animation: ringRotate 20s linear infinite;
+    }
+
+    .about-visual .ring:nth-child(1) { width: 80%; height: 80%; }
+    .about-visual .ring:nth-child(2) { width: 60%; height: 60%; animation-duration: 15s; animation-direction: reverse; }
+    .about-visual .ring:nth-child(3) { width: 40%; height: 40%; animation-duration: 25s; }
+
+    .about-visual .core {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(255,255,255,0.1);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .stat-item .stat-number {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      background: var(--gradient-silver);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-item .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      transition: border-color 0.4s, transform 0.4s;
+    }
+
+    .service-card:hover {
+      border-color: #333;
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      stroke: var(--accent);
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* Values */
+    .values-list {
+      display: grid;
+      gap: 0;
+      margin-top: 4rem;
+    }
+
+    .value-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .value-item:first-child { border-top: 1px solid var(--border); }
+
+    .value-number {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      padding-top: 0.3rem;
+    }
+
+    .value-content h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .value-content p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
+    /* Contact */
+    .contact-section {
+      text-align: center;
+      padding: 10rem 3rem;
+    }
+
+    .contact-section .section-title {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-section .section-desc {
+      margin: 0 auto 3rem;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      border: 1px solid var(--accent);
+      color: var(--accent-bright);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .contact-btn:hover {
+      background: var(--accent-bright);
+      color: var(--bg);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-left {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--accent-bright); }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a { font-size: 1.2rem; }
+
+      .nav-toggle { display: flex; }
+
+      section { padding: 5rem 1.5rem; }
+
+      .hero h1 {
+        font-size: 2rem;
+        letter-spacing: 0.3em;
+      }
+
+      .hero .tagline { font-size: 0.9rem; }
+      .hero-logo { width: 120px; }
+      .hero-title { height: 30px; }
+
+      .section-title { font-size: 1.8rem; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-visual { max-width: 300px; margin: 0 auto; }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .value-item {
+        grid-template-columns: 50px 1fr;
+        gap: 1.5rem;
+        padding: 2rem 0;
+      }
+
+      .contact-section { padding: 6rem 1.5rem; }
+      .contact-section .section-title { font-size: 2rem; }
+
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo"><img src="assets/logo-text.png?v=2" alt="PALDYN"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeNav()">About</a></li>
+      <li><a href="#services" onclick="closeNav()">Services</a></li>
+      <li><a href="#values" onclick="closeNav()">Values</a></li>
+      <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-logo">
+      <img src="assets/logo-symbol.png" alt="PALDYN">
+    </div>
+    <div class="hero-title">
+      <img src="assets/logo-text.png?v=2" alt="PALDYN">
+    </div>
+    <p class="tagline">The force that accompanies</p>
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="reveal">
+      <p class="section-label">About Us</p>
+      <div class="about-grid">
+        <div>
+          <h2 class="section-title">함께하는 힘으로<br>미래를 만듭니다</h2>
+          <p class="section-desc">
+            PALDYN은 기술과 사람을 잇는 동반자입니다.
+            우리는 혁신적인 기술 솔루션을 통해 기업의 성장을 가속화하고,
+            지속 가능한 가치를 함께 창출합니다.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Years of Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">200+</div>
+              <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Global Partners</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">99.9%</div>
+              <div class="stat-label">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="core"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="reveal">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">우리가 제공하는 가치</h2>
+      <p class="section-desc">비즈니스의 본질에 집중하여 최적의 솔루션을 설계합니다.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="6" y="6" width="36" height="36" rx="4"/>
+            <path d="M16 20l4 4-4 4M24 28h8"/>
+          </svg>
+          <h3>디지털 트랜스포메이션</h3>
+          <p>비즈니스 프로세스의 디지털 전환을 통해 효율성을 극대화하고 새로운 기회를 창출합니다.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="24" cy="24" r="18"/>
+            <path d="M24 14v10l7 7"/>
+          </svg>
+          <h3>전략 컨설팅</h3>
+          <p>데이터 기반의 인사이트로 기업의 핵심 전략을 수립하고 실행을 지원합니다.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 36l8-12 8 8 8-16 8 10"/>
+            <path d="M8 40h32"/>
+          </svg>
+          <h3>기술 솔루션</h3>
+          <p>AI, 클라우드, 데이터 분석 등 첨단 기술을 활용한 맞춤형 솔루션을 개발합니다.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M24 6v4M24 38v4M6 24h4M38 24h4M11 11l3 3M34 34l3 3M11 37l3-3M34 14l3-3"/>
+            <circle cx="24" cy="24" r="8"/>
+          </svg>
+          <h3>R&D 혁신</h3>
+          <p>차세대 기술 연구개발을 통해 산업의 패러다임을 변화시키는 혁신을 추구합니다.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 8h16v32H16z"/>
+            <circle cx="24" cy="34" r="2"/>
+            <line x1="20" y1="12" x2="28" y2="12"/>
+          </svg>
+          <h3>UX/UI 디자인</h3>
+          <p>사용자 중심의 직관적이고 아름다운 디지털 경험을 설계합니다.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 12h24v20H12z"/>
+            <path d="M8 32h32"/>
+            <path d="M20 32v6M28 32v6M16 38h16"/>
+          </svg>
+          <h3>시스템 통합</h3>
+          <p>분산된 시스템을 통합하여 운영 효율을 높이고 비용을 절감합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Values -->
+  <section id="values">
+    <div class="reveal">
+      <p class="section-label">Core Values</p>
+      <h2 class="section-title">우리가 믿는 것</h2>
+
+      <div class="values-list">
+        <div class="value-item">
+          <div class="value-number">01</div>
+          <div class="value-content">
+            <h3>동반 성장</h3>
+            <p>고객의 성공이 곧 우리의 성공입니다. 함께하는 힘으로 더 큰 가치를 만들어갑니다.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">02</div>
+          <div class="value-content">
+            <h3>기술 혁신</h3>
+            <p>끊임없는 연구와 도전으로 기술의 경계를 넓히고, 내일의 표준을 오늘 만듭니다.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">03</div>
+          <div class="value-content">
+            <h3>신뢰와 투명성</h3>
+            <p>모든 과정에서 투명한 소통과 정직한 실행으로 깊은 신뢰를 구축합니다.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">04</div>
+          <div class="value-content">
+            <h3>지속 가능성</h3>
+            <p>단기적 성과를 넘어, 장기적 관점에서 지속 가능한 솔루션을 추구합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <div class="reveal">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">함께 시작하세요</h2>
+      <p class="section-desc">
+        새로운 가능성을 함께 탐색하고 싶으시다면 언제든 연락해 주세요.
+      </p>
+      <a href="mailto:contact@paldyn.com" class="contact-btn">GET IN TOUCH</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">&copy; 2026 PALDYN. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#values">Values</a>
+      <a href="mailto:contact@paldyn.com">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    function closeNav() {
+      navLinks.classList.remove('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
