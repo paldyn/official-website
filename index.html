@@ -12,10 +12,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
+      --bg: #ffffff;
+      --bg-subtle: #f5f5f5;
+      --surface: #f0f0f0;
+      --border: #e0e0e0;
+      --text: #1a1a1a;
+      --text-dim: #666666;
+      --accent: #444444;
+      --accent-bright: #000000;
+      --gradient-silver: linear-gradient(135deg, #999 0%, #555 40%, #222 50%, #555 60%, #999 100%);
+      --nav-scrolled-bg: rgba(255, 255, 255, 0.85);
+      --mobile-nav-bg: rgba(255, 255, 255, 0.98);
+      --hero-glow: rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="dark"] {
       --bg: #000000;
       --bg-subtle: #0a0a0a;
       --surface: #111111;
@@ -25,6 +46,9 @@
       --accent: #c0c0c0;
       --accent-bright: #ffffff;
       --gradient-silver: linear-gradient(135deg, #666 0%, #ccc 40%, #fff 50%, #ccc 60%, #666 100%);
+      --nav-scrolled-bg: rgba(0, 0, 0, 0.85);
+      --mobile-nav-bg: rgba(0, 0, 0, 0.98);
+      --hero-glow: rgba(255, 255, 255, 0.03);
     }
 
     html { scroll-behavior: smooth; }
@@ -35,6 +59,7 @@
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
+      transition: background 0.4s, color 0.4s;
     }
 
     /* Navigation */
@@ -52,7 +77,7 @@
     }
 
     nav.scrolled {
-      background: rgba(0, 0, 0, 0.85);
+      background: var(--nav-scrolled-bg);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -61,9 +86,24 @@
       height: 40px;
     }
 
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     .nav-logo img {
       height: 100%;
       width: auto;
+    }
+
+    .nav-logo-text {
+      filter: invert(1);
+      transition: filter 0.4s;
+    }
+
+    [data-theme="dark"] .nav-logo-text {
+      filter: none;
     }
 
     .nav-links {
@@ -99,6 +139,43 @@
       transition: 0.3s;
     }
 
+    /* Theme Toggle */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      color: var(--accent-bright);
+      border-color: var(--accent);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .theme-toggle .icon-moon { display: block; }
+    .theme-toggle .icon-sun { display: none; }
+
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
     /* Hero Section */
     .hero {
       min-height: 100vh;
@@ -119,7 +196,7 @@
       transform: translate(-50%, -50%);
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--hero-glow) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -134,6 +211,16 @@
       height: auto;
     }
 
+    .hero-logo .logo-light,
+    .nav-logo .logo-light { display: block; }
+    .hero-logo .logo-dark,
+    .nav-logo .logo-dark { display: none; }
+
+    [data-theme="dark"] .hero-logo .logo-light,
+    [data-theme="dark"] .nav-logo .logo-light { display: none; }
+    [data-theme="dark"] .hero-logo .logo-dark,
+    [data-theme="dark"] .nav-logo .logo-dark { display: block; }
+
     .hero-title {
       height: 40px;
       margin-bottom: 1.5rem;
@@ -143,6 +230,12 @@
     .hero-title img {
       height: 100%;
       width: auto;
+      filter: invert(1);
+      transition: filter 0.4s;
+    }
+
+    [data-theme="dark"] .hero-title img {
+      filter: none;
     }
 
     .hero .tagline {
@@ -291,7 +384,7 @@
     }
 
     .service-card:hover {
-      border-color: #333;
+      border-color: var(--text-dim);
       transform: translateY(-4px);
     }
 
@@ -458,7 +551,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0,0,0,0.98);
+        background: var(--mobile-nav-bg);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -518,22 +611,38 @@
 
   <!-- Navigation -->
   <nav id="navbar">
-    <a href="#" class="nav-logo"><img src="assets/logo-text.png?v=2" alt="PALDYN"></a>
+    <a href="#" class="nav-logo">
+      <img class="logo-light" src="assets/logo-symbol-dark.png" alt="PALDYN">
+      <img class="logo-dark" src="assets/logo-symbol-light.png" alt="PALDYN">
+      <img class="nav-logo-text" src="assets/logo-text.png?v=2" alt="PALDYN">
+    </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" onclick="closeNav()">About</a></li>
       <li><a href="#services" onclick="closeNav()">Services</a></li>
       <li><a href="#values" onclick="closeNav()">Values</a></li>
       <li><a href="#contact" onclick="closeNav()">Contact</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-logo">
-      <img src="assets/logo-symbol.png" alt="PALDYN">
+      <img class="logo-light" src="assets/logo-symbol-dark.png" alt="PALDYN">
+      <img class="logo-dark" src="assets/logo-symbol-light.png" alt="PALDYN">
     </div>
     <div class="hero-title">
       <img src="assets/logo-text.png?v=2" alt="PALDYN">
@@ -719,6 +828,19 @@
   </footer>
 
   <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
