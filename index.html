@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="./assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css">
   <script>
     (function() {
       var t = localStorage.getItem('theme');
@@ -34,6 +34,7 @@
       --nav-scrolled-bg: rgba(255, 255, 255, 0.85);
       --mobile-nav-bg: rgba(255, 255, 255, 0.98);
       --hero-glow: rgba(0, 0, 0, 0.03);
+      --grid-line: rgba(0, 0, 0, 0.05);
     }
 
     [data-theme="dark"] {
@@ -49,12 +50,13 @@
       --nav-scrolled-bg: rgba(0, 0, 0, 0.85);
       --mobile-nav-bg: rgba(0, 0, 0, 0.98);
       --hero-glow: rgba(255, 255, 255, 0.03);
+      --grid-line: rgba(255, 255, 255, 0.05);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
@@ -83,27 +85,26 @@
     }
 
     .nav-logo {
-      height: 40px;
-    }
-
-    .nav-logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 8px;
+      height: 32px;
+      text-decoration: none;
+      color: var(--text);
     }
 
-    .nav-logo img {
-      height: 100%;
+    .nav-logo .logo-symbol {
+      height: 28px;
       width: auto;
+      display: block;
     }
 
-    .nav-logo-text {
-      filter: invert(1);
-      transition: filter 0.4s;
-    }
-
-    [data-theme="dark"] .nav-logo-text {
-      filter: none;
+    .nav-logo .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1;
+      color: var(--text);
     }
 
     .nav-links {
@@ -125,6 +126,29 @@
     }
 
     .nav-links a:hover { color: var(--accent-bright); }
+
+    .nav-blog-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .nav-blog-pill:hover {
+      border-color: var(--accent-bright);
+      color: var(--accent-bright);
+    }
+    .nav-blog-pill .ext {
+      font-size: 0.72rem;
+      opacity: 0.7;
+    }
 
     .nav-toggle {
       display: none;
@@ -181,99 +205,122 @@
 
     /* Hero Section */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      min-height: 92vh;
+      max-width: none;
+      margin: 0;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 130px 3rem 84px;
+      isolation: isolate;
     }
-
     .hero::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--hero-glow) 0%, transparent 70%);
+      width: min(54vw, 640px);
+      aspect-ratio: 1;
+      right: -180px;
+      top: -120px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, var(--hero-glow), transparent 68%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 54px,
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 54px 100%;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 78%, transparent 100%);
+      opacity: 0.55;
+      z-index: 0;
       pointer-events: none;
     }
 
-    .hero-logo {
-      width: 160px;
-      margin-bottom: 3rem;
-      animation: fadeInUp 1.2s ease-out;
-    }
-
-    .hero-logo img {
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
       width: 100%;
-      height: auto;
-    }
-
-    .hero-logo .logo-light,
-    .nav-logo .logo-light { display: block; }
-    .hero-logo .logo-dark,
-    .nav-logo .logo-dark { display: none; }
-
-    [data-theme="dark"] .hero-logo .logo-light,
-    [data-theme="dark"] .nav-logo .logo-light { display: none; }
-    [data-theme="dark"] .hero-logo .logo-dark,
-    [data-theme="dark"] .nav-logo .logo-dark { display: block; }
-
-    .hero-title {
-      height: 40px;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 1.2s ease-out 0.2s both;
-    }
-
-    .hero-title img {
-      height: 100%;
-      width: auto;
-      filter: invert(1);
-      transition: filter 0.4s;
-    }
-
-    [data-theme="dark"] .hero-title img {
-      filter: none;
-    }
-
-    .hero .tagline {
-      font-size: 1.1rem;
-      color: var(--text-dim);
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      animation: fadeInUp 1.2s ease-out 0.4s both;
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 3rem;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      animation: fadeInUp 1.2s ease-out 0.8s both;
+      align-items: flex-start;
+      gap: clamp(1.2rem, 2.8vw, 2.2rem);
     }
 
-    .scroll-indicator span {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+    .hero-copy { max-width: 760px; }
+
+    .hero-title {
+      font-size: clamp(2.35rem, 6vw, 5.3rem);
+      font-weight: 560;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      color: var(--accent-bright);
+      margin: 0;
+      opacity: 0;
+      animation: fadeInUp 0.9s ease-out 0.12s forwards;
+    }
+    .hero-title .accent {
+      display: inline;
       color: var(--text-dim);
+      font-weight: 480;
     }
 
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--text-dim), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
+    .hero-desc {
+      margin-top: 1rem;
+      font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+      font-weight: 430;
+      line-height: 1.62;
+      color: var(--text-dim);
+      max-width: 560px;
+      opacity: 0;
+      animation: fadeInUp 0.9s ease-out 0.24s forwards;
     }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 1.8rem;
+      opacity: 0;
+      animation: fadeInUp 0.9s ease-out 0.36s forwards;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 122px;
+      padding: 0.62rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--text-dim);
+    }
+    .hero-btn.primary {
+      background: var(--accent-bright);
+      color: var(--bg);
+      border-color: var(--accent-bright);
+    }
+
+    .nav-logo .logo-light { display: block; }
+    .nav-logo .logo-dark { display: none; }
+    [data-theme="dark"] .nav-logo .logo-light { display: none; }
+    [data-theme="dark"] .nav-logo .logo-dark { display: block; }
 
     /* Sections Common */
-    section {
+    section:not(.hero) {
       padding: 8rem 3rem;
       max-width: 1200px;
       margin: 0 auto;
@@ -546,6 +593,9 @@
     /* Responsive */
     @media (max-width: 768px) {
       nav { padding: 1.2rem 1.5rem; }
+      .nav-logo { height: 27px; gap: 6px; }
+      .nav-logo .logo-symbol { height: 24px; }
+      .nav-logo .logo-text { font-size: 15px; }
 
       .nav-links {
         display: none;
@@ -567,16 +617,25 @@
 
       .nav-toggle { display: flex; }
 
-      section { padding: 5rem 1.5rem; }
+      section:not(.hero) { padding: 5rem 1.5rem; }
 
-      .hero h1 {
-        font-size: 2rem;
-        letter-spacing: 0.3em;
+      .hero {
+        padding: 106px 1.25rem 62px;
+        min-height: auto;
       }
-
-      .hero .tagline { font-size: 0.9rem; }
-      .hero-logo { width: 120px; }
-      .hero-title { height: 30px; }
+      .hero-inner {
+        gap: 1.3rem;
+      }
+      .hero-title { font-size: clamp(2.05rem, 9vw, 3.15rem); }
+      .hero-desc { font-size: 0.94rem; line-height: 1.62; }
+      .hero-ctas {
+        width: 100%;
+        gap: 0.55rem;
+      }
+      .hero-btn {
+        min-width: 0;
+        flex: 1;
+      }
 
       .section-title { font-size: 1.8rem; }
 
@@ -614,10 +673,10 @@
 
   <!-- Navigation -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">
-      <img class="logo-light" src="assets/logo-symbol-dark.png" alt="PALDYN">
-      <img class="logo-dark" src="assets/logo-symbol-light.png" alt="PALDYN">
-      <img class="nav-logo-text" src="assets/logo-text.png?v=2" alt="PALDYN">
+    <a href="#" class="nav-logo" aria-label="PALDYN">
+      <img class="logo-symbol logo-light" src="assets/logo-symbol-dark.png" alt="" aria-hidden="true">
+      <img class="logo-symbol logo-dark" src="assets/logo-symbol-light.png" alt="" aria-hidden="true">
+      <span class="logo-text">PALDYN</span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" onclick="closeNav()">About</a></li>
@@ -626,6 +685,7 @@
       <li><a href="#contact" onclick="closeNav()">Contact</a></li>
     </ul>
     <div class="nav-right">
+      <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener" class="nav-blog-pill">Tech Blog <span class="ext">↗</span></a>
       <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
@@ -642,18 +702,16 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero-logo">
-      <img class="logo-light" src="assets/logo-symbol-dark.png" alt="PALDYN">
-      <img class="logo-dark" src="assets/logo-symbol-light.png" alt="PALDYN">
-    </div>
-    <div class="hero-title">
-      <img src="assets/logo-text.png?v=2" alt="PALDYN">
-    </div>
-    <p class="tagline">The force that accompanies</p>
-    <div class="scroll-indicator">
-      <span>SCROLL</span>
-      <div class="scroll-line"></div>
+  <section class="hero" aria-label="PALDYN">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1 class="hero-title">혼자보다 강한 방식,<br><span class="accent">함께하는 힘 PALDYN.</span></h1>
+        <p class="hero-desc">PALDYN은 여러분과 끝까지 함께 책임집니다.<br>기획, 개발, 운영이 하나로 맞물려 고객의 하루를 더 풍요롭게 만듭니다.</p>
+        <div class="hero-ctas">
+          <a href="#services" class="hero-btn primary">Services</a>
+          <a href="#contact" class="hero-btn">Contact</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -665,11 +723,11 @@
       <p class="section-label">About Us</p>
       <div class="about-grid">
         <div>
-          <h2 class="section-title">함께하는 힘으로<br>미래를 만듭니다</h2>
+          <h2 class="section-title">운영으로 완성되는 경험을 만듭니다</h2>
           <p class="section-desc">
-            PALDYN은 기술과 사람을 잇는 동반자입니다.
-            우리는 혁신적인 기술 솔루션을 통해 기업의 성장을 가속화하고,
-            지속 가능한 가치를 함께 창출합니다.
+            PALDYN은 출시 이후가 시작이라고 믿습니다.
+            데이터와 사용자 피드백을 바탕으로 서비스를 꾸준히 개선하며,
+            함께하는 힘으로 고객의 일상을 더 편리하게 만듭니다.
           </p>
           <div class="about-stats">
             <div class="stat-item">
@@ -827,6 +885,7 @@
       <a href="#services">Services</a>
       <a href="#values">Values</a>
       <a href="mailto:contact@paldyn.com">Contact</a>
+      <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a>
     </div>
   </footer>
 
