@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ascend — 세트 하나로 끝내는 운동 기록 | PALDYN</title>
+  <meta name="description" content="Ascend는 헬스장에서 폰을 드는 시간을 줄이기 위해 만든 웨이트 트레이닝 기록 앱입니다. 로그인 없이 바로 시작하세요.">
+  <link rel="canonical" href="https://paldyn.com/ascend/">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css">
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-subtle: #f5f5f5;
+      --surface: #f0f0f0;
+      --border: #e0e0e0;
+      --text: #1a1a1a;
+      --text-dim: #666666;
+      --accent: #444444;
+      --accent-bright: #000000;
+    }
+
+    [data-theme="dark"] {
+      --bg: #000000;
+      --bg-subtle: #0a0a0a;
+      --surface: #111111;
+      --border: #1a1a1a;
+      --text: #e8e8e8;
+      --text-dim: #888888;
+      --accent: #c0c0c0;
+      --accent-bright: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    header.bar { border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 10; }
+    header.bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .brand {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--text);
+      font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
+    }
+    .brand img { height: 20px; width: auto; display: block; }
+    .brand .sym-dark { display: none; }
+    [data-theme="dark"] .brand .sym-light { display: none; }
+    [data-theme="dark"] .brand .sym-dark { display: block; }
+    .bar nav a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .bar nav a:hover { color: var(--accent-bright); }
+
+    .hero { padding: 72px 0 40px; }
+    .eyebrow {
+      font-size: 13px; font-weight: 600; color: var(--text-dim);
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(32px, 6vw, 46px); font-weight: 800;
+      letter-spacing: -0.035em; line-height: 1.2; margin-bottom: 18px;
+    }
+    .tagline { font-size: clamp(16px, 2.4vw, 19px); color: var(--text-dim); line-height: 1.65; }
+
+    .status {
+      display: inline-block; margin-top: 26px;
+      padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px;
+      background: var(--bg-subtle);
+      font-size: 14px; font-weight: 600; color: var(--text-dim);
+    }
+
+    section { padding-top: 48px; }
+    h2 {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+    p { margin-bottom: 14px; }
+    strong { font-weight: 700; color: var(--accent-bright); }
+
+    .features { display: grid; gap: 14px; }
+    .feature {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 18px 20px; background: var(--bg-subtle);
+    }
+    .feature h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .feature p { font-size: 15px; color: var(--text-dim); margin: 0; }
+
+    dl.contact { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; font-size: 15px; }
+    dl.contact dt { color: var(--text-dim); font-weight: 500; white-space: nowrap; }
+    dl.contact a { color: var(--text); }
+
+    footer.bar {
+      margin-top: 64px; padding: 28px 0 48px;
+      border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--text-dim);
+    }
+    footer.bar .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    footer.bar a { color: var(--text-dim); text-decoration: none; }
+    footer.bar a:hover { color: var(--accent-bright); }
+
+    @media (max-width: 560px) {
+      body { font-size: 15px; }
+      .wrap { padding: 0 18px; }
+      .hero { padding-top: 48px; }
+      dl.contact { grid-template-columns: 1fr; gap: 2px; }
+      dl.contact dt { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img class="sym-light" src="../assets/logo-symbol-light.png" alt="">
+      <img class="sym-dark" src="../assets/logo-symbol-dark.png" alt="">
+      <span>PALDYN</span>
+    </a>
+    <nav><a href="/">회사 소개</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">iOS</div>
+    <h1>Ascend</h1>
+    <p class="tagline">
+      헬스장에서 폰을 드는 시간을 줄이기 위해 만든 웨이트 트레이닝 기록 앱입니다.<br>
+      지난 기록이 세트마다 미리 떠 있고, 체크하면 휴식 타이머가 알아서 시작됩니다.
+    </p>
+    <div class="status">출시 준비 중 · 비공개 테스트 진행</div>
+  </div>
+
+  <section id="features">
+    <h2>이런 앱입니다</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>세트 하나에 탭 한 번</h3>
+        <p>지난 세션에 들었던 무게와 횟수가 각 세트에 미리 떠 있습니다. 같으면 체크만, 늘렸으면 숫자만 고치세요.</p>
+      </div>
+      <div class="feature">
+        <h3>휴식 타이머는 알아서</h3>
+        <p>세트를 체크하는 순간 휴식이 시작됩니다. 알림을 허용하면 폰을 주머니에 넣어도 끝나는 순간 알려줍니다.</p>
+      </div>
+      <div class="feature">
+        <h3>기록이 다음 운동의 연료</h3>
+        <p>최대 무게·추정 1RM·세트 볼륨을 자동으로 계산해 신기록을 그 자리에서 알려줍니다.</p>
+      </div>
+      <div class="feature">
+        <h3>계정 없이 바로 시작</h3>
+        <p>회원가입을 요구하지 않습니다. 모든 기능을 로그인 없이 쓸 수 있고, 광고와 추적이 없습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <h2>지원 및 문의</h2>
+    <p>사용 중 문제가 생기거나 제안하실 내용이 있으면 메일로 보내 주세요.
+    가능한 한 빠르게 답변드리겠습니다.</p>
+    <dl class="contact">
+      <dt>이메일</dt><dd><a href="mailto:support@paldyn.com">support@paldyn.com</a></dd>
+      <dt>개인정보처리방침</dt><dd><a href="./privacy">paldyn.com/ascend/privacy</a></dd>
+      <dt>제공자</dt><dd>Paldyn (팔딘)</dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer class="bar">
+  <div class="wrap">
+    <span>© 2026 PALDYN</span>
+    <span><a href="/">paldyn.com</a> · <a href="./privacy">개인정보처리방침</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
