@@ -797,7 +797,6 @@
 </div>
 
 <main>
-  <span id="navSentinel" aria-hidden="true"></span>
 
   <!-- ══ STAGE 00 — 커튼 ══════════════════════════════════════════════ -->
   <section class="curtain" aria-label="PALDYN">
@@ -1264,19 +1263,19 @@
     if (e.matches && overlay.classList.contains('is-open')) setMenu(false);
   });
 
-  /* ── nav 고착 + 방향 감지 ─────────────────────────────────────────── */
-  var sentinel = document.getElementById('navSentinel');
-  if ('IntersectionObserver' in window && sentinel) {
-    new IntersectionObserver(function (entries) {
-      nav.classList.toggle('is-stuck', entries[0].boundingClientRect.top <= 64);
-    }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(sentinel);
-  }
+  /* ── nav 고착 + 방향 감지 ───────────────────────────────────────────
+     센티널 IO는 요소가 문서 최상단이라 스크롤 0에서도 참이 됐다.
+     경계에서 깜빡이지 않도록 진입 64 / 이탈 40의 히스테리시스를 쓴다. */
   var lastY = window.scrollY;
-  function syncNavDir(y) {
-    if (overlay.classList.contains('is-open')) return;
+  var stuck = false;
+  function syncNav(y) {
+    if (!stuck && y > 64) { stuck = true; nav.classList.add('is-stuck'); }
+    else if (stuck && y < 40) { stuck = false; nav.classList.remove('is-stuck'); }
+    if (overlay.classList.contains('is-open')) { lastY = y; return; }
     if (Math.abs(y - lastY) > 6) nav.classList.toggle('is-hidden', y > lastY && y > 260);
     lastY = y;
   }
+  syncNav(window.scrollY);
 
   /* ── 리빌 폴백 (스크럽 미지원 브라우저) ───────────────────────────── */
   if (!scrub && 'IntersectionObserver' in window) {
@@ -1440,7 +1439,7 @@
     ticking = true;
     requestAnimationFrame(function () {
       var y = window.scrollY;
-      syncNavDir(y); syncStage(); syncOdo();
+      syncNav(y); syncStage(); syncOdo();
       ticking = false;
     });
   }, { passive: true });
