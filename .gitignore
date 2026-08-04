@@ -182,3 +182,6 @@ playground.xcworkspace
 *.xcuserstate
 *.xcscmblueprint
 .claude
+
+# 디자인 시안 (커밋하지 않음)
+_comps/
