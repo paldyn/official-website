@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PALDYN — 직접 만들고, 끝까지 운영합니다</title>
-  <meta name="description" content="PALDYN은 소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오입니다. Nemo, DevDock, AI Lab, Ascend — 지금 돌아가고 있는 제품이 우리가 일하는 방식입니다.">
+  <title>PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다</title>
+  <meta name="description" content="PALDYN은 일상의 불편을 없애는 서비스를 직접 만들어 끝까지 운영하고, 인공지능과 양자처럼 다가오는 기술을 연구합니다. Nemo, DevDock, AI Lab, Ascend.">
   <link rel="canonical" href="https://paldyn.com/">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -12,15 +12,15 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PALDYN">
   <meta property="og:url" content="https://paldyn.com/">
-  <meta property="og:title" content="PALDYN — 직접 만들고, 끝까지 운영합니다">
-  <meta property="og:description" content="소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오. Nemo · DevDock · AI Lab · Ascend.">
+  <meta property="og:title" content="PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다">
+  <meta property="og:description" content="일상의 불편을 없애는 서비스를 만들고, 다가오는 기술을 연구합니다. Nemo · DevDock · AI Lab · Ascend.">
   <meta property="og:image" content="https://paldyn.com/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PALDYN — 직접 만들고, 끝까지 운영합니다">
-  <meta name="twitter:description" content="소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오. Nemo · DevDock · AI Lab · Ascend.">
+  <meta name="twitter:title" content="PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다">
+  <meta name="twitter:description" content="일상의 불편을 없애는 서비스를 만들고, 다가오는 기술을 연구합니다. Nemo · DevDock · AI Lab · Ascend.">
   <meta name="twitter:image" content="https://paldyn.com/assets/og.png">
 
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
@@ -28,13 +28,14 @@
   <link rel="apple-touch-icon" href="./assets/favicon.png">
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css">
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css">
   <link rel="stylesheet" href="./assets/tokens.css">
 
   <script>
     (function () {
       var d = document.documentElement;
       d.classList.add('js');
+      if (window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()')) d.classList.add('scrub');
       try {
         var t = localStorage.getItem('theme');
         if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
@@ -52,7 +53,7 @@
     "url": "https://paldyn.com/",
     "logo": "https://paldyn.com/assets/favicon.png",
     "slogan": "The force that accompanies",
-    "description": "소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오",
+    "description": "일상의 불편을 없애는 서비스를 직접 만들어 운영하고, 인공지능·양자 등 다가오는 기술을 연구합니다",
     "email": "contact@paldyn.com",
     "sameAs": [
       "https://nemo.paldyn.com/",
@@ -64,142 +65,89 @@
   </script>
 
   <style>
-    /* ── 스킵 링크 ─────────────────────────────────────────────────────── */
+    @property --p { syntax: '<percentage>'; initial-value: 0%; inherits: false; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      margin: -1px; padding: 0; overflow: hidden;
+      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
+
     .skip {
-      position: absolute;
-      left: var(--gutter);
-      top: -60px;
-      z-index: 300;
-      padding: 10px 16px;
-      background: var(--bg);
+      position: absolute; left: var(--gutter); top: -60px; z-index: 300;
+      padding: 10px 16px; background: var(--bg);
       border: 1px solid var(--border-strong);
-      font-size: var(--fs-2);
-      text-decoration: none;
+      font-size: var(--fs-2); text-decoration: none;
       transition: top var(--d-2) var(--e-out);
     }
     .skip:focus { top: 14px; }
 
-    /* ── 내비게이션 ────────────────────────────────────────────────────── */
+    /* ══ 내비게이션 ══════════════════════════════════════════════════════
+       형제 사이트는 [락업 │ 제품명] · 중앙 링크 4 · 우측 필 구조다.
+       여기서는 제품명 슬롯이 없다는 것 자체를 위계로 쓰고, 링크를 좌측
+       클러스터로 붙이고, 우측에는 현재 섹션 오도미터를 둔다. */
     .nav {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 200;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      background: transparent;
-      transition: background-color var(--d-2) var(--e-quart);
+      position: fixed; inset: 0 0 auto 0; z-index: 200; height: 64px;
+      display: flex; align-items: center;
+      transition: background-color var(--d-2) var(--e-quart), transform var(--d-3) var(--e-quint);
     }
     .nav::after {
-      content: '';
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 1px;
-      background: var(--border-subtle);
-      opacity: 0;
+      content: ''; position: absolute; inset: auto 0 0 0; height: 1px;
+      background: var(--border-subtle); opacity: 0;
       transition: opacity var(--d-2) var(--e-quart);
     }
-    .nav.is-stuck {
-      background: var(--nav-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
+    .nav.is-stuck { background: var(--nav-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
     .nav.is-stuck::after { opacity: 1; }
+    .nav.is-hidden { transform: translateY(-100%); }
     .js .nav { animation: fadeIn 400ms linear both; }
 
     .nav-inner {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: var(--s4);
-      width: min(100% - 2 * var(--gutter), var(--page-max));
-      margin-inline: auto;
+      display: flex; align-items: center; gap: var(--s6);
+      width: min(100% - 2 * var(--gutter), var(--page-max)); margin-inline: auto;
     }
 
-    .lockup {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-      justify-self: start;
-    }
-    .lockup .symbol { width: 24px; height: 24px; }
+    .lockup { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+    .lockup .symbol { width: 22px; height: 22px; }
     .lockup .wordmark {
-      font-size: 1rem;
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.14em;
-      line-height: 1;
-      color: var(--text);
+      font-size: 0.9375rem; font-weight: var(--fw-bold);
+      letter-spacing: 0.16em; line-height: 1; color: var(--text);
     }
 
-    .nav-links {
-      display: flex;
-      gap: var(--s6);
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: var(--s5); list-style: none; }
     .nav-links a {
-      position: relative;
-      font-size: var(--fs-2);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.02em;
-      color: var(--text-dim);
-      text-decoration: none;
+      position: relative; font-size: var(--fs-2); font-weight: var(--fw-medium);
+      letter-spacing: 0.02em; color: var(--text-dim); text-decoration: none;
       transition: color var(--d-2) var(--e-quart);
     }
     .nav-links a:hover { color: var(--accent-bright); }
+    .nav-links a.is-current { color: var(--brand); }
 
     .underline { position: relative; }
     .underline::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -4px;
-      height: 1px;
-      background: currentColor;
-      transform: scaleX(0);
-      transform-origin: right;
+      content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px;
+      background: currentColor; transform: scaleX(0); transform-origin: right;
       transition: transform var(--d-2) var(--e-inout);
     }
     .underline:hover::after { transform: scaleX(1); transform-origin: left; }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: var(--s3);
-      justify-self: end;
-    }
+    .nav-right { margin-left: auto; display: flex; align-items: center; gap: var(--s4); }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      height: 32px;
-      padding: 0 14px;
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-pill);
-      font-size: var(--fs-2);
-      font-weight: var(--fw-medium);
-      color: var(--text);
-      text-decoration: none;
-      white-space: nowrap;
-      transition: color var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint);
+    /* 오도미터 — 현재 섹션이 세로로 굴러 교체된다 */
+    .odo {
+      height: 1em; overflow: hidden; font-size: var(--fs-1);
+      font-weight: var(--fw-medium); letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-mute); line-height: 1;
     }
-    .pill:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
-    .pill .ext { font-size: var(--fs-1); opacity: 0.75; }
+    .odo-track { transition: transform var(--d-4) var(--e-quint); }
+    .odo-track span { display: block; height: 1em; white-space: nowrap; }
 
     .icon-btn {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--border-strong);
-      border-radius: 50%;
-      color: var(--text-dim);
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-dim);
       transition: color var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint);
     }
     .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
-    .icon-btn svg { width: 17px; height: 17px; }
+    .icon-btn svg { width: 16px; height: 16px; }
 
     .icon-sun { display: none; }
     @media (prefers-color-scheme: dark) {
@@ -213,10 +161,7 @@
 
     .nav-toggle { display: none; }
     .nav-toggle span {
-      display: block;
-      width: 18px;
-      height: 1.5px;
-      background: currentColor;
+      display: block; width: 18px; height: 1.5px; background: currentColor;
       transition: transform var(--d-2) var(--e-out), opacity var(--d-1) linear;
     }
     .nav-toggle span + span { margin-top: 5px; }
@@ -224,615 +169,503 @@
     .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
     .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* 오버레이는 nav의 형제다 — nav에 backdrop-filter가 걸리면
-       fixed 자손이 nav 박스에 갇히기 때문(실제 재현되던 버그). */
     .nav-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 190;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: var(--s5);
+      position: fixed; inset: 0; z-index: 190; display: none;
+      flex-direction: column; justify-content: center; gap: var(--s5);
       padding: var(--s9) var(--gutter) var(--s8);
       background: var(--overlay-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     }
     .nav-overlay.is-open { display: flex; }
     .nav-overlay ul { list-style: none; display: grid; gap: var(--s5); }
-    .nav-overlay a {
-      font-size: 1.5rem;
-      font-weight: var(--fw-light);
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      color: var(--text);
-    }
-    .nav-overlay .ov-sub {
-      display: grid;
-      gap: var(--s4);
-      padding-top: var(--s5);
-      border-top: 1px solid var(--border-subtle);
-    }
+    .nav-overlay a { font-size: 1.5rem; font-weight: var(--fw-medium); text-decoration: none; color: var(--text); }
+    .nav-overlay .ov-sub { display: grid; gap: var(--s4); padding-top: var(--s5); border-top: 1px solid var(--border-subtle); }
     .nav-overlay .ov-sub a { font-size: var(--fs-3); color: var(--text-dim); letter-spacing: 0.02em; }
 
-    /* ── 히어로 ────────────────────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      min-height: 88svh;
-      display: flex;
-      align-items: center;
-      padding: 152px 0 112px;
-      isolation: isolate;
-      overflow: hidden;
-      overflow: clip;
+    /* ══ STAGE 00 — 커튼 ═════════════════════════════════════════════════
+       첫 화면은 좌측 정렬 스택이 아니라 수평 축 기반 중앙 대칭 구성이다.
+       eyebrow · 설명문단 · 버튼쌍 · 우측 위젯 · 격자배경 전부 없다. */
+    .curtain { position: relative; height: 185svh; }
+    .curtain-stage {
+      position: sticky; top: 0; height: 100svh; overflow: clip;
+      display: grid; place-items: center;
     }
 
-    /* 고정 nav 아래로 들어가지 않게 — 각주 칩·nav 링크가 가리키는 모든 목표 */
-    :target,
-    section[id],
-    .card[id] { scroll-margin-top: 88px; }
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: min(54vw, 620px);
-      aspect-ratio: 1;
-      right: -160px;
-      top: -140px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, var(--hero-glow), transparent 68%);
-      z-index: -1;
+    .corner {
+      position: absolute; top: 104px; left: var(--gutter);
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: var(--fs-1); font-weight: var(--fw-medium);
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mute);
     }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background:
-        linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 64px,
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 64px 100%;
-      mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 76%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 76%, transparent 100%);
-      opacity: 0.55;
-    }
-    .js .hero-bg { animation: fadeIn 900ms linear both; }
+    .corner::before { content: ''; width: 7px; height: 7px; background: var(--brand); flex: none; }
+    .js .corner { animation: fadeIn 400ms linear 760ms both; }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--s5);
-      row-gap: var(--s7);
-      align-items: end;
+    /* 수평 축 — 첫 화면의 유일한 정렬 기준. 중앙은 심볼 자리로 비어 있다. */
+    .axis {
+      position: absolute; top: 46svh; left: 0; right: 0; height: 1px;
+      display: flex; justify-content: space-between; pointer-events: none;
     }
-    .hero-copy { grid-column: 1 / span 7; }
+    .axis span {
+      display: block; height: 1px; width: calc(50% - var(--axis-gap, 190px));
+      background: var(--border-subtle);
+    }
+    .axis span:first-child { transform-origin: right; }
+    .axis span:last-child { transform-origin: left; }
+    .js .axis span { animation: axisOut 420ms var(--e-quart) 600ms both; }
 
-    /* 라벨은 시임에 매달린 레지스터 마크로 읽힌다 —
-       틱이 축까지 뻗고 라벨 자체는 콘텐츠 정렬선에 정확히 선다. */
-    .tick {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    /* 로크업의 시각 중심이 수평 축 위에 정확히 놓이고, 나머지는 아래로 흐른다 */
+    .hero-inner {
+      position: absolute; top: 46svh; left: 0; right: 0;
+      display: grid; justify-items: center;
     }
+    .lockup-hero { margin-top: -0.5em; }
+
+    .lockup-hero {
+      display: flex; align-items: center; justify-content: center;
+      gap: clamp(10px, 1.6vw, 22px);
+      margin: 0; line-height: 1;
+    }
+    .w-slot { display: block; }
+    .w-in {
+      display: block;
+      font-size: clamp(2.5rem, 7.2vw, 6.2rem);
+      font-weight: var(--fw-bold);
+      letter-spacing: 0.16em;
+      line-height: 1;
+      color: var(--text);
+    }
+    .w-l .w-in { padding-left: 0.16em; }   /* 트래킹이 만든 우측 여백 상쇄 */
+    .js .w-l .w-in { animation: openL 480ms var(--e-out) 240ms both; }
+    .js .w-r .w-in { animation: openR 480ms var(--e-out) 240ms both; }
+
+    .mark {
+      position: relative; flex: none;
+      width: clamp(64px, 10.6vw, 150px); aspect-ratio: 1;
+    }
+    .half-shift { position: absolute; top: 0; height: 100%; width: 50%; }
+    .hs-l { left: 0; }
+    .hs-r { left: 50%; }
+    .half { width: 100%; height: 100%; fill: var(--text); }
+    .js .hs-l .half { animation: joinL 460ms var(--e-out) both; }
+    .js .hs-r .half { animation: joinR 460ms var(--e-out) both; }
+
+    .mark-seam {
+      position: absolute; left: 50%; top: 11.6%; width: clamp(1.5px, 0.22vw, 3px); height: 76.8%;
+      transform: translateX(-50%);
+    }
+    .mark-seam i { display: block; width: 100%; height: 100%; background: var(--brand); transform: scaleY(0); }
+    .js .mark-seam i { animation: seamIgnite 200ms var(--e-mech) 500ms both; }
+
+    .hero-sub { display: grid; justify-items: center; gap: var(--s3); margin-top: clamp(28px, 5vh, 56px); }
+    .hero-line {
+      font-size: clamp(1.25rem, 2.6vw, 1.95rem);
+      font-weight: var(--fw-medium); letter-spacing: -0.02em;
+      color: var(--text); text-align: center;
+    }
+    .hero-tag {
+      font-size: var(--fs-2); letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-mute); text-align: center;
+    }
+    .js .hero-line { animation: riseIn 360ms var(--e-out) 660ms both; }
+    .js .hero-tag { animation: fadeIn 320ms linear 700ms both; }
+
+    /* 무대 바닥판 — 시임 틈으로 올라와 다음 섹션을 싣고 온다 */
+    .riser {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 58svh;
+      background: var(--surface-1);
+      border-top: 1px solid var(--border-strong);
+      clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
+      display: grid; align-content: center; justify-items: center; gap: var(--s4);
+      transform: translateY(103%);
+    }
+    .riser-word { position: relative; display: inline-block; }
+    .riser-word .ol, .riser-word .fl {
+      display: block;
+      font-size: clamp(2.6rem, 12.5vw, 9.5rem);
+      font-weight: var(--fw-black);
+      letter-spacing: -0.045em; line-height: 1;
+    }
+    .riser-word .ol { color: transparent; -webkit-text-stroke: 1px var(--text); }
+    .riser-word .fl {
+      position: absolute; inset: 0; color: var(--text); -webkit-text-stroke: 0;
+      clip-path: inset(0 100% 0 0);
+    }
+    .riser-sub { font-size: var(--fs-3); letter-spacing: 0.02em; color: var(--text-dim); }
+
+    /* ══ 시임 → 척추 ═════════════════════════════════════════════════════ */
+    .spine { position: relative; }
+    .spine::before, .spine::after {
+      content: ''; position: absolute; top: 0; bottom: 0;
+      left: calc(max(var(--gutter), (100% - var(--page-max)) / 2) - 20px);
+      width: 1px; pointer-events: none;
+    }
+    .spine::before { background: var(--border-subtle); }
+    .spine::after { background: var(--gradient-silver); transform: scaleY(0); transform-origin: top; }
+    @supports (animation-timeline: scroll()) {
+      .spine::after { animation: fillDown linear both; animation-timeline: scroll(root block); }
+    }
+    @media (max-width: 1024px) { .spine::before, .spine::after { display: none; } }
+
+    section { padding-block: var(--s10); }
+
+    .tick { display: inline-flex; align-items: center; gap: 8px; }
     .tick::before {
-      content: '';
-      width: 12px;
-      margin-left: -20px;
-      height: 1px;
-      background: var(--border-strong);
-      flex: none;
+      content: ''; width: 12px; margin-left: -20px; height: 1px;
+      background: var(--border-strong); flex: none;
     }
     @media (max-width: 1024px) {
       .tick { gap: 10px; }
       .tick::before { width: 8px; margin-left: 0; }
     }
 
-    .hero-title {
-      margin-top: var(--s4);
-      font-size: var(--fs-8);
-      color: var(--accent-bright);
+    /* ══ STAGE 01 — 제품 스택 ════════════════════════════════════════════
+       4열 그리드가 아니라 순차 무대. 카드가 고정된 채 다음 카드가 덮는다. */
+    #products { padding-top: var(--s9); }
+    .rail {
+      position: sticky; top: 64px; z-index: 6;
+      display: flex; gap: var(--s6); align-items: center;
+      height: 56px; margin-bottom: var(--s5);
+      background: var(--bg); border-bottom: 1px solid var(--border-subtle);
     }
-    .hero-title .line {
-      display: block;
-      overflow: hidden;
-      /* 받침 있는 한글은 em 박스를 꽉 채운다 — 클립 창만 넓히고 레이아웃은 유지 */
-      padding-block: 0.14em;
-      margin-block: -0.14em;
+    .rail-tab {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-mute); text-decoration: none;
+      position: relative; padding-block: 6px;
+      transition: color var(--d-2) var(--e-quart);
     }
-    .hero-title .line > span { display: block; }
-    .js .hero-title .line > span {
-      animation: lineUp var(--d-5) var(--e-out) both;
+    .rail-tab svg { width: 17px; height: 17px; }
+    .rail-tab::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+      background: var(--brand); transform: scaleX(0); transform-origin: left;
+      transition: transform var(--d-3) var(--e-quint);
     }
-    .js .hero-title .line:nth-child(1) > span { animation-delay: 80ms; }
-    .js .hero-title .line:nth-child(2) > span { animation-delay: 160ms; }
+    .rail-tab.is-on { color: var(--accent-bright); }
+    .rail-tab.is-on::after { transform: scaleX(1); }
 
-    .hero-en {
-      margin-top: var(--s5);
-      font-size: var(--fs-2);
-      letter-spacing: 0.06em;
-      color: var(--text-mute);
+    .stack { position: relative; }
+    .stage {
+      position: sticky;
+      top: calc(120px + var(--i) * 10px);
+      height: calc(64svh - var(--i) * 10px);
+      margin-bottom: 6svh;
     }
-    .hero-desc {
-      margin-top: var(--s3);
-      max-width: 52ch;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
-    .js .hero-en, .js .hero-desc { animation: riseIn 560ms var(--e-quart) 300ms both; }
+    .stage:last-child { margin-bottom: 0; }
 
-    .hero-ctas { display: flex; gap: var(--s2); margin-top: var(--s7); }
-    .js .hero-ctas > * { animation: riseIn var(--d-4) var(--e-out) both; }
-    .js .hero-ctas > *:nth-child(1) { animation-delay: 380ms; }
-    .js .hero-ctas > *:nth-child(2) { animation-delay: 440ms; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-width: 148px;
-      height: 46px;
-      padding: 0 var(--s5);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-pill);
-      font-size: var(--fs-2);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.02em;
-      color: var(--text);
-      text-decoration: none;
-      transition: transform var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint), color var(--d-3) var(--e-quint);
-    }
-    .btn:hover { transform: translateY(-2px); border-color: var(--accent-bright); color: var(--accent-bright); transition-duration: var(--d-1); }
-    .btn .arw { transition: transform var(--d-2) var(--e-out); }
-    .btn:hover .arw { transform: translateX(3px); }
-    .btn-primary {
-      background: var(--accent-bright);
-      border-color: var(--accent-bright);
-      color: var(--bg);
-    }
-    .btn-primary:hover { color: var(--bg); opacity: 0.88; }
-
-    /* 히어로 우측 상태 스트립 — 스크롤 0에서 제품이 이름으로 노출된다 */
-    .status-strip {
-      grid-column: 9 / span 4;
-      list-style: none;
-      border-top: 1px solid var(--border-subtle);
-    }
-    .js .status-strip { animation: riseIn 560ms var(--e-quart) 460ms both; }
-    .status-strip a {
-      display: grid;
-      grid-template-columns: 12px 1fr auto;
-      align-items: center;
-      gap: var(--s3);
-      height: 44px;
-      border-bottom: 1px solid var(--border-subtle);
-      text-decoration: none;
-      transition: border-color var(--d-3) var(--e-quint);
-    }
-    .status-strip a:hover { border-color: var(--border-strong); }
-    .status-strip .nm { font-size: var(--fs-3); font-weight: var(--fw-medium); color: var(--text); }
-    .status-strip .ct { font-size: var(--fs-1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); }
-
-    /* 색을 쓰지 않고 형태로 상태를 구분한다 (색맹·고대비 모드 대응) */
-    .dot {
-      width: 9px;
-      height: 9px;
-      border: 1px solid var(--text-dim);
-      flex: none;
-    }
-    .dot-live { background: var(--text); border-color: var(--text); }
-    .dot-limited { background: linear-gradient(135deg, var(--text) 0 50%, transparent 50% 100%); border-color: var(--text-dim); }
-    .dot-soon { background: none; }
-
-    /* ── 시임(척추) — 히어로 아래부터 푸터까지 관통하는 정렬선 ────────── */
-    .spine { position: relative; }
-    .spine::before,
-    .spine::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: calc(max(var(--gutter), (100% - var(--page-max)) / 2) - 20px);
-      width: 1px;
-      pointer-events: none;
-    }
-    .spine::before { background: var(--border-subtle); }
-    .spine::after {
-      background: var(--gradient-silver);
-      transform: scaleY(0);
-      transform-origin: top;
-    }
-    @supports (animation-timeline: scroll()) {
-      .spine::after {
-        animation: fillDown linear both;
-        animation-timeline: scroll(root block);
-      }
-    }
-    @media (max-width: 1024px) {
-      .spine::before, .spine::after { display: none; }
-    }
-
-    section { padding-block: var(--s10); }
-
-    /* ── 섹션 마스트헤드 ───────────────────────────────────────────────── */
-    .masthead {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--s5);
-      row-gap: var(--s4);
-      align-items: baseline;
-    }
-    .masthead-l { grid-column: 1 / span 7; }
-    .masthead-r {
-      grid-column: 9 / span 4;
-      font-size: var(--fs-3);
-      color: var(--text-dim);
-    }
-    .section-index {
-      font-size: var(--fs-1);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.18em;
-    }
-    .section-title {
-      margin-top: var(--s3);
-      font-size: var(--fs-7);
-      color: var(--text);
-    }
-
-    /* ── 제품 ─────────────────────────────────────────────────────────── */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--s5);
-      margin-top: var(--s8);
-    }
-
-    /* 노치 카드 — 팔각 심볼의 45° 파세트를 카드 언어로 확장 */
-    .card {
-      --notch: 12px;
-      display: block;
-      padding: 1px;
-      background: var(--border);
+    .plate {
+      --notch: 16px;
+      height: 100%; padding: 1px; background: var(--border);
       clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
-      text-decoration: none;
-      color: inherit;
-      transition: transform var(--d-3) var(--e-quint), background-color var(--d-3) var(--e-quint);
+      transition: background-color var(--d-3) var(--e-quint);
     }
-    .card:hover { transform: translateY(-3px); background: var(--border-strong); transition-duration: var(--d-1); }
-    /* clip-path는 요소가 그리는 아웃라인까지 잘라낸다 — 포커스 표시는 클립 안쪽에 그린다 */
-    .card:focus-visible { outline: none; }
-    .card:focus-visible .card-in { box-shadow: inset 0 0 0 2px var(--focus); }
-    .card-in {
-      display: flex;
-      flex-direction: column;
-      min-height: 268px;
-      padding: var(--s6);
+    .plate:hover { background: var(--border-strong); }
+    .plate-in {
+      height: 100%; padding: clamp(24px, 3.4vw, 48px);
       background: var(--surface-2);
       clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+      display: grid; grid-template-columns: 1fr auto; align-content: space-between; gap: var(--s5);
     }
-    .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
-    .monogram { width: 30px; height: 30px; color: var(--text); transition: color var(--d-2) var(--e-quart); }
-    .card:hover .monogram { color: var(--accent-bright); }
-    .card-id { font-size: var(--fs-1); letter-spacing: 0.12em; color: var(--text-mute); }
-    .card h3 { margin-top: var(--s5); font-size: var(--fs-5); }
-    .card-cat {
-      margin-top: 6px;
-      font-size: var(--fs-1);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-mute);
+    .plate-head { grid-column: 1; display: flex; align-items: baseline; gap: var(--s4); }
+    .plate-id { font-size: var(--fs-1); letter-spacing: 0.14em; color: var(--text-mute); }
+    .plate h3 { font-size: clamp(1.75rem, 3.4vw, 3rem); font-weight: var(--fw-bold); letter-spacing: -0.03em; }
+    .plate-cat {
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-mute);
     }
-    .card p {
-      margin-top: var(--s3);
-      font-size: var(--fs-3);
-      line-height: 1.7;
-      color: var(--text-dim);
+    .plate-body { grid-column: 1; align-self: center; max-width: 46ch; }
+    .plate-body p { font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.65; color: var(--text-dim); }
+    .plate-meta { grid-column: 1; display: flex; align-items: center; gap: var(--s5); flex-wrap: wrap; }
+    .plate-status { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-2); color: var(--text-dim); }
+    .plate-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: var(--fs-2); color: var(--text-mute); text-decoration: none;
     }
-    .card-meta {
-      margin-top: auto;
-      padding-top: var(--s5);
-      display: grid;
-      gap: 6px;
+    .plate-link .arw { transition: transform var(--d-2) var(--e-out); }
+    .plate:hover .plate-link .arw { transform: translate(2px, -2px); }
+    .plate a:focus-visible { outline-offset: -4px; }
+
+    .mono-big {
+      grid-column: 2; grid-row: 1 / span 3; align-self: center;
+      width: clamp(84px, 13vw, 168px); aspect-ratio: 1; color: var(--text);
     }
-    .card-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: var(--fs-1);
-      letter-spacing: 0.06em;
-      color: var(--text-dim);
-    }
-    .card-domain {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--s2);
-      font-size: var(--fs-2);
-      color: var(--text-mute);
-    }
-    .card .arw { transition: transform var(--d-2) var(--e-out); }
-    .card:hover .arw { transform: translate(2px, -2px); }
-    .card.is-cited {
-      background: var(--border-strong);
+    /* non-scaling-stroke이므로 굵기는 CSS px로 고정된다 — 대형에서도 하드라인을 유지하되
+       172px에서 1.75px는 너무 약해 보이므로 2.4px로 올린다. */
+    .mono-big svg { width: 100%; height: 100%; stroke-width: 2.4px; }
+
+    .dot { width: 9px; height: 9px; border: 1px solid var(--text-dim); flex: none; }
+    .dot-live { background: var(--brand); border-color: var(--brand); }
+    .dot-limited { background: linear-gradient(135deg, var(--text) 0 50%, transparent 50% 100%); }
+    .dot-soon { background: none; }
+
+    /* ══ 인터루드 — 리딩 하이라이트 (페이지 전체에 하나뿐) ═══════════════ */
+    .interlude { padding-block: var(--s11); display: grid; justify-items: center; }
+    .manifesto {
+      max-width: 24ch; text-align: center;
+      font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+      font-weight: var(--fw-medium); letter-spacing: -0.025em; line-height: 1.45;
+      color: var(--text);
     }
 
-    /* ── 우리가 만드는 방식 ────────────────────────────────────────────── */
-    .build-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--s5);
-    }
+    /* ══ STAGE 02 — 만드는 방식 ═════════════════════════════════════════ */
+    .build-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); }
     .build-l { grid-column: 1 / span 4; }
     .build-r { grid-column: 6 / span 7; }
     @media (min-width: 1025px) and (min-height: 700px) {
-      .build-l { position: sticky; top: calc(50vh - 96px); align-self: start; }
+      .build-l { position: sticky; top: 42svh; align-self: start; }
     }
+    .section-index { font-size: var(--fs-1); font-weight: var(--fw-bold); letter-spacing: 0.18em; color: var(--brand); }
+    .section-title { margin-top: var(--s3); font-size: var(--fs-7); color: var(--text); }
 
     .principle {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: var(--s7);
-      padding-block: var(--s7);
-      border-bottom: 1px solid var(--border-subtle);
+      display: grid; grid-template-columns: 64px 1fr; gap: var(--s7);
+      padding-block: var(--s7); border-bottom: 1px solid var(--border-subtle);
     }
     .principle:first-child { border-top: 1px solid var(--border-subtle); }
     .principle-no {
-      position: relative;
-      font-size: var(--fs-2);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.2em;
-      color: var(--text-mute);
+      position: relative; font-size: var(--fs-2); font-weight: var(--fw-medium);
+      letter-spacing: 0.2em; color: var(--text-mute);
       transition: color var(--d-2) var(--e-quart);
     }
     .principle-no::before {
-      content: '';
-      position: absolute;
-      left: -14px;
-      top: 4px;
-      width: 2px;
-      height: 14px;
-      background: var(--accent-bright);
-      transform: scaleY(0);
-      transform-origin: top;
+      content: ''; position: absolute; left: -14px; top: 4px; width: 2px; height: 14px;
+      background: var(--brand); transform: scaleY(0); transform-origin: top;
       transition: transform var(--d-1) var(--e-out);
     }
     .principle.is-active .principle-no { color: var(--accent-bright); }
     .principle.is-active .principle-no::before { transform: scaleY(1); }
     .principle h3 { font-size: var(--fs-5); }
-    .principle p {
-      margin-top: var(--s3);
-      max-width: 58ch;
-      font-size: var(--fs-4);
-      line-height: 1.75;
-      color: var(--text-dim);
-    }
-    /* 각주 칩 — 역량은 독립 주장이 아니라 제품에 대한 주석이다.
-       칩 없는 항목은 이 섹션에 추가하지 않는다. */
+    .principle p { margin-top: var(--s3); max-width: 58ch; font-size: var(--fs-4); line-height: 1.75; color: var(--text-dim); }
+
     .cites { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s4); }
     .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      height: 26px;
-      padding: 0 10px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-pill);
-      font-size: var(--fs-1);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.06em;
-      color: var(--text-dim);
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px;
+      border: 1px solid var(--border); border-radius: var(--radius-pill);
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.06em;
+      color: var(--text-dim); text-decoration: none;
       transition: border-color var(--d-3) var(--e-quint), color var(--d-3) var(--e-quint);
     }
-    .chip:hover { border-color: var(--border-strong); color: var(--text); transition-duration: var(--d-1); }
+    .chip:hover { border-color: var(--brand); color: var(--brand); transition-duration: var(--d-1); }
     .chip .lead { transition: transform var(--d-2) var(--e-out); }
     .chip:hover .lead { transform: translateX(2px); }
 
-    /* ── 회사 ─────────────────────────────────────────────────────────── */
+    /* ══ STAGE 03 — 회사 · 도면 ═════════════════════════════════════════ */
     .company-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--s5);
-      row-gap: var(--s8);
-      align-items: start;
-      margin-top: var(--s8);
+      display: grid; grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--s5); row-gap: var(--s8); align-items: center;
     }
-    .company-l { grid-column: 1 / span 6; }
-    .company-l p { max-width: 54ch; color: var(--text-dim); line-height: 1.75; }
+    .company-l { grid-column: 1 / span 5; }
+    .company-l p { max-width: 52ch; color: var(--text-dim); line-height: 1.75; }
     .company-l p + p { margin-top: var(--s4); }
-    .company-r { grid-column: 8 / span 5; }
+    .company-r { grid-column: 7 / span 6; }
 
     .blueprint {
-      position: relative;
-      width: 100%;
-      max-width: 400px;
-      margin-inline: auto;
-      aspect-ratio: 1;
+      position: relative; width: 100%; max-width: 460px; margin-inline: auto; aspect-ratio: 1;
     }
     .blueprint::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background:
         linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 24px,
         linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 24px 100%;
       mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 86%);
       -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 86%);
     }
-    .blueprint svg { position: relative; }
-    .blueprint svg { width: 100%; height: 100%; }
-    .bp-half { transition: transform var(--d-5) var(--e-out); }
-    .js .bp-half-l { transform: translateX(-14px); }
-    .js .bp-half-r { transform: translateX(14px); }
-    .js .blueprint.is-in .bp-half { transform: none; }
-    .bp-lead {
-      transform: scaleX(0);
-      transition: transform var(--d-3) var(--e-mech);
-    }
-    .js .blueprint.is-in .bp-lead { transform: scaleX(1); }
-    .js .blueprint.is-in .bp-lead-1 { transition-delay: 560ms; }
-    .js .blueprint.is-in .bp-lead-2 { transition-delay: 630ms; }
-    .js .blueprint.is-in .bp-lead-3 { transition-delay: 700ms; }
-    .js .blueprint.is-in .bp-lead-4 { transition-delay: 770ms; }
-    .bp-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      fill: var(--text-mute);
-      opacity: 0;
-      transition: opacity var(--d-3) linear;
-    }
-    .js .blueprint.is-in .bp-label { opacity: 1; }
-    .js .blueprint.is-in .bp-label-1 { transition-delay: 640ms; }
-    .js .blueprint.is-in .bp-label-2 { transition-delay: 710ms; }
-    .js .blueprint.is-in .bp-label-3 { transition-delay: 780ms; }
-    .js .blueprint.is-in .bp-label-4 { transition-delay: 850ms; }
+    .blueprint svg { position: relative; width: 100%; height: 100%; }
+    .bp-lead { stroke-dasharray: var(--len, 120); stroke-dashoffset: var(--len, 120); }
+    .bp-label { font-size: 10px; letter-spacing: 0.16em; fill: var(--text-mute); opacity: 0; }
 
-    /* ── 연락 — 마지막 지면만 반전해서 페이지를 닫는다 ────────────────── */
+    /* ══ 인터루드 — 대형 아웃라인 워드마크 ══════════════════════════════ */
+    .closer { padding-block: var(--s10); overflow: clip; }
+    .closer-word { position: relative; display: block; text-align: center; }
+    .closer-word .ol, .closer-word .fl {
+      display: block; font-size: clamp(3rem, 17vw, 14rem);
+      font-weight: var(--fw-black); letter-spacing: -0.05em; line-height: 1;
+    }
+    .closer-word .ol { color: transparent; -webkit-text-stroke: 1px var(--border-strong); }
+    .closer-word .fl { position: absolute; inset: 0; color: var(--text); -webkit-text-stroke: 0; clip-path: inset(0 100% 0 0); }
+
+    /* ══ STAGE 04 — 연락 (페이지에서 유일한 반전) ═══════════════════════ */
     .contact {
-      background: var(--accent-bright);
-      color: var(--bg);
-      margin-top: var(--s10);
+      background: var(--accent-bright); color: var(--bg);
+      padding-block: var(--s11);
+      clip-path: inset(0 0 0 0);
     }
-    .contact .section-index,
     .contact .eyebrow { color: var(--bg); opacity: 0.62; }
+    .contact .section-index { color: var(--brand-vivid); opacity: 1; }
+    .contact .tick::before { background: var(--brand-vivid); opacity: 1; }
     .contact .section-title { color: var(--bg); }
-    .contact .masthead-r { color: var(--bg); opacity: 0.72; }
-    .contact .tick::before { background: var(--bg); opacity: 0.5; }
     .contact :focus-visible { outline-color: var(--bg); }
-
     .channels {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--s5);
-      margin-top: var(--s8);
-      max-width: 820px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--s5); margin-top: var(--s8); max-width: 820px;
     }
-    .channel { padding-top: var(--s5); border-top: 1px solid rgba(128, 128, 128, 0.45); }
+    .channel { padding-top: var(--s5); border-top: 1px solid rgba(128,128,128,0.45); }
     .channel .ch-name {
-      font-size: var(--fs-1);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.62;
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em;
+      text-transform: uppercase; opacity: 0.62;
     }
     .channel .ch-mail {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: var(--s3);
-      font-size: 1.25rem;
-      letter-spacing: -0.01em;
-      color: var(--bg);
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px; margin-top: var(--s3);
+      font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: var(--fw-medium);
+      letter-spacing: -0.02em; color: var(--bg); text-decoration: none;
     }
     .channel .ch-note { margin-top: 6px; font-size: var(--fs-2); opacity: 0.7; }
 
-    /* ── 푸터 ─────────────────────────────────────────────────────────── */
+    /* ══ 푸터 ══════════════════════════════════════════════════════════ */
     .footer { position: relative; padding-block: var(--s8) var(--s7); }
     .footer::before {
-      content: '';
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 1px;
-      background: var(--gradient-silver);
-      opacity: 0.5;
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
+      background: var(--gradient-silver); opacity: 0.5;
     }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr repeat(4, 1fr);
-      gap: var(--s7) var(--s5);
-    }
-    .footer-brand .wordmark { font-size: 1rem; font-weight: var(--fw-medium); letter-spacing: 0.14em; }
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: var(--s7) var(--s5); }
     .footer-brand p { margin-top: var(--s3); font-size: var(--fs-1); letter-spacing: 0.06em; color: var(--text-mute); }
     .footer-col h4 {
-      font-size: var(--fs-1);
-      font-weight: var(--fw-medium);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-mute);
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-mute);
     }
     .footer-col ul { list-style: none; margin-top: var(--s4); display: grid; gap: var(--s3); }
     .footer-col a {
-      font-size: var(--fs-2);
-      color: var(--text-dim);
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: var(--fs-2); color: var(--text-dim); text-decoration: none;
       transition: color var(--d-2) var(--e-quart);
     }
     .footer-col a:hover { color: var(--accent-bright); }
+    .footer-col a svg { width: 14px; height: 14px; }
     .footer-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--s4);
-      margin-top: var(--s7);
-      padding-top: var(--s5);
-      border-top: 1px solid var(--border-subtle);
-      font-size: var(--fs-2);
-      color: var(--text-mute);
+      display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+      margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--border-subtle);
+      font-size: var(--fs-2); color: var(--text-mute);
     }
     .footer-tools { display: flex; gap: var(--s2); }
 
-    /* ── 키프레임 ──────────────────────────────────────────────────────── */
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes lineUp { from { transform: translateY(101%); } to { transform: translateY(0); } }
-    @keyframes riseIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-    @keyframes fillDown { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    /* ══ 키프레임 ═══════════════════════════════════════════════════════ */
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
+    @keyframes joinL { from { transform: translateX(-12vw) } to { transform: none } }
+    @keyframes joinR { from { transform: translateX(12vw) } to { transform: none } }
+    @keyframes openL { from { clip-path: inset(0 0 0 100%) } to { clip-path: inset(0 0 0 0) } }
+    @keyframes openR { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+    @keyframes seamIgnite { from { transform: scaleY(0) } to { transform: scaleY(1) } }
+    @keyframes axisOut { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+    @keyframes fillDown { from { transform: scaleY(0) } to { transform: scaleY(1) } }
 
-    /* 리빌 거리는 요소 종류의 함수 — 32px를 넘기지 않는다 */
-    .js .reveal { transform: translateY(14px); }
-    .js .reveal-title { transform: translateY(18px); }
-    .js .reveal-card { transform: translateY(26px); }
+    /* 스크럽 전용 */
+    @keyframes partL { to { transform: translateX(-17vw); opacity: 0 } }
+    @keyframes partR { to { transform: translateX(17vw); opacity: 0 } }
+    @keyframes wordL { to { transform: translateX(-22vw) } }
+    @keyframes wordR { to { transform: translateX(22vw) } }
+    @keyframes subOut { 0% { opacity: 1 } 55% { opacity: 1 } 100% { opacity: 0; transform: translateY(-14px) } }
+    @keyframes riserUp { to { transform: translateY(0) } }
+    @keyframes wipeFill { to { clip-path: inset(0 0 0 0) } }
+    @keyframes seamFade { to { opacity: 0 } }
+    @keyframes revealUp { from { opacity: 0; transform: translateY(28px) } to { opacity: 1; transform: none } }
+    @keyframes revealSm { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+    @keyframes drawLine { to { stroke-dashoffset: 0 } }
+    @keyframes lit { to { opacity: 1 } }
+    @keyframes bandOpen { from { clip-path: inset(50% 0 50% 0) } to { clip-path: inset(0 0 0 0) } }
+    @keyframes labelIn { to { opacity: 1 } }
 
-    /* ── 테마 전환: 세로 스캔라인 와이프 (축 기반 레이아웃과 방향을 맞춤) ── */
-    @media (prefers-reduced-motion: no-preference) {
-      ::view-transition-old(root) { animation: none; }
-      ::view-transition-new(root) {
-        animation: wipeIn 420ms var(--e-inout) both;
-        z-index: 1;
+    /* ══ 스크럽 레이어 — 스크롤 위치의 함수 ══════════════════════════════
+       지원 브라우저에서는 IO 원샷 경로를 무력화하고 전부 스크럽으로 승격한다.
+       미지원 브라우저는 이 블록 밖의 IO 코드로 폴백한다. */
+    @supports (animation-timeline: scroll()) and (animation-timeline: view()) {
+      .js .reveal { opacity: 1; transform: none; transition: none; animation: revealSm linear both; animation-timeline: view(block); animation-range: entry 8% cover 32%; }
+      .js .reveal-title { animation-name: revealUp; animation-range: entry 12% cover 30%; }
+      .js .reveal-card { animation-name: revealUp; animation-range: entry 4% cover 38%; }
+
+      .hs-l { animation: partL linear both; animation-timeline: scroll(root block); animation-range: 4svh 74svh; }
+      .hs-r { animation: partR linear both; animation-timeline: scroll(root block); animation-range: 4svh 74svh; }
+      .w-l  { animation: wordL linear both; animation-timeline: scroll(root block); animation-range: 4svh 74svh; }
+      .w-r  { animation: wordR linear both; animation-timeline: scroll(root block); animation-range: 4svh 74svh; }
+      .mark-seam { animation: seamFade linear both; animation-timeline: scroll(root block); animation-range: 6svh 34svh; }
+      .hero-sub { animation: subOut linear both; animation-timeline: scroll(root block); animation-range: 0 52svh; }
+      .corner { animation: subOut linear both; animation-timeline: scroll(root block); animation-range: 0 40svh; }
+
+      .riser { animation: riserUp linear both; animation-timeline: scroll(root block); animation-range: 34svh 96svh; }
+      .riser-word .fl { animation: wipeFill linear both; animation-timeline: scroll(root block); animation-range: 92svh 150svh; }
+
+      .closer-word .fl { animation: wipeFill linear both; animation-timeline: view(block); animation-range: entry 30% cover 70%; }
+
+      .mono-big path, .mono-big circle { animation: drawLine linear both; animation-timeline: scroll(root block); }
+      .bp-lead { animation: drawLine linear both; animation-timeline: view(block); }
+      .bp-label { animation: labelIn linear both; animation-timeline: view(block); }
+
+      .contact { animation: bandOpen linear both; animation-timeline: view(block); animation-range: entry 0% entry 92%; }
+
+      .w { opacity: 0.2; animation: lit linear both; animation-timeline: view(block); }
+    }
+
+    /* ══ 모션 축소 — 스크롤 타임라인은 duration이 진행률로 재해석되므로
+       셀렉터 단위로 명시적으로 끄고 종료 상태로 고정해야 한다. ═══════════ */
+    @media (prefers-reduced-motion: reduce) {
+      .hs-l, .hs-r, .w-l, .w-r, .mark-seam, .hero-sub, .corner, .riser,
+      .riser-word .fl, .closer-word .fl, .mono-big path, .mono-big circle,
+      .bp-lead, .bp-label, .contact, .w, .js .reveal, .axis span,
+      .js .hs-l .half, .js .hs-r .half, .js .w-l .w-in, .js .w-r .w-in,
+      .js .hero-line, .js .hero-tag, .js .mark-seam i {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+        stroke-dashoffset: 0 !important;
       }
+      .mark-seam { transform: translateX(-50%) !important; }
+      .riser { transform: translateY(0) !important; }
+      .contact { clip-path: inset(0) !important; }
     }
-    @keyframes wipeIn {
-      from { clip-path: inset(0 100% 0 0); }
-      to { clip-path: inset(0 0 0 0); }
+    [data-motion="reduced"] .hs-l, [data-motion="reduced"] .hs-r,
+    [data-motion="reduced"] .w-l, [data-motion="reduced"] .w-r,
+    [data-motion="reduced"] .hero-sub, [data-motion="reduced"] .corner,
+    [data-motion="reduced"] .riser, [data-motion="reduced"] .riser-word .fl,
+    [data-motion="reduced"] .closer-word .fl, [data-motion="reduced"] .mono-big path,
+    [data-motion="reduced"] .mono-big circle, [data-motion="reduced"] .bp-lead,
+    [data-motion="reduced"] .bp-label, [data-motion="reduced"] .contact,
+    [data-motion="reduced"] .w, [data-motion="reduced"] .js .reveal {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+      stroke-dashoffset: 0 !important;
     }
+    [data-motion="reduced"] .riser { transform: translateY(0) !important; }
+    [data-motion="reduced"] .contact { clip-path: inset(0) !important; }
 
-    /* ── 반응형 ───────────────────────────────────────────────────────── */
+    /* ══ 반응형 ═════════════════════════════════════════════════════════ */
     @media (max-width: 1199px) {
-      .products { grid-template-columns: repeat(2, 1fr); }
-      .hero-copy { grid-column: 1 / span 12; }
-      .status-strip { grid-column: 1 / span 12; max-width: 520px; }
-      .masthead-l { grid-column: 1 / span 12; }
-      .masthead-r { grid-column: 1 / span 12; }
       .build-l { grid-column: 1 / span 12; margin-bottom: var(--s6); }
       .build-r { grid-column: 1 / span 12; }
       .company-l, .company-r { grid-column: 1 / span 12; }
       .footer-grid { grid-template-columns: repeat(4, 1fr); }
       .footer-brand { grid-column: 1 / -1; }
     }
-
     @media (max-width: 1024px) {
       section { padding-block: var(--s9); }
-      .nav-links, .nav-right .pill { display: none; }
+      .nav-links, .nav-right .odo { display: none; }
       .nav-toggle { display: block; }
-      .contact { margin-top: var(--s9); }
+      .plate-in { grid-template-columns: 1fr; }
+      .mono-big { grid-column: 1; grid-row: auto; justify-self: start; }
     }
-
     @media (max-width: 720px) {
       section { padding-block: var(--s8); }
-      .hero { padding: 116px 0 var(--s8); min-height: auto; }
-      .hero-grid { row-gap: var(--s6); }
-      .hero-ctas { gap: 8px; }
-      .btn { flex: 1; min-width: 0; padding: 0 var(--s3); }
-      .products { grid-template-columns: 1fr; }
-      .card { --notch: 10px; }
-      .card-in { min-height: 0; padding: var(--s5); }
-      .principle { grid-template-columns: 48px 1fr; gap: var(--s4); padding-block: var(--s6); }
+      .curtain { height: 175svh; }
+      .axis { top: 44svh; }
+      .hero-inner { top: 44svh; }
+      .w-in { letter-spacing: 0.1em; }
+      .corner { top: 88px; }
+      .riser { height: 52svh; }
+      .riser-word .ol { -webkit-text-stroke: 0; color: var(--text); }
+      .riser-word .fl { display: none; }
+      /* 스택 해제 — 대신 카드마다 스크럽 리빌과 마크 드로잉이 남는다 */
+      .stage { position: static; height: auto; margin-bottom: var(--s5); }
+      .plate-in { min-height: 0; }
+      .rail { gap: var(--s4); overflow-x: auto; }
+      .interlude { padding-block: var(--s9); }
+      .closer-word .ol { -webkit-text-stroke: 0; color: var(--border-strong); }
+      .closer-word .fl { display: none; }
       .channels { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-bar { flex-direction: column; align-items: flex-start; }
-      .contact { margin-top: var(--s8); }
     }
 
-    /* 저사양 기기 — 비용이 큰 것만 끈다 */
     .motion-lite .nav.is-stuck { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--bg); }
     .motion-lite .nav-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
   </style>
@@ -841,16 +674,32 @@
 
 <a class="skip" href="#products">본문으로 건너뛰기</a>
 
-<!-- 심볼 정의 — 두 반쪽 팔각형 + 중앙 팔각 음각 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <!-- 공유 심볼에는 어떤 애니메이션 클래스도 붙이지 않는다 —
-         <use> 클론은 문서 CSS의 후손 셀렉터가 닿지 않는 섀도 트리에 있어,
-         원본에 걸린 상태 클래스가 클론에서 되돌려지지 않는다.
-         결합 모션이 필요한 곳(#blueprint)은 path를 직접 인라인한다. -->
     <g id="pd-symbol">
       <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
       <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
+    </g>
+    <g id="mono-nemo" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+      <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z" vector-effect="non-scaling-stroke"/>
+      <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z" vector-effect="non-scaling-stroke"/>
+    </g>
+    <g id="mono-devdock" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z" vector-effect="non-scaling-stroke"/>
+      <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z" vector-effect="non-scaling-stroke"/>
+      <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z" vector-effect="non-scaling-stroke"/>
+      <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z" vector-effect="non-scaling-stroke"/>
+    </g>
+    <g id="mono-ailab" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 5A11 11 0 1 0 27 16" vector-effect="non-scaling-stroke"/>
+      <path d="M16 10A6 6 0 1 0 22 16" vector-effect="non-scaling-stroke"/>
+      <path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/>
+      <circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/>
+    </g>
+    <g id="mono-ascend" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z" vector-effect="non-scaling-stroke"/>
+      <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z" vector-effect="non-scaling-stroke"/>
+      <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z" vector-effect="non-scaling-stroke"/>
     </g>
   </defs>
 </svg>
@@ -861,16 +710,17 @@
       <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
       <span class="wordmark">PALDYN</span>
     </a>
-
     <ul class="nav-links">
       <li><a class="underline" href="#products">Products</a></li>
       <li><a class="underline" href="#build">How we build</a></li>
       <li><a class="underline" href="#company">Company</a></li>
       <li><a class="underline" href="#contact">Contact</a></li>
+      <li><a class="underline" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></li>
     </ul>
-
     <div class="nav-right">
-      <a class="pill" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog <span class="ext" aria-hidden="true">↗</span></a>
+      <div class="odo" aria-hidden="true"><div class="odo-track" id="odoTrack">
+        <span>PALDYN</span><span>01 Products</span><span>02 How we build</span><span>03 Company</span><span>04 Contact</span>
+      </div></div>
       <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -897,140 +747,173 @@
 
 <main>
   <span id="navSentinel" aria-hidden="true"></span>
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow tick">PALDYN — 함께하는 힘</p>
-        <h1 class="hero-title">
-          <span class="line"><span>직접 만들고,</span></span>
-          <span class="line"><span>끝까지 운영합니다.</span></span>
+
+  <!-- ══ STAGE 00 — 커튼 ══════════════════════════════════════════════ -->
+  <section class="curtain" aria-label="PALDYN">
+    <div class="curtain-stage">
+      <p class="corner">PALDYN — 서비스 그리고 리서치</p>
+
+      <div class="axis" aria-hidden="true"><span></span><span></span></div>
+
+      <div class="hero-inner">
+        <h1 class="lockup-hero">
+          <span class="w-slot w-l"><span class="w-in">PAL</span></span>
+          <span class="mark" aria-hidden="true">
+            <span class="half-shift hs-l">
+              <svg class="half" viewBox="0 0 120 240"><path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/></svg>
+            </span>
+            <span class="half-shift hs-r">
+              <svg class="half" viewBox="120 0 120 240"><path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/></svg>
+            </span>
+            <span class="mark-seam"><i></i></span>
+          </span>
+          <span class="w-slot w-r"><span class="w-in">DYN</span></span>
+          <span class="sr-only">PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다</span>
         </h1>
-        <p class="hero-en">The force that accompanies.</p>
-        <p class="hero-desc">기획부터 운영까지 직접 합니다. 노트 앱, 개발자 도구, AI 리서치 플랫폼, 운동 기록 앱 — 지금 돌아가고 있는 제품이 우리가 일하는 방식입니다.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#products">제품 보기 <span class="arw" aria-hidden="true">→</span></a>
-          <a class="btn" href="#contact">문의하기</a>
+
+        <div class="hero-sub">
+          <p class="hero-line">불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다</p>
+          <p class="hero-tag">The force that accompanies</p>
         </div>
       </div>
 
-      <ul class="status-strip">
-        <li><a href="#p-nemo"><span class="dot dot-limited" aria-hidden="true"></span><span class="nm">Nemo</span><span class="ct">Notes</span></a></li>
-        <li><a href="#p-devdock"><span class="dot dot-limited" aria-hidden="true"></span><span class="nm">DevDock</span><span class="ct">Utilities</span></a></li>
-        <li><a href="#p-ailab"><span class="dot dot-live" aria-hidden="true"></span><span class="nm">AI Lab</span><span class="ct">Research</span></a></li>
-        <li><a href="#p-ascend"><span class="dot dot-soon" aria-hidden="true"></span><span class="nm">Ascend</span><span class="ct">Workout</span></a></li>
-      </ul>
+      <div class="riser" aria-hidden="true">
+        <span class="riser-word">
+          <span class="ol">PRODUCTS</span>
+          <span class="fl">PRODUCTS</span>
+        </span>
+        <span class="riser-sub">지금 돌아가고 있는 것</span>
+      </div>
     </div>
   </section>
 
   <div class="spine">
-
-    <!-- ── 제품 ─────────────────────────────────────────────────────── -->
-    <section id="products">
+    <!-- ══ STAGE 01 — 제품 스택 ═════════════════════════════════════ -->
+    <section id="products" aria-label="제품">
       <div class="wrap">
-        <div class="masthead">
-          <div class="masthead-l">
-            <p class="eyebrow tick"><span class="section-index silver">01</span> &nbsp;PRODUCTS</p>
-            <h2 class="section-title reveal reveal-title">지금 돌아가고 있는 것</h2>
-          </div>
-          <p class="masthead-r reveal">네 개를 만들었고, 세 개가 돌아가고 있습니다. 하나는 출시를 준비 중입니다.</p>
+        <div class="rail" id="rail">
+          <a class="rail-tab" href="#p-nemo" data-tab="0"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>Nemo</a>
+          <a class="rail-tab" href="#p-devdock" data-tab="1"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>DevDock</a>
+          <a class="rail-tab" href="#p-ailab" data-tab="2"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>AI Lab</a>
+          <a class="rail-tab" href="#p-ascend" data-tab="3"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>Ascend</a>
         </div>
 
-        <div class="products" data-stagger>
-          <a class="card reveal reveal-card" id="p-nemo" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">
-            <span class="card-in">
-              <span class="card-top">
-                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z"/>
-                  <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z"/>
-                </svg>
-                <span class="card-id">P-01</span>
-              </span>
-              <h3>Nemo</h3>
-              <span class="card-cat">Notes &amp; Journal</span>
-              <p>생각이 머무는 자리. 노트와 저널을 한곳에서.</p>
-              <span class="card-meta">
-                <span class="card-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
-                <span class="card-domain">nemo.paldyn.com <span class="arw" aria-hidden="true">↗</span></span>
-              </span>
-            </span>
-          </a>
+        <div class="stack" id="stack">
+          <article class="stage" id="p-nemo" style="--i:0">
+            <div class="plate">
+              <div class="plate-in">
+                <div class="plate-head">
+                  <span class="plate-id">P-01</span>
+                  <h3>Nemo</h3>
+                  <span class="plate-cat">Notes &amp; Journal</span>
+                </div>
+                <div class="mono-big" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z" vector-effect="non-scaling-stroke"/>
+                    <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z" vector-effect="non-scaling-stroke"/>
+                  </svg>
+                </div>
+                <div class="plate-body"><p>생각이 머무는 자리. 노트와 저널을 한곳에서.</p></div>
+                <div class="plate-meta">
+                  <span class="plate-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
+                  <a class="plate-link underline" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">nemo.paldyn.com <span class="arw" aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
 
-          <a class="card reveal reveal-card" id="p-devdock" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">
-            <span class="card-in">
-              <span class="card-top">
-                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z"/>
-                  <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z"/>
-                  <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z"/>
-                  <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z"/>
-                </svg>
-                <span class="card-id">P-02</span>
-              </span>
-              <h3>DevDock</h3>
-              <span class="card-cat">Developer Utilities</span>
-              <p>JSON·JWT·해시·UUID까지. 설치 없이 브라우저에서 바로.</p>
-              <span class="card-meta">
-                <span class="card-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
-                <span class="card-domain">devdock.paldyn.com <span class="arw" aria-hidden="true">↗</span></span>
-              </span>
-            </span>
-          </a>
+          <article class="stage" id="p-devdock" style="--i:1">
+            <div class="plate">
+              <div class="plate-in">
+                <div class="plate-head">
+                  <span class="plate-id">P-02</span>
+                  <h3>DevDock</h3>
+                  <span class="plate-cat">Developer Utilities</span>
+                </div>
+                <div class="mono-big" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z" vector-effect="non-scaling-stroke"/>
+                    <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z" vector-effect="non-scaling-stroke"/>
+                    <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z" vector-effect="non-scaling-stroke"/>
+                    <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z" vector-effect="non-scaling-stroke"/>
+                  </svg>
+                </div>
+                <div class="plate-body"><p>JSON·JWT·해시·UUID까지. 설치 없이 브라우저에서 바로.</p></div>
+                <div class="plate-meta">
+                  <span class="plate-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
+                  <a class="plate-link underline" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">devdock.paldyn.com <span class="arw" aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
 
-          <a class="card reveal reveal-card" id="p-ailab" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">
-            <span class="card-in">
-              <span class="card-top">
-                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M16 5A11 11 0 1 0 27 16"/>
-                  <path d="M16 10A6 6 0 1 0 22 16"/>
-                  <path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/>
-                  <circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/>
-                </svg>
-                <span class="card-id">P-03</span>
-              </span>
-              <h3>AI Lab</h3>
-              <span class="card-cat">AI News &amp; Research</span>
-              <p>새 모델과 글로벌 AI 기업의 움직임을 매일 추적합니다.</p>
-              <span class="card-meta">
-                <span class="card-status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-                <span class="card-domain">ailab.paldyn.com <span class="arw" aria-hidden="true">↗</span></span>
-              </span>
-            </span>
-          </a>
+          <article class="stage" id="p-ailab" style="--i:2">
+            <div class="plate">
+              <div class="plate-in">
+                <div class="plate-head">
+                  <span class="plate-id">P-03</span>
+                  <h3>AI Lab</h3>
+                  <span class="plate-cat">AI News &amp; Research</span>
+                </div>
+                <div class="mono-big" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 5A11 11 0 1 0 27 16" vector-effect="non-scaling-stroke"/>
+                    <path d="M16 10A6 6 0 1 0 22 16" vector-effect="non-scaling-stroke"/>
+                    <path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/>
+                    <circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+                <div class="plate-body"><p>새 모델과 글로벌 AI 기업의 움직임을 추적합니다.</p></div>
+                <div class="plate-meta">
+                  <span class="plate-status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
+                  <a class="plate-link underline" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">ailab.paldyn.com <span class="arw" aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
 
-          <a class="card reveal reveal-card" id="p-ascend" href="/ascend/">
-            <span class="card-in">
-              <span class="card-top">
-                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z"/>
-                  <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z"/>
-                  <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z"/>
-                </svg>
-                <span class="card-id">P-04</span>
-              </span>
-              <h3>Ascend</h3>
-              <span class="card-cat">Workout Tracking</span>
-              <p>세트 하나에 탭 한 번. 계정 요구도 광고도 없습니다.</p>
-              <span class="card-meta">
-                <span class="card-status"><span class="dot dot-soon" aria-hidden="true"></span>출시 준비 · 비공개 테스트</span>
-                <span class="card-domain">iOS · Android <span class="arw" aria-hidden="true">→</span></span>
-              </span>
-            </span>
-          </a>
+          <article class="stage" id="p-ascend" style="--i:3">
+            <div class="plate">
+              <div class="plate-in">
+                <div class="plate-head">
+                  <span class="plate-id">P-04</span>
+                  <h3>Ascend</h3>
+                  <span class="plate-cat">Workout Tracking</span>
+                </div>
+                <div class="mono-big" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z" vector-effect="non-scaling-stroke"/>
+                    <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z" vector-effect="non-scaling-stroke"/>
+                    <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z" vector-effect="non-scaling-stroke"/>
+                  </svg>
+                </div>
+                <div class="plate-body"><p>세트 하나에 탭 한 번. 계정 요구도 광고도 없습니다.</p></div>
+                <div class="plate-meta">
+                  <span class="plate-status"><span class="dot dot-soon" aria-hidden="true"></span>출시 준비 · 비공개 테스트</span>
+                  <a class="plate-link underline" href="/ascend/">iOS · Android <span class="arw" aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ── 우리가 만드는 방식 ───────────────────────────────────────── -->
+    <!-- ══ 인터루드 — 읽는 속도로 밝아지는 한 문장 ══════════════════ -->
+    <section class="interlude" aria-label="우리가 일하는 방식">
+      <p class="manifesto" id="manifesto">우리가 만든 것이 우리의 소개서입니다. 네 개를 만들었고, 세 개가 돌아가고 있습니다.</p>
+    </section>
+
+    <!-- ══ STAGE 02 — 만드는 방식 ═══════════════════════════════════ -->
     <section id="build">
       <div class="wrap build-grid">
         <div class="build-l">
           <p class="eyebrow tick"><span class="section-index silver">02</span> &nbsp;HOW WE BUILD</p>
           <h2 class="section-title reveal reveal-title">우리가 만드는 방식</h2>
-          <p class="masthead-r reveal" style="grid-column:auto; margin-top: var(--s4);">역량을 나열하는 대신, 위 제품들이 어떻게 만들어졌는지 적습니다. 각 항목 끝의 이름은 그 원칙이 실제로 적용된 제품입니다.</p>
+          <p class="reveal" style="margin-top: var(--s4); font-size: var(--fs-3); color: var(--text-dim);">역량을 나열하는 대신, 위 제품들이 어떻게 만들어졌는지 적습니다. 각 항목 끝의 이름은 그 원칙이 실제로 적용된 제품입니다.</p>
         </div>
 
-        <div class="build-r" data-stagger>
+        <div class="build-r">
           <article class="principle reveal">
             <div class="principle-no">01</div>
             <div>
@@ -1069,60 +952,59 @@
       </div>
     </section>
 
-    <!-- ── 회사 ─────────────────────────────────────────────────────── -->
+    <!-- ══ STAGE 03 — 회사 · 도면 ═══════════════════════════════════ -->
     <section id="company">
       <div class="wrap">
-        <div class="masthead">
-          <div class="masthead-l">
-            <p class="eyebrow tick"><span class="section-index silver">03</span> &nbsp;COMPANY</p>
-            <h2 class="section-title reveal reveal-title">PALDYN은 이런 회사입니다</h2>
-          </div>
-        </div>
+        <p class="eyebrow tick"><span class="section-index silver">03</span> &nbsp;COMPANY</p>
+        <h2 class="section-title reveal reveal-title" style="margin-bottom: var(--s8)">PALDYN은 이런 회사입니다</h2>
 
         <div class="company-grid">
           <div class="company-l reveal">
-            <p>PALDYN은 소프트웨어를 직접 만들고 직접 운영하는 스튜디오입니다. 외주로 만들어 넘기는 대신, 우리가 끝까지 책임지는 제품을 늘려갑니다.</p>
+            <p>PALDYN은 일상의 불편을 없애는 서비스를 직접 만들고, 만든 것을 끝까지 운영합니다. 외주로 만들어 넘기는 대신, 우리가 책임지는 서비스를 늘려갑니다.</p>
             <p>출시 이후가 시작이라고 믿습니다. 데이터와 사용자 피드백으로 고치는 주기를 제품 안에 넣어 두고, 그 과정에서 배운 것은 <a class="underline" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog</a>에 남깁니다.</p>
-            <p>브랜드 심볼은 마주 보는 두 반쪽이 하나의 팔각형을 이루는 형태입니다. 45° 파세트, 1px 시임, 중앙 음각 — 이 사이트의 카드 노치와 좌측 정렬선이 모두 여기에서 나왔습니다.</p>
+            <p>브랜드 심볼은 마주 보는 두 반쪽이 하나의 팔각형을 이루는 형태입니다. 가로로 늘어난 팔각, 중앙의 음각, 그 둘을 가르는 시임 — 이 페이지의 좌측 정렬선은 그 시임을 그대로 옮긴 것입니다.</p>
           </div>
 
           <div class="company-r">
             <div class="blueprint" id="blueprint">
               <svg viewBox="0 0 400 400" aria-hidden="true">
                 <g fill="currentColor" transform="translate(80 80)">
-                  <path class="bp-half bp-half-l" fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
-                  <path class="bp-half bp-half-r" fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
+                  <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
+                  <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
                 </g>
                 <g stroke="var(--border-strong)" stroke-width="1" fill="none">
-                  <line class="bp-lead bp-lead-1" x1="126" y1="133" x2="90" y2="133" style="transform-origin:126px 133px"/>
-                  <line class="bp-lead bp-lead-2" x1="200" y1="133" x2="310" y2="133" style="transform-origin:200px 133px"/>
-                  <line class="bp-lead bp-lead-3" x1="155" y1="200" x2="90" y2="200" style="transform-origin:155px 200px"/>
-                  <line class="bp-lead bp-lead-4" x1="274" y1="267" x2="310" y2="267" style="transform-origin:274px 267px"/>
+                  <line class="bp-lead" x1="126" y1="133" x2="90" y2="133"/>
+                  <line class="bp-lead" x1="200" y1="133" x2="310" y2="133"/>
+                  <line class="bp-lead" x1="155" y1="200" x2="90" y2="200"/>
+                  <line class="bp-lead" x1="274" y1="267" x2="310" y2="267"/>
                 </g>
-                <text class="bp-label bp-label-1" x="84" y="136" text-anchor="end">45° FACET</text>
-                <text class="bp-label bp-label-2" x="316" y="136">SEAM · 1PX</text>
-                <text class="bp-label bp-label-3" x="84" y="203" text-anchor="end">COUNTER</text>
-                <text class="bp-label bp-label-4" x="316" y="270">RADIUS 0</text>
+                <text class="bp-label" x="84" y="136" text-anchor="end">FACET 20.5°</text>
+                <text class="bp-label" x="316" y="136">SEAM</text>
+                <text class="bp-label" x="84" y="203" text-anchor="end">COUNTER</text>
+                <text class="bp-label" x="316" y="270">RADIUS 0</text>
               </svg>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ══ 인터루드 — 대형 워드마크 ═════════════════════════════════ -->
+    <div class="closer" aria-hidden="true">
+      <span class="closer-word">
+        <span class="ol">PALDYN</span>
+        <span class="fl">PALDYN</span>
+      </span>
+    </div>
   </div>
 
-  <!-- ── 연락 ───────────────────────────────────────────────────────── -->
+  <!-- ══ STAGE 04 — 연락 ══════════════════════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="masthead">
-        <div class="masthead-l">
-          <p class="eyebrow tick"><span class="section-index">04</span> &nbsp;CONTACT</p>
-          <h2 class="section-title reveal reveal-title">어디로 연락하면 되는지</h2>
-        </div>
-        <p class="masthead-r reveal">제휴와 제품 문의는 채널이 다릅니다. 아래 주소로 바로 보내 주세요.</p>
-      </div>
+      <p class="eyebrow tick"><span class="section-index">04</span> &nbsp;CONTACT</p>
+      <h2 class="section-title reveal reveal-title">어디로 연락하면 되는지</h2>
 
-      <div class="channels" data-stagger>
+      <div class="channels">
         <div class="channel reveal">
           <p class="ch-name">일반 · 제휴 문의</p>
           <a class="ch-mail underline" href="mailto:contact@paldyn.com">contact@paldyn.com</a>
@@ -1143,7 +1025,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="lockup" href="/" aria-label="PALDYN 홈">
-          <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true" style="width:26px;height:26px"><use href="#pd-symbol"/></svg>
+          <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true" style="width:24px;height:24px"><use href="#pd-symbol"/></svg>
           <span class="wordmark">PALDYN</span>
         </a>
         <p>The force that accompanies.</p>
@@ -1152,10 +1034,10 @@
       <div class="footer-col">
         <h4>Products</h4>
         <ul>
-          <li><a class="underline" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo</a></li>
-          <li><a class="underline" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock</a></li>
-          <li><a class="underline" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab</a></li>
-          <li><a class="underline" href="/ascend/">Ascend</a></li>
+          <li><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>Nemo</a></li>
+          <li><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>DevDock</a></li>
+          <li><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>AI Lab</a></li>
+          <li><a href="/ascend/"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>Ascend</a></li>
         </ul>
       </div>
 
@@ -1187,7 +1069,7 @@
     <div class="footer-bar">
       <span>© 2026 PALDYN</span>
       <div class="footer-tools">
-        <button class="icon-btn motion-toggle" id="motionToggle" type="button" aria-label="모션 줄이기" aria-pressed="false">
+        <button class="icon-btn" id="motionToggle" type="button" aria-label="모션 줄이기" aria-pressed="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h6M14 12h6"/><circle cx="12" cy="12" r="2.5"/></svg>
         </button>
         <button class="icon-btn" id="themeToggleFoot" type="button" aria-label="테마 전환">
@@ -1203,12 +1085,12 @@
 (function () {
   'use strict';
   var root = document.documentElement;
-  var reduced = function () {
+  var scrub = root.classList.contains('scrub');
+  function reduced() {
     return root.getAttribute('data-motion') === 'reduced' ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  };
+  }
 
-  /* 저사양 티어링 — 비용 큰 효과만 끈다 */
   if ((navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4) {
     root.classList.add('motion-lite');
   }
@@ -1232,25 +1114,21 @@
     if (el) el.addEventListener('click', toggleTheme);
   });
 
-  /* ── 모션 스위치 — 시스템 설정을 바꿀 수 없는 환경을 위한 수동 제어 ─── */
   var motionBtn = document.getElementById('motionToggle');
   if (motionBtn) {
-    var syncMotion = function () {
-      motionBtn.setAttribute('aria-pressed', root.getAttribute('data-motion') === 'reduced' ? 'true' : 'false');
-    };
-    /* OS 설정으로 이미 줄어든 상태면 눌린 상태로 표시한다 */
     motionBtn.setAttribute('aria-pressed', reduced() ? 'true' : 'false');
     motionBtn.addEventListener('click', function () {
       var on = root.getAttribute('data-motion') === 'reduced';
       if (on) { root.removeAttribute('data-motion'); } else { root.setAttribute('data-motion', 'reduced'); }
       try { localStorage.setItem('motion', on ? 'full' : 'reduced'); } catch (e) {}
-      syncMotion();
+      motionBtn.setAttribute('aria-pressed', on ? 'false' : 'true');
     });
   }
 
   /* ── 모바일 메뉴 ──────────────────────────────────────────────────── */
   var navToggle = document.getElementById('navToggle');
   var overlay = document.getElementById('navOverlay');
+  var nav = document.getElementById('nav');
   var behind = [document.querySelector('main'), document.querySelector('footer')];
 
   function setMenu(open) {
@@ -1258,22 +1136,16 @@
     overlay.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.body.style.overflow = open ? 'hidden' : '';
-    /* 오버레이 뒤 콘텐츠로 Tab이 빠져나가지 않게 격리한다 */
-    behind.forEach(function (el) { if (el) { if (open) { el.setAttribute('inert', ''); } else { el.removeAttribute('inert'); } } });
+    if (open) nav.classList.remove('is-hidden');
+    behind.forEach(function (el) { if (el) { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); } });
     if (open) { var f = overlay.querySelector('a'); if (f) f.focus(); }
   }
-  navToggle.addEventListener('click', function () {
-    setMenu(!overlay.classList.contains('is-open'));
-  });
-  overlay.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') setMenu(false);
-  });
+  navToggle.addEventListener('click', function () { setMenu(!overlay.classList.contains('is-open')); });
+  overlay.addEventListener('click', function (e) { if (e.target.tagName === 'A') setMenu(false); });
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape' || !overlay.classList.contains('is-open')) return;
-    setMenu(false);
-    navToggle.focus();
+    setMenu(false); navToggle.focus();
   });
-  /* inert 미지원 브라우저 대비 — 오버레이 안에서 Tab을 순환시킨다 */
   overlay.addEventListener('keydown', function (e) {
     if (e.key !== 'Tab') return;
     var items = overlay.querySelectorAll('a[href]');
@@ -1282,32 +1154,34 @@
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
-  /* 메뉴가 열린 채 데스크톱 폭으로 넘어가면 닫기 버튼이 사라진다 */
   var wide = window.matchMedia('(min-width: 1025px)');
   (wide.addEventListener ? wide.addEventListener.bind(wide, 'change') : wide.addListener.bind(wide))(function (e) {
     if (e.matches && overlay.classList.contains('is-open')) setMenu(false);
   });
 
-  /* ── nav 고착 — 스크롤 리스너 없이 sentinel 관측 ──────────────────── */
-  var nav = document.getElementById('nav');
+  /* ── nav 고착 + 방향 감지 ─────────────────────────────────────────── */
   var sentinel = document.getElementById('navSentinel');
   if ('IntersectionObserver' in window && sentinel) {
     new IntersectionObserver(function (entries) {
       nav.classList.toggle('is-stuck', entries[0].boundingClientRect.top <= 64);
     }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(sentinel);
   }
-
-  /* ── 리빌 — 뷰포트 바닥 12%에 고정된 아이라인에서 모두가 발화한다 ──── */
-  var staggerMs = 70;
-  document.querySelectorAll('[data-stagger]').forEach(function (group) {
-    var items = group.querySelectorAll(':scope > .reveal, :scope > * > .reveal');
-    items.forEach(function (el, i) {
-      el.style.setProperty('--reveal-delay', Math.min(i, 6) * staggerMs + 'ms');
+  var lastY = window.scrollY, ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = window.scrollY;
+      if (!overlay.classList.contains('is-open') && Math.abs(y - lastY) > 6) {
+        nav.classList.toggle('is-hidden', y > lastY && y > 260);
+      }
+      lastY = y;
+      ticking = false;
     });
-  });
+  }, { passive: true });
 
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
+  /* ── 리빌: 스크럽 미지원 브라우저 폴백 ────────────────────────────── */
+  if (!scrub && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -1315,44 +1189,163 @@
         io.unobserve(entry.target);
       });
     }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-    reveals.forEach(function (el) { io.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add('is-in'); });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else if (!scrub) {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* ── 심볼 기술 도면 ───────────────────────────────────────────────── */
-  var bp = document.getElementById('blueprint');
-  if (bp && 'IntersectionObserver' in window) {
-    var bpIo = new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
-      bp.classList.add('is-in');
-      bpIo.disconnect();
-    }, { threshold: 0.35 });
-    bpIo.observe(bp);
-  } else if (bp) {
-    bp.classList.add('is-in');
+  /* ── 선 그리기: 길이를 실측해 dasharray에 기입 ────────────────────── */
+  function measureLines() {
+    document.querySelectorAll('.mono-big path, .bp-lead').forEach(function (p) {
+      var len = 0;
+      try { len = p.getTotalLength(); } catch (e) { len = 120; }
+      p.style.setProperty('--len', len.toFixed(1));
+      p.style.strokeDasharray = len.toFixed(1);
+      if (scrub && !reduced()) p.style.strokeDashoffset = len.toFixed(1);
+    });
   }
 
-  /* ── 읽는 중인 원칙 표시 — 화면 중앙 밴드만 관측 ──────────────────── */
-  var principles = document.querySelectorAll('.principle');
-  if (principles.length && 'IntersectionObserver' in window) {
-    var activeIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        entry.target.classList.toggle('is-active', entry.isIntersecting);
+  /* ── 제품 스택: 스크롤 구간을 px로 측정해 기입 ────────────────────── */
+  var stack = document.getElementById('stack');
+  var stages = [].slice.call(document.querySelectorAll('.stage'));
+  var tabs = [].slice.call(document.querySelectorAll('.rail-tab'));
+
+  function measureStack() {
+    if (!stack || !stages.length) return;
+    var stacked = window.matchMedia('(min-width: 721px)').matches;
+    var top = stack.getBoundingClientRect().top + window.scrollY;
+    var step = stages.length > 1
+      ? (stages[1].getBoundingClientRect().top - stages[0].getBoundingClientRect().top)
+      : window.innerHeight * 0.72;
+    stages.forEach(function (s, i) {
+      var enter = stacked ? top + (i - 0.65) * step : s.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.8;
+      var end = enter + window.innerHeight * 0.55;
+      s.dataset.enter = Math.max(0, enter);
+      s.dataset.end = end;
+      s.querySelectorAll('.mono-big path, .mono-big circle').forEach(function (p, j) {
+        p.style.animationRange = Math.max(0, enter + j * 30) + 'px ' + (end + j * 30) + 'px';
       });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-    principles.forEach(function (el) { activeIo.observe(el); });
+    });
   }
 
-  /* ── 각주 칩 → 해당 제품 카드 강조 ────────────────────────────────── */
+  function syncStage() {
+    if (!stages.length) return;
+    var y = window.scrollY + window.innerHeight * 0.45;
+    var active = -1;
+    stages.forEach(function (s, i) {
+      var r = s.getBoundingClientRect();
+      var t = r.top + window.scrollY;
+      if (y >= t) active = i;
+    });
+    tabs.forEach(function (t, i) { t.classList.toggle('is-on', i === active); });
+  }
+
+  /* ── nav 오도미터 ─────────────────────────────────────────────────── */
+  var odo = document.getElementById('odoTrack');
+  var sections = [
+    { el: document.getElementById('products'), n: 1 },
+    { el: document.getElementById('build'), n: 2 },
+    { el: document.getElementById('company'), n: 3 },
+    { el: document.getElementById('contact'), n: 4 }
+  ].filter(function (s) { return s.el; });
+
+  function syncOdo() {
+    if (!odo) return;
+    var y = window.scrollY + window.innerHeight * 0.4;
+    var n = 0;
+    sections.forEach(function (s) {
+      if (y >= s.el.getBoundingClientRect().top + window.scrollY) n = s.n;
+    });
+    odo.style.transform = 'translateY(' + (-n) + 'em)';
+    document.querySelectorAll('.nav-links a').forEach(function (a, i) {
+      a.classList.toggle('is-current', i === n - 1);
+    });
+  }
+
+  /* ── 리딩 하이라이트 — 이중 게이트 (미지원 시 분해조차 하지 않는다) ── */
+  function buildManifesto() {
+    var p = document.getElementById('manifesto');
+    if (!p || !scrub || reduced()) return;
+    var words = p.textContent.split(/(\s+)/);
+    p.innerHTML = words.map(function (t) {
+      return /^\s+$/.test(t) ? t : '<span class="w">' + t + '</span>';
+    }).join('');
+    var ws = p.querySelectorAll('.w');
+    ws.forEach(function (w, i) {
+      var s = 16 + (i / ws.length) * 54;
+      w.style.animationRange = 'cover ' + s.toFixed(1) + '% cover ' + (s + 16).toFixed(1) + '%';
+    });
+  }
+
+  /* ── 도면 리더선 ──────────────────────────────────────────────────── */
+  function setBlueprintRanges() {
+    document.querySelectorAll('.bp-lead').forEach(function (l, i) {
+      l.style.animationRange = 'entry 40% cover ' + (30 + i * 8) + '%';
+    });
+    document.querySelectorAll('.bp-label').forEach(function (l, i) {
+      l.style.animationRange = 'entry 55% cover ' + (35 + i * 8) + '%';
+    });
+  }
+
+  /* ── 각주 칩 ──────────────────────────────────────────────────────── */
   document.querySelectorAll('[data-cite]').forEach(function (chip) {
     chip.addEventListener('click', function () {
-      var target = document.querySelector(chip.getAttribute('href'));
-      if (!target) return;
-      target.classList.add('is-cited');
-      setTimeout(function () { target.classList.remove('is-cited'); }, 1400);
+      var t = document.querySelector(chip.getAttribute('href'));
+      if (!t) return;
+      var plate = t.querySelector('.plate');
+      if (!plate) return;
+      plate.style.background = 'var(--border-strong)';
+      setTimeout(function () { plate.style.background = ''; }, 1400);
     });
   });
+
+  /* ── 원칙 활성 표시 ───────────────────────────────────────────────── */
+  var principles = document.querySelectorAll('.principle');
+  if (principles.length && 'IntersectionObserver' in window) {
+    var pio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('is-active', e.isIntersecting); });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    principles.forEach(function (el) { pio.observe(el); });
+  }
+
+  /* ── 히어로 축의 중앙 공백을 심볼 폭에 맞춘다 ─────────────────────── */
+  function measureAxis() {
+    var mark = document.querySelector('.hero-inner .mark');
+    var lock = document.querySelector('.lockup-hero');
+    if (!mark || !lock) return;
+    var gap = Math.max(140, lock.getBoundingClientRect().width / 2 + 28);
+    document.documentElement.style.setProperty('--axis-gap', gap + 'px');
+  }
+
+  function measureAll() {
+    measureAxis();
+    measureLines();
+    measureStack();
+    setBlueprintRanges();
+    syncStage();
+    syncOdo();
+  }
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { measureAll(); buildManifesto(); });
+  } else {
+    measureAll(); buildManifesto();
+  }
+  window.addEventListener('load', measureAll);
+
+  var t = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(t);
+    t = setTimeout(measureAll, 150);
+  });
+  window.addEventListener('orientationchange', function () { setTimeout(measureAll, 200); });
+
+  var sTick = false;
+  window.addEventListener('scroll', function () {
+    if (sTick) return;
+    sTick = true;
+    requestAnimationFrame(function () { syncStage(); syncOdo(); sTick = false; });
+  }, { passive: true });
 })();
 </script>
 
