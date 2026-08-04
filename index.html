@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다</title>
-  <meta name="description" content="PALDYN은 일상의 불편을 없애는 서비스를 직접 만들어 끝까지 운영하고, 인공지능과 양자처럼 다가오는 기술을 연구합니다. Nemo, DevDock, AI Lab, Ascend.">
+  <meta name="description" content="PALDYN은 일상의 불편을 없애는 서비스를 직접 만들어 끝까지 운영하고, 인공지능과 양자처럼 다가오는 기술을 연구합니다. Nemo, DevDock, Ascend, AI Lab.">
   <link rel="canonical" href="https://paldyn.com/">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -13,14 +13,14 @@
   <meta property="og:site_name" content="PALDYN">
   <meta property="og:url" content="https://paldyn.com/">
   <meta property="og:title" content="PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다">
-  <meta property="og:description" content="일상의 불편을 없애는 서비스를 만들고, 다가오는 기술을 연구합니다. Nemo · DevDock · AI Lab · Ascend.">
+  <meta property="og:description" content="일상의 불편을 없애는 서비스를 만들고, 다가오는 기술을 연구합니다. Nemo · DevDock · Ascend · AI Lab.">
   <meta property="og:image" content="https://paldyn.com/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다">
-  <meta name="twitter:description" content="일상의 불편을 없애는 서비스를 만들고, 다가오는 기술을 연구합니다. Nemo · DevDock · AI Lab · Ascend.">
+  <meta name="twitter:description" content="일상의 불편을 없애는 서비스를 만들고, 다가오는 기술을 연구합니다. Nemo · DevDock · Ascend · AI Lab.">
   <meta name="twitter:image" content="https://paldyn.com/assets/og.png">
 
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
@@ -55,6 +55,7 @@
     "slogan": "The force that accompanies",
     "description": "일상의 불편을 없애는 서비스를 직접 만들어 운영하고, 인공지능·양자 등 다가오는 기술을 연구합니다",
     "email": "contact@paldyn.com",
+    "knowsAbout": ["인공지능", "양자"],
     "sameAs": [
       "https://nemo.paldyn.com/",
       "https://devdock.paldyn.com/",
@@ -65,36 +66,51 @@
   </script>
 
   <style>
-    @property --p { syntax: '<percentage>'; initial-value: 0%; inherits: false; }
-
     .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      margin: -1px; padding: 0; overflow: hidden;
-      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+      position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
     }
 
     .skip {
       position: absolute; left: var(--gutter); top: -60px; z-index: 300;
-      padding: 10px 16px; background: var(--bg);
-      border: 1px solid var(--border-strong);
-      font-size: var(--fs-2); text-decoration: none;
-      transition: top var(--d-2) var(--e-out);
+      padding: 10px 16px; background: var(--bg); border: 1px solid var(--border-strong);
+      font-size: var(--fs-2); line-height: 1; text-decoration: none;
+      transition: top var(--d-2) var(--e-sig);
     }
     .skip:focus { top: 14px; }
 
-    /* ══ 내비게이션 ══════════════════════════════════════════════════════
-       형제 사이트는 [락업 │ 제품명] · 중앙 링크 4 · 우측 필 구조다.
-       여기서는 제품명 슬롯이 없다는 것 자체를 위계로 쓰고, 링크를 좌측
-       클러스터로 붙이고, 우측에는 현재 섹션 오도미터를 둔다. */
+    /* ══ 버튼 — 자산 하나에 목적지 하나, 그래서 버튼도 하나 ═══════════════ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-width: 148px; height: 44px; padding: 0 var(--s5);
+      border-radius: 4px;
+      font-size: var(--fs-3); font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-15); line-height: 1; text-decoration: none;
+      box-shadow: var(--sh-flat);
+      transition: box-shadow var(--d-2) var(--e-sig), transform var(--d-0) linear,
+                  background-color var(--d-2) var(--e-sig), border-color var(--d-2) var(--e-sig);
+    }
+    .btn-1 { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+    .btn-2 { background: transparent; color: var(--text); border: 1px solid var(--i-line); }
+    .btn .arw { transition: transform var(--d-2) var(--e-sig); }
+    .btn:focus-visible { outline-offset: 2px; }
+    @media (hover: hover) {
+      .btn:hover { box-shadow: var(--sh-lift); transform: translateY(-1px); }
+      .btn-2:hover { border-color: var(--i-line-hover); }
+      .btn:hover .arw { transform: translate(2px, -2px); }
+    }
+    .btn:active { transform: translateY(1px); box-shadow: var(--sh-rest); transition-duration: var(--d-0); }
+
+    /* ══ 내비게이션 ══════════════════════════════════════════════════════ */
     .nav {
       position: fixed; inset: 0 0 auto 0; z-index: 200; height: 64px;
       display: flex; align-items: center;
-      transition: background-color var(--d-2) var(--e-quart), transform var(--d-3) var(--e-quint);
+      transition: background-color var(--d-2) var(--e-sig), transform var(--d-3) var(--e-sig);
     }
     .nav::after {
       content: ''; position: absolute; inset: auto 0 0 0; height: 1px;
       background: var(--border-subtle); opacity: 0;
-      transition: opacity var(--d-2) var(--e-quart);
+      transition: opacity var(--d-2) var(--e-sig);
     }
     .nav.is-stuck { background: var(--nav-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
     .nav.is-stuck::after { opacity: 1; }
@@ -106,47 +122,48 @@
       width: min(100% - 2 * var(--gutter), var(--page-max)); margin-inline: auto;
     }
 
-    .lockup { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+    .lockup { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; line-height: 1; }
     .lockup .symbol { width: 22px; height: 22px; }
     .lockup .wordmark {
       font-size: 0.9375rem; font-weight: var(--fw-bold);
       letter-spacing: 0.16em; line-height: 1; color: var(--text);
     }
 
-    .nav-links { display: flex; gap: var(--s5); list-style: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
     .nav-links a {
       position: relative; font-size: var(--fs-2); font-weight: var(--fw-medium);
-      letter-spacing: 0.02em; color: var(--text-dim); text-decoration: none;
-      transition: color var(--d-2) var(--e-quart);
+      letter-spacing: var(--ls-13); line-height: 1; color: var(--i-fg); text-decoration: none;
+      transition: color var(--d-2) var(--e-sig);
     }
-    .nav-links a:hover { color: var(--accent-bright); }
-    .nav-links a.is-current { color: var(--brand); }
+    @media (hover: hover) { .nav-links a:hover { color: var(--i-fg-hover); } }
+    .nav-links a.is-current { color: var(--text); }
+    .nav-links a.is-current::after { transform: scaleX(1); background: var(--brand); }
 
     .underline { position: relative; }
     .underline::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px;
+      content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
       background: currentColor; transform: scaleX(0); transform-origin: right;
       transition: transform var(--d-2) var(--e-inout);
     }
-    .underline:hover::after { transform: scaleX(1); transform-origin: left; }
+    @media (hover: hover) { .underline:hover::after { transform: scaleX(1); transform-origin: left; } }
 
     .nav-right { margin-left: auto; display: flex; align-items: center; gap: var(--s4); }
 
-    /* 오도미터 — 현재 섹션이 세로로 굴러 교체된다 */
     .odo {
       height: 1em; overflow: hidden; font-size: var(--fs-1);
-      font-weight: var(--fw-medium); letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase;
       color: var(--text-mute); line-height: 1;
     }
-    .odo-track { transition: transform var(--d-4) var(--e-quint); }
-    .odo-track span { display: block; height: 1em; white-space: nowrap; }
+    .odo-track { transition: transform var(--d-3) var(--e-sig); }
+    .odo-track span { display: block; height: 1em; line-height: 1; white-space: nowrap; }
 
     .icon-btn {
       width: 34px; height: 34px; display: grid; place-items: center;
-      border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-dim);
-      transition: color var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint);
+      border: 1px solid var(--i-line); border-radius: 50%; color: var(--i-fg);
+      transition: color var(--d-2) var(--e-sig), border-color var(--d-2) var(--e-sig);
     }
-    .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
+    @media (hover: hover) { .icon-btn:hover { color: var(--i-fg-hover); border-color: var(--i-line-hover); } }
+    .icon-btn:active { opacity: 0.62; transition-duration: var(--d-0); }
     .icon-btn svg { width: 16px; height: 16px; }
 
     .icon-sun { display: none; }
@@ -162,30 +179,43 @@
     .nav-toggle { display: none; }
     .nav-toggle span {
       display: block; width: 18px; height: 1.5px; background: currentColor;
-      transition: transform var(--d-2) var(--e-out), opacity var(--d-1) linear;
+      transition: transform var(--d-2) var(--e-sig), opacity var(--d-1) linear;
     }
     .nav-toggle span + span { margin-top: 5px; }
     .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
     .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
+    /* 오버레이 — 진입 320 > 이탈 240 (비대칭) */
     .nav-overlay {
-      position: fixed; inset: 0; z-index: 190; display: none;
-      flex-direction: column; justify-content: center; gap: var(--s5);
+      position: fixed; inset: 0; z-index: 190;
+      display: flex; flex-direction: column; justify-content: center; gap: var(--s5);
       padding: var(--s9) var(--gutter) var(--s8);
       background: var(--overlay-bg);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--sh-overlay);
+      visibility: hidden; opacity: 0; transform: translateY(-8px); pointer-events: none;
+      transition: opacity var(--d-2) var(--e-exit), transform var(--d-2) var(--e-exit),
+                  visibility var(--d-2) steps(1, end);
     }
-    .nav-overlay.is-open { display: flex; }
+    .nav-overlay.is-open {
+      visibility: visible; opacity: 1; transform: none; pointer-events: auto;
+      transition: opacity var(--d-3) var(--e-sig) 80ms, transform var(--d-3) var(--e-sig) 80ms,
+                  visibility 0s steps(1, start);
+    }
     .nav-overlay ul { list-style: none; display: grid; gap: var(--s5); }
-    .nav-overlay a { font-size: 1.5rem; font-weight: var(--fw-medium); text-decoration: none; color: var(--text); }
+    .nav-overlay a {
+      font-size: 1.5rem; font-weight: var(--fw-semibold); letter-spacing: var(--ls-display);
+      line-height: 1; text-decoration: none; color: var(--text);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity var(--d-2) var(--e-sig), transform var(--d-2) var(--e-sig);
+    }
+    .nav-overlay.is-open a { opacity: 1; transform: none; transition-delay: calc(80ms + var(--n, 0) * 40ms); }
     .nav-overlay .ov-sub { display: grid; gap: var(--s4); padding-top: var(--s5); border-top: 1px solid var(--border-subtle); }
-    .nav-overlay .ov-sub a { font-size: var(--fs-3); color: var(--text-dim); letter-spacing: 0.02em; }
+    .nav-overlay .ov-sub a { font-size: var(--fs-3); font-weight: var(--fw-medium); color: var(--text-dim); letter-spacing: var(--ls-15); }
 
-    /* ══ STAGE 00 — 커튼 ═════════════════════════════════════════════════
-       첫 화면은 좌측 정렬 스택이 아니라 수평 축 기반 중앙 대칭 구성이다.
-       eyebrow · 설명문단 · 버튼쌍 · 우측 위젯 · 격자배경 전부 없다. */
-    .curtain { position: relative; height: 185svh; }
+    /* ══ STAGE 00 — 커튼 ═════════════════════════════════════════════════ */
+    .curtain { position: relative; height: 170svh; }
     .curtain-stage {
       position: sticky; top: 0; height: 100svh; overflow: clip;
       display: grid; place-items: center;
@@ -195,12 +225,12 @@
       position: absolute; top: 104px; left: var(--gutter);
       display: inline-flex; align-items: center; gap: 10px;
       font-size: var(--fs-1); font-weight: var(--fw-medium);
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mute);
+      letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-mute);
+      line-height: 1;
     }
-    .corner::before { content: ''; width: 7px; height: 7px; background: var(--brand); flex: none; }
+    .corner::before { content: ''; width: 1px; height: 12px; background: var(--brand); flex: none; }
     .js .corner { animation: fadeIn 400ms linear 760ms both; }
 
-    /* 수평 축 — 첫 화면의 유일한 정렬 기준. 중앙은 심볼 자리로 비어 있다. */
     .axis {
       position: absolute; top: 46svh; left: 0; right: 0; height: 1px;
       display: flex; justify-content: space-between; pointer-events: none;
@@ -211,44 +241,38 @@
     }
     .axis span:first-child { transform-origin: right; }
     .axis span:last-child { transform-origin: left; }
-    .js .axis span { animation: axisOut 420ms var(--e-quart) 600ms both; }
+    .js .axis span { animation: axisOut 420ms var(--e-sig) 600ms both; }
 
-    /* 로크업의 시각 중심이 수평 축 위에 정확히 놓이고, 나머지는 아래로 흐른다 */
-    .hero-inner {
-      position: absolute; top: 46svh; left: 0; right: 0;
-      display: grid; justify-items: center;
-    }
-    .lockup-hero { margin-top: -0.5em; }
+    .hero-inner { position: absolute; top: 46svh; left: 0; right: 0; display: grid; justify-items: center; }
 
     .lockup-hero {
       display: flex; align-items: center; justify-content: center;
       gap: clamp(10px, 1.6vw, 22px);
-      margin: 0; line-height: 1;
+      margin: -0.5em 0 0; line-height: 1;
     }
     .w-slot { display: block; }
     .w-in {
       display: block;
       font-size: clamp(2.5rem, 7.2vw, 6.2rem);
       font-weight: var(--fw-bold);
+      /* 트래킹 램프 밖 예외 — 워드마크 정체성이자 --axis-gap 계산과 물려 있다 */
       letter-spacing: 0.16em;
       line-height: 1;
       color: var(--text);
     }
-    .w-l .w-in { padding-left: 0.16em; }   /* 트래킹이 만든 우측 여백 상쇄 */
-    .js .w-l .w-in { animation: openL 480ms var(--e-out) 240ms both; }
-    .js .w-r .w-in { animation: openR 480ms var(--e-out) 240ms both; }
+    .w-l .w-in { padding-left: 0.16em; }
+    .js .w-l .w-in { animation: openL 480ms var(--e-sig) 240ms both; }
+    .js .w-r .w-in { animation: openR 480ms var(--e-sig) 240ms both; }
 
-    .mark {
-      position: relative; flex: none;
-      width: clamp(64px, 10.6vw, 150px); aspect-ratio: 1;
-    }
+    .mark { position: relative; flex: none; width: clamp(64px, 10.6vw, 150px); aspect-ratio: 1; }
     .half-shift { position: absolute; top: 0; height: 100%; width: 50%; }
     .hs-l { left: 0; }
     .hs-r { left: 50%; }
     .half { width: 100%; height: 100%; fill: var(--text); }
-    .js .hs-l .half { animation: joinL 460ms var(--e-out) both; }
-    .js .hs-r .half { animation: joinR 460ms var(--e-out) both; }
+    .js .hs-l .half { animation: joinL 420ms var(--e-sig) both; }
+    .js .hs-r .half { animation: joinR 420ms var(--e-sig) both; }
 
+    /* 브랜드 오렌지가 페이지에서 처음 등장하는 지점 — 심볼의 시임 */
     .mark-seam {
       position: absolute; left: 50%; top: 11.6%; width: clamp(1.5px, 0.22vw, 3px); height: 76.8%;
       transform: translateX(-50%);
@@ -259,17 +283,18 @@
     .hero-sub { display: grid; justify-items: center; gap: var(--s3); margin-top: clamp(28px, 5vh, 56px); }
     .hero-line {
       font-size: clamp(1.25rem, 2.6vw, 1.95rem);
-      font-weight: var(--fw-medium); letter-spacing: -0.02em;
+      font-weight: var(--fw-medium); letter-spacing: var(--ls-20);
+      line-height: calc(1em + 6px);
       color: var(--text); text-align: center;
     }
     .hero-tag {
-      font-size: var(--fs-2); letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--text-mute); text-align: center;
+      font-size: var(--fs-2); letter-spacing: var(--ls-caps); text-transform: uppercase;
+      line-height: 1; color: var(--text-mute); text-align: center;
     }
-    .js .hero-line { animation: riseIn 360ms var(--e-out) 660ms both; }
+    .js .hero-line { animation: riseIn 360ms var(--e-sig) 660ms both; }
     .js .hero-tag { animation: fadeIn 320ms linear 700ms both; }
 
-    /* 무대 바닥판 — 시임 틈으로 올라와 다음 섹션을 싣고 온다 */
+    /* 무대 바닥판 — 시임 틈으로 올라와 다음 지면을 싣고 온다 */
     .riser {
       position: absolute; left: 0; right: 0; bottom: 0; height: 58svh;
       background: var(--surface-1);
@@ -283,16 +308,16 @@
       display: block;
       font-size: clamp(2.6rem, 12.5vw, 9.5rem);
       font-weight: var(--fw-black);
-      letter-spacing: -0.045em; line-height: 1;
+      letter-spacing: -0.030em; line-height: 1;
     }
-    .riser-word .ol { color: transparent; -webkit-text-stroke: 1px var(--text); }
+    .riser-word .ol { color: transparent; -webkit-text-stroke: max(1px, 0.008em) var(--text); }
     .riser-word .fl {
       position: absolute; inset: 0; color: var(--text); -webkit-text-stroke: 0;
       clip-path: inset(0 100% 0 0);
     }
-    .riser-sub { font-size: var(--fs-3); letter-spacing: 0.02em; color: var(--text-dim); }
+    .riser-sub { font-size: var(--fs-3); letter-spacing: var(--ls-15); line-height: 1; color: var(--text-dim); }
 
-    /* ══ 시임 → 척추 ═════════════════════════════════════════════════════ */
+    /* ══ 척추 ═══════════════════════════════════════════════════════════ */
     .spine { position: relative; }
     .spine::before, .spine::after {
       content: ''; position: absolute; top: 0; bottom: 0;
@@ -306,7 +331,7 @@
     }
     @media (max-width: 1024px) { .spine::before, .spine::after { display: none; } }
 
-    section { padding-block: var(--s10); }
+    section { padding-block: var(--section-pad); }
 
     .tick { display: inline-flex; align-items: center; gap: 8px; }
     .tick::before {
@@ -317,150 +342,181 @@
       .tick { gap: 10px; }
       .tick::before { width: 8px; margin-left: 0; }
     }
+    .section-index { font-size: var(--fs-1); font-weight: var(--fw-semibold); letter-spacing: var(--ls-caps); color: var(--text); }
+    .section-title { margin-top: var(--s3); font-size: var(--fs-7); color: var(--text); }
 
-    /* ══ STAGE 01 — 제품 스택 ════════════════════════════════════════════
-       4열 그리드가 아니라 순차 무대. 카드가 고정된 채 다음 카드가 덮는다. */
-    #products { padding-top: var(--s9); }
+    /* ══ 01 SERVICES — 쌓이는 판 ════════════════════════════════════════ */
+    :root { --nav-h: 64px; --rail-h: 56px; --lip: 10px; }
+
+    #services-band { background: var(--surface-1); }
+
     .rail {
-      position: sticky; top: 64px; z-index: 6;
+      position: sticky; top: var(--nav-h); z-index: 6;
       display: flex; gap: var(--s6); align-items: center;
-      height: 56px; margin-bottom: var(--s5);
-      background: var(--bg); border-bottom: 1px solid var(--border-subtle);
+      height: var(--rail-h); margin-bottom: var(--s5);
+      background: var(--surface-1); border-bottom: 1px solid var(--border-subtle);
+    }
+    .rail::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; height: 2px;
+      width: var(--tab-w, 0px); background: var(--brand);
+      transform: translateX(var(--tab-x, 0px));
+      transition: transform var(--d-3) var(--e-sig), width var(--d-3) var(--e-sig);
     }
     .rail-tab {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--text-mute); text-decoration: none;
-      position: relative; padding-block: 6px;
-      transition: color var(--d-2) var(--e-quart);
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps);
+      line-height: 1; text-transform: uppercase; color: var(--text-mute); text-decoration: none;
+      padding-block: 6px; transition: color var(--d-2) var(--e-sig);
     }
     .rail-tab svg { width: 17px; height: 17px; }
-    .rail-tab::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
-      background: var(--brand); transform: scaleX(0); transform-origin: left;
-      transition: transform var(--d-3) var(--e-quint);
-    }
-    .rail-tab.is-on { color: var(--accent-bright); }
-    .rail-tab.is-on::after { transform: scaleX(1); }
+    .rail-tab.is-on { color: var(--text); }
+    .rail-tab:active { opacity: 0.62; transition-duration: var(--d-0); }
 
     .stack { position: relative; }
     .stage {
       position: sticky;
-      top: calc(120px + var(--i) * 10px);
-      height: calc(64svh - var(--i) * 10px);
+      top: calc(var(--nav-h) + var(--rail-h) + var(--i) * var(--lip));
+      height: calc(64svh - var(--i) * var(--lip));
       margin-bottom: 6svh;
     }
     .stage:last-child { margin-bottom: 0; }
 
     .plate {
       --notch: 16px;
-      height: 100%; padding: 1px; background: var(--border);
-      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
-      transition: background-color var(--d-3) var(--e-quint);
+      height: 100%;
+      filter: var(--dp-rest);
+      transform-origin: 50% 32%;
+      transition: filter var(--d-2) var(--e-sig), transform var(--d-2) var(--e-sig), opacity var(--d-2) var(--e-sig);
     }
-    .plate:hover { background: var(--border-strong); }
+    .stage.is-top .plate { filter: var(--dp-lift); }
+    .stage.is-under .plate { filter: var(--dp-sunk); transform: scale(0.988); opacity: 0.86; }
+    @media (hover: hover) { .plate:hover { filter: var(--dp-lift); } }
+
     .plate-in {
-      height: 100%; padding: clamp(24px, 3.4vw, 48px);
+      position: relative; height: 100%; padding: 48px;
       background: var(--surface-2);
       clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
       display: grid; grid-template-columns: 1fr auto; align-content: space-between; gap: var(--s5);
     }
-    .plate-head { grid-column: 1; display: flex; align-items: baseline; gap: var(--s4); }
-    .plate-id { font-size: var(--fs-1); letter-spacing: 0.14em; color: var(--text-mute); }
-    .plate h3 { font-size: clamp(1.75rem, 3.4vw, 3rem); font-weight: var(--fw-bold); letter-spacing: -0.03em; }
-    .plate-cat {
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--text-mute);
+    /* 다크에서 고도를 만드는 실제 신호는 그림자가 아니라 상단 1px 스페큘러다 */
+    .plate-in::before {
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 12%, var(--border) 88%, transparent);
     }
-    .plate-body { grid-column: 1; align-self: center; max-width: 46ch; }
-    .plate-body p { font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.65; color: var(--text-dim); }
-    .plate-meta { grid-column: 1; display: flex; align-items: center; gap: var(--s5); flex-wrap: wrap; }
-    .plate-status { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-2); color: var(--text-dim); }
-    .plate-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: var(--fs-2); color: var(--text-mute); text-decoration: none;
+    :root[data-theme="dark"] .plate-in::before { background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.10) 12%, rgb(255 255 255 / 0.10) 88%, transparent); }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .plate-in::before { background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.10) 12%, rgb(255 255 255 / 0.10) 88%, transparent); }
     }
-    .plate-link .arw { transition: transform var(--d-2) var(--e-out); }
-    .plate:hover .plate-link .arw { transform: translate(2px, -2px); }
-    .plate a:focus-visible { outline-offset: -4px; }
 
-    .mono-big {
-      grid-column: 2; grid-row: 1 / span 3; align-self: center;
-      width: clamp(84px, 13vw, 168px); aspect-ratio: 1; color: var(--text);
+    .plate-head { grid-column: 1; display: flex; align-items: baseline; gap: var(--s4); flex-wrap: wrap; }
+    .plate-id { font-size: var(--fs-1); letter-spacing: var(--ls-caps); line-height: 1; color: var(--text-mute); }
+    .plate h3 {
+      font-size: clamp(1.75rem, 3.4vw, 3rem); font-weight: var(--fw-bold);
+      letter-spacing: var(--ls-display); line-height: calc(1em + 4px);
     }
-    /* non-scaling-stroke이므로 굵기는 CSS px로 고정된다 — 대형에서도 하드라인을 유지하되
-       172px에서 1.75px는 너무 약해 보이므로 2.4px로 올린다. */
+    .plate-cat {
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps);
+      line-height: 1; text-transform: uppercase; color: var(--text-mute);
+    }
+    .fact {
+      grid-column: 1; margin-top: var(--s3);
+      font-size: var(--fs-3); font-weight: var(--fw-regular);
+      letter-spacing: var(--ls-15); line-height: 1.4; color: var(--text-mute);
+    }
+    .plate-body { grid-column: 1; align-self: center; max-width: var(--measure-tight); }
+    .plate-body p { font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--text-dim); }
+    .plate-meta { grid-column: 1; display: flex; align-items: center; gap: var(--s5); flex-wrap: wrap; }
+    .status { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-2); line-height: 1; color: var(--text-dim); }
+
+    .mono-big { grid-column: 2; grid-row: 1 / span 4; align-self: center; width: 168px; aspect-ratio: 1; color: var(--text); }
     .mono-big svg { width: 100%; height: 100%; stroke-width: 2.4px; }
 
     .dot { width: 9px; height: 9px; border: 1px solid var(--text-dim); flex: none; }
     .dot-live { background: var(--brand); border-color: var(--brand); }
-    .dot-limited { background: linear-gradient(135deg, var(--text) 0 50%, transparent 50% 100%); }
     .dot-soon { background: none; }
 
-    /* ══ 인터루드 — 리딩 하이라이트 (페이지 전체에 하나뿐) ═══════════════ */
-    .interlude { padding-block: var(--s11); display: grid; justify-items: center; }
+    /* ══ 02 RESEARCH — 나란히 놓인다 (만든 것은 쌓이고, 본 것은 놓인다) ═══ */
+    .curtain-2 { position: relative; height: 110svh; view-timeline-name: --c2; view-timeline-axis: block; }
+    .curtain-2-stage { position: sticky; top: 0; height: 100svh; overflow: clip; display: grid; place-items: center; }
+
+    .research-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); row-gap: var(--s8); }
+    .research-l { grid-column: 1 / span 5; }
+    .research-l p { max-width: var(--measure); color: var(--text-dim); }
+    .research-l p + p { margin-top: var(--s4); }
+    .research-r { grid-column: 7 / span 6; }
+
+    .res-item { padding-block: var(--s6); border-top: 1px solid var(--border-subtle); }
+    .res-item + .res-item { border-top: 1px solid var(--border-subtle); }
+    .res-item:nth-of-type(2) { border-bottom: 1px solid var(--border-subtle); }
+    .res-head { display: flex; align-items: baseline; gap: var(--s4); }
+    .res-id { font-size: var(--fs-1); letter-spacing: var(--ls-caps); line-height: 1; color: var(--text-mute); }
+    .res-item h3 { font-size: var(--fs-5); }
+    .res-item .fact { margin-top: var(--s2); }
+    .res-meta { display: flex; align-items: center; gap: var(--s5); margin-top: var(--s5); flex-wrap: wrap; }
+
+    .topics { margin-top: var(--s7); }
+    .topics h4 { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase; line-height: 1; color: var(--text-mute); }
+    .topics ul { list-style: none; margin-top: var(--s4); display: flex; gap: var(--s6); }
+    .topics li { font-size: var(--fs-4); color: var(--text); line-height: 1; }
+
+    /* ══ 인터루드 ═══════════════════════════════════════════════════════ */
+    .interlude { padding-block: var(--section-pad-lg); display: grid; justify-items: center; }
     .manifesto {
-      max-width: 24ch; text-align: center;
+      max-width: var(--measure-lead); text-align: center;
       font-size: clamp(1.5rem, 3.4vw, 2.6rem);
-      font-weight: var(--fw-medium); letter-spacing: -0.025em; line-height: 1.45;
-      color: var(--text);
+      font-weight: var(--fw-medium); letter-spacing: -0.024em;
+      line-height: calc(1em + 6px); color: var(--text);
     }
 
-    /* ══ STAGE 02 — 만드는 방식 ═════════════════════════════════════════ */
+    /* ══ 03 HOW WE BUILD ════════════════════════════════════════════════ */
     .build-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); }
     .build-l { grid-column: 1 / span 4; }
     .build-r { grid-column: 6 / span 7; }
     @media (min-width: 1025px) and (min-height: 700px) {
       .build-l { position: sticky; top: 42svh; align-self: start; }
     }
-    .section-index { font-size: var(--fs-1); font-weight: var(--fw-bold); letter-spacing: 0.18em; color: var(--brand); }
-    .section-title { margin-top: var(--s3); font-size: var(--fs-7); color: var(--text); }
 
-    .principle {
-      display: grid; grid-template-columns: 64px 1fr; gap: var(--s7);
-      padding-block: var(--s7); border-bottom: 1px solid var(--border-subtle);
-    }
+    .principle { display: grid; grid-template-columns: 64px 1fr; gap: var(--s7); padding-block: var(--s7); border-bottom: 1px solid var(--border-subtle); }
     .principle:first-child { border-top: 1px solid var(--border-subtle); }
     .principle-no {
       position: relative; font-size: var(--fs-2); font-weight: var(--fw-medium);
-      letter-spacing: 0.2em; color: var(--text-mute);
-      transition: color var(--d-2) var(--e-quart);
+      letter-spacing: var(--ls-caps); line-height: 1; color: var(--text-mute);
+      transition: color var(--d-2) var(--e-sig);
     }
     .principle-no::before {
-      content: ''; position: absolute; left: -14px; top: 4px; width: 2px; height: 14px;
+      content: ''; position: absolute; left: -14px; top: 0; width: 2px; height: 14px;
       background: var(--brand); transform: scaleY(0); transform-origin: top;
-      transition: transform var(--d-1) var(--e-out);
+      transition: transform var(--d-1) var(--e-sig);
     }
-    .principle.is-active .principle-no { color: var(--accent-bright); }
+    .principle.is-active .principle-no { color: var(--text); }
     .principle.is-active .principle-no::before { transform: scaleY(1); }
-    .principle h3 { font-size: var(--fs-5); }
-    .principle p { margin-top: var(--s3); max-width: 58ch; font-size: var(--fs-4); line-height: 1.75; color: var(--text-dim); }
+    .principle h3 { font-size: var(--fs-5); line-height: calc(1em + 6px); }
+    .principle p { margin-top: var(--s3); max-width: var(--measure); font-size: var(--fs-4); color: var(--text-dim); }
 
     .cites { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s4); }
     .chip {
-      display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px;
-      border: 1px solid var(--border); border-radius: var(--radius-pill);
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.06em;
-      color: var(--text-dim); text-decoration: none;
-      transition: border-color var(--d-3) var(--e-quint), color var(--d-3) var(--e-quint);
+      display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px;
+      border: 1px solid var(--border); border-radius: 2px;
+      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps);
+      line-height: 1; color: var(--text-dim); text-decoration: none;
+      transition: border-color var(--d-2) var(--e-sig), color var(--d-2) var(--e-sig);
     }
-    .chip:hover { border-color: var(--brand); color: var(--brand); transition-duration: var(--d-1); }
-    .chip .lead { transition: transform var(--d-2) var(--e-out); }
-    .chip:hover .lead { transform: translateX(2px); }
+    @media (hover: hover) {
+      .chip:hover { border-color: var(--i-line-hover); color: var(--text); }
+      .chip:hover .lead { transform: translateX(2px); }
+    }
+    .chip:active { opacity: 0.62; transition-duration: var(--d-0); }
+    .chip .lead { transition: transform var(--d-2) var(--e-sig); }
+    .chip:focus-visible .lead { transform: translateX(2px); }
 
-    /* ══ STAGE 03 — 회사 · 도면 ═════════════════════════════════════════ */
-    .company-grid {
-      display: grid; grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--s5); row-gap: var(--s8); align-items: center;
-    }
+    /* ══ 04 COMPANY ═════════════════════════════════════════════════════ */
+    .company-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); row-gap: var(--s8); align-items: center; }
     .company-l { grid-column: 1 / span 5; }
-    .company-l p { max-width: 52ch; color: var(--text-dim); line-height: 1.75; }
+    .company-l p { max-width: var(--measure); color: var(--text-dim); }
     .company-l p + p { margin-top: var(--s4); }
     .company-r { grid-column: 7 / span 6; }
 
-    .blueprint {
-      position: relative; width: 100%; max-width: 460px; margin-inline: auto; aspect-ratio: 1;
-    }
+    .blueprint { position: relative; width: 100%; max-width: 460px; margin-inline: auto; aspect-ratio: 1; }
     .blueprint::before {
       content: ''; position: absolute; inset: 0;
       background:
@@ -472,68 +528,54 @@
     .blueprint svg { position: relative; width: 100%; height: 100%; }
     .bp-lead { stroke-dasharray: var(--len, 120); stroke-dashoffset: var(--len, 120); }
     .bp-label { font-size: 10px; letter-spacing: 0.16em; fill: var(--text-mute); opacity: 0; }
+    .bp-pillar { font-size: 11px; letter-spacing: 0.2em; fill: var(--text); opacity: 0; }
 
-    /* ══ 인터루드 — 대형 아웃라인 워드마크 ══════════════════════════════ */
-    .closer { padding-block: var(--s10); overflow: clip; }
+    /* ══ 인터루드 — 대형 워드마크 ═══════════════════════════════════════ */
+    .closer { padding-block: var(--section-pad); overflow: clip; }
     .closer-word { position: relative; display: block; text-align: center; }
     .closer-word .ol, .closer-word .fl {
       display: block; font-size: clamp(3rem, 17vw, 14rem);
-      font-weight: var(--fw-black); letter-spacing: -0.05em; line-height: 1;
+      font-weight: var(--fw-black); letter-spacing: -0.030em; line-height: 1;
     }
-    .closer-word .ol { color: transparent; -webkit-text-stroke: 1px var(--border-strong); }
+    .closer-word .ol { color: transparent; -webkit-text-stroke: max(1px, 0.008em) var(--border-strong); }
     .closer-word .fl { position: absolute; inset: 0; color: var(--text); -webkit-text-stroke: 0; clip-path: inset(0 100% 0 0); }
 
-    /* ══ STAGE 04 — 연락 (페이지에서 유일한 반전) ═══════════════════════ */
-    .contact {
-      background: var(--accent-bright); color: var(--bg);
-      padding-block: var(--s11);
-      clip-path: inset(0 0 0 0);
-    }
+    /* ══ 05 CONTACT — 페이지에서 유일한 반전 ════════════════════════════ */
+    .contact { background: var(--accent-bright); color: var(--bg); padding-block: var(--section-pad); clip-path: inset(0 0 0 0); }
     .contact .eyebrow { color: var(--bg); opacity: 0.62; }
     .contact .section-index { color: var(--brand-vivid); opacity: 1; }
-    .contact .tick::before { background: var(--brand-vivid); opacity: 1; }
+    .contact .tick::before { background: var(--brand-vivid); }
     .contact .section-title { color: var(--bg); }
     .contact :focus-visible { outline-color: var(--bg); }
-    .channels {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--s5); margin-top: var(--s8); max-width: 820px;
-    }
-    .channel { padding-top: var(--s5); border-top: 1px solid rgba(128,128,128,0.45); }
-    .channel .ch-name {
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em;
-      text-transform: uppercase; opacity: 0.62;
-    }
+    .channels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); margin-top: var(--s8); max-width: var(--page-narrow); }
+    .channel { padding-top: var(--s5); border-top: 1px solid rgb(128 128 128 / 0.45); }
+    .channel .ch-name { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase; line-height: 1; opacity: 0.62; }
     .channel .ch-mail {
       display: inline-flex; align-items: center; gap: 8px; margin-top: var(--s3);
       font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: var(--fw-medium);
-      letter-spacing: -0.02em; color: var(--bg); text-decoration: none;
+      letter-spacing: var(--ls-22); line-height: 1; color: var(--bg); text-decoration: none;
     }
-    .channel .ch-note { margin-top: 6px; font-size: var(--fs-2); opacity: 0.7; }
+    .channel .ch-note { margin-top: var(--s2); font-size: var(--fs-2); opacity: 0.7; }
 
-    /* ══ 푸터 ══════════════════════════════════════════════════════════ */
-    .footer { position: relative; padding-block: var(--s8) var(--s7); }
-    .footer::before {
-      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
-      background: var(--gradient-silver); opacity: 0.5;
-    }
+    /* ══ 푸터 ═══════════════════════════════════════════════════════════ */
+    .footer { position: relative; padding-block: 96px 64px; font-size: var(--fs-2); letter-spacing: var(--ls-13); }
+    .footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px; background: var(--gradient-silver); opacity: 0.5; }
     .footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: var(--s7) var(--s5); }
-    .footer-brand p { margin-top: var(--s3); font-size: var(--fs-1); letter-spacing: 0.06em; color: var(--text-mute); }
-    .footer-col h4 {
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--text-mute);
-    }
-    .footer-col ul { list-style: none; margin-top: var(--s4); display: grid; gap: var(--s3); }
+    .footer-brand p { margin-top: var(--s3); font-size: var(--fs-1); line-height: 21px; color: var(--text-mute); }
+    .footer-col h4 { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase; line-height: 1; color: var(--text-mute); }
+    .footer-col ul { list-style: none; margin-top: var(--s4); display: grid; gap: 10px; }
+    .footer-col li { line-height: 21px; }
     .footer-col a {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: var(--fs-2); color: var(--text-dim); text-decoration: none;
-      transition: color var(--d-2) var(--e-quart);
+      display: inline-flex; align-items: center; gap: 8px; line-height: 1;
+      color: var(--i-fg); text-decoration: none; transition: color var(--d-2) var(--e-sig);
     }
-    .footer-col a:hover { color: var(--accent-bright); }
+    @media (hover: hover) { .footer-col a:hover { color: var(--i-fg-hover); } }
+    .footer-col a:active { opacity: 0.62; transition-duration: var(--d-0); }
     .footer-col a svg { width: 14px; height: 14px; }
     .footer-bar {
       display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
       margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--border-subtle);
-      font-size: var(--fs-2); color: var(--text-mute);
+      line-height: 21px; color: var(--text-mute);
     }
     .footer-tools { display: flex; gap: var(--s2); }
 
@@ -547,26 +589,23 @@
     @keyframes seamIgnite { from { transform: scaleY(0) } to { transform: scaleY(1) } }
     @keyframes axisOut { from { transform: scaleX(0) } to { transform: scaleX(1) } }
     @keyframes fillDown { from { transform: scaleY(0) } to { transform: scaleY(1) } }
-
-    /* 스크럽 전용 */
     @keyframes partL { to { transform: translateX(-17vw); opacity: 0 } }
     @keyframes partR { to { transform: translateX(17vw); opacity: 0 } }
     @keyframes wordL { to { transform: translateX(-22vw) } }
     @keyframes wordR { to { transform: translateX(22vw) } }
     @keyframes subOut { 0% { opacity: 1 } 55% { opacity: 1 } 100% { opacity: 0; transform: translateY(-14px) } }
+    @keyframes seamFade { to { opacity: 0 } }
     @keyframes riserUp { to { transform: translateY(0) } }
     @keyframes wipeFill { to { clip-path: inset(0 0 0 0) } }
-    @keyframes seamFade { to { opacity: 0 } }
-    @keyframes revealUp { from { opacity: 0; transform: translateY(28px) } to { opacity: 1; transform: none } }
-    @keyframes revealSm { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+    @keyframes revealUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: none } }
+    @keyframes revealSm { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
     @keyframes drawLine { to { stroke-dashoffset: 0 } }
     @keyframes lit { to { opacity: 1 } }
     @keyframes bandOpen { from { clip-path: inset(50% 0 50% 0) } to { clip-path: inset(0 0 0 0) } }
     @keyframes labelIn { to { opacity: 1 } }
+    @keyframes wipeIn { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
 
-    /* ══ 스크럽 레이어 — 스크롤 위치의 함수 ══════════════════════════════
-       지원 브라우저에서는 IO 원샷 경로를 무력화하고 전부 스크럽으로 승격한다.
-       미지원 브라우저는 이 블록 밖의 IO 코드로 폴백한다. */
+    /* ══ 스크럽 — 페이지를 스크롤 위치의 함수로 ═════════════════════════ */
     @supports (animation-timeline: scroll()) and (animation-timeline: view()) {
       .js .reveal { opacity: 1; transform: none; transition: none; animation: revealSm linear both; animation-timeline: view(block); animation-range: entry 8% cover 32%; }
       .js .reveal-title { animation-name: revealUp; animation-range: entry 12% cover 30%; }
@@ -580,92 +619,98 @@
       .hero-sub { animation: subOut linear both; animation-timeline: scroll(root block); animation-range: 0 52svh; }
       .corner { animation: subOut linear both; animation-timeline: scroll(root block); animation-range: 0 40svh; }
 
-      .riser { animation: riserUp linear both; animation-timeline: scroll(root block); animation-range: 34svh 96svh; }
-      .riser-word .fl { animation: wipeFill linear both; animation-timeline: scroll(root block); animation-range: 92svh 150svh; }
+      .curtain .riser { animation: riserUp linear both; animation-timeline: scroll(root block); animation-range: 34svh 96svh; }
+      .curtain .riser .fl { animation: wipeFill linear both; animation-timeline: scroll(root block); animation-range: 92svh 150svh; }
+
+      /* 두 번째 커튼은 sticky 바깥의 명명 타임라인을 읽는다 — sticky 안에서 view()는 얼어붙는다 */
+      .riser-2 { animation: riserUp linear both; animation-timeline: --c2; animation-range: entry 0% cover 45%; }
+      .riser-2 .fl { animation: wipeFill linear both; animation-timeline: --c2; animation-range: cover 45% cover 88%; }
 
       .closer-word .fl { animation: wipeFill linear both; animation-timeline: view(block); animation-range: entry 30% cover 70%; }
 
       .mono-big path, .mono-big circle { animation: drawLine linear both; animation-timeline: scroll(root block); }
       .bp-lead { animation: drawLine linear both; animation-timeline: view(block); }
-      .bp-label { animation: labelIn linear both; animation-timeline: view(block); }
+      .bp-label, .bp-pillar { animation: labelIn linear both; animation-timeline: view(block); }
 
       .contact { animation: bandOpen linear both; animation-timeline: view(block); animation-range: entry 0% entry 92%; }
 
       .w { opacity: 0.2; animation: lit linear both; animation-timeline: view(block); }
     }
 
-    /* ══ 모션 축소 — 스크롤 타임라인은 duration이 진행률로 재해석되므로
-       셀렉터 단위로 명시적으로 끄고 종료 상태로 고정해야 한다. ═══════════ */
+    /* ══ 모션 축소 — 셀렉터 단위로 끄고 종료 상태로 고정 ════════════════ */
     @media (prefers-reduced-motion: reduce) {
-      .hs-l, .hs-r, .w-l, .w-r, .mark-seam, .hero-sub, .corner, .riser,
-      .riser-word .fl, .closer-word .fl, .mono-big path, .mono-big circle,
-      .bp-lead, .bp-label, .contact, .w, .js .reveal, .axis span,
+      .hs-l, .hs-r, .w-l, .w-r, .mark-seam, .hero-sub, .corner, .riser, .riser-2,
+      .riser .fl, .closer-word .fl, .mono-big path, .mono-big circle,
+      .bp-lead, .bp-label, .bp-pillar, .contact, .w, .js .reveal, .axis span,
       .js .hs-l .half, .js .hs-r .half, .js .w-l .w-in, .js .w-r .w-in,
       .js .hero-line, .js .hero-tag, .js .mark-seam i {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-        clip-path: none !important;
-        stroke-dashoffset: 0 !important;
+        animation: none !important; opacity: 1 !important; transform: none !important;
+        clip-path: none !important; stroke-dashoffset: 0 !important;
       }
       .mark-seam { transform: translateX(-50%) !important; }
-      .riser { transform: translateY(0) !important; }
+      .riser, .riser-2 { transform: translateY(0) !important; }
       .contact { clip-path: inset(0) !important; }
     }
     [data-motion="reduced"] .hs-l, [data-motion="reduced"] .hs-r,
     [data-motion="reduced"] .w-l, [data-motion="reduced"] .w-r,
     [data-motion="reduced"] .hero-sub, [data-motion="reduced"] .corner,
-    [data-motion="reduced"] .riser, [data-motion="reduced"] .riser-word .fl,
-    [data-motion="reduced"] .closer-word .fl, [data-motion="reduced"] .mono-big path,
-    [data-motion="reduced"] .mono-big circle, [data-motion="reduced"] .bp-lead,
-    [data-motion="reduced"] .bp-label, [data-motion="reduced"] .contact,
+    [data-motion="reduced"] .riser, [data-motion="reduced"] .riser-2,
+    [data-motion="reduced"] .riser .fl, [data-motion="reduced"] .closer-word .fl,
+    [data-motion="reduced"] .mono-big path, [data-motion="reduced"] .mono-big circle,
+    [data-motion="reduced"] .bp-lead, [data-motion="reduced"] .bp-label,
+    [data-motion="reduced"] .bp-pillar, [data-motion="reduced"] .contact,
     [data-motion="reduced"] .w, [data-motion="reduced"] .js .reveal {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-      clip-path: none !important;
-      stroke-dashoffset: 0 !important;
+      animation: none !important; opacity: 1 !important; transform: none !important;
+      clip-path: none !important; stroke-dashoffset: 0 !important;
     }
-    [data-motion="reduced"] .riser { transform: translateY(0) !important; }
+    [data-motion="reduced"] .riser, [data-motion="reduced"] .riser-2 { transform: translateY(0) !important; }
     [data-motion="reduced"] .contact { clip-path: inset(0) !important; }
+
+    /* 테마 전환도 페이지의 나머지와 같은 물리를 따른다 */
+    @media (prefers-reduced-motion: no-preference) {
+      ::view-transition-old(root) { animation: none; }
+      ::view-transition-new(root) { animation: wipeIn var(--d-3) var(--e-inout) both; z-index: 1; }
+    }
 
     /* ══ 반응형 ═════════════════════════════════════════════════════════ */
     @media (max-width: 1199px) {
       .build-l { grid-column: 1 / span 12; margin-bottom: var(--s6); }
       .build-r { grid-column: 1 / span 12; }
-      .company-l, .company-r { grid-column: 1 / span 12; }
+      .company-l, .company-r, .research-l, .research-r { grid-column: 1 / span 12; }
       .footer-grid { grid-template-columns: repeat(4, 1fr); }
       .footer-brand { grid-column: 1 / -1; }
     }
     @media (max-width: 1024px) {
-      section { padding-block: var(--s9); }
       .nav-links, .nav-right .odo { display: none; }
       .nav-toggle { display: block; }
-      .plate-in { grid-template-columns: 1fr; }
-      .mono-big { grid-column: 1; grid-row: auto; justify-self: start; }
+      .plate-in { grid-template-columns: 1fr; padding: 32px; }
+      .mono-big { grid-column: 1; grid-row: auto; justify-self: start; width: 96px; }
+      .mono-big svg { stroke-width: 2px; }
     }
     @media (max-width: 720px) {
-      section { padding-block: var(--s8); }
-      .curtain { height: 175svh; }
-      .axis { top: 44svh; }
-      .hero-inner { top: 44svh; }
-      .w-in { letter-spacing: 0.1em; }
+      .curtain { height: 160svh; }
+      .axis, .hero-inner { top: 44svh; }
+      .w-in { letter-spacing: 0.12em; }
       .corner { top: 88px; }
       .riser { height: 52svh; }
       .riser-word .ol { -webkit-text-stroke: 0; color: var(--text); }
       .riser-word .fl { display: none; }
-      /* 스택 해제 — 대신 카드마다 스크럽 리빌과 마크 드로잉이 남는다 */
       .stage { position: static; height: auto; margin-bottom: var(--s5); }
-      .plate-in { min-height: 0; }
+      .plate-in { padding: 24px; }
+      .mono-big { width: 64px; }
+      .mono-big svg { stroke-width: 1.75px; }
       .rail { gap: var(--s4); overflow-x: auto; }
-      .interlude { padding-block: var(--s9); }
       .closer-word .ol { -webkit-text-stroke: 0; color: var(--border-strong); }
       .closer-word .fl { display: none; }
       .channels { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-bar { flex-direction: column; align-items: flex-start; }
+      .topics ul { gap: var(--s5); }
     }
 
+    /* 저사양 — drop-shadow는 GPU 필터라 sticky 3장과 겹치면 비싸다 */
+    .motion-lite .plate { filter: none !important; padding: 1px; background: var(--border); }
+    .motion-lite .plate-in::before { display: none; }
     .motion-lite .nav.is-stuck { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--bg); }
     .motion-lite .nav-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
   </style>
@@ -680,7 +725,7 @@
       <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
       <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
     </g>
-    <g id="mono-nemo" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+    <g id="mono-nemo" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z" vector-effect="non-scaling-stroke"/>
       <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z" vector-effect="non-scaling-stroke"/>
     </g>
@@ -701,6 +746,11 @@
       <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z" vector-effect="non-scaling-stroke"/>
       <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z" vector-effect="non-scaling-stroke"/>
     </g>
+    <g id="mono-blog" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 5.5 L20 5.5 L25 10.5 L25 26.5 L7 26.5 Z" vector-effect="non-scaling-stroke"/>
+      <path d="M19.5 5.5 L19.5 11 L25 11" vector-effect="non-scaling-stroke"/>
+      <path d="M11.5 16 L20.5 16 M11.5 20.5 L17.5 20.5" vector-effect="non-scaling-stroke"/>
+    </g>
   </defs>
 </svg>
 
@@ -711,15 +761,15 @@
       <span class="wordmark">PALDYN</span>
     </a>
     <ul class="nav-links">
-      <li><a class="underline" href="#products">Products</a></li>
-      <li><a class="underline" href="#build">How we build</a></li>
-      <li><a class="underline" href="#company">Company</a></li>
-      <li><a class="underline" href="#contact">Contact</a></li>
-      <li><a class="underline" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></li>
+      <li><a class="underline" href="#products" data-section="1">Services</a></li>
+      <li><a class="underline" href="#research" data-section="2">Research</a></li>
+      <li><a class="underline" href="#build" data-section="3">How we build</a></li>
+      <li><a class="underline" href="#company" data-section="4">Company</a></li>
+      <li><a class="underline" href="#contact" data-section="5">Contact</a></li>
     </ul>
     <div class="nav-right">
       <div class="odo" aria-hidden="true"><div class="odo-track" id="odoTrack">
-        <span>PALDYN</span><span>01 Products</span><span>02 How we build</span><span>03 Company</span><span>04 Contact</span>
+        <span>PALDYN</span><span>01 Services</span><span>02 Research</span><span>03 How we build</span><span>04 Company</span><span>05 Contact</span>
       </div></div>
       <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
@@ -732,16 +782,17 @@
   </div>
 </nav>
 
-<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="메뉴" hidden>
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="메뉴" inert>
   <ul>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#build">How we build</a></li>
-    <li><a href="#company">Company</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#products" style="--n:0">Services</a></li>
+    <li><a href="#research" style="--n:1">Research</a></li>
+    <li><a href="#build" style="--n:2">How we build</a></li>
+    <li><a href="#company" style="--n:3">Company</a></li>
+    <li><a href="#contact" style="--n:4">Contact</a></li>
   </ul>
   <div class="ov-sub">
-    <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a>
     <a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a>
+    <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a>
   </div>
 </div>
 
@@ -751,7 +802,7 @@
   <!-- ══ STAGE 00 — 커튼 ══════════════════════════════════════════════ -->
   <section class="curtain" aria-label="PALDYN">
     <div class="curtain-stage">
-      <p class="corner">PALDYN — 서비스 그리고 리서치</p>
+      <p class="corner">BUILD · OPERATE · RESEARCH</p>
 
       <div class="axis" aria-hidden="true"><span></span><span></span></div>
 
@@ -768,19 +819,19 @@
             <span class="mark-seam"><i></i></span>
           </span>
           <span class="w-slot w-r"><span class="w-in">DYN</span></span>
-          <span class="sr-only">PALDYN — 불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다</span>
+          <span class="sr-only">PALDYN — 삶에 닿는 불편을 없애고, 다음에 올 기술을 먼저 다룹니다</span>
         </h1>
 
         <div class="hero-sub">
-          <p class="hero-line">불편을 없애는 서비스를 만들고, 다음 기술을 연구합니다</p>
+          <p class="hero-line">삶에 닿는 불편을 없애고, 다음에 올 기술을 먼저 다룹니다</p>
           <p class="hero-tag">The force that accompanies</p>
         </div>
       </div>
 
       <div class="riser" aria-hidden="true">
         <span class="riser-word">
-          <span class="ol">PRODUCTS</span>
-          <span class="fl">PRODUCTS</span>
+          <span class="ol">SERVICES</span>
+          <span class="fl">SERVICES</span>
         </span>
         <span class="riser-sub">지금 돌아가고 있는 것</span>
       </div>
@@ -788,129 +839,167 @@
   </section>
 
   <div class="spine">
-    <!-- ══ STAGE 01 — 제품 스택 ═════════════════════════════════════ -->
-    <section id="products" aria-label="제품">
-      <div class="wrap">
-        <div class="rail" id="rail">
-          <a class="rail-tab" href="#p-nemo" data-tab="0"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>Nemo</a>
-          <a class="rail-tab" href="#p-devdock" data-tab="1"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>DevDock</a>
-          <a class="rail-tab" href="#p-ailab" data-tab="2"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>AI Lab</a>
-          <a class="rail-tab" href="#p-ascend" data-tab="3"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>Ascend</a>
+    <!-- ══ 01 SERVICES — 쌓이는 판 ══════════════════════════════════ -->
+    <div id="services-band">
+      <section id="products" aria-label="서비스">
+        <div class="wrap">
+          <div class="rail" id="rail">
+            <a class="rail-tab" href="#p-nemo"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>Nemo</a>
+            <a class="rail-tab" href="#p-devdock"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>DevDock</a>
+            <a class="rail-tab" href="#p-ascend"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>Ascend</a>
+          </div>
+
+          <div class="stack" id="stack">
+            <article class="stage" id="p-nemo" style="--i:0">
+              <div class="plate">
+                <div class="plate-in">
+                  <div class="plate-head">
+                    <span class="plate-id">S-01</span>
+                    <h3>Nemo</h3>
+                    <span class="plate-cat">Notes &amp; Journal</span>
+                  </div>
+                  <p class="fact">nemo.paldyn.com · 웹 · 로그인 필요</p>
+                  <div class="mono-big" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z" vector-effect="non-scaling-stroke"/>
+                      <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z" vector-effect="non-scaling-stroke"/>
+                    </svg>
+                  </div>
+                  <div class="plate-body"><p>생각이 머무는 자리. 노트와 저널을 한곳에서.</p></div>
+                  <div class="plate-meta">
+                    <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
+                    <a class="btn btn-1" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="p-devdock" style="--i:1">
+              <div class="plate">
+                <div class="plate-in">
+                  <div class="plate-head">
+                    <span class="plate-id">S-02</span>
+                    <h3>DevDock</h3>
+                    <span class="plate-cat">Developer Utilities</span>
+                  </div>
+                  <p class="fact">devdock.paldyn.com · 설치 없이 브라우저에서 · 로그인 필요</p>
+                  <div class="mono-big" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z" vector-effect="non-scaling-stroke"/>
+                      <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z" vector-effect="non-scaling-stroke"/>
+                      <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z" vector-effect="non-scaling-stroke"/>
+                      <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z" vector-effect="non-scaling-stroke"/>
+                    </svg>
+                  </div>
+                  <div class="plate-body"><p>JSON·JWT·해시·UUID까지. 필요한 도구를 한 탭에서.</p></div>
+                  <div class="plate-meta">
+                    <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
+                    <a class="btn btn-1" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="p-ascend" style="--i:2">
+              <div class="plate">
+                <div class="plate-in">
+                  <div class="plate-head">
+                    <span class="plate-id">S-03</span>
+                    <h3>Ascend</h3>
+                    <span class="plate-cat">Workout Tracking</span>
+                  </div>
+                  <p class="fact">iOS · Android · 광고 0 · 추적 0 · 계정 요구 없음</p>
+                  <div class="mono-big" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z" vector-effect="non-scaling-stroke"/>
+                      <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z" vector-effect="non-scaling-stroke"/>
+                      <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z" vector-effect="non-scaling-stroke"/>
+                    </svg>
+                  </div>
+                  <div class="plate-body"><p>세트 하나에 탭 한 번. 헬스장에서 폰을 드는 시간을 줄입니다.</p></div>
+                  <div class="plate-meta">
+                    <span class="status"><span class="dot dot-soon" aria-hidden="true"></span>비공개 테스트</span>
+                    <a class="btn btn-2" href="/ascend/">자세히 <span class="arw" aria-hidden="true">→</span></a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
+    </div>
 
-        <div class="stack" id="stack">
-          <article class="stage" id="p-nemo" style="--i:0">
-            <div class="plate">
-              <div class="plate-in">
-                <div class="plate-head">
-                  <span class="plate-id">P-01</span>
-                  <h3>Nemo</h3>
-                  <span class="plate-cat">Notes &amp; Journal</span>
-                </div>
-                <div class="mono-big" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z" vector-effect="non-scaling-stroke"/>
-                    <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z" vector-effect="non-scaling-stroke"/>
-                  </svg>
-                </div>
-                <div class="plate-body"><p>생각이 머무는 자리. 노트와 저널을 한곳에서.</p></div>
-                <div class="plate-meta">
-                  <span class="plate-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
-                  <a class="plate-link underline" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">nemo.paldyn.com <span class="arw" aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-            </div>
-          </article>
+    <!-- ══ 두 번째 커튼 — RESEARCH ══════════════════════════════════ -->
+    <div class="curtain-2" aria-hidden="true">
+      <div class="curtain-2-stage">
+        <div class="riser riser-2">
+          <span class="riser-word">
+            <span class="ol">RESEARCH</span>
+            <span class="fl">RESEARCH</span>
+          </span>
+          <span class="riser-sub">다음에 올 것</span>
+        </div>
+      </div>
+    </div>
 
-          <article class="stage" id="p-devdock" style="--i:1">
-            <div class="plate">
-              <div class="plate-in">
-                <div class="plate-head">
-                  <span class="plate-id">P-02</span>
-                  <h3>DevDock</h3>
-                  <span class="plate-cat">Developer Utilities</span>
-                </div>
-                <div class="mono-big" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z" vector-effect="non-scaling-stroke"/>
-                    <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z" vector-effect="non-scaling-stroke"/>
-                    <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z" vector-effect="non-scaling-stroke"/>
-                    <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z" vector-effect="non-scaling-stroke"/>
-                  </svg>
-                </div>
-                <div class="plate-body"><p>JSON·JWT·해시·UUID까지. 설치 없이 브라우저에서 바로.</p></div>
-                <div class="plate-meta">
-                  <span class="plate-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
-                  <a class="plate-link underline" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">devdock.paldyn.com <span class="arw" aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-            </div>
-          </article>
+    <!-- ══ 02 RESEARCH ═════════════════════════════════════════════ -->
+    <section id="research">
+      <div class="wrap">
+        <p class="eyebrow tick"><span class="section-index">02</span> &nbsp;RESEARCH</p>
+        <h2 class="section-title reveal reveal-title" style="margin-bottom: var(--s8)">다음에 올 기술을 먼저 다룹니다</h2>
 
-          <article class="stage" id="p-ailab" style="--i:2">
-            <div class="plate">
-              <div class="plate-in">
-                <div class="plate-head">
-                  <span class="plate-id">P-03</span>
-                  <h3>AI Lab</h3>
-                  <span class="plate-cat">AI News &amp; Research</span>
-                </div>
-                <div class="mono-big" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 5A11 11 0 1 0 27 16" vector-effect="non-scaling-stroke"/>
-                    <path d="M16 10A6 6 0 1 0 22 16" vector-effect="non-scaling-stroke"/>
-                    <path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/>
-                    <circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/>
-                  </svg>
-                </div>
-                <div class="plate-body"><p>새 모델과 글로벌 AI 기업의 움직임을 추적합니다.</p></div>
-                <div class="plate-meta">
-                  <span class="plate-status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-                  <a class="plate-link underline" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">ailab.paldyn.com <span class="arw" aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-            </div>
-          </article>
+        <div class="research-grid">
+          <div class="research-l reveal">
+            <p>인공지능과 양자처럼 다가올 기술을 미리 들여다봅니다. 새로 나온 것을 좇는 대신, 그것이 사람의 하루를 어떻게 바꾸는지를 봅니다.</p>
+            <p>거기서 본 것이 다음에 만들 서비스의 재료가 됩니다. 읽고 정리한 것은 공개된 자산으로 남깁니다.</p>
+          </div>
 
-          <article class="stage" id="p-ascend" style="--i:3">
-            <div class="plate">
-              <div class="plate-in">
-                <div class="plate-head">
-                  <span class="plate-id">P-04</span>
-                  <h3>Ascend</h3>
-                  <span class="plate-cat">Workout Tracking</span>
-                </div>
-                <div class="mono-big" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z" vector-effect="non-scaling-stroke"/>
-                    <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z" vector-effect="non-scaling-stroke"/>
-                    <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z" vector-effect="non-scaling-stroke"/>
-                  </svg>
-                </div>
-                <div class="plate-body"><p>세트 하나에 탭 한 번. 계정 요구도 광고도 없습니다.</p></div>
-                <div class="plate-meta">
-                  <span class="plate-status"><span class="dot dot-soon" aria-hidden="true"></span>출시 준비 · 비공개 테스트</span>
-                  <a class="plate-link underline" href="/ascend/">iOS · Android <span class="arw" aria-hidden="true">→</span></a>
-                </div>
+          <div class="research-r">
+            <article class="res-item reveal" id="p-ailab">
+              <div class="res-head">
+                <span class="res-id">R-01</span>
+                <h3>AI Lab</h3>
               </div>
+              <p class="fact">ailab.paldyn.com · 새 모델과 글로벌 AI 기업 동향</p>
+              <div class="res-meta">
+                <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
+                <a class="btn btn-2" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="res-item reveal" id="r-techblog">
+              <div class="res-head">
+                <span class="res-id">R-02</span>
+                <h3>Tech Blog</h3>
+              </div>
+              <p class="fact">techblog.paldyn.com · 만들며 배운 것을 기록</p>
+              <div class="res-meta">
+                <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
+                <a class="btn btn-2" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <div class="topics reveal">
+              <h4>지금 보고 있는 주제</h4>
+              <ul><li>인공지능</li><li>양자</li></ul>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ 인터루드 — 읽는 속도로 밝아지는 한 문장 ══════════════════ -->
+    <!-- ══ 인터루드 ════════════════════════════════════════════════ -->
     <section class="interlude" aria-label="우리가 일하는 방식">
-      <p class="manifesto" id="manifesto">우리가 만든 것이 우리의 소개서입니다. 네 개를 만들었고, 세 개가 돌아가고 있습니다.</p>
+      <p class="manifesto" id="manifesto">우리가 만든 것이 우리의 소개서입니다. 우리가 쓰지 않을 것은 만들지 않았습니다.</p>
     </section>
 
-    <!-- ══ STAGE 02 — 만드는 방식 ═══════════════════════════════════ -->
+    <!-- ══ 03 HOW WE BUILD ═════════════════════════════════════════ -->
     <section id="build">
       <div class="wrap build-grid">
         <div class="build-l">
-          <p class="eyebrow tick"><span class="section-index silver">02</span> &nbsp;HOW WE BUILD</p>
+          <p class="eyebrow tick"><span class="section-index">03</span> &nbsp;HOW WE BUILD</p>
           <h2 class="section-title reveal reveal-title">우리가 만드는 방식</h2>
-          <p class="reveal" style="margin-top: var(--s4); font-size: var(--fs-3); color: var(--text-dim);">역량을 나열하는 대신, 위 제품들이 어떻게 만들어졌는지 적습니다. 각 항목 끝의 이름은 그 원칙이 실제로 적용된 제품입니다.</p>
+          <p class="reveal" style="margin-top: var(--s4); max-width: var(--measure); font-size: var(--fs-3); color: var(--text-dim);">역량을 나열하는 대신, 앞의 서비스와 리서치가 어떻게 만들어졌는지 적습니다. 각 항목 끝의 이름은 그 원칙이 실제로 적용된 곳입니다.</p>
         </div>
 
         <div class="build-r">
@@ -920,8 +1009,8 @@
               <h3>직접 만들고 직접 씁니다</h3>
               <p>우리가 매일 쓰지 않는 도구는 만들지 않습니다. DevDock의 유틸리티는 작업 중에 필요해서 하나씩 늘어난 목록입니다.</p>
               <div class="cites">
-                <a class="chip" href="#p-devdock" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-02 DevDock</a>
-                <a class="chip" href="#p-nemo" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-01 Nemo</a>
+                <a class="chip" href="#p-devdock" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> S-02 DevDock</a>
+                <a class="chip" href="#p-nemo" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> S-01 Nemo</a>
               </div>
             </div>
           </article>
@@ -930,10 +1019,10 @@
             <div class="principle-no">02</div>
             <div>
               <h3>출시 이후를 설계합니다</h3>
-              <p>릴리스는 마감이 아니라 시작점입니다. 운영 데이터와 사용자 피드백으로 고치는 주기를 제품 안에 미리 넣어 둡니다.</p>
+              <p>릴리스는 마감이 아니라 시작점입니다. 운영 데이터와 사용자 피드백으로 고치는 주기를 서비스 안에 미리 넣어 둡니다.</p>
               <div class="cites">
-                <a class="chip" href="#p-ailab" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-03 AI Lab</a>
-                <a class="chip" href="#p-nemo" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-01 Nemo</a>
+                <a class="chip" href="#p-ailab" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> R-01 AI Lab</a>
+                <a class="chip" href="#p-nemo" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> S-01 Nemo</a>
               </div>
             </div>
           </article>
@@ -944,7 +1033,7 @@
               <h3>기본값을 지킵니다</h3>
               <p>광고를 넣지 않고, 추적하지 않고, 필요 없는 곳에서 계정을 요구하지 않습니다. Ascend는 이 세 가지를 모두 지킨 채로 출시합니다.</p>
               <div class="cites">
-                <a class="chip" href="#p-ascend" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-04 Ascend</a>
+                <a class="chip" href="#p-ascend" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> S-03 Ascend</a>
               </div>
             </div>
           </article>
@@ -952,17 +1041,17 @@
       </div>
     </section>
 
-    <!-- ══ STAGE 03 — 회사 · 도면 ═══════════════════════════════════ -->
+    <!-- ══ 04 COMPANY ══════════════════════════════════════════════ -->
     <section id="company">
       <div class="wrap">
-        <p class="eyebrow tick"><span class="section-index silver">03</span> &nbsp;COMPANY</p>
-        <h2 class="section-title reveal reveal-title" style="margin-bottom: var(--s8)">PALDYN은 이런 회사입니다</h2>
+        <p class="eyebrow tick"><span class="section-index">04</span> &nbsp;COMPANY</p>
+        <h2 class="section-title reveal reveal-title" style="margin-bottom: var(--s8)">두 개의 기둥으로 움직입니다</h2>
 
         <div class="company-grid">
           <div class="company-l reveal">
             <p>PALDYN은 일상의 불편을 없애는 서비스를 직접 만들고, 만든 것을 끝까지 운영합니다. 외주로 만들어 넘기는 대신, 우리가 책임지는 서비스를 늘려갑니다.</p>
-            <p>출시 이후가 시작이라고 믿습니다. 데이터와 사용자 피드백으로 고치는 주기를 제품 안에 넣어 두고, 그 과정에서 배운 것은 <a class="underline" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog</a>에 남깁니다.</p>
-            <p>브랜드 심볼은 마주 보는 두 반쪽이 하나의 팔각형을 이루는 형태입니다. 가로로 늘어난 팔각, 중앙의 음각, 그 둘을 가르는 시임 — 이 페이지의 좌측 정렬선은 그 시임을 그대로 옮긴 것입니다.</p>
+            <p>동시에 인공지능과 양자처럼 다가올 기술을 미리 들여다봅니다. 거기서 본 것이 다음에 만들 서비스의 재료가 됩니다.</p>
+            <p>브랜드 심볼은 마주 보는 두 반쪽이 하나의 팔각형을 이루는 형태입니다. 만드는 일과 보는 일 — 그 둘이 맞물려야 하나가 됩니다.</p>
           </div>
 
           <div class="company-r">
@@ -978,6 +1067,8 @@
                   <line class="bp-lead" x1="155" y1="200" x2="90" y2="200"/>
                   <line class="bp-lead" x1="274" y1="267" x2="310" y2="267"/>
                 </g>
+                <text class="bp-pillar" x="144" y="96" text-anchor="middle">SERVICE</text>
+                <text class="bp-pillar" x="256" y="96" text-anchor="middle">RESEARCH</text>
                 <text class="bp-label" x="84" y="136" text-anchor="end">FACET 20.5°</text>
                 <text class="bp-label" x="316" y="136">SEAM</text>
                 <text class="bp-label" x="84" y="203" text-anchor="end">COUNTER</text>
@@ -989,7 +1080,6 @@
       </div>
     </section>
 
-    <!-- ══ 인터루드 — 대형 워드마크 ═════════════════════════════════ -->
     <div class="closer" aria-hidden="true">
       <span class="closer-word">
         <span class="ol">PALDYN</span>
@@ -998,10 +1088,10 @@
     </div>
   </div>
 
-  <!-- ══ STAGE 04 — 연락 ══════════════════════════════════════════════ -->
+  <!-- ══ 05 CONTACT ═════════════════════════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="wrap">
-      <p class="eyebrow tick"><span class="section-index">04</span> &nbsp;CONTACT</p>
+      <p class="eyebrow tick"><span class="section-index">05</span> &nbsp;CONTACT</p>
       <h2 class="section-title reveal reveal-title">어디로 연락하면 되는지</h2>
 
       <div class="channels">
@@ -1011,7 +1101,7 @@
           <p class="ch-note">협업, 제안, 그 밖의 모든 문의</p>
         </div>
         <div class="channel reveal">
-          <p class="ch-name">제품 지원</p>
+          <p class="ch-name">서비스 지원</p>
           <a class="ch-mail underline" href="mailto:support@paldyn.com">support@paldyn.com</a>
           <p class="ch-note">Ascend 및 서비스 이용 문의</p>
         </div>
@@ -1032,12 +1122,19 @@
       </div>
 
       <div class="footer-col">
-        <h4>Products</h4>
+        <h4>Services</h4>
         <ul>
           <li><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>Nemo</a></li>
           <li><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>DevDock</a></li>
-          <li><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>AI Lab</a></li>
           <li><a href="/ascend/"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>Ascend</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>AI Lab</a></li>
+          <li><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-blog"/></svg>Tech Blog</a></li>
         </ul>
       </div>
 
@@ -1047,14 +1144,6 @@
           <li><a class="underline" href="#build">우리가 만드는 방식</a></li>
           <li><a class="underline" href="#company">회사 소개</a></li>
           <li><a class="underline" href="#contact">문의</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a class="underline" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></li>
-          <li><a class="underline" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a></li>
         </ul>
       </div>
 
@@ -1095,6 +1184,21 @@
     root.classList.add('motion-lite');
   }
 
+  /* ── 앵커 이동: 거리가 멀면 스무스를 쓰지 않는다 ────────────────────
+     전역 scroll-behavior:smooth면 #contact 클릭 시 커튼 185svh와 스택
+     전체를 흘러 통과하며 그 내내 스크럽이 감겼다 풀린다. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a || a.getAttribute('href') === '#') return;
+    var t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    var y = t.getBoundingClientRect().top + window.scrollY - 88;
+    var far = Math.abs(y - window.scrollY) > window.innerHeight * 2.5;
+    window.scrollTo({ top: y, behavior: (reduced() || far) ? 'auto' : 'smooth' });
+    if (history.replaceState) history.replaceState(null, '', a.getAttribute('href'));
+  });
+
   /* ── 테마 ─────────────────────────────────────────────────────────── */
   function currentTheme() {
     return root.getAttribute('data-theme') ||
@@ -1132,7 +1236,8 @@
   var behind = [document.querySelector('main'), document.querySelector('footer')];
 
   function setMenu(open) {
-    overlay.hidden = !open;
+    /* hidden 속성은 transition을 막는다 — inert로 접근성만 차단한다 */
+    if (open) { overlay.removeAttribute('inert'); } else { overlay.setAttribute('inert', ''); }
     overlay.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.body.style.overflow = open ? 'hidden' : '';
@@ -1166,21 +1271,14 @@
       nav.classList.toggle('is-stuck', entries[0].boundingClientRect.top <= 64);
     }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(sentinel);
   }
-  var lastY = window.scrollY, ticking = false;
-  window.addEventListener('scroll', function () {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () {
-      var y = window.scrollY;
-      if (!overlay.classList.contains('is-open') && Math.abs(y - lastY) > 6) {
-        nav.classList.toggle('is-hidden', y > lastY && y > 260);
-      }
-      lastY = y;
-      ticking = false;
-    });
-  }, { passive: true });
+  var lastY = window.scrollY;
+  function syncNavDir(y) {
+    if (overlay.classList.contains('is-open')) return;
+    if (Math.abs(y - lastY) > 6) nav.classList.toggle('is-hidden', y > lastY && y > 260);
+    lastY = y;
+  }
 
-  /* ── 리빌: 스크럽 미지원 브라우저 폴백 ────────────────────────────── */
+  /* ── 리빌 폴백 (스크럽 미지원 브라우저) ───────────────────────────── */
   if (!scrub && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -1194,21 +1292,21 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* ── 선 그리기: 길이를 실측해 dasharray에 기입 ────────────────────── */
   function measureLines() {
     document.querySelectorAll('.mono-big path, .bp-lead').forEach(function (p) {
-      var len = 0;
-      try { len = p.getTotalLength(); } catch (e) { len = 120; }
+      var len = 120;
+      try { len = p.getTotalLength(); } catch (e) {}
       p.style.setProperty('--len', len.toFixed(1));
       p.style.strokeDasharray = len.toFixed(1);
       if (scrub && !reduced()) p.style.strokeDashoffset = len.toFixed(1);
     });
   }
 
-  /* ── 제품 스택: 스크롤 구간을 px로 측정해 기입 ────────────────────── */
+  /* ── 서비스 스택 ──────────────────────────────────────────────────── */
   var stack = document.getElementById('stack');
   var stages = [].slice.call(document.querySelectorAll('.stage'));
   var tabs = [].slice.call(document.querySelectorAll('.rail-tab'));
+  var rail = document.getElementById('rail');
 
   function measureStack() {
     if (!stack || !stages.length) return;
@@ -1216,12 +1314,12 @@
     var top = stack.getBoundingClientRect().top + window.scrollY;
     var step = stages.length > 1
       ? (stages[1].getBoundingClientRect().top - stages[0].getBoundingClientRect().top)
-      : window.innerHeight * 0.72;
+      : window.innerHeight * 0.7;
     stages.forEach(function (s, i) {
-      var enter = stacked ? top + (i - 0.65) * step : s.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.8;
+      var enter = stacked
+        ? top + (i - 0.65) * step
+        : s.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.8;
       var end = enter + window.innerHeight * 0.55;
-      s.dataset.enter = Math.max(0, enter);
-      s.dataset.end = end;
       s.querySelectorAll('.mono-big path, .mono-big circle').forEach(function (p, j) {
         p.style.animationRange = Math.max(0, enter + j * 30) + 'px ' + (end + j * 30) + 'px';
       });
@@ -1233,41 +1331,48 @@
     var y = window.scrollY + window.innerHeight * 0.45;
     var active = -1;
     stages.forEach(function (s, i) {
-      var r = s.getBoundingClientRect();
-      var t = r.top + window.scrollY;
-      if (y >= t) active = i;
+      if (y >= s.getBoundingClientRect().top + window.scrollY) active = i;
+    });
+    stages.forEach(function (s, i) {
+      s.classList.toggle('is-top', i === active);
+      s.classList.toggle('is-under', i < active);
     });
     tabs.forEach(function (t, i) { t.classList.toggle('is-on', i === active); });
+    /* 인디케이터는 탭마다 하나가 아니라 움직이는 물체 하나다 */
+    if (rail && active >= 0 && tabs[active]) {
+      rail.style.setProperty('--tab-x', tabs[active].offsetLeft + 'px');
+      rail.style.setProperty('--tab-w', tabs[active].offsetWidth + 'px');
+    }
   }
 
   /* ── nav 오도미터 ─────────────────────────────────────────────────── */
   var odo = document.getElementById('odoTrack');
+  var navLinks = [].slice.call(document.querySelectorAll('.nav-links a'));
   var sections = [
     { el: document.getElementById('products'), n: 1 },
-    { el: document.getElementById('build'), n: 2 },
-    { el: document.getElementById('company'), n: 3 },
-    { el: document.getElementById('contact'), n: 4 }
+    { el: document.getElementById('research'), n: 2 },
+    { el: document.getElementById('build'), n: 3 },
+    { el: document.getElementById('company'), n: 4 },
+    { el: document.getElementById('contact'), n: 5 }
   ].filter(function (s) { return s.el; });
 
   function syncOdo() {
-    if (!odo) return;
     var y = window.scrollY + window.innerHeight * 0.4;
     var n = 0;
     sections.forEach(function (s) {
       if (y >= s.el.getBoundingClientRect().top + window.scrollY) n = s.n;
     });
-    odo.style.transform = 'translateY(' + (-n) + 'em)';
-    document.querySelectorAll('.nav-links a').forEach(function (a, i) {
-      a.classList.toggle('is-current', i === n - 1);
+    if (odo) odo.style.transform = 'translateY(' + (-n) + 'em)';
+    navLinks.forEach(function (a) {
+      a.classList.toggle('is-current', Number(a.dataset.section) === n);
     });
   }
 
-  /* ── 리딩 하이라이트 — 이중 게이트 (미지원 시 분해조차 하지 않는다) ── */
+  /* ── 리딩 하이라이트 — 이중 게이트 ────────────────────────────────── */
   function buildManifesto() {
     var p = document.getElementById('manifesto');
     if (!p || !scrub || reduced()) return;
-    var words = p.textContent.split(/(\s+)/);
-    p.innerHTML = words.map(function (t) {
+    p.innerHTML = p.textContent.split(/(\s+)/).map(function (t) {
       return /^\s+$/.test(t) ? t : '<span class="w">' + t + '</span>';
     }).join('');
     var ws = p.querySelectorAll('.w');
@@ -1277,7 +1382,6 @@
     });
   }
 
-  /* ── 도면 리더선 ──────────────────────────────────────────────────── */
   function setBlueprintRanges() {
     document.querySelectorAll('.bp-lead').forEach(function (l, i) {
       l.style.animationRange = 'entry 40% cover ' + (30 + i * 8) + '%';
@@ -1285,21 +1389,21 @@
     document.querySelectorAll('.bp-label').forEach(function (l, i) {
       l.style.animationRange = 'entry 55% cover ' + (35 + i * 8) + '%';
     });
+    document.querySelectorAll('.bp-pillar').forEach(function (l, i) {
+      l.style.animationRange = 'entry 30% cover ' + (22 + i * 6) + '%';
+    });
   }
 
-  /* ── 각주 칩 ──────────────────────────────────────────────────────── */
   document.querySelectorAll('[data-cite]').forEach(function (chip) {
     chip.addEventListener('click', function () {
       var t = document.querySelector(chip.getAttribute('href'));
       if (!t) return;
-      var plate = t.querySelector('.plate');
-      if (!plate) return;
-      plate.style.background = 'var(--border-strong)';
-      setTimeout(function () { plate.style.background = ''; }, 1400);
+      var target = t.querySelector('.plate') || t;
+      target.style.filter = 'var(--dp-lift)';
+      setTimeout(function () { target.style.filter = ''; }, 1400);
     });
   });
 
-  /* ── 원칙 활성 표시 ───────────────────────────────────────────────── */
   var principles = document.querySelectorAll('.principle');
   if (principles.length && 'IntersectionObserver' in window) {
     var pio = new IntersectionObserver(function (entries) {
@@ -1308,22 +1412,15 @@
     principles.forEach(function (el) { pio.observe(el); });
   }
 
-  /* ── 히어로 축의 중앙 공백을 심볼 폭에 맞춘다 ─────────────────────── */
   function measureAxis() {
-    var mark = document.querySelector('.hero-inner .mark');
     var lock = document.querySelector('.lockup-hero');
-    if (!mark || !lock) return;
+    if (!lock) return;
     var gap = Math.max(140, lock.getBoundingClientRect().width / 2 + 28);
-    document.documentElement.style.setProperty('--axis-gap', gap + 'px');
+    root.style.setProperty('--axis-gap', gap + 'px');
   }
 
   function measureAll() {
-    measureAxis();
-    measureLines();
-    measureStack();
-    setBlueprintRanges();
-    syncStage();
-    syncOdo();
+    measureAxis(); measureLines(); measureStack(); setBlueprintRanges(); syncStage(); syncOdo();
   }
 
   if (document.fonts && document.fonts.ready) {
@@ -1334,17 +1431,18 @@
   window.addEventListener('load', measureAll);
 
   var t = null;
-  window.addEventListener('resize', function () {
-    clearTimeout(t);
-    t = setTimeout(measureAll, 150);
-  });
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(measureAll, 150); });
   window.addEventListener('orientationchange', function () { setTimeout(measureAll, 200); });
 
-  var sTick = false;
+  var ticking = false;
   window.addEventListener('scroll', function () {
-    if (sTick) return;
-    sTick = true;
-    requestAnimationFrame(function () { syncStage(); syncOdo(); sTick = false; });
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = window.scrollY;
+      syncNavDir(y); syncStage(); syncOdo();
+      ticking = false;
+    });
   }, { passive: true });
 })();
 </script>
