@@ -302,6 +302,76 @@
       .facts dd { border-top: 0; padding-top: 0; }
       .foot-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ══ 3D 스테이지 ═══════════════════════════════════════════════════
+       심볼은 마주 보는 두 반쪽이 하나가 되는 형태다. 그 사실을 그대로
+       공간에 세운다 — 압출한 두 반쪽이 떠 있고, 다섯 자산이 그 궤도에 놓인다.
+       WebGL이 없거나 모션을 줄인 환경에서는 정적 심볼로 안전하게 내려앉는다. */
+    .stage {
+      position: relative; height: 100svh; min-height: 620px;
+      background: var(--tile-a); overflow: hidden;
+      display: grid; align-content: end; justify-items: center;
+      padding-bottom: clamp(64px, 11svh, 120px);
+      isolation: isolate;
+    }
+    .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .stage-fallback { position: absolute; inset: 0; display: none; place-items: center; }
+    .stage-fallback svg { width: min(46vw, 300px); height: auto; aspect-ratio: 1; color: var(--ink); opacity: 0.9; }
+    .no3d .stage canvas { display: none; }
+    .no3d .stage-fallback { display: grid; }
+
+    .stage-copy {
+      position: relative; z-index: 2; text-align: center; padding: 0 22px;
+      pointer-events: none;
+    }
+    .stage-copy .title { text-wrap: balance; }
+    .stage-copy .links { pointer-events: auto; }
+    .stage-copy .sub { margin-inline: auto; }
+
+    /* 자산 궤도 라벨 — 3D 좌표를 매 프레임 투영해 붙인다 */
+    .orbit { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+    .pin {
+      position: absolute; transform: translate(-50%, -50%);
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 11px 7px 8px;
+      font-size: 12px; line-height: 1; letter-spacing: 0.01em;
+      color: var(--ink); text-decoration: none; white-space: nowrap;
+      background: color-mix(in srgb, var(--tile-a) 76%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--hairline);
+      pointer-events: auto; opacity: 0;
+      transition: opacity 400ms var(--e-sig), border-color 200ms var(--e-sig), transform 200ms var(--e-sig);
+    }
+    .stage.ready .pin { opacity: 1; }
+    .pin svg { width: 15px; height: 15px; color: var(--ink); }
+    .pin i { display: block; width: 6px; height: 6px; background: var(--link); font-style: normal; }
+    .pin i.soon { background: none; box-shadow: inset 0 0 0 1px var(--ink-dim); }
+    @media (hover: hover) { .pin:hover { border-color: var(--link); transform: translate(-50%, -50%) translateY(-2px); } }
+
+    /* 로더 — 진입 전까지 스테이지를 덮는다 */
+    .loader {
+      position: absolute; inset: 0; z-index: 6; background: var(--tile-a);
+      display: grid; place-content: center; gap: 12px; justify-items: center;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-dim);
+      transition: opacity 600ms var(--e-sig), visibility 600ms;
+    }
+    .loader .bar { width: 148px; height: 1px; background: var(--hairline); position: relative; }
+    .loader .bar span { position: absolute; inset: 0 auto 0 0; width: 0%; background: var(--link); transition: width 300ms linear; }
+    .stage.ready .loader { opacity: 0; visibility: hidden; }
+
+    .scroll-cue {
+      position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+      z-index: 4; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-dim); opacity: 0; transition: opacity 600ms var(--e-sig) 400ms;
+    }
+    .stage.ready .scroll-cue { opacity: 1; }
+
+    @media (max-width: 833px) {
+      .stage { height: 88svh; }
+      .pin { font-size: 11px; padding: 6px 9px 6px 7px; }
+      .pin svg { width: 13px; height: 13px; }
+    }
+
     @media (max-width: 480px) {
       .nav-inner { gap: 16px; padding-inline: 16px; }
       .nav ul { gap: 16px; }
@@ -319,6 +389,11 @@
       <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
       <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
     </g>
+    <g id="m-nemo"><path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z"/><path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z"/></g>
+    <g id="m-devdock"><path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z"/><path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z"/><path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z"/><path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z"/></g>
+    <g id="m-ascend"><path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z"/><path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z"/><path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z"/></g>
+    <g id="m-ailab"><path d="M16 5A11 11 0 1 0 27 16"/><path d="M16 10A6 6 0 1 0 22 16"/><path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/><circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/></g>
+    <g id="m-blog"><path d="M7 5.5 L20 5.5 L25 10.5 L25 26.5 L7 26.5 Z"/><path d="M19.5 5.5 L19.5 11 L25 11"/><path d="M11.5 16 L20.5 16 M11.5 20.5 L17.5 20.5"/></g>
   </defs>
 </svg>
 
@@ -346,16 +421,35 @@
 </nav>
 
 <main>
-  <!-- 회사 ─────────────────────────────────────────────────────────── -->
-  <section class="tile tall" aria-labelledby="t-hero">
-    <h1 class="title" id="t-hero">서비스를 만들고,<br>직접 운영합니다</h1>
-    <p class="sub">노트, 개발자 도구, 운동 기록 앱. 그리고 인공지능을 계속 읽고 정리합니다.</p>
-    <div class="links">
-      <a class="lnk" href="#services">서비스 보기</a>
-      <a class="lnk" href="#research">리서치 보기</a>
-    </div>
-    <div class="art symbol" aria-hidden="true">
+  <!-- 3D 스테이지 ─────────────────────────────────────────────────── -->
+  <section class="stage" id="stage" aria-labelledby="t-hero">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="stage-fallback" aria-hidden="true">
       <svg viewBox="0 0 240 240" fill="currentColor"><use href="#pd-symbol"/></svg>
+    </div>
+
+    <div class="stage-copy">
+      <h1 class="title" id="t-hero">서비스를 만들고,<br>직접 운영합니다</h1>
+      <p class="sub">노트, 개발자 도구, 운동 기록 앱. 그리고 인공지능을 계속 읽고 정리합니다.</p>
+      <div class="links">
+        <a class="lnk" href="#services">서비스 보기</a>
+        <a class="lnk" href="#research">리서치 보기</a>
+      </div>
+    </div>
+
+    <div class="orbit" id="orbit">
+      <a class="pin" href="#services" data-pin="0"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#m-nemo"/></svg>Nemo<i></i></a>
+      <a class="pin" href="#services" data-pin="1"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#m-devdock"/></svg>DevDock<i></i></a>
+      <a class="pin" href="#services" data-pin="2"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#m-ascend"/></svg>Ascend<i class="soon"></i></a>
+      <a class="pin" href="#research" data-pin="3"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#m-ailab"/></svg>AI Lab<i></i></a>
+      <a class="pin" href="#research" data-pin="4"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#m-blog"/></svg>Tech Blog<i></i></a>
+    </div>
+
+    <p class="scroll-cue">스크롤</p>
+
+    <div class="loader" id="loader">
+      <div class="bar"><span id="bar"></span></div>
+      <p id="loadTxt">불러오는 중</p>
     </div>
   </section>
 
@@ -569,6 +663,197 @@
     showAll();
   }
 })();
+</script>
+
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }
+</script>
+<script type="module">
+/* ══════════════════════════════════════════════════════════════════════
+   3D 스테이지 — 심볼의 두 반쪽을 실제로 압출해 공간에 세운다.
+   좌표는 SVG path에서 그대로 가져와 중심 이동 + y축 반전 + 1/60 스케일한 값이다.
+   WebGL이 없거나 모션 축소면 아무것도 만들지 않고 정적 폴백에 맡긴다.
+   ══════════════════════════════════════════════════════════════════════ */
+const root = document.documentElement;
+const stage = document.getElementById('stage');
+const loader = document.getElementById('loader');
+const bar = document.getElementById('bar');
+const loadTxt = document.getElementById('loadTxt');
+
+function reduced() {
+  return root.getAttribute('data-motion') === 'reduced' ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+function hasWebGL() {
+  try { const c = document.createElement('canvas');
+    return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; }
+}
+function ready() { stage.classList.add('ready'); }
+function bail() { root.classList.add('no3d'); ready(); }
+
+if (!hasWebGL()) { bail(); }
+else {
+  let pct = 0;
+  const tick = setInterval(() => { pct = Math.min(90, pct + 7); bar.style.width = pct + '%'; }, 90);
+
+  import('three').then((THREE) => {
+    clearInterval(tick);
+    bar.style.width = '100%';
+    loadTxt.textContent = '준비됨';
+    build(THREE);
+    setTimeout(ready, 260);
+  }).catch(() => { clearInterval(tick); bail(); });
+
+  function css(name) { return getComputedStyle(root).getPropertyValue(name).trim(); }
+
+  function build(THREE) {
+    const L_OUT  = [[-0.1055,1.5373],[-1.2417,1.1133],[-1.7483,0],[-1.2417,-1.1133],[-0.1055,-1.5373]];
+    const L_HOLE = [[-0.1055,0.6357],[-0.5317,0.4767],[-0.7483,0],[-0.5317,-0.4767],[-0.1055,-0.6357]];
+    const R_OUT  = [[0.1055,1.5373],[1.2417,1.1133],[1.7483,0],[1.2417,-1.1133],[0.1055,-1.5373]];
+    const R_HOLE = [[0.1055,0.6357],[0.5317,0.4767],[0.7483,0],[0.5317,-0.4767],[0.1055,-0.6357]];
+
+    const shape = (outer, hole) => {
+      const s = new THREE.Shape();
+      outer.forEach(([x, y], i) => i ? s.lineTo(x, y) : s.moveTo(x, y));
+      s.closePath();
+      const h = new THREE.Path();
+      hole.forEach(([x, y], i) => i ? h.lineTo(x, y) : h.moveTo(x, y));
+      h.closePath();
+      s.holes.push(h);
+      return s;
+    };
+
+    const canvas = document.getElementById('gl');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+    camera.position.set(0, 0, 10.4);
+
+    const extrude = { depth: 0.42, bevelEnabled: true, bevelThickness: 0.035, bevelSize: 0.035, bevelSegments: 3, curveSegments: 4 };
+    const mat = new THREE.MeshStandardMaterial({ metalness: 0.28, roughness: 0.36 });
+    const seamMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.95 });
+
+    const left = new THREE.Mesh(new THREE.ExtrudeGeometry(shape(L_OUT, L_HOLE), extrude), mat);
+    const right = new THREE.Mesh(new THREE.ExtrudeGeometry(shape(R_OUT, R_HOLE), extrude), mat);
+    const seam = new THREE.Mesh(new THREE.BoxGeometry(0.035, 3.07, 0.44), seamMat);
+    seam.position.z = 0.21;
+
+    const mark = new THREE.Group();
+    mark.add(left, right, seam);
+    scene.add(mark);
+    const MARK_Y = 1.05;   /* 카피가 앉을 아래쪽을 비운다 */
+
+    const key = new THREE.DirectionalLight(0xffffff, 2.1); key.position.set(3.5, 4, 6);
+    const rim = new THREE.DirectionalLight(0xffffff, 1.5); rim.position.set(-5, -2, -3);
+    const amb = new THREE.AmbientLight(0xffffff, 0.65);
+    scene.add(key, rim, amb);
+
+    /* 다섯 자산이 심볼 궤도에 놓인다 */
+    /* 궤도 반경과 마크 크기는 화면 폭의 함수다 — 좁은 화면에서 핀이 잘리면 안 된다 */
+    const anchors = [0, 1, 2, 3, 4].map(() => new THREE.Vector3());
+    function layoutOrbit() {
+      const narrow = stage.clientWidth < 720;
+      const R = narrow ? 1.62 : 2.62;
+      mark.scale.setScalar(narrow ? 0.6 : 0.82);
+      anchors.forEach((v, i) => {
+        const a = (90 + i * 72) * Math.PI / 180;   /* 아래 중앙은 카피 자리라 비운다 */
+        v.set(Math.cos(a) * R, Math.sin(a) * R * 0.66 + MARK_Y, Math.sin(a * 1.4) * 0.6);
+      });
+      lines.forEach((ln, i) => {
+        const v = anchors[i];
+        const c0 = new THREE.Vector3(v.x * 0.5, MARK_Y + (v.y - MARK_Y) * 0.5, v.z * 0.5);
+        ln.geometry.setFromPoints([c0, v]);
+      });
+    }
+    const lineMat = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.28 });
+    const lines = anchors.map(() => {
+      const ln = new THREE.Line(new THREE.BufferGeometry(), lineMat);
+      scene.add(ln); return ln;
+    });
+    layoutOrbit();
+    const pins = [].slice.call(document.querySelectorAll('.pin'));
+
+    function paint() {
+      const ink = css('--ink') || '#1d1d1f';
+      const link = css('--link') || '#bf4100';
+      mat.color.set(ink); seamMat.color.set(link); lineMat.color.set(ink);
+      mat.needsUpdate = true;
+    }
+    paint();
+    new MutationObserver(paint).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+
+    function resize() {
+      const w = stage.clientWidth, h = stage.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.position.z = w < 720 ? 12.4 : 10.4;
+      layoutOrbit();
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    addEventListener('resize', resize);
+
+    /* 포인터는 시선을 조금 옮길 뿐 — 따라다니지 않는다 */
+    let px = 0, py = 0, tx = 0, ty = 0;
+    if (matchMedia('(hover: hover)').matches) {
+      addEventListener('pointermove', (e) => {
+        tx = (e.clientX / innerWidth - 0.5) * 0.5;
+        ty = (e.clientY / innerHeight - 0.5) * 0.32;
+      }, { passive: true });
+    }
+
+    const v = new THREE.Vector3();
+    const still = reduced();
+    let t0 = performance.now();
+
+    function frame(now) {
+      requestAnimationFrame(frame);
+      const dt = Math.min((now - t0) / 1000, 0.05); t0 = now;
+
+      /* 스크롤이 두 반쪽을 벌린다 — 페이지를 떠날수록 열린다 */
+      const p = Math.min(1, (scrollY || 0) / (stage.clientHeight || 1));
+      const gap = p * 0.9;
+      left.position.x = -gap; right.position.x = gap;
+      seam.scale.y = 1 - p * 0.85;
+      seamMat.opacity = 0.95 * (1 - p);
+
+      if (!still) {
+        px += (tx - px) * Math.min(1, dt * 4);
+        py += (ty - py) * Math.min(1, dt * 4);
+        mark.rotation.y = px + Math.sin(now / 5200) * 0.12;
+        mark.rotation.x = py * 0.6 + Math.cos(now / 6100) * 0.05;
+      } else {
+        mark.rotation.set(0, 0, 0);
+      }
+      mark.position.y = MARK_Y - p * 1.1;
+      scene.rotation.z = 0;
+
+      /* 궤도 라벨을 화면 좌표로 투영 */
+      const w = stage.clientWidth, h = stage.clientHeight;
+      anchors.forEach((a, i) => {
+        v.copy(a);
+        v.y -= MARK_Y; v.applyEuler(mark.rotation); v.y += MARK_Y;
+        v.y += (mark.position.y - MARK_Y);
+        v.project(camera);
+        const el = pins[i]; if (!el) return;
+        /* 라벨이 화면 밖으로 나가지 않게 자기 폭만큼 물려 둔다 */
+        const halfW = el.offsetWidth / 2 + 8;
+        const halfH = el.offsetHeight / 2 + 8;
+        const x = Math.min(w - halfW, Math.max(halfW, (v.x * 0.5 + 0.5) * w));
+        const y = Math.min(h - halfH, Math.max(halfH, (-v.y * 0.5 + 0.5) * h));
+        el.style.left = x.toFixed(1) + 'px';
+        el.style.top = y.toFixed(1) + 'px';
+      });
+
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(frame);
+  }
+}
 </script>
 
 </body>
