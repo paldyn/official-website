@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PALDYN — 서비스를 만들고, 직접 운영하고, 인공지능과 양자를 연구합니다</title>
+  <title>PALDYN — 서비스를 만들고, 직접 운영하고, 인공지능을 연구합니다</title>
   <meta name="description" content="팔딘이 직접 만들어 운영하는 다섯 개 — Nemo(노트·저널), DevDock(개발자 도구), Ascend(운동 기록, 비공개 테스트), AI Lab, Tech Blog.">
   <link rel="canonical" href="https://paldyn.com/">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -12,14 +12,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PALDYN">
   <meta property="og:url" content="https://paldyn.com/">
-  <meta property="og:title" content="PALDYN — 서비스를 만들고, 직접 운영하고, 인공지능과 양자를 연구합니다">
+  <meta property="og:title" content="PALDYN — 서비스를 만들고, 직접 운영하고, 인공지능을 연구합니다">
   <meta property="og:description" content="Nemo · DevDock · Ascend · AI Lab · Tech Blog. 팔딘이 직접 만들어 운영합니다.">
   <meta property="og:image" content="https://paldyn.com/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PALDYN — 서비스를 만들고, 직접 운영하고, 인공지능과 양자를 연구합니다">
+  <meta name="twitter:title" content="PALDYN — 서비스를 만들고, 직접 운영하고, 인공지능을 연구합니다">
   <meta name="twitter:description" content="Nemo · DevDock · Ascend · AI Lab · Tech Blog. 팔딘이 직접 만들어 운영합니다.">
   <meta name="twitter:image" content="https://paldyn.com/assets/og.png">
 
@@ -52,9 +52,9 @@
     "alternateName": "팔딘",
     "url": "https://paldyn.com/",
     "logo": "https://paldyn.com/assets/favicon.png",
-    "description": "서비스를 만들어 직접 운영하고, 인공지능과 양자를 연구합니다",
+    "description": "서비스를 만들어 직접 운영하고, 인공지능을 연구합니다",
     "email": "contact@paldyn.com",
-    "knowsAbout": ["인공지능", "양자"],
+    "knowsAbout": ["인공지능"],
     "sameAs": [
       "https://nemo.paldyn.com/",
       "https://devdock.paldyn.com/",
@@ -123,7 +123,9 @@
       letter-spacing: 0.16em; line-height: 1; color: var(--text);
     }
 
-    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav-sep { width: 1px; height: 12px; background: var(--border); }
+    .nav-ext span { font-size: var(--fs-1); opacity: 0.7; }
     .nav-links a {
       position: relative; font-size: var(--fs-2); font-weight: var(--fw-medium);
       letter-spacing: var(--ls-13); line-height: 1; color: var(--i-fg); text-decoration: none;
@@ -215,6 +217,11 @@
       display: grid; align-content: start;
     }
     .lede-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); }
+    .lede-rule {
+      grid-column: 1 / span 12; height: 1px; background: var(--border-subtle);
+      transform: scaleX(0); transform-origin: left; margin-bottom: var(--s7);
+    }
+    .js .lede-rule { animation: axisOut 900ms var(--e-mech) 60ms both; }
     .lede-copy { grid-column: 1 / span 10; }
 
     .lede-label {
@@ -223,7 +230,11 @@
       letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-mute);
       line-height: 1;
     }
-    .lede-label::before { content: ''; width: 1px; height: 12px; background: var(--brand); flex: none; transform-origin: center; }
+    /* 틱은 정렬선 밖에 걸고 라벨 텍스트는 h1과 같은 x에서 시작한다 */
+    .lede-label::before {
+      content: ''; width: 1px; height: 12px; margin-left: -11px;
+      background: var(--brand); flex: none; transform-origin: center;
+    }
     .js .lede-label { animation: fadeIn 320ms linear 200ms both; }
     .js .lede-label::before { animation: seamIgnite 200ms var(--e-mech) 160ms both; }
 
@@ -234,10 +245,17 @@
       letter-spacing: var(--ls-display); line-height: calc(1em + 4px);
       color: var(--text);
     }
-    .lede h1 span { display: block; }
-    .js .lede h1 .l1 { animation: riseIn 360ms var(--e-sig) 240ms both; }
-    .js .lede h1 .l2 { animation: riseIn 360ms var(--e-sig) 300ms both; }
-    .js .lede h1 .l3 { animation: riseIn 360ms var(--e-sig) 360ms both; }
+    /* 절마다 클립 창을 만들고 그 안에서 밀려 올라온다 —
+       받침 있는 한글은 em 박스를 꽉 채우므로 창만 넓히고 레이아웃은 유지한다. */
+    .lede h1 span {
+      display: block; overflow: hidden;
+      padding-block: 0.14em; margin-block: -0.14em;
+    }
+    .lede h1 span i { display: block; font-style: normal; }
+    .js .lede h1 span i { animation: lineUp 720ms var(--e-sig) both; }
+    .js .lede h1 .l1 i { animation-delay: 180ms; }
+    .js .lede h1 .l2 i { animation-delay: 270ms; }
+    .js .lede h1 .l3 i { animation-delay: 360ms; }
 
     .lede-sub {
       margin-top: var(--s5); max-width: var(--measure);
@@ -266,6 +284,7 @@
       background: var(--border-subtle); transform: scaleX(0); transform-origin: left;
     }
     .js .idx-row::before { animation: axisOut 300ms var(--e-mech) both; animation-delay: calc(480ms + var(--n, 0) * 60ms); }
+    /* 스크럽 지원 브라우저에서는 위 로드 시퀀스 대신 아래 @supports의 스크롤 스크럽이 이긴다 */
     .index-group .idx-row:last-child { border-bottom: 1px solid var(--border-subtle); }
     .js .idx-row > * { animation: riseIn 320ms var(--e-sig) both; animation-delay: calc(540ms + var(--n, 0) * 60ms); }
     @media (hover: hover) {
@@ -480,6 +499,10 @@
     @keyframes revealUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: none } }
     @keyframes revealSm { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
     @keyframes drawLine { to { stroke-dashoffset: 0 } }
+    @keyframes lineUp { from { transform: translateY(101%) } to { transform: translateY(0) } }
+    @keyframes lift { to { transform: translateY(-40px); opacity: 0.55 } }
+    @keyframes ruleIn { from { border-top-color: transparent } to { border-top-color: var(--border) } }
+    @keyframes tileIn { from { opacity: 0; transform: translateY(28px) scale(0.97) } to { opacity: 1; transform: none } }
     @keyframes bandOpen { from { clip-path: inset(50% 0 50% 0) } to { clip-path: inset(0 0 0 0) } }
     @keyframes wipeIn { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
 
@@ -489,24 +512,42 @@
       .js .reveal-title { animation-name: revealUp; animation-range: entry 12% cover 30%; }
       .js .reveal-card { animation-name: revealUp; animation-range: entry 4% cover 38%; }
 
-      .js .res-item::before { animation: axisOut linear both; animation-timeline: view(block); animation-range: entry 10% entry 60%; }
+      /* 배너 — 스크롤하면 무게를 남기며 뒤로 물러난다 */
+      .js .lede-copy { animation: lift linear both; animation-timeline: scroll(root block); animation-range: 0 70svh; }
+
+      /* 인덱스 5행 — 선이 그어지고 내용이 올라온다. 되감으면 되감긴다 */
+      .js .idx-row::before { animation: axisOut linear both; animation-timeline: view(block); animation-range: entry 0% entry 55%; }
+      .js .idx-row > * { animation: revealSm linear both; animation-timeline: view(block); animation-range: entry 10% entry 75%; }
+
+      /* 서비스 밴드 — 상단 경계선이 먼저 그어지고 타일이 뒤따른다 */
+      .js .prod { animation: ruleIn linear both; animation-timeline: view(block); animation-range: entry 0% entry 50%; }
+      .js .tile { animation: tileIn linear both; animation-timeline: view(block); animation-range: entry 5% cover 42%; }
       .js .tile svg path { animation: drawLine linear both; animation-timeline: view(block); animation-range: entry 20% cover 55%; }
+
+      .js .res-item::before { animation: axisOut linear both; animation-timeline: view(block); animation-range: entry 10% entry 60%; }
+      .js .facts dt, .js .facts dd { animation: revealSm linear both; animation-timeline: view(block); animation-range: entry 6% entry 70%; }
+
       .contact { animation: bandOpen linear both; animation-timeline: view(block); animation-range: entry 0% entry 92%; }
     }
 
     /* ══ 모션 축소 ══════════════════════════════════════════════════════ */
     @media (prefers-reduced-motion: reduce) {
       .js .lede-label, .js .lede-label::before, .js .lede h1 span,
-      .js .lede-sub, .js .idx-row::before, .js .idx-row > *,
+      .js .lede-sub, .js .idx-row::before, .js .idx-row > *, .js .lede-rule,
+      .js .lede h1 span i, .js .lede-copy, .js .prod, .js .tile,
+      .js .facts dt, .js .facts dd,
       .js .reveal, .js .res-item::before, .js .tile svg path, .contact {
         animation: none !important; opacity: 1 !important; transform: none !important;
         clip-path: none !important; stroke-dashoffset: 0 !important;
       }
-      .idx-row::before, .res-item::before { transform: scaleX(1) !important; }
+      .idx-row::before, .res-item::before, .lede-rule { transform: scaleX(1) !important; }
       .contact { clip-path: inset(0) !important; }
     }
     [data-motion="reduced"] .lede-label, [data-motion="reduced"] .lede-label::before,
     [data-motion="reduced"] .lede h1 span,
+    [data-motion="reduced"] .lede-rule, [data-motion="reduced"] .lede h1 span i,
+    [data-motion="reduced"] .lede-copy, [data-motion="reduced"] .prod,
+    [data-motion="reduced"] .tile, [data-motion="reduced"] .facts dt, [data-motion="reduced"] .facts dd,
     [data-motion="reduced"] .lede-sub, [data-motion="reduced"] .idx-row::before,
     [data-motion="reduced"] .idx-row > *, [data-motion="reduced"] .reveal,
     [data-motion="reduced"] .res-item::before, [data-motion="reduced"] .tile svg path,
@@ -514,7 +555,8 @@
       animation: none !important; opacity: 1 !important; transform: none !important;
       clip-path: none !important; stroke-dashoffset: 0 !important;
     }
-    [data-motion="reduced"] .idx-row::before, [data-motion="reduced"] .res-item::before { transform: scaleX(1) !important; }
+    [data-motion="reduced"] .idx-row::before, [data-motion="reduced"] .res-item::before,
+    [data-motion="reduced"] .lede-rule { transform: scaleX(1) !important; }
     [data-motion="reduced"] .contact { clip-path: inset(0) !important; }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -613,6 +655,9 @@
       <li><a class="underline" href="#research" data-section="2">Research</a></li>
       <li><a class="underline" href="#company" data-section="3">Company</a></li>
       <li><a class="underline" href="#contact" data-section="4">Contact</a></li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li><a class="underline nav-ext" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab <span aria-hidden="true">↗</span></a></li>
+      <li><a class="underline nav-ext" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog <span aria-hidden="true">↗</span></a></li>
     </ul>
     <div class="nav-right">
       <div class="odo" aria-hidden="true"><div class="odo-track" id="odoTrack">
@@ -646,9 +691,10 @@
   <!-- ══ 00 — 한 문장과 자산 인덱스 ═══════════════════════════════════ -->
   <section class="lede" aria-labelledby="lede-h1">
     <div class="wrap lede-grid">
+      <div class="lede-rule" aria-hidden="true"></div>
       <div class="lede-copy">
         <p class="lede-label">PALDYN</p>
-        <h1 id="lede-h1"><span class="l1">서비스를 만들고,</span> <span class="l2">직접 운영하고,</span> <span class="l3">인공지능과 양자를 연구합니다</span></h1>
+        <h1 id="lede-h1"><span class="l1"><i>서비스를 만들고,</i></span> <span class="l2"><i>직접 운영하고,</i></span> <span class="l3"><i>인공지능을 연구합니다</i></span></h1>
         <p class="lede-sub">노트, 개발자 도구, 운동 기록 앱, AI 동향, 개발 기록. 지금 있는 것은 이 다섯 개입니다.</p>
       </div>
 
@@ -799,10 +845,6 @@
             <p class="reveal" style="margin-top: var(--s6)">새 모델이 나오면 무엇이 달라지는지 확인하고, 정리한 내용을 올립니다.</p>
             <p class="reveal">서비스를 만들며 부딪힌 문제와 해결 방법도 그대로 적어 둡니다.</p>
 
-            <div class="topics reveal">
-              <h3>보고 있는 주제</h3>
-              <ul><li>인공지능</li><li>양자</li></ul>
-            </div>
           </div>
 
           <div class="research-r">
@@ -844,7 +886,7 @@
             <p class="eyebrow tick"><span class="section-index">03</span> &nbsp;COMPANY</p>
             <h2 id="company-h2" class="section-title reveal reveal-title">팔딘이 하는 일</h2>
             <p class="reveal" style="margin-top: var(--s6)">팔딘은 만든 서비스를 넘기지 않고, 출시한 뒤에도 계속 고치며 운영합니다.</p>
-            <p class="reveal">인공지능과 양자는 서비스와 별개로 계속 읽고 정리합니다.</p>
+            <p class="reveal">인공지능은 서비스와 별개로 계속 읽고 정리합니다.</p>
           </div>
 
           <div class="company-r reveal">
@@ -852,7 +894,6 @@
               <dt>하는 일</dt><dd>서비스 개발과 운영, 기술 연구</dd>
               <dt>운영 중</dt><dd>Nemo, DevDock, AI Lab, Tech Blog</dd>
               <dt>비공개 테스트</dt><dd>Ascend (iOS · Android)</dd>
-              <dt>연구 주제</dt><dd>인공지능, 양자</dd>
               <dt>웹</dt><dd>paldyn.com</dd>
               <dt>연락</dt><dd>contact@paldyn.com · support@paldyn.com</dd>
             </dl>
