@@ -35,7 +35,6 @@
     (function () {
       var d = document.documentElement;
       d.classList.add('js');
-      if (window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()')) d.classList.add('scrub');
       try {
         var t = localStorage.getItem('theme');
         if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
@@ -65,103 +64,100 @@
   </script>
 
   <style>
+    /* ══════════════════════════════════════════════════════════════════
+       타일 조판 — 지면 하나에 자산 하나.
+       수치는 apple.com/kr 을 1440px에서 실측한 값에서 가져왔다:
+       제품명 56/600, 행간 fs+10 / 부제 28/400, 행간 fs+7, 트래킹 +0.007em /
+       링크 17px / 전부 중앙 정렬 / 타일이 각자 지면을 갖고 12px 간격으로 쌓인다.
+       애플이 파랑(#0071e3 / 다크 #2997ff)을 쓰는 자리에 팔딘의 오렌지가 들어간다.
+       ══════════════════════════════════════════════════════════════════ */
+    :root {
+      --page: #ffffff;
+      --tile-a: #f5f5f7;   /* 올라온 지면 */
+      --tile-b: #1d1d1f;   /* 반전 지면 */
+      --ink: #1d1d1f;
+      --ink-dim: #6e6e73;
+      --ink-on-b: #f5f5f7;
+      --ink-on-b-dim: #a1a1a6;
+      --link: #bf4100;      /* 흰 배경 5.29:1 */
+      --link-on-b: #ff6400; /* 어두운 배경 7.07:1 */
+      --hairline: rgb(0 0 0 / 0.12);
+      --nav-bg: rgba(255, 255, 255, 0.72);
+      --tile-gap: 12px;
+      --tile-radius: 0px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --page: #000000;
+        --tile-a: #1d1d1f;
+        --tile-b: #f5f5f7;
+        --ink: #f5f5f7;
+        --ink-dim: #a1a1a6;
+        --ink-on-b: #1d1d1f;
+        --ink-on-b-dim: #6e6e73;
+        --link: #ff6400;
+        --link-on-b: #bf4100;
+        --hairline: rgb(255 255 255 / 0.16);
+        --nav-bg: rgba(0, 0, 0, 0.72);
+      }
+    }
+    :root[data-theme="dark"] {
+      --page: #000000;
+      --tile-a: #1d1d1f;
+      --tile-b: #f5f5f7;
+      --ink: #f5f5f7;
+      --ink-dim: #a1a1a6;
+      --ink-on-b: #1d1d1f;
+      --ink-on-b-dim: #6e6e73;
+      --link: #ff6400;
+      --link-on-b: #bf4100;
+      --hairline: rgb(255 255 255 / 0.16);
+      --nav-bg: rgba(0, 0, 0, 0.72);
+    }
+
+    body { background: var(--page); color: var(--ink); letter-spacing: normal; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
     .skip {
-      position: absolute; left: var(--gutter); top: -60px; z-index: 300;
-      padding: 10px 16px; background: var(--bg); border: 1px solid var(--border-strong);
-      font-size: var(--fs-2); line-height: 1; text-decoration: none;
-      transition: top var(--d-2) var(--e-sig);
+      position: absolute; left: 20px; top: -60px; z-index: 300;
+      padding: 10px 16px; background: var(--page); border: 1px solid var(--ink);
+      font-size: 14px; line-height: 1; text-decoration: none; color: var(--ink);
+      transition: top 240ms var(--e-sig);
     }
-    .skip:focus { top: 14px; }
+    .skip:focus { top: 12px; }
 
-    /* ══ 버튼 — 자산 하나에 목적지 하나 ═══════════════════════════════════ */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      min-width: 148px; height: 44px; padding: 0 var(--s5);
-      border-radius: 4px;
-      font-size: var(--fs-3); font-weight: var(--fw-medium);
-      letter-spacing: var(--ls-15); line-height: 1; text-decoration: none;
-      box-shadow: var(--sh-flat);
-      transition: box-shadow var(--d-2) var(--e-sig), transform var(--d-0) linear,
-                  border-color var(--d-2) var(--e-sig);
-    }
-    .btn-1 { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
-    .btn-2 { background: transparent; color: var(--text); border: 1px solid var(--i-line); }
-    .btn .arw { transition: transform var(--d-2) var(--e-sig); }
-    .btn:focus-visible { outline-offset: 2px; }
-    @media (hover: hover) {
-      .btn:hover { box-shadow: var(--sh-lift); transform: translateY(-1px); }
-      .btn-2:hover { border-color: var(--i-line-hover); }
-      .btn:hover .arw { transform: translate(2px, -2px); }
-    }
-    .btn:active { transform: translateY(1px); box-shadow: var(--sh-rest); transition-duration: var(--d-0); }
-
-    /* ══ 내비게이션 ══════════════════════════════════════════════════════ */
+    /* ── 내비게이션 — 얇고 조용하다 ─────────────────────────────────── */
     .nav {
-      position: fixed; inset: 0 0 auto 0; z-index: 200; height: 64px;
-      display: flex; align-items: center;
-      transition: background-color var(--d-2) var(--e-sig), transform var(--d-3) var(--e-sig);
+      position: sticky; top: 0; z-index: 100; height: 48px;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--hairline);
     }
-    .nav::after {
-      content: ''; position: absolute; inset: auto 0 0 0; height: 1px;
-      background: var(--border-subtle); opacity: 0;
-      transition: opacity var(--d-2) var(--e-sig);
-    }
-    .nav.is-stuck { background: var(--nav-bg); }
-    .nav.is-stuck::after { opacity: 1; }
-    .nav.is-hidden { transform: translateY(-100%); }
-    .js .nav { animation: fadeIn 400ms linear both; }
-
     .nav-inner {
-      display: flex; align-items: center; gap: var(--s6);
-      width: min(100% - 2 * var(--gutter), var(--page-max)); margin-inline: auto;
+      height: 100%; max-width: 1024px; margin-inline: auto; padding-inline: 22px;
+      display: flex; align-items: center; gap: 28px;
     }
-
-    .lockup { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; line-height: 1; }
-    .lockup .symbol { width: 22px; height: 22px; }
-    .lockup .wordmark {
-      font-size: 0.9375rem; font-weight: var(--fw-bold);
-      letter-spacing: 0.16em; line-height: 1; color: var(--text);
+    .nav-logo { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--ink); }
+    .nav-logo svg { width: 17px; height: 17px; }
+    .nav-logo b { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; line-height: 1; }
+    .nav ul { display: flex; align-items: center; gap: 28px; list-style: none; margin-left: auto; }
+    .nav a.item {
+      font-size: 12px; font-weight: 400; line-height: 1; color: var(--ink);
+      opacity: 0.86; text-decoration: none;
+      transition: opacity 160ms var(--e-sig);
     }
-
-    .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
-    .nav-sep { width: 1px; height: 12px; background: var(--border); }
-    .nav-ext span { font-size: var(--fs-1); opacity: 0.7; }
-    .nav-links a {
-      position: relative; font-size: var(--fs-2); font-weight: var(--fw-medium);
-      letter-spacing: var(--ls-13); line-height: 1; color: var(--i-fg); text-decoration: none;
-      transition: color var(--d-2) var(--e-sig);
+    @media (hover: hover) { .nav a.item:hover { opacity: 1; } }
+    .nav .ext::after { content: '↗'; font-size: 10px; margin-left: 3px; opacity: 0.6; }
+    .theme-btn {
+      width: 28px; height: 28px; display: grid; place-items: center; color: var(--ink);
+      opacity: 0.86; transition: opacity 160ms var(--e-sig);
     }
-    @media (hover: hover) { .nav-links a:hover { color: var(--i-fg-hover); } }
-    .nav-links a.is-current { color: var(--text); }
-    .nav-links a.is-current::after { transform: scaleX(1); background: var(--brand); }
-
-    .underline { position: relative; }
-    .underline::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
-      background: currentColor; transform: scaleX(0); transform-origin: right;
-      transition: transform var(--d-2) var(--e-inout);
-    }
-    @media (hover: hover) { .underline:hover::after { transform: scaleX(1); transform-origin: left; } }
-
-    .nav-right { margin-left: auto; display: flex; align-items: center; gap: var(--s4); }
-
-    .odo {
-      height: 1em; overflow: hidden; font-size: var(--fs-1);
-      font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase;
-      color: var(--text-mute); line-height: 1;
-    }
-    .odo-track { transition: transform var(--d-3) var(--e-sig); }
-    .odo-track span { display: block; height: 1em; line-height: 1; white-space: nowrap; }
-
-    .icon-btn {
-      width: 34px; height: 34px; display: grid; place-items: center;
-      border: 1px solid var(--i-line); border-radius: 50%; color: var(--i-fg);
-      transition: color var(--d-2) var(--e-sig), border-color var(--d-2) var(--e-sig);
-    }
-    @media (hover: hover) { .icon-btn:hover { color: var(--i-fg-hover); border-color: var(--i-line-hover); } }
-    .icon-btn:active { opacity: 0.62; transition-duration: var(--d-0); }
-    .icon-btn svg { width: 16px; height: 16px; }
-
+    .theme-btn:hover { opacity: 1; }
+    .theme-btn svg { width: 15px; height: 15px; }
     .icon-sun { display: none; }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) .icon-moon { display: none; }
@@ -172,442 +168,150 @@
     :root[data-theme="light"] .icon-moon { display: block; }
     :root[data-theme="light"] .icon-sun { display: none; }
 
-    .nav-toggle { display: none; }
-    .nav-toggle span {
-      display: block; width: 18px; height: 1.5px; background: currentColor;
-      transition: transform var(--d-2) var(--e-sig), opacity var(--d-1) linear;
-    }
-    .nav-toggle span + span { margin-top: 5px; }
-    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-more { display: none; }
 
-    .nav-overlay {
-      position: fixed; inset: 0; z-index: 190;
-      display: flex; flex-direction: column; justify-content: center; gap: var(--s5);
-      padding: var(--s9) var(--gutter) var(--s8);
-      background: var(--overlay-bg);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      box-shadow: var(--sh-overlay);
-      visibility: hidden; opacity: 0; transform: translateY(-8px); pointer-events: none;
-      transition: opacity var(--d-2) var(--e-exit), transform var(--d-2) var(--e-exit),
-                  visibility var(--d-2) steps(1, end);
-    }
-    .nav-overlay.is-open {
-      visibility: visible; opacity: 1; transform: none; pointer-events: auto;
-      transition: opacity var(--d-3) var(--e-sig) 80ms, transform var(--d-3) var(--e-sig) 80ms,
-                  visibility 0s steps(1, start);
-    }
-    .nav-overlay ul { list-style: none; display: grid; gap: var(--s5); }
-    .nav-overlay a {
-      font-size: 1.5rem; font-weight: var(--fw-semibold); letter-spacing: var(--ls-display);
-      line-height: 1; text-decoration: none; color: var(--text);
-      opacity: 0; transform: translateY(12px);
-      transition: opacity var(--d-2) var(--e-sig), transform var(--d-2) var(--e-sig);
-    }
-    .nav-overlay.is-open a { opacity: 1; transform: none; transition-delay: calc(80ms + var(--n, 0) * 40ms); }
-    .nav-overlay .ov-sub { display: grid; gap: var(--s4); padding-top: var(--s5); border-top: 1px solid var(--border-subtle); }
-    .nav-overlay .ov-sub a { font-size: var(--fs-3); font-weight: var(--fw-medium); color: var(--text-dim); letter-spacing: var(--ls-15); }
+    /* ── 타일 ───────────────────────────────────────────────────────── */
+    main { display: grid; gap: var(--tile-gap); padding: var(--tile-gap) 0 0; }
+    .row { display: grid; gap: var(--tile-gap); }
+    .row-2 { grid-template-columns: 1fr 1fr; }
 
-    /* ══ 00 — 한 문장과 자산 인덱스 ═════════════════════════════════════
-       100svh를 강제하지 않는다. 스크롤 없이 무엇이 있는지 전부 보이는 것이 목적이다. */
-    .lede {
-      min-height: clamp(560px, 78svh, 820px);
-      padding: calc(64px + var(--s10)) 0 var(--s9);
-      display: grid; align-content: start;
-    }
-    .lede-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); }
-    .lede-rule {
-      grid-column: 1 / span 12; height: 1px; background: var(--border-subtle);
-      transform: scaleX(0); transform-origin: left; margin-bottom: var(--s7);
-    }
-    .js .lede-rule { animation: axisOut 900ms var(--e-mech) 60ms both; }
-    .lede-copy { grid-column: 1 / span 10; }
-
-    .lede-label {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: var(--fs-1); font-weight: var(--fw-medium);
-      letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-mute);
-      line-height: 1;
-    }
-    /* 틱은 정렬선 밖에 걸고 라벨 텍스트는 h1과 같은 x에서 시작한다 */
-    .lede-label::before {
-      content: ''; width: 1px; height: 12px; margin-left: -11px;
-      background: var(--brand); flex: none; transform-origin: center;
-    }
-    .js .lede-label { animation: fadeIn 320ms linear 200ms both; }
-    .js .lede-label::before { animation: seamIgnite 200ms var(--e-mech) 160ms both; }
-
-    .lede h1 {
-      margin-top: var(--s5);
-      /* 세 절을 각자 한 줄로 — 한글은 글자폭이 균일해 절 단위 개행이 가장 안정적이다 */
-      font-size: clamp(2rem, 4.4vw, 4.1rem); font-weight: var(--fw-bold);
-      letter-spacing: var(--ls-display); line-height: calc(1em + 4px);
-      color: var(--text);
-    }
-    /* 절마다 클립 창을 만들고 그 안에서 밀려 올라온다 —
-       받침 있는 한글은 em 박스를 꽉 채우므로 창만 넓히고 레이아웃은 유지한다. */
-    .lede h1 span {
-      display: block; overflow: hidden;
-      padding-block: 0.14em; margin-block: -0.14em;
-    }
-    .lede h1 span i { display: block; font-style: normal; }
-    .js .lede h1 span i { animation: lineUp 720ms var(--e-sig) both; }
-    .js .lede h1 .l1 i { animation-delay: 180ms; }
-    .js .lede h1 .l2 i { animation-delay: 270ms; }
-    .js .lede h1 .l3 i { animation-delay: 360ms; }
-
-    .lede-sub {
-      margin-top: var(--s5); max-width: var(--measure);
-      font-size: var(--fs-4); letter-spacing: var(--ls-17);
-      line-height: calc(1em + 8px); color: var(--text-dim);
-    }
-    .js .lede-sub { animation: riseIn 360ms var(--e-sig) 400ms both; }
-
-    .index { grid-column: 1 / span 12; margin-top: var(--s7); }
-    .index-group + .index-group { margin-top: var(--s6); }
-    .index-group h2 {
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps);
-      text-transform: uppercase; line-height: 1; color: var(--text-mute);
-      margin-bottom: var(--s3);
-    }
-
-    .idx-row {
-      position: relative;
-      display: grid; grid-template-columns: 24px 210px minmax(0, 1fr) 132px;
-      column-gap: var(--s5); align-items: center;
-      padding-block: var(--s3); text-decoration: none;
-      transition: background-color var(--d-2) var(--e-sig);
-    }
-    .idx-row::before {
-      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
-      background: var(--border-subtle); transform: scaleX(0); transform-origin: left;
-    }
-    .js .idx-row::before { animation: axisOut 300ms var(--e-mech) both; animation-delay: calc(480ms + var(--n, 0) * 60ms); }
-    /* 스크럽 지원 브라우저에서는 위 로드 시퀀스 대신 아래 @supports의 스크롤 스크럽이 이긴다 */
-    .index-group .idx-row:last-child { border-bottom: 1px solid var(--border-subtle); }
-    .js .idx-row > * { animation: riseIn 320ms var(--e-sig) both; animation-delay: calc(540ms + var(--n, 0) * 60ms); }
-    @media (hover: hover) {
-      .idx-row:hover { background: var(--surface-1); }
-    }
-    .idx-row svg { width: 24px; height: 24px; color: var(--text); }
-    .idx-name { font-size: var(--fs-4); font-weight: var(--fw-semibold); letter-spacing: var(--ls-17); line-height: 1; color: var(--text); }
-    .idx-fact { font-size: var(--fs-3); letter-spacing: var(--ls-15); line-height: 1; color: var(--text-mute); }
-    .idx-state { justify-self: end; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-2); line-height: 1; color: var(--text-dim); }
-
-    .dot { width: 9px; height: 9px; border: 1px solid var(--text-dim); flex: none; }
-    .dot-live { background: var(--brand); border-color: var(--brand); }
-    .dot-soon { background: none; }
-
-    /* ══ 척추 ═══════════════════════════════════════════════════════════ */
-    .spine { position: relative; }
-    .spine::before, .spine::after {
-      content: ''; position: absolute; top: 0; bottom: 0;
-      left: calc(max(var(--gutter), (100% - var(--page-max)) / 2) - 20px);
-      width: 1px; pointer-events: none;
-    }
-    .spine::before { background: var(--border-subtle); }
-    .spine::after { background: var(--gradient-silver); transform: scaleY(0); transform-origin: top; }
-    @supports (animation-timeline: scroll()) {
-      .spine::after { animation: fillDown linear both; animation-timeline: scroll(root block); }
-    }
-    @media (max-width: 1024px) { .spine::before, .spine::after { display: none; } }
-
-    section { padding-block: var(--section-pad); }
-
-    .tick { display: inline-flex; align-items: center; gap: 8px; }
-    .tick::before {
-      content: ''; width: 12px; margin-left: -20px; height: 1px;
-      background: var(--border-strong); flex: none;
-    }
-    @media (max-width: 1024px) {
-      .tick { gap: 10px; }
-      .tick::before { width: 8px; margin-left: 0; }
-    }
-    .section-index { font-size: var(--fs-1); font-weight: var(--fw-semibold); letter-spacing: var(--ls-caps); color: var(--text); }
-    .section-title { margin-top: var(--s3); font-size: var(--fs-7); color: var(--text); }
-
-    /* ══ 01 SERVICES — 서비스 하나가 밴드 하나 ══════════════════════════ */
-    #services-band { background: var(--surface-1); }
-
-    .rail {
-      position: sticky; top: 64px; z-index: 6;
-      display: flex; gap: var(--s6); align-items: center;
-      height: 56px; margin-top: var(--s8);
-      background: var(--surface-1); border-bottom: 1px solid var(--border-subtle);
-    }
-    .rail::after {
-      content: ''; position: absolute; bottom: -1px; left: 0; height: 2px;
-      width: var(--tab-w, 0px); background: var(--brand);
-      transform: translateX(var(--tab-x, 0px));
-      transition: transform var(--d-3) var(--e-sig), width var(--d-3) var(--e-sig);
-    }
-    .rail-tab {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps);
-      line-height: 1; text-transform: uppercase; color: var(--text-mute); text-decoration: none;
-      padding-block: 6px; transition: color var(--d-2) var(--e-sig);
-    }
-    .rail-tab svg { width: 17px; height: 17px; }
-    .rail-tab.is-on { color: var(--text); }
-    .rail-tab:active { opacity: 0.62; transition-duration: var(--d-0); }
-
-    .prod {
-      display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); row-gap: var(--s7);
-      padding-block: var(--s9); border-top: 1px solid var(--border);
-    }
-    .prod-l { grid-column: 1 / span 6; }
-    .prod-r { grid-column: 8 / span 5; justify-self: end; align-self: center; width: 100%; max-width: 320px; }
-
-    .prod-head { display: flex; align-items: baseline; gap: var(--s4); }
-    .prod-id, .prod-cat {
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps);
-      line-height: 1; text-transform: uppercase; color: var(--text-mute);
-    }
-    .prod h3 {
-      margin-top: var(--s4);
-      font-size: clamp(1.75rem, 3.4vw, 3rem); font-weight: var(--fw-bold);
-      letter-spacing: var(--ls-display); line-height: calc(1em + 4px);
-    }
-    .prod-line {
-      margin-top: var(--s5); max-width: var(--measure-tight);
-      font-size: var(--fs-5); letter-spacing: var(--ls-22);
-      line-height: calc(1em + 6px); color: var(--text-dim);
-    }
-    .prod-facts { list-style: none; margin-top: var(--s6); display: grid; gap: var(--s2); }
-    .prod-facts li {
-      display: flex; align-items: baseline; gap: 10px;
-      font-size: var(--fs-3); letter-spacing: var(--ls-15); line-height: 1.4; color: var(--text-mute);
-    }
-    .prod-facts li::before { content: ''; width: 8px; height: 1px; background: var(--border-strong); flex: none; transform: translateY(-4px); }
-    .prod-meta { display: flex; align-items: center; gap: var(--s5); margin-top: var(--s7); flex-wrap: wrap; }
-    .status { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-2); line-height: 1; color: var(--text-dim); }
-
-    /* 타일 — 카드의 재질·고도 체계를 그대로 이어받는다 */
     .tile {
-      position: relative; aspect-ratio: 1;
-      background: var(--surface-2);
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
-      filter: var(--dp-rest);
-      display: grid; place-items: center;
-      transition: filter var(--d-2) var(--e-sig);
+      position: relative; overflow: hidden;
+      background: var(--tile-a); color: var(--ink);
+      padding: 56px 22px 0;
+      display: grid; justify-items: center; align-content: start;
+      text-align: center;
+      min-height: 580px;
     }
-    @media (hover: hover) { .prod:hover .tile { filter: var(--dp-lift); } }
-    .tile::before {
-      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border) 12%, var(--border) 88%, transparent);
+    .tile.invert { background: var(--tile-b); color: var(--ink-on-b); }
+    .tile.invert .sub { color: var(--ink-on-b-dim); }
+    .tile.invert .lnk { color: var(--link-on-b); }
+    .tile.invert .meta { color: var(--ink-on-b-dim); }
+    .tile.tall { min-height: 692px; }
+    .tile.short { min-height: 500px; }
+
+    .eyebrow {
+      font-size: 14px; font-weight: 600; line-height: 1;
+      letter-spacing: 0.02em; color: var(--link); text-transform: none;
+      margin-bottom: 10px;
     }
-    :root[data-theme="dark"] .tile::before { background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.10) 12%, rgb(255 255 255 / 0.10) 88%, transparent); }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) .tile::before { background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.10) 12%, rgb(255 255 255 / 0.10) 88%, transparent); }
+    .tile.invert .eyebrow { color: var(--link-on-b); }
+
+    .title {
+      font-size: clamp(2.4rem, 4.2vw, 3.5rem);   /* 38 → 56 */
+      font-weight: 600; line-height: calc(1em + 10px);
+      letter-spacing: -0.004em; text-wrap: balance;
+      margin: 0;
     }
-    /* non-scaling-stroke를 쓰면 dasharray와 좌표계가 어긋나 대시가 튄다.
-       대신 굵기를 유저 단위로 두고 크기별로 환산해 렌더 결과를 2.4px로 맞춘다. */
-    .tile svg { width: 55%; height: auto; aspect-ratio: 1; color: var(--text); stroke-width: 0.44; }
-
-    /* ══ 02 RESEARCH ════════════════════════════════════════════════════ */
-    .research-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); row-gap: var(--s8); }
-    .research-l { grid-column: 1 / span 5; }
-    .research-l p { max-width: var(--measure); color: var(--text-dim); }
-    .research-l p + p { margin-top: var(--s4); }
-    .research-r { grid-column: 7 / span 6; }
-
-    .res-item {
-      position: relative;
-      display: grid; grid-template-columns: 40px 1fr; column-gap: var(--s4);
-      padding-block: var(--s6);
+    .sub {
+      margin-top: 6px;
+      font-size: clamp(1.25rem, 1.9vw, 1.75rem); /* 20 → 28 */
+      font-weight: 400; line-height: calc(1em + 7px);
+      letter-spacing: 0.007em; color: var(--ink-dim);
+      max-width: 30ch; text-wrap: balance;
     }
-    .res-item::before {
-      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
-      background: var(--border-subtle); transform: scaleX(0); transform-origin: left;
+    .links { display: flex; gap: 28px; justify-content: center; margin-top: 22px; flex-wrap: wrap; }
+    .lnk {
+      font-size: 17px; line-height: 1.3; color: var(--link); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 3px;
     }
-    .res-item:last-of-type { border-bottom: 1px solid var(--border-subtle); }
-    .res-item > svg { width: 40px; height: 40px; color: var(--text); }
-    .res-id { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); line-height: 1; text-transform: uppercase; color: var(--text-mute); }
-    .res-item h3 { margin-top: var(--s2); font-size: var(--fs-5); }
-    .res-fact { margin-top: var(--s2); font-size: var(--fs-3); letter-spacing: var(--ls-15); line-height: 1.5; color: var(--text-mute); }
-    .res-meta { display: flex; align-items: center; gap: var(--s5); margin-top: var(--s5); flex-wrap: wrap; }
+    .lnk::after { content: '›'; font-size: 1.15em; line-height: 0.9; transform: translateY(-0.04em); }
+    @media (hover: hover) { .lnk:hover { text-decoration: underline; } }
+    .meta { margin-top: 14px; font-size: 13px; line-height: 1.5; color: var(--ink-dim); }
+    .meta .dot { display: inline-block; width: 7px; height: 7px; margin-right: 6px; vertical-align: 0; background: var(--link); }
+    .tile.invert .meta .dot { background: var(--link-on-b); }
+    .meta .dot.soon { background: none; box-shadow: inset 0 0 0 1px currentColor; }
 
-    .topics { margin-top: var(--s7); }
-    .topics h3 { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase; line-height: 1; color: var(--text-mute); }
-    .topics ul { list-style: none; margin-top: var(--s4); display: flex; gap: var(--s6); }
-    .topics li { font-size: var(--fs-4); color: var(--text); line-height: 1; }
+    /* 사진이 없으므로 마크가 제품 이미지 자리를 대신한다 */
+    .art { margin-top: auto; padding: 40px 0 56px; display: grid; place-items: center; }
+    /* 획 굵기는 유저 단위다 — 렌더 크기로 나눠 어디서나 2.4px 하드라인이 되게 맞춘다.
+       (non-scaling-stroke를 쓰면 stroke-dasharray와 좌표계가 어긋나 대시가 튄다) */
+    .art svg { width: clamp(120px, 17vw, 200px); height: auto; aspect-ratio: 1; color: currentColor; stroke-width: 0.4; }
+    .art.symbol svg { width: clamp(150px, 21vw, 260px); }
+    .row-2 .art svg { width: clamp(100px, 12vw, 150px); stroke-width: 0.52; }
 
-    /* ══ 03 COMPANY ═════════════════════════════════════════════════════ */
-    #company { background: var(--surface-1); }
-    .company-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s5); row-gap: var(--s8); align-items: start; }
-    .company-l { grid-column: 1 / span 5; }
-    .company-l p { max-width: var(--measure); color: var(--text-dim); }
-    .company-l p + p { margin-top: var(--s4); }
-    .company-r { grid-column: 7 / span 6; }
-
-    .facts { display: grid; grid-template-columns: 160px minmax(0, 1fr); column-gap: var(--s5); }
-    .facts dt, .facts dd { padding-block: var(--s4); border-top: 1px solid var(--border-subtle); }
-    .facts dt {
-      font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps);
-      text-transform: uppercase; line-height: 1; color: var(--text-mute); padding-top: calc(var(--s4) + 3px);
+    /* ── 회사 · 문의 ─────────────────────────────────────────────────── */
+    .facts {
+      width: min(100% - 44px, 692px); margin: 34px auto 0; text-align: left;
+      display: grid; grid-template-columns: 150px minmax(0, 1fr);
     }
-    .facts dd { font-size: var(--fs-4); color: var(--text); line-height: calc(1em + 8px); }
-    .facts dt:last-of-type, .facts dd:last-of-type { border-bottom: 1px solid var(--border-subtle); }
+    .facts dt, .facts dd { padding: 14px 0; border-top: 1px solid var(--hairline); font-size: 15px; line-height: 1.5; }
+    .facts dt { color: var(--ink-dim); }
+    .facts dd { color: var(--ink); }
 
-    /* ══ 04 CONTACT — 페이지에서 유일한 반전 ════════════════════════════ */
-    .contact { background: var(--accent-bright); color: var(--bg); padding-block: var(--section-pad); clip-path: inset(0 0 0 0); }
-    .contact .eyebrow { color: var(--bg); opacity: 0.62; }
-    .contact .section-index { color: var(--brand-vivid); opacity: 1; }
-    .contact .tick::before { background: var(--brand-vivid); }
-    .contact .section-title { color: var(--bg); }
-    .contact :focus-visible { outline-color: var(--bg); }
-    .contact-lead { margin-top: var(--s5); font-size: var(--fs-4); line-height: calc(1em + 8px); opacity: 0.7; }
-    .channels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); margin-top: var(--s8); max-width: var(--page-narrow); }
-    .channel { padding-top: var(--s5); border-top: 1px solid rgb(128 128 128 / 0.45); }
-    .channel .ch-name { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase; line-height: 1; opacity: 0.62; }
-    .channel .ch-mail {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: var(--s3);
-      font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: var(--fw-medium);
-      letter-spacing: var(--ls-22); line-height: 1; color: var(--bg); text-decoration: none;
+    .mails { display: grid; gap: 6px; margin-top: 26px; }
+    .mails a { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; color: var(--link); text-decoration: none; letter-spacing: -0.01em; }
+    .tile.invert .mails a { color: var(--link-on-b); }
+    @media (hover: hover) { .mails a:hover { text-decoration: underline; } }
+    .mails span { font-size: 14px; color: var(--ink-dim); }
+    .tile.invert .mails span { color: var(--ink-on-b-dim); }
+
+    /* ── 푸터 ───────────────────────────────────────────────────────── */
+    footer { background: var(--tile-a); margin-top: var(--tile-gap); }
+    .foot-inner { max-width: 1024px; margin-inline: auto; padding: 34px 22px 48px; font-size: 12px; line-height: 1.5; color: var(--ink-dim); }
+    .foot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; padding-bottom: 24px; border-bottom: 1px solid var(--hairline); }
+    .foot-grid h2 { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 9px; letter-spacing: 0; }
+    .foot-grid ul { list-style: none; display: grid; gap: 7px; }
+    .foot-grid a { color: var(--ink-dim); text-decoration: none; }
+    @media (hover: hover) { .foot-grid a:hover { text-decoration: underline; color: var(--ink); } }
+    .foot-bar { display: flex; justify-content: space-between; gap: 16px; padding-top: 16px; flex-wrap: wrap; }
+
+    /* ══ 모션 — 타일 하나가 통째로 들어온다. 40px + 스케일이라 눈에 보인다 ══ */
+    @keyframes tileEnter {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: none; }
     }
-    .channel .ch-note { margin-top: var(--s2); font-size: var(--fs-2); opacity: 0.7; }
-
-    /* ══ 푸터 ═══════════════════════════════════════════════════════════ */
-    .footer { position: relative; padding-block: 96px 64px; font-size: var(--fs-2); letter-spacing: var(--ls-13); }
-    .footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px; background: var(--gradient-silver); opacity: 0.5; }
-    .footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: var(--s7) var(--s5); }
-    .footer-brand a.mail { display: inline-block; margin-top: var(--s3); font-size: var(--fs-1); line-height: 21px; color: var(--text-mute); text-decoration: none; }
-    .footer-col h2 { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: var(--ls-caps); text-transform: uppercase; line-height: 1; color: var(--text-mute); }
-    .footer-col ul { list-style: none; margin-top: var(--s4); display: grid; gap: 10px; }
-    .footer-col li { line-height: 21px; }
-    .footer-col a {
-      display: inline-flex; align-items: center; gap: 8px; line-height: 1;
-      color: var(--i-fg); text-decoration: none; transition: color var(--d-2) var(--e-sig);
+    @keyframes artEnter {
+      from { opacity: 0; transform: translateY(56px) scale(0.86); }
+      to   { opacity: 1; transform: none; }
     }
-    @media (hover: hover) { .footer-col a:hover { color: var(--i-fg-hover); } }
-    .footer-col a:active { opacity: 0.62; transition-duration: var(--d-0); }
-    .footer-col a svg { width: 14px; height: 14px; }
-    .footer-bar {
-      display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
-      margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--border-subtle);
-      line-height: 21px; color: var(--text-mute);
-    }
-    .footer-tools { display: flex; gap: var(--s2); }
+    @keyframes drawIn { from { stroke-dashoffset: var(--len, 200) } to { stroke-dashoffset: 0 } }
 
-    /* ══ 키프레임 — 새로 만들지 않는다 ══════════════════════════════════ */
-    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @keyframes riseIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
-    @keyframes seamIgnite { from { transform: scaleY(0) } to { transform: scaleY(1) } }
-    @keyframes axisOut { from { transform: scaleX(0) } to { transform: scaleX(1) } }
-    @keyframes fillDown { from { transform: scaleY(0) } to { transform: scaleY(1) } }
-    @keyframes revealUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: none } }
-    @keyframes revealSm { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
-    @keyframes drawLine { to { stroke-dashoffset: 0 } }
-    @keyframes lineUp { from { transform: translateY(101%) } to { transform: translateY(0) } }
-    @keyframes lift { to { transform: translateY(-40px); opacity: 0.55 } }
-    @keyframes ruleIn { from { border-top-color: transparent } to { border-top-color: var(--border) } }
-    @keyframes tileIn { from { opacity: 0; transform: translateY(28px) scale(0.97) } to { opacity: 1; transform: none } }
-    @keyframes bandOpen { from { clip-path: inset(50% 0 50% 0) } to { clip-path: inset(0 0 0 0) } }
-    @keyframes wipeIn { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+    /* 숨기는 것은 관측이 실제로 걸린 뒤에만 한다(.anim). 관측이 실패하면
+       콘텐츠는 그냥 보인다 — 안 보이는 페이지보다 애니메이션 없는 페이지가 낫다. */
+    .anim .tile > * { opacity: 0; }
+    .anim .tile.in > *:not(.art) { animation: tileEnter 680ms var(--e-sig) both; }
+    .anim .tile.in > *:nth-child(2) { animation-delay: 70ms; }
+    .anim .tile.in > *:nth-child(3) { animation-delay: 140ms; }
+    .anim .tile.in > *:nth-child(4) { animation-delay: 200ms; }
+    .anim .tile.in > *:nth-child(5) { animation-delay: 250ms; }
+    .anim .tile.in .art { animation: artEnter 820ms var(--e-sig) 160ms both; }
+    .anim .tile.in .art path { animation: drawIn 900ms var(--e-mech) 340ms both; }
 
-    /* ══ 스크럽 — 스크롤 위치의 함수 ════════════════════════════════════ */
-    @supports (animation-timeline: scroll()) and (animation-timeline: view()) {
-      .js .reveal { opacity: 1; transform: none; transition: none; animation: revealSm linear both; animation-timeline: view(block); animation-range: entry 8% cover 32%; }
-      .js .reveal-title { animation-name: revealUp; animation-range: entry 12% cover 30%; }
-      .js .reveal-card { animation-name: revealUp; animation-range: entry 4% cover 38%; }
-
-      /* 배너 — 스크롤하면 무게를 남기며 뒤로 물러난다 */
-      .js .lede-copy { animation: lift linear both; animation-timeline: scroll(root block); animation-range: 0 70svh; }
-
-      /* 인덱스 5행 — 선이 그어지고 내용이 올라온다. 되감으면 되감긴다 */
-      .js .idx-row::before { animation: axisOut linear both; animation-timeline: view(block); animation-range: entry 0% entry 55%; }
-      .js .idx-row > * { animation: revealSm linear both; animation-timeline: view(block); animation-range: entry 10% entry 75%; }
-
-      /* 서비스 밴드 — 상단 경계선이 먼저 그어지고 타일이 뒤따른다 */
-      .js .prod { animation: ruleIn linear both; animation-timeline: view(block); animation-range: entry 0% entry 50%; }
-      .js .tile { animation: tileIn linear both; animation-timeline: view(block); animation-range: entry 5% cover 42%; }
-      .js .tile svg path { animation: drawLine linear both; animation-timeline: view(block); animation-range: entry 20% cover 55%; }
-
-      .js .res-item::before { animation: axisOut linear both; animation-timeline: view(block); animation-range: entry 10% entry 60%; }
-      .js .facts dt, .js .facts dd { animation: revealSm linear both; animation-timeline: view(block); animation-range: entry 6% entry 70%; }
-
-      .contact { animation: bandOpen linear both; animation-timeline: view(block); animation-range: entry 0% entry 92%; }
-    }
-
-    /* ══ 모션 축소 ══════════════════════════════════════════════════════ */
     @media (prefers-reduced-motion: reduce) {
-      .js .lede-label, .js .lede-label::before, .js .lede h1 span,
-      .js .lede-sub, .js .idx-row::before, .js .idx-row > *, .js .lede-rule,
-      .js .lede h1 span i, .js .lede-copy, .js .prod, .js .tile,
-      .js .facts dt, .js .facts dd,
-      .js .reveal, .js .res-item::before, .js .tile svg path, .contact {
-        animation: none !important; opacity: 1 !important; transform: none !important;
-        clip-path: none !important; stroke-dashoffset: 0 !important;
+      .tile > *, .tile .art, .tile .art path {
+        animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important;
       }
-      .idx-row::before, .res-item::before, .lede-rule { transform: scaleX(1) !important; }
-      .contact { clip-path: inset(0) !important; }
     }
-    [data-motion="reduced"] .lede-label, [data-motion="reduced"] .lede-label::before,
-    [data-motion="reduced"] .lede h1 span,
-    [data-motion="reduced"] .lede-rule, [data-motion="reduced"] .lede h1 span i,
-    [data-motion="reduced"] .lede-copy, [data-motion="reduced"] .prod,
-    [data-motion="reduced"] .tile, [data-motion="reduced"] .facts dt, [data-motion="reduced"] .facts dd,
-    [data-motion="reduced"] .lede-sub, [data-motion="reduced"] .idx-row::before,
-    [data-motion="reduced"] .idx-row > *, [data-motion="reduced"] .reveal,
-    [data-motion="reduced"] .res-item::before, [data-motion="reduced"] .tile svg path,
-    [data-motion="reduced"] .contact {
-      animation: none !important; opacity: 1 !important; transform: none !important;
-      clip-path: none !important; stroke-dashoffset: 0 !important;
-    }
-    [data-motion="reduced"] .idx-row::before, [data-motion="reduced"] .res-item::before,
-    [data-motion="reduced"] .lede-rule { transform: scaleX(1) !important; }
-    [data-motion="reduced"] .contact { clip-path: inset(0) !important; }
-
-    @media (prefers-reduced-motion: no-preference) {
-      ::view-transition-old(root) { animation: none; }
-      ::view-transition-new(root) { animation: wipeIn var(--d-3) var(--e-inout) both; z-index: 1; }
+    [data-motion="reduced"] .tile > *, [data-motion="reduced"] .tile .art, [data-motion="reduced"] .tile .art path {
+      animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important;
     }
 
-    /* ══ 반응형 ═════════════════════════════════════════════════════════ */
-    @media (max-width: 1199px) {
-      .lede-copy { grid-column: 1 / span 12; }
-      .prod-l, .prod-r { grid-column: 1 / span 12; }
-      .prod-r { justify-self: start; max-width: 200px; }
-      .tile svg { stroke-width: 0.7; }
-      .research-l, .research-r, .company-l, .company-r { grid-column: 1 / span 12; }
-      .footer-grid { grid-template-columns: repeat(4, 1fr); }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-    @media (max-width: 1024px) {
-      .nav-links, .nav-right .odo { display: none; }
-      .nav-toggle { display: block; }
-      .lede h1 span { display: inline; }
-      .idx-row { grid-template-columns: 24px minmax(0, 1fr) 120px; }
-      .idx-fact { display: none; }
-    }
-    @media (max-width: 720px) {
-      .lede { padding-top: calc(64px + var(--s8)); }
-      .idx-row { grid-template-columns: 24px minmax(0, 1fr); row-gap: 4px; align-items: start; }
-      .idx-row svg { grid-row: span 3; }
-      .idx-name, .idx-fact, .idx-state { grid-column: 2; }
-      .idx-fact { display: block; }
-      .idx-state { justify-self: start; margin-top: 4px; }
-      .prod-r { max-width: 120px; }
-      .tile svg { stroke-width: 1.16; }
-      .rail { gap: var(--s4); overflow-x: auto; }
+    /* ── 반응형 ─────────────────────────────────────────────────────── */
+    @media (max-width: 833px) {
+      .nav ul li.hide-s { display: none; }
+      .nav-more { display: inline-flex; }
+      .row-2 { grid-template-columns: 1fr; }
+      .tile { min-height: 480px; padding-top: 44px; }
+      .tile.tall { min-height: 540px; }
+      .tile.short { min-height: 420px; }
+      .art { padding: 30px 0 44px; }
+      .art svg { stroke-width: 0.62; }
+      .row-2 .art svg { stroke-width: 0.62; }
       .facts { grid-template-columns: 1fr; }
-      .facts dt { border-bottom: 0; padding-bottom: 0; }
-      .facts dd { border-top: 0; padding-top: 4px; }
-      .facts dt:last-of-type { border-bottom: 0; }
-      .channels { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-bar { flex-direction: column; align-items: flex-start; }
-      .topics ul { gap: var(--s5); }
+      .facts dd { border-top: 0; padding-top: 0; }
+      .foot-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
-    .motion-lite .tile { filter: none; border: 1px solid var(--border); }
-    .motion-lite .nav-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    @media (max-width: 480px) {
+      .nav-inner { gap: 16px; padding-inline: 16px; }
+      .nav ul { gap: 16px; }
+      .sub { max-width: 24ch; }
+    }
   </style>
 </head>
 <body>
 
-<a class="skip" href="#products">본문으로 건너뛰기</a>
+<a class="skip" href="#services">본문으로 건너뛰기</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
@@ -615,372 +319,198 @@
       <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
       <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
     </g>
-    <g id="mono-nemo" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z" vector-effect="non-scaling-stroke"/>
-      <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z" vector-effect="non-scaling-stroke"/>
-    </g>
-    <g id="mono-devdock" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z" vector-effect="non-scaling-stroke"/>
-      <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z" vector-effect="non-scaling-stroke"/>
-      <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z" vector-effect="non-scaling-stroke"/>
-      <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z" vector-effect="non-scaling-stroke"/>
-    </g>
-    <g id="mono-ailab" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M16 5A11 11 0 1 0 27 16" vector-effect="non-scaling-stroke"/>
-      <path d="M16 10A6 6 0 1 0 22 16" vector-effect="non-scaling-stroke"/>
-      <path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/>
-      <circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/>
-    </g>
-    <g id="mono-ascend" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z" vector-effect="non-scaling-stroke"/>
-      <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z" vector-effect="non-scaling-stroke"/>
-      <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z" vector-effect="non-scaling-stroke"/>
-    </g>
-    <g id="mono-blog" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M7 5.5 L20 5.5 L25 10.5 L25 26.5 L7 26.5 Z" vector-effect="non-scaling-stroke"/>
-      <path d="M19.5 5.5 L19.5 11 L25 11" vector-effect="non-scaling-stroke"/>
-      <path d="M11.5 16 L20.5 16 M11.5 20.5 L17.5 20.5" vector-effect="non-scaling-stroke"/>
-    </g>
   </defs>
 </svg>
 
-<nav class="nav" id="nav">
+<nav class="nav">
   <div class="nav-inner">
-    <a class="lockup" href="/" aria-label="PALDYN 홈">
-      <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
-      <span class="wordmark">PALDYN</span>
+    <a class="nav-logo" href="/" aria-label="PALDYN 홈">
+      <svg viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
+      <b>PALDYN</b>
     </a>
-    <ul class="nav-links">
-      <li><a class="underline" href="#products" data-section="1">Services</a></li>
-      <li><a class="underline" href="#research" data-section="2">Research</a></li>
-      <li><a class="underline" href="#company" data-section="3">Company</a></li>
-      <li><a class="underline" href="#contact" data-section="4">Contact</a></li>
-      <li class="nav-sep" aria-hidden="true"></li>
-      <li><a class="underline nav-ext" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab <span aria-hidden="true">↗</span></a></li>
-      <li><a class="underline nav-ext" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog <span aria-hidden="true">↗</span></a></li>
+    <ul>
+      <li><a class="item" href="#services">서비스</a></li>
+      <li><a class="item" href="#research">리서치</a></li>
+      <li class="hide-s"><a class="item" href="#company">회사</a></li>
+      <li class="hide-s"><a class="item" href="#contact">문의</a></li>
+      <li><a class="item ext" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab</a></li>
+      <li class="hide-s"><a class="item ext" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog</a></li>
+      <li>
+        <button class="theme-btn" id="themeToggle" type="button" aria-label="테마 전환">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </li>
     </ul>
-    <div class="nav-right">
-      <div class="odo" aria-hidden="true"><div class="odo-track" id="odoTrack">
-        <span>PALDYN</span><span>01 Services</span><span>02 Research</span><span>03 Company</span><span>04 Contact</span>
-      </div></div>
-      <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      </button>
-      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="navOverlay">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
   </div>
 </nav>
 
-<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="메뉴" inert>
-  <ul>
-    <li><a href="#products" style="--n:0">Services</a></li>
-    <li><a href="#research" style="--n:1">Research</a></li>
-    <li><a href="#company" style="--n:2">Company</a></li>
-    <li><a href="#contact" style="--n:3">Contact</a></li>
-  </ul>
-  <div class="ov-sub">
-    <a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a>
-    <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a>
-  </div>
-</div>
-
 <main>
-  <!-- ══ 00 — 한 문장과 자산 인덱스 ═══════════════════════════════════ -->
-  <section class="lede" aria-labelledby="lede-h1">
-    <div class="wrap lede-grid">
-      <div class="lede-rule" aria-hidden="true"></div>
-      <div class="lede-copy">
-        <p class="lede-label">PALDYN</p>
-        <h1 id="lede-h1"><span class="l1"><i>서비스를 만들고,</i></span> <span class="l2"><i>직접 운영하고,</i></span> <span class="l3"><i>인공지능을 연구합니다</i></span></h1>
-        <p class="lede-sub">노트, 개발자 도구, 운동 기록 앱, AI 동향, 개발 기록. 지금 있는 것은 이 다섯 개입니다.</p>
-      </div>
-
-      <div class="index">
-        <div class="index-group">
-          <h2>Services</h2>
-          <a class="idx-row" href="#p-nemo" style="--n:0">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>
-            <span class="idx-name">Nemo</span>
-            <span class="idx-fact">노트 · 저널 · 웹</span>
-            <span class="idx-state"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-          </a>
-          <a class="idx-row" href="#p-devdock" style="--n:1">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>
-            <span class="idx-name">DevDock</span>
-            <span class="idx-fact">개발자 도구 · 웹</span>
-            <span class="idx-state"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-          </a>
-          <a class="idx-row" href="#p-ascend" style="--n:2">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>
-            <span class="idx-name">Ascend</span>
-            <span class="idx-fact">운동 기록 · iOS · Android</span>
-            <span class="idx-state"><span class="dot dot-soon" aria-hidden="true"></span>비공개 테스트</span>
-          </a>
-        </div>
-
-        <div class="index-group">
-          <h2>Research</h2>
-          <a class="idx-row" href="#p-ailab" style="--n:3">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>
-            <span class="idx-name">AI Lab</span>
-            <span class="idx-fact">AI 모델 · 기업 동향 · 웹</span>
-            <span class="idx-state"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-          </a>
-          <a class="idx-row" href="#r-techblog" style="--n:4">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-blog"/></svg>
-            <span class="idx-name">Tech Blog</span>
-            <span class="idx-fact">개발 기록 · 웹</span>
-            <span class="idx-state"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-          </a>
-        </div>
-      </div>
+  <!-- 회사 ─────────────────────────────────────────────────────────── -->
+  <section class="tile tall" aria-labelledby="t-hero">
+    <h1 class="title" id="t-hero">서비스를 만들고,<br>직접 운영합니다</h1>
+    <p class="sub">노트, 개발자 도구, 운동 기록 앱. 그리고 인공지능을 계속 읽고 정리합니다.</p>
+    <div class="links">
+      <a class="lnk" href="#services">서비스 보기</a>
+      <a class="lnk" href="#research">리서치 보기</a>
+    </div>
+    <div class="art symbol" aria-hidden="true">
+      <svg viewBox="0 0 240 240" fill="currentColor"><use href="#pd-symbol"/></svg>
     </div>
   </section>
 
-  <div class="spine">
-    <!-- ══ 01 SERVICES ═════════════════════════════════════════════ -->
-    <div id="services-band">
-      <section id="products" aria-labelledby="services-h2">
-        <div class="wrap">
-          <p class="eyebrow tick"><span class="section-index">01</span> &nbsp;SERVICES</p>
-          <h2 id="services-h2" class="section-title reveal reveal-title">직접 만들어 운영하는 서비스</h2>
-
-          <div class="rail" id="rail">
-            <a class="rail-tab" href="#p-nemo"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>Nemo</a>
-            <a class="rail-tab" href="#p-devdock"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>DevDock</a>
-            <a class="rail-tab" href="#p-ascend"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>Ascend</a>
-          </div>
-
-          <article class="prod" id="p-nemo">
-            <div class="prod-l">
-              <div class="prod-head"><span class="prod-id">S-01</span><span class="prod-cat">Notes &amp; Journal</span></div>
-              <h3 class="reveal reveal-title">Nemo</h3>
-              <p class="prod-line reveal">노트와 저널을 한 곳에서 쓰는 웹 앱.</p>
-              <ul class="prod-facts reveal">
-                <li>nemo.paldyn.com</li>
-                <li>웹 — 브라우저에서 바로</li>
-                <li>로그인 필요</li>
-              </ul>
-              <div class="prod-meta reveal">
-                <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-                <a class="btn btn-1" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-            <div class="prod-r reveal reveal-card">
-              <div class="tile">
-                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z"/>
-                  <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z"/>
-                </svg>
-              </div>
-            </div>
-          </article>
-
-          <article class="prod" id="p-devdock">
-            <div class="prod-l">
-              <div class="prod-head"><span class="prod-id">S-02</span><span class="prod-cat">Developer Utilities</span></div>
-              <h3 class="reveal reveal-title">DevDock</h3>
-              <p class="prod-line reveal">JSON·JWT·해시·UUID까지. 필요한 도구를 한 탭에서.</p>
-              <ul class="prod-facts reveal">
-                <li>devdock.paldyn.com</li>
-                <li>웹 — 설치 없음</li>
-                <li>로그인 필요</li>
-              </ul>
-              <div class="prod-meta reveal">
-                <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-                <a class="btn btn-1" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-            <div class="prod-r reveal reveal-card">
-              <div class="tile">
-                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z"/>
-                  <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z"/>
-                  <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z"/>
-                  <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z"/>
-                </svg>
-              </div>
-            </div>
-          </article>
-
-          <article class="prod" id="p-ascend">
-            <div class="prod-l">
-              <div class="prod-head"><span class="prod-id">S-03</span><span class="prod-cat">Workout Tracking</span></div>
-              <h3 class="reveal reveal-title">Ascend</h3>
-              <p class="prod-line reveal">세트 하나에 탭 한 번으로 기록하는 운동 앱.</p>
-              <ul class="prod-facts reveal">
-                <li>iOS · Android</li>
-                <li>광고 없음 · 추적 없음</li>
-                <li>계정 없이 전 기능 사용</li>
-              </ul>
-              <div class="prod-meta reveal">
-                <span class="status"><span class="dot dot-soon" aria-hidden="true"></span>비공개 테스트</span>
-                <a class="btn btn-2" href="/ascend/">자세히 <span class="arw" aria-hidden="true">→</span></a>
-              </div>
-            </div>
-            <div class="prod-r reveal reveal-card">
-              <div class="tile">
-                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z"/>
-                  <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z"/>
-                  <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z"/>
-                </svg>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+  <!-- Nemo ─────────────────────────────────────────────────────────── -->
+  <section class="tile invert" id="services" aria-labelledby="t-nemo">
+    <p class="eyebrow">서비스</p>
+    <h2 class="title" id="t-nemo">Nemo</h2>
+    <p class="sub">노트와 저널을 한 곳에서 쓰는 웹 앱.</p>
+    <div class="links">
+      <a class="lnk" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">열기</a>
     </div>
+    <p class="meta"><span class="dot" aria-hidden="true"></span>운영 중 · nemo.paldyn.com · 로그인 필요</p>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z"/>
+        <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z"/>
+      </svg>
+    </div>
+  </section>
 
-    <!-- ══ 02 RESEARCH ═════════════════════════════════════════════ -->
-    <section id="research" aria-labelledby="research-h2">
-      <div class="wrap">
-        <div class="research-grid">
-          <div class="research-l">
-            <p class="eyebrow tick"><span class="section-index">02</span> &nbsp;RESEARCH</p>
-            <h2 id="research-h2" class="section-title reveal reveal-title">정리한 글은 AI Lab에.<br>개발 기록은 Tech Blog에.</h2>
-            <p class="reveal" style="margin-top: var(--s6)">새 모델이 나오면 무엇이 달라지는지 확인하고, 정리한 내용을 올립니다.</p>
-            <p class="reveal">서비스를 만들며 부딪힌 문제와 해결 방법도 그대로 적어 둡니다.</p>
+  <!-- DevDock ──────────────────────────────────────────────────────── -->
+  <section class="tile" aria-labelledby="t-devdock">
+    <p class="eyebrow">서비스</p>
+    <h2 class="title" id="t-devdock">DevDock</h2>
+    <p class="sub">JSON·JWT·해시·UUID까지. 필요한 도구를 한 탭에서.</p>
+    <div class="links">
+      <a class="lnk" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">열기</a>
+    </div>
+    <p class="meta"><span class="dot" aria-hidden="true"></span>운영 중 · devdock.paldyn.com · 설치 없음 · 로그인 필요</p>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z"/>
+        <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z"/>
+        <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z"/>
+        <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z"/>
+      </svg>
+    </div>
+  </section>
 
-          </div>
+  <!-- Ascend ───────────────────────────────────────────────────────── -->
+  <section class="tile invert" aria-labelledby="t-ascend">
+    <p class="eyebrow">서비스</p>
+    <h2 class="title" id="t-ascend">Ascend</h2>
+    <p class="sub">세트 하나에 탭 한 번으로 기록하는 운동 앱.</p>
+    <div class="links">
+      <a class="lnk" href="/ascend/">자세히 보기</a>
+    </div>
+    <p class="meta"><span class="dot soon" aria-hidden="true"></span>비공개 테스트 · iOS · Android · 광고 없음 · 추적 없음 · 계정 없이 전 기능</p>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z"/>
+        <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z"/>
+        <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z"/>
+      </svg>
+    </div>
+  </section>
 
-          <div class="research-r">
-            <article class="res-item" id="p-ailab">
-              <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>
-              <div>
-                <p class="res-id">R-01</p>
-                <h3>AI Lab</h3>
-                <p class="res-fact">ailab.paldyn.com — 새 모델과 AI 기업 동향</p>
-                <div class="res-meta">
-                  <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-                  <a class="btn btn-2" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-            </article>
-
-            <article class="res-item" id="r-techblog">
-              <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-blog"/></svg>
-              <div>
-                <p class="res-id">R-02</p>
-                <h3>Tech Blog</h3>
-                <p class="res-fact">techblog.paldyn.com — 서비스를 만들며 남긴 개발 기록</p>
-                <div class="res-meta">
-                  <span class="status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
-                  <a class="btn btn-2" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">열기 <span class="arw" aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
+  <!-- 리서치 2열 ───────────────────────────────────────────────────── -->
+  <div class="row row-2" id="research">
+    <section class="tile short" aria-labelledby="t-ailab">
+      <p class="eyebrow">리서치</p>
+      <h2 class="title" id="t-ailab">AI Lab</h2>
+      <p class="sub">새 모델과 AI 기업 동향을 정리합니다.</p>
+      <div class="links">
+        <a class="lnk" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">열기</a>
+      </div>
+      <p class="meta"><span class="dot" aria-hidden="true"></span>운영 중 · ailab.paldyn.com</p>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 5A11 11 0 1 0 27 16"/>
+          <path d="M16 10A6 6 0 1 0 22 16"/>
+          <path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/>
+          <circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/>
+        </svg>
       </div>
     </section>
 
-    <!-- ══ 03 COMPANY ══════════════════════════════════════════════ -->
-    <section id="company" aria-labelledby="company-h2">
-      <div class="wrap">
-        <div class="company-grid">
-          <div class="company-l">
-            <p class="eyebrow tick"><span class="section-index">03</span> &nbsp;COMPANY</p>
-            <h2 id="company-h2" class="section-title reveal reveal-title">팔딘이 하는 일</h2>
-            <p class="reveal" style="margin-top: var(--s6)">팔딘은 만든 서비스를 넘기지 않고, 출시한 뒤에도 계속 고치며 운영합니다.</p>
-            <p class="reveal">인공지능은 서비스와 별개로 계속 읽고 정리합니다.</p>
-          </div>
-
-          <div class="company-r reveal">
-            <dl class="facts">
-              <dt>하는 일</dt><dd>서비스 개발과 운영, 기술 연구</dd>
-              <dt>운영 중</dt><dd>Nemo, DevDock, AI Lab, Tech Blog</dd>
-              <dt>비공개 테스트</dt><dd>Ascend (iOS · Android)</dd>
-              <dt>웹</dt><dd>paldyn.com</dd>
-              <dt>연락</dt><dd>contact@paldyn.com · support@paldyn.com</dd>
-            </dl>
-          </div>
-        </div>
+    <section class="tile short" aria-labelledby="t-blog">
+      <p class="eyebrow">리서치</p>
+      <h2 class="title" id="t-blog">Tech Blog</h2>
+      <p class="sub">서비스를 만들며 부딪힌 문제와 해결 방법을 적어 둡니다.</p>
+      <div class="links">
+        <a class="lnk" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">열기</a>
+      </div>
+      <p class="meta"><span class="dot" aria-hidden="true"></span>운영 중 · techblog.paldyn.com</p>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 5.5 L20 5.5 L25 10.5 L25 26.5 L7 26.5 Z"/>
+          <path d="M19.5 5.5 L19.5 11 L25 11"/>
+          <path d="M11.5 16 L20.5 16 M11.5 20.5 L17.5 20.5"/>
+        </svg>
       </div>
     </section>
   </div>
 
-  <!-- ══ 04 CONTACT ═════════════════════════════════════════════════ -->
-  <section class="contact" id="contact" aria-labelledby="contact-h2">
-    <div class="wrap">
-      <p class="eyebrow tick"><span class="section-index">04</span> &nbsp;CONTACT</p>
-      <h2 id="contact-h2" class="section-title reveal reveal-title">메일로 연락하세요</h2>
-      <p class="contact-lead reveal">받은 메일은 모두 읽고 답장합니다.</p>
+  <!-- 회사 ─────────────────────────────────────────────────────────── -->
+  <section class="tile short" id="company" aria-labelledby="t-company">
+    <h2 class="title" id="t-company">팔딘이 하는 일</h2>
+    <p class="sub">만든 서비스를 넘기지 않고, 출시한 뒤에도 계속 고치며 운영합니다.</p>
+    <dl class="facts">
+      <dt>하는 일</dt><dd>서비스 개발과 운영, 인공지능 리서치</dd>
+      <dt>운영 중</dt><dd>Nemo, DevDock, AI Lab, Tech Blog</dd>
+      <dt>비공개 테스트</dt><dd>Ascend (iOS · Android)</dd>
+      <dt>웹</dt><dd>paldyn.com</dd>
+    </dl>
+  </section>
 
-      <div class="channels">
-        <div class="channel reveal">
-          <p class="ch-name">문의</p>
-          <a class="ch-mail underline" href="mailto:contact@paldyn.com">contact@paldyn.com</a>
-          <p class="ch-note">제휴, 제안, 그 밖의 모든 연락</p>
-        </div>
-        <div class="channel reveal">
-          <p class="ch-name">지원</p>
-          <a class="ch-mail underline" href="mailto:support@paldyn.com">support@paldyn.com</a>
-          <p class="ch-note">Nemo · DevDock · Ascend 사용 중 생긴 문제</p>
-        </div>
-      </div>
+  <!-- 문의 ─────────────────────────────────────────────────────────── -->
+  <section class="tile invert short" id="contact" aria-labelledby="t-contact">
+    <h2 class="title" id="t-contact">메일로 연락하세요</h2>
+    <p class="sub">받은 메일은 모두 읽고 답장합니다.</p>
+    <div class="mails">
+      <a href="mailto:contact@paldyn.com">contact@paldyn.com</a>
+      <span>제휴, 제안, 그 밖의 모든 연락</span>
+      <a href="mailto:support@paldyn.com" style="margin-top:14px">support@paldyn.com</a>
+      <span>Nemo · DevDock · Ascend 사용 중 생긴 문제</span>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="lockup" href="/" aria-label="PALDYN 홈">
-          <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true" style="width:24px;height:24px"><use href="#pd-symbol"/></svg>
-          <span class="wordmark">PALDYN</span>
-        </a>
-        <a class="mail" href="mailto:contact@paldyn.com">contact@paldyn.com</a>
-      </div>
-
-      <div class="footer-col">
-        <h2>Services</h2>
+<footer>
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div>
+        <h2>서비스</h2>
         <ul>
-          <li><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-nemo"/></svg>Nemo</a></li>
-          <li><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-devdock"/></svg>DevDock</a></li>
-          <li><a href="/ascend/"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ascend"/></svg>Ascend</a></li>
+          <li><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo</a></li>
+          <li><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock</a></li>
+          <li><a href="/ascend/">Ascend</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
-        <h2>Research</h2>
+      <div>
+        <h2>리서치</h2>
         <ul>
-          <li><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-ailab"/></svg>AI Lab</a></li>
-          <li><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mono-blog"/></svg>Tech Blog</a></li>
+          <li><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab</a></li>
+          <li><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
-        <h2>Company</h2>
+      <div>
+        <h2>회사</h2>
         <ul>
-          <li><a class="underline" href="#company">회사</a></li>
-          <li><a class="underline" href="#contact">문의</a></li>
+          <li><a href="#company">팔딘이 하는 일</a></li>
+          <li><a href="#contact">문의</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
-        <h2>Legal</h2>
+      <div>
+        <h2>고지</h2>
         <ul>
-          <li><a class="underline" href="/ascend/privacy">Ascend 개인정보처리방침</a></li>
+          <li><a href="/ascend/privacy">Ascend 개인정보처리방침</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="footer-bar">
-      <span>© 2026 PALDYN</span>
-      <div class="footer-tools">
-        <button class="icon-btn" id="motionToggle" type="button" aria-label="모션 줄이기" aria-pressed="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h6M14 12h6"/><circle cx="12" cy="12" r="2.5"/></svg>
-        </button>
-        <button class="icon-btn" id="themeToggleFoot" type="button" aria-label="테마 전환">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        </button>
-      </div>
+    <div class="foot-bar">
+      <span>Copyright © 2026 PALDYN. All rights reserved.</span>
+      <span>대한민국</span>
     </div>
   </div>
 </footer>
@@ -989,191 +519,55 @@
 (function () {
   'use strict';
   var root = document.documentElement;
-  var scrub = root.classList.contains('scrub');
   function reduced() {
     return root.getAttribute('data-motion') === 'reduced' ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
-
-  if ((navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4) {
-    root.classList.add('motion-lite');
-  }
-
-  /* 앵커 이동 — 거리가 멀면 스무스를 쓰지 않는다 */
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
-    if (!a || a.getAttribute('href') === '#') return;
-    var t = document.querySelector(a.getAttribute('href'));
-    if (!t) return;
-    e.preventDefault();
-    var y = t.getBoundingClientRect().top + window.scrollY - 88;
-    var far = Math.abs(y - window.scrollY) > window.innerHeight * 2.5;
-    window.scrollTo({ top: y, behavior: (reduced() || far) ? 'auto' : 'smooth' });
-    if (history.replaceState) history.replaceState(null, '', a.getAttribute('href'));
-  });
 
   /* 테마 */
   function currentTheme() {
     return root.getAttribute('data-theme') ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   }
-  function applyTheme() {
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function () {
     var next = currentTheme() === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
+    var apply = function () { root.setAttribute('data-theme', next); };
     try { localStorage.setItem('theme', next); } catch (e) {}
-  }
-  function toggleTheme() {
-    if (!document.startViewTransition || reduced()) { applyTheme(); return; }
-    document.startViewTransition(applyTheme);
-  }
-  ['themeToggle', 'themeToggleFoot'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('click', toggleTheme);
+    if (!document.startViewTransition || reduced()) { apply(); return; }
+    document.startViewTransition(apply);
   });
 
-  var motionBtn = document.getElementById('motionToggle');
-  if (motionBtn) {
-    motionBtn.setAttribute('aria-pressed', reduced() ? 'true' : 'false');
-    motionBtn.addEventListener('click', function () {
-      var on = root.getAttribute('data-motion') === 'reduced';
-      if (on) { root.removeAttribute('data-motion'); } else { root.setAttribute('data-motion', 'reduced'); }
-      try { localStorage.setItem('motion', on ? 'full' : 'reduced'); } catch (e) {}
-      motionBtn.setAttribute('aria-pressed', on ? 'false' : 'true');
-    });
-  }
-
-  /* 모바일 메뉴 */
-  var navToggle = document.getElementById('navToggle');
-  var overlay = document.getElementById('navOverlay');
-  var nav = document.getElementById('nav');
-  var behind = [document.querySelector('main'), document.querySelector('footer')];
-
-  function setMenu(open) {
-    if (open) { overlay.removeAttribute('inert'); } else { overlay.setAttribute('inert', ''); }
-    overlay.classList.toggle('is-open', open);
-    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
-    if (open) nav.classList.remove('is-hidden');
-    behind.forEach(function (el) { if (el) { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); } });
-    if (open) { var f = overlay.querySelector('a'); if (f) f.focus(); }
-  }
-  navToggle.addEventListener('click', function () { setMenu(!overlay.classList.contains('is-open')); });
-  overlay.addEventListener('click', function (e) { if (e.target.tagName === 'A') setMenu(false); });
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape' || !overlay.classList.contains('is-open')) return;
-    setMenu(false); navToggle.focus();
-  });
-  overlay.addEventListener('keydown', function (e) {
-    if (e.key !== 'Tab') return;
-    var items = overlay.querySelectorAll('a[href]');
-    if (!items.length) return;
-    var first = items[0], last = items[items.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-  var wide = window.matchMedia('(min-width: 1025px)');
-  (wide.addEventListener ? wide.addEventListener.bind(wide, 'change') : wide.addListener.bind(wide))(function (e) {
-    if (e.matches && overlay.classList.contains('is-open')) setMenu(false);
-  });
-
-  /* nav 고착 + 방향 감지 — 진입 64 / 이탈 40 히스테리시스 */
-  var lastY = window.scrollY;
-  var stuck = false;
-  function syncNav(y) {
-    if (!stuck && y > 64) { stuck = true; nav.classList.add('is-stuck'); }
-    else if (stuck && y < 40) { stuck = false; nav.classList.remove('is-stuck'); }
-    if (overlay.classList.contains('is-open')) { lastY = y; return; }
-    if (Math.abs(y - lastY) > 6) nav.classList.toggle('is-hidden', y > lastY && y > 260);
-    lastY = y;
-  }
-  syncNav(window.scrollY);
-
-  /* 리빌 폴백 (스크럽 미지원 브라우저) */
-  if (!scrub && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  } else if (!scrub) {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
-  }
-
-  /* 선 그리기 — 길이를 실측해 dasharray에 기입 */
-  function measureLines() {
-    document.querySelectorAll('.tile svg path').forEach(function (p) {
-      var len = 120;
+  /* 선 그리기 길이 실측 */
+  function measure() {
+    document.querySelectorAll('.art path').forEach(function (p) {
+      var len = 200;
       try { len = p.getTotalLength(); } catch (e) {}
+      p.style.setProperty('--len', len.toFixed(1));
       p.style.strokeDasharray = len.toFixed(1);
-      if (scrub && !reduced()) p.style.strokeDashoffset = len.toFixed(1);
     });
   }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(measure); } else { measure(); }
 
-  /* 레일 인디케이터 — 탭마다 하나가 아니라 움직이는 물체 하나 */
-  var prods = [].slice.call(document.querySelectorAll('.prod'));
-  var tabs = [].slice.call(document.querySelectorAll('.rail-tab'));
-  var rail = document.getElementById('rail');
+  /* 타일이 통째로 들어온다 — 뷰포트 바닥에서 15% 지점을 아이라인으로 */
+  var tiles = [].slice.call(document.querySelectorAll('.tile'));
+  function showAll() { tiles.forEach(function (t) { t.classList.add('in'); }); }
 
-  function syncStage() {
-    if (!prods.length) return;
-    var y = window.scrollY + window.innerHeight * 0.45;
-    var active = -1;
-    prods.forEach(function (s, i) {
-      if (y >= s.getBoundingClientRect().top + window.scrollY) active = i;
-    });
-    tabs.forEach(function (t, i) { t.classList.toggle('is-on', i === active); });
-    if (rail && active >= 0 && tabs[active]) {
-      rail.style.setProperty('--tab-x', tabs[active].offsetLeft + 'px');
-      rail.style.setProperty('--tab-w', tabs[active].offsetWidth + 'px');
-    }
-  }
-
-  /* nav 오도미터 */
-  var odo = document.getElementById('odoTrack');
-  var navLinks = [].slice.call(document.querySelectorAll('.nav-links a'));
-  var sections = [
-    { el: document.getElementById('products'), n: 1 },
-    { el: document.getElementById('research'), n: 2 },
-    { el: document.getElementById('company'), n: 3 },
-    { el: document.getElementById('contact'), n: 4 }
-  ].filter(function (s) { return s.el; });
-
-  function syncOdo() {
-    var y = window.scrollY + window.innerHeight * 0.4;
-    var n = 0;
-    sections.forEach(function (s) {
-      if (y >= s.el.getBoundingClientRect().top + window.scrollY) n = s.n;
-    });
-    if (odo) odo.style.transform = 'translateY(' + (-n) + 'em)';
-    navLinks.forEach(function (a) { a.classList.toggle('is-current', Number(a.dataset.section) === n); });
-  }
-
-  function measureAll() { measureLines(); syncStage(); syncOdo(); }
-
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(measureAll);
+  if ('IntersectionObserver' in window && !reduced()) {
+    root.classList.add('anim');          /* 여기서부터만 숨긴다 */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+    tiles.forEach(function (t) { io.observe(t); });
+    /* 관측이 어떤 이유로든 안 오면 2초 뒤 전부 드러낸다 */
+    setTimeout(showAll, 2000);
   } else {
-    measureAll();
+    showAll();
   }
-  window.addEventListener('load', measureAll);
-
-  var t = null;
-  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(measureAll, 150); });
-  window.addEventListener('orientationchange', function () { setTimeout(measureAll, 200); });
-
-  var ticking = false;
-  window.addEventListener('scroll', function () {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () {
-      var y = window.scrollY;
-      syncNav(y); syncStage(); syncOdo();
-      ticking = false;
-    });
-  }, { passive: true });
 })();
 </script>
 
