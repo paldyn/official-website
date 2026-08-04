@@ -30,7 +30,7 @@
   --brand: #bf4100;
   --brand-vivid: #ff6400;
 
-  --nav-bg: rgba(255, 255, 255, 0.82);
+  --nav-bg: #ffffff;
   --overlay-bg: rgba(255, 255, 255, 0.98);
   --grid-line: rgba(0, 0, 0, 0.05);
   --gradient-silver: linear-gradient(135deg, #9a9a9a 0%, #555 40%, #1a1a1a 50%, #555 60%, #9a9a9a 100%);
@@ -126,7 +126,7 @@
     --focus: #ffffff;
     --brand: #ff6400;
     --brand-vivid: #ff6400;
-    --nav-bg: rgba(0, 0, 0, 0.78);
+    --nav-bg: #000000;
     --overlay-bg: rgba(0, 0, 0, 0.98);
     --grid-line: rgba(255, 255, 255, 0.055);
     --gradient-silver: linear-gradient(135deg, #5a5a5a 0%, #c8c8c8 40%, #ffffff 50%, #c8c8c8 60%, #5a5a5a 100%);
@@ -154,7 +154,7 @@
   --focus: #ffffff;
   --brand: #ff6400;
   --brand-vivid: #ff6400;
-  --nav-bg: rgba(0, 0, 0, 0.78);
+  --nav-bg: #000000;
   --overlay-bg: rgba(0, 0, 0, 0.98);
   --grid-line: rgba(255, 255, 255, 0.055);
   --gradient-silver: linear-gradient(135deg, #5a5a5a 0%, #c8c8c8 40%, #ffffff 50%, #c8c8c8 60%, #5a5a5a 100%);
