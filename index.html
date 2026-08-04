@@ -127,7 +127,13 @@
 
     .nav-links a:hover { color: var(--accent-bright); }
 
-    .nav-blog-pill {
+    .nav-ext {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -139,16 +145,19 @@
       letter-spacing: 0.04em;
       color: var(--text);
       text-decoration: none;
+      white-space: nowrap;
       transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .nav-blog-pill:hover {
+    .nav-pill:hover {
       border-color: var(--accent-bright);
       color: var(--accent-bright);
     }
-    .nav-blog-pill .ext {
+    .nav-pill .ext {
       font-size: 0.72rem;
       opacity: 0.7;
     }
+
+    .nav-mobile-only { display: none; }
 
     .nav-toggle {
       display: none;
@@ -459,6 +468,92 @@
       font-weight: 300;
     }
 
+    /* Products */
+    .products-block { margin-top: 6rem; }
+
+    .products-block .section-label { margin-bottom: 0.8rem; }
+
+    .products-title {
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .product-card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 0.4s, transform 0.4s;
+    }
+
+    .product-card:hover {
+      border-color: var(--text-dim);
+      transform: translateY(-4px);
+    }
+
+    .product-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .product-arrow {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .product-card:hover .product-arrow {
+      color: var(--accent-bright);
+      transform: translate(2px, -2px);
+    }
+
+    .product-domain {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+    }
+
+    .product-badge {
+      display: inline-block;
+      margin-top: 0.25rem;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      background: var(--bg);
+    }
+
+    .product-card p {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
     /* Values */
     .values-list {
       display: grid;
@@ -615,6 +710,10 @@
 
       .nav-links a { font-size: 1.2rem; }
 
+      .nav-mobile-only { display: block; }
+
+      .nav-ext { display: none; }
+
       .nav-toggle { display: flex; }
 
       section:not(.hero) { padding: 5rem 1.5rem; }
@@ -651,6 +750,14 @@
         gap: 1.5rem;
       }
 
+      .products-block { margin-top: 4rem; }
+      .products-title { font-size: 1.4rem; }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
       .value-item {
         grid-template-columns: 50px 1fr;
         gap: 1.5rem;
@@ -683,9 +790,14 @@
       <li><a href="#services" onclick="closeNav()">Services</a></li>
       <li><a href="#values" onclick="closeNav()">Values</a></li>
       <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+      <li class="nav-mobile-only"><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener" onclick="closeNav()">AI Lab ↗</a></li>
+      <li class="nav-mobile-only"><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener" onclick="closeNav()">Tech Blog ↗</a></li>
     </ul>
     <div class="nav-right">
-      <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener" class="nav-blog-pill">Tech Blog <span class="ext">↗</span></a>
+      <div class="nav-ext">
+        <a href="https://ailab.paldyn.com/" target="_blank" rel="noopener" class="nav-pill">AI Lab <span class="ext">↗</span></a>
+        <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener" class="nav-pill">Tech Blog <span class="ext">↗</span></a>
+      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
@@ -819,6 +931,40 @@
           <p>분산된 시스템을 통합하여 운영 효율을 높이고 비용을 절감합니다.</p>
         </div>
       </div>
+
+      <div class="products-block">
+        <p class="section-label">Products</p>
+        <h3 class="products-title">우리가 직접 만들고 운영하는 서비스</h3>
+        <p class="section-desc">사용해 보시면 우리가 일하는 방식이 가장 잘 보입니다.</p>
+
+        <div class="products-grid">
+          <a href="https://nemo.paldyn.com/" target="_blank" rel="noopener" class="product-card">
+            <div class="product-top">
+              <h3>Nemo</h3>
+              <span class="product-arrow" aria-hidden="true">↗</span>
+            </div>
+            <span class="product-domain">nemo.paldyn.com</span>
+            <p>생각을 정리하고 기록하는 미니멀 워크스페이스. 노트와 저널을 한곳에서 차분하게 관리합니다.</p>
+          </a>
+          <a href="https://devdock.paldyn.com/" target="_blank" rel="noopener" class="product-card">
+            <div class="product-top">
+              <h3>DevDock</h3>
+              <span class="product-arrow" aria-hidden="true">↗</span>
+            </div>
+            <span class="product-domain">devdock.paldyn.com</span>
+            <p>개발자를 위한 유틸리티 모음. JSON 포매터, JWT 디코더, 해시·UUID 생성 등을 브라우저에서 바로 씁니다.</p>
+          </a>
+          <!-- TODO: 앱 출시 후 별도 소개·다운로드 페이지(QR/스토어 배지) 구축 시 링크 교체 -->
+          <a href="/ascend/" class="product-card">
+            <div class="product-top">
+              <h3>Ascend</h3>
+              <span class="product-arrow" aria-hidden="true">→</span>
+            </div>
+            <span class="product-badge">출시 예정 · iOS/Android</span>
+            <p>세트 하나에 탭 한 번으로 끝내는 웨이트 트레이닝 기록 앱. 계정 없이 바로 시작합니다.</p>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -885,6 +1031,7 @@
       <a href="#services">Services</a>
       <a href="#values">Values</a>
       <a href="mailto:contact@paldyn.com">Contact</a>
+      <a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a>
       <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a>
     </div>
   </footer>
