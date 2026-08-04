@@ -6,186 +6,173 @@
   <title>Ascend 개인정보처리방침 — PALDYN</title>
   <meta name="description" content="Ascend 개인정보처리방침. 로그인은 선택이며, 로그인하지 않으면 어떤 데이터도 서버로 전송되지 않습니다.">
   <link rel="canonical" href="https://paldyn.com/ascend/privacy">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="robots" content="index, follow">
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="shortcut icon" href="../../favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css">
+  <link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../../assets/favicon.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css">
+  <link rel="stylesheet" href="../../assets/tokens.css">
   <script>
-    (function() {
-      var t = localStorage.getItem('theme');
-      if (t) document.documentElement.setAttribute('data-theme', t);
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+        if (localStorage.getItem('motion') === 'reduced') d.setAttribute('data-motion', 'reduced');
+      } catch (e) {}
     })();
   </script>
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    /* 토큰·리셋·포커스는 assets/tokens.css 가 담당한다. 여기에는 이 문서 고유 스타일만 둔다. */
+    .wrap { --page-max: 760px; }
 
-    :root {
-      --bg: #ffffff;
-      --bg-subtle: #f5f5f5;
-      --surface: #f0f0f0;
-      --border: #e0e0e0;
-      --text: #1a1a1a;
-      --text-dim: #666666;
-      --accent: #444444;
-      --accent-bright: #000000;
-    }
-
-    [data-theme="dark"] {
-      --bg: #000000;
-      --bg-subtle: #0a0a0a;
-      --surface: #111111;
-      --border: #1a1a1a;
-      --text: #e8e8e8;
-      --text-dim: #888888;
-      --accent: #c0c0c0;
-      --accent-bright: #ffffff;
-    }
-
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
-    body {
-      font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.75;
-      font-size: 16px;
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-
-    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-
-    /* 상단 바 */
     header.bar {
-      border-bottom: 1px solid var(--border);
-      position: sticky; top: 0;
-      background: var(--bg);
+      position: sticky;
+      top: 0;
       z-index: 10;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
     }
-    header.bar .wrap {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
-    }
-    .brand {
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: var(--text);
-      font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
-    }
-    .brand img { height: 20px; width: auto; display: block; }
-    /* 파일명은 '심볼 자체의 색'이다 — 라이트 배경엔 검은 심볼(-dark), 다크 배경엔 흰 심볼(-light) */
-    .brand .sym-on-dark { display: none; }
-    [data-theme="dark"] .brand .sym-on-light { display: none; }
-    [data-theme="dark"] .brand .sym-on-dark { display: block; }
-    .bar nav a {
-      color: var(--text-dim); text-decoration: none;
-      font-size: 14px; font-weight: 500;
-    }
-    .bar nav a:hover { color: var(--accent-bright); }
+    header.bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); }
+    .brand .symbol { width: 22px; height: 22px; }
+    .brand .wordmark { font-size: 0.9375rem; font-weight: var(--fw-medium); letter-spacing: 0.14em; line-height: 1; }
+    .brand .sep { width: 1px; height: 14px; background: var(--border-strong); margin: 0 2px; }
+    .brand .product { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em; color: var(--text-mute); }
+    .bar-right { display: flex; align-items: center; gap: var(--s3); }
+    .bar-right a { color: var(--text-dim); text-decoration: none; font-size: var(--fs-2); font-weight: var(--fw-medium); }
+    .bar-right a:hover { color: var(--accent-bright); }
 
-    /* 문서 머리 */
-    .doc-head { padding: 56px 0 28px; border-bottom: 1px solid var(--border); }
-    .eyebrow {
-      font-size: 13px; font-weight: 600; color: var(--text-dim);
-      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px;
+    .icon-btn {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border: 1px solid var(--border-strong); border-radius: 50%;
+      color: var(--text-dim);
+      transition: color var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint);
     }
-    h1 {
-      font-size: clamp(28px, 5vw, 38px); font-weight: 800;
-      letter-spacing: -0.03em; line-height: 1.25; margin-bottom: 20px;
+    .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
+    .icon-btn svg { width: 16px; height: 16px; }
+    .icon-sun { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .icon-moon { display: none; }
+      :root:not([data-theme="light"]) .icon-sun { display: block; }
     }
-    dl.meta {
-      display: grid; grid-template-columns: auto 1fr; gap: 6px 16px;
-      font-size: 14px;
-    }
-    dl.meta dt { color: var(--text-dim); font-weight: 500; }
-    dl.meta dd { color: var(--text); }
-    dl.meta a { color: var(--text); }
+    :root[data-theme="dark"] .icon-moon { display: none; }
+    :root[data-theme="dark"] .icon-sun { display: block; }
+    :root[data-theme="light"] .icon-moon { display: block; }
+    :root[data-theme="light"] .icon-sun { display: none; }
 
-    /* 요약 강조 */
+    .doc-head { padding: var(--s8) 0 var(--s5); border-bottom: 1px solid var(--border-subtle); }
+    .doc-head .eyebrow { margin-bottom: var(--s3); }
+    h1 { font-size: clamp(1.75rem, 5vw, 2.375rem); font-weight: var(--fw-medium); margin-bottom: var(--s5); }
+    dl.meta { display: grid; grid-template-columns: auto 1fr; gap: 6px var(--s4); font-size: var(--fs-2); }
+    dl.meta dt { color: var(--text-mute); font-weight: var(--fw-medium); }
+    dl.meta dd { color: var(--text-dim); }
+    main a { color: var(--text); }
+
     .lede {
-      margin: 32px 0 0;
-      padding: 20px 22px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-size: 16px; font-weight: 600; line-height: 1.7;
+      --notch: 10px;
+      margin: var(--s6) 0 0;
+      padding: 1px;
+      background: var(--border);
+      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+      font-size: var(--fs-4);
+      font-weight: var(--fw-medium);
+      line-height: 1.7;
+    }
+    .lede > span {
+      display: block;
+      padding: var(--s5);
+      background: var(--surface-2);
+      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
     }
 
-    section { padding-top: 44px; }
+    section { padding-top: var(--s7); }
     h2 {
-      font-size: 21px; font-weight: 700; letter-spacing: -0.02em;
-      margin-bottom: 14px; padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
+      font-size: var(--fs-5); font-weight: var(--fw-medium);
+      margin-bottom: var(--s4); padding-bottom: var(--s3);
+      border-bottom: 1px solid var(--border-subtle);
     }
-    h3 {
-      font-size: 16px; font-weight: 700;
-      margin: 26px 0 8px;
-    }
-    p { margin-bottom: 14px; }
-    strong { font-weight: 700; color: var(--accent-bright); }
+    h3 { font-size: var(--fs-4); font-weight: var(--fw-medium); margin: var(--s5) 0 var(--s2); }
+    p { margin-bottom: var(--s3); color: var(--text-dim); }
+    strong { font-weight: var(--fw-medium); color: var(--accent-bright); }
 
-    ul { margin: 0 0 14px; padding-left: 20px; }
+    ul { margin: 0 0 var(--s3); padding-left: 20px; color: var(--text-dim); }
     li { margin-bottom: 7px; }
     li > ul { margin-top: 7px; margin-bottom: 0; }
 
-    /* 표 — 좁은 화면에서 가로 스크롤 */
-    .table-scroll {
-      overflow-x: auto;
-      margin: 0 0 16px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-    }
-    table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+    .table-scroll { overflow-x: auto; margin: 0 0 var(--s4); border: 1px solid var(--border); }
+    table { border-collapse: collapse; width: 100%; font-size: var(--fs-2); min-width: 480px; }
     th, td {
       padding: 11px 14px; text-align: left; vertical-align: top;
-      border-bottom: 1px solid var(--border);
-      line-height: 1.6;
+      border-bottom: 1px solid var(--border-subtle); line-height: 1.6;
+      color: var(--text-dim);
     }
-    th { background: var(--bg-subtle); font-weight: 700; white-space: nowrap; }
+    th { background: var(--surface-1); font-weight: var(--fw-medium); white-space: nowrap; color: var(--text); }
     tr:last-child td { border-bottom: none; }
 
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 0.9em;
-      background: var(--surface);
-      padding: 1px 5px; border-radius: 4px;
+      background: var(--surface-2);
+      padding: 1px 5px;
     }
 
     footer.bar {
-      margin-top: 64px; padding: 28px 0 48px;
-      border-top: 1px solid var(--border);
-      font-size: 13px; color: var(--text-dim);
+      margin-top: var(--s8); padding: var(--s5) 0 var(--s7);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--fs-2); color: var(--text-mute);
     }
     footer.bar .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
-    footer.bar a { color: var(--text-dim); text-decoration: none; }
+    footer.bar a { color: var(--text-mute); text-decoration: none; }
     footer.bar a:hover { color: var(--accent-bright); }
 
     @media (max-width: 560px) {
-      body { font-size: 15px; }
-      .wrap { padding: 0 18px; }
-      .doc-head { padding-top: 36px; }
+      .doc-head { padding-top: var(--s7); }
       dl.meta { grid-template-columns: 1fr; gap: 2px; }
       dl.meta dt { margin-top: 8px; }
+      .brand .product, .brand .sep { display: none; }
     }
   </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="pd-symbol">
+      <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
+      <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
+    </g>
+  </defs>
+</svg>
+
 <header class="bar">
   <div class="wrap">
-    <a class="brand" href="/">
-      <img class="sym-on-light" src="../../assets/logo-symbol-dark.png" alt="" aria-hidden="true">
-      <img class="sym-on-dark" src="../../assets/logo-symbol-light.png" alt="" aria-hidden="true">
-      <span>PALDYN</span>
+    <a class="brand" href="/" aria-label="PALDYN 홈">
+      <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
+      <span class="wordmark">PALDYN</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="product">ASCEND</span>
     </a>
-    <nav><a href="/">회사 소개</a></nav>
+    <div class="bar-right">
+      <a href="/ascend/">Ascend 소개</a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
 
   <div class="doc-head">
-    <div class="eyebrow">Ascend</div>
+    <p class="eyebrow">Ascend</p>
     <h1>개인정보처리방침</h1>
     <dl class="meta">
       <dt>서비스명</dt><dd>Ascend</dd>
@@ -198,10 +185,8 @@
     </dl>
   </div>
 
-  <p class="lede">
-    로그인하지 않으면 저희가 수집하는 개인정보가 없습니다.
-    로그인하시면 계정 식별자와 이메일 주소를 서버에 저장합니다.
-  </p>
+  <div class="lede"><span>로그인하지 않으면 저희가 수집하는 개인정보가 없습니다.
+    로그인하시면 계정 식별자와 이메일 주소를 서버에 저장합니다.</span></div>
 
   <section id="s1">
     <h2>1. 요약 — 우리가 수집하는 개인정보</h2>
@@ -460,6 +445,28 @@
     <span><a href="/">paldyn.com</a> · <a href="mailto:support@paldyn.com">support@paldyn.com</a></span>
   </div>
 </footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function currentTheme() {
+    return root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function applyTheme() {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  }
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function () {
+    var reduced = root.getAttribute('data-motion') === 'reduced' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || reduced) { applyTheme(); return; }
+    document.startViewTransition(applyTheme);
+  });
+})();
+</script>
 
 </body>
 </html>

@@ -1,0 +1,243 @@
+/* ==========================================================================
+   PALDYN — design tokens & base
+   이 파일이 index.html / ascend/ / ascend/privacy/ 의 단일 진실 공급원이다.
+   페이지별 CSS에서 :root 토큰을 다시 선언하지 말 것.
+   ========================================================================== */
+
+:root {
+  /* 표면 · 보더 · 텍스트 (라이트) — 대비값은 --bg 기준 실측 */
+  --bg: #ffffff;
+  --surface-1: #fafafa;          /* 밴드 */
+  --surface-2: #f2f2f2;          /* 카드 */
+  --surface-3: #ededed;          /* 강조 밴드 */
+  --border-subtle: #e6e6e6;      /* 장식 헤어라인 */
+  --border: #d2d2d2;             /* 카드 경계 */
+  --border-strong: #949494;      /* 인터랙티브 컨트롤 3.03:1 */
+  --text: #101010;               /* 19.03:1 */
+  --text-dim: #5c5c5c;           /* 6.69:1 */
+  --text-mute: #6b6b6b;          /* --bg 5.30:1 / --surface-2 위 4.75:1 — 카드 메타가 이 조합을 쓴다 */
+  --accent-bright: #000000;
+  --focus: #000000;
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --overlay-bg: rgba(255, 255, 255, 0.98);
+  --grid-line: rgba(0, 0, 0, 0.05);
+  --hero-glow: rgba(0, 0, 0, 0.035);
+  --gradient-silver: linear-gradient(135deg, #9a9a9a 0%, #555 40%, #1a1a1a 50%, #555 60%, #9a9a9a 100%);
+
+  /* 타입 스케일 8단 */
+  --fs-1: 0.75rem;    /* 12 마이크로 캡스 */
+  --fs-2: 0.8125rem;  /* 13 메타·배지 */
+  --fs-3: 0.9375rem;  /* 15 본문 소 */
+  --fs-4: 1.0625rem;  /* 17 본문 */
+  --fs-5: 1.375rem;   /* 22 카드 제목 */
+  --fs-6: 2rem;       /* 32 수치 */
+  --fs-7: clamp(2.25rem, 3.6vw, 3.25rem);  /* 섹션 제목 */
+  --fs-8: clamp(2.4rem, 6vw, 4.9rem);      /* 디스플레이 */
+
+  /* 웨이트 3종 — 웨이트는 강조가 아니라 크기의 함수다 */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+
+  /* 간격 4px 배수 */
+  --s1: 4px;   --s2: 8px;   --s3: 12px;  --s4: 16px;
+  --s5: 24px;  --s6: 32px;  --s7: 48px;  --s8: 64px;
+  --s9: 96px;  --s10: 128px; --s11: 160px; --s12: 200px;
+
+  /* 레이아웃 축 — 히어로 포함 모든 섹션이 공유 */
+  --page-max: 1280px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --radius-pill: 999px;
+
+  /* 모션 */
+  --e-out: cubic-bezier(0.16, 1, 0.3, 1);       /* 리빌 */
+  --e-quint: cubic-bezier(0.22, 1, 0.36, 1);    /* hover 이탈 */
+  --e-quart: cubic-bezier(0.25, 1, 0.5, 1);     /* 페이드 */
+  --e-inout: cubic-bezier(0.65, 0, 0.35, 1);    /* 언더라인·테마 */
+  --e-mech: cubic-bezier(0.33, 0, 0.12, 1);     /* 선이 그어지는 기계적 진입 */
+  --d-1: 160ms; --d-2: 240ms; --d-3: 320ms; --d-4: 480ms; --d-5: 720ms;
+  --stagger: 70ms;
+}
+
+/* 다크 — 시스템 설정이 기본, data-theme는 명시적 오버라이드.
+   아래 두 블록은 반드시 동일한 값을 유지할 것. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000;
+    --surface-1: #0b0b0b;
+    --surface-2: #141414;
+    --surface-3: #1a1a1a;
+    --border-subtle: #1c1c1c;
+    --border: #2a2a2a;
+    --border-strong: #5c5c5c;
+    --text: #ededed;
+    --text-dim: #8a8a8a;
+    --text-mute: #878787;
+    --accent-bright: #ffffff;
+    --focus: #ffffff;
+    --nav-bg: rgba(0, 0, 0, 0.78);
+    --overlay-bg: rgba(0, 0, 0, 0.98);
+    --grid-line: rgba(255, 255, 255, 0.055);
+    --hero-glow: rgba(255, 255, 255, 0.04);
+    --gradient-silver: linear-gradient(135deg, #5a5a5a 0%, #c8c8c8 40%, #ffffff 50%, #c8c8c8 60%, #5a5a5a 100%);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --surface-1: #0b0b0b;
+  --surface-2: #141414;
+  --surface-3: #1a1a1a;
+  --border-subtle: #1c1c1c;
+  --border: #2a2a2a;
+  --border-strong: #5c5c5c;
+  --text: #ededed;
+  --text-dim: #8a8a8a;
+  --text-mute: #878787;
+  --accent-bright: #ffffff;
+  --focus: #ffffff;
+  --nav-bg: rgba(0, 0, 0, 0.78);
+  --overlay-bg: rgba(0, 0, 0, 0.98);
+  --grid-line: rgba(255, 255, 255, 0.055);
+  --hero-glow: rgba(255, 255, 255, 0.04);
+  --gradient-silver: linear-gradient(135deg, #5a5a5a 0%, #c8c8c8 40%, #ffffff 50%, #c8c8c8 60%, #5a5a5a 100%);
+}
+
+/* ── reset ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-regular);
+  line-height: 1.7;
+  font-variant-numeric: tabular-nums;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+a { color: inherit; }
+
+/* 트래킹은 크기의 함수다 */
+h1 { letter-spacing: -0.035em; line-height: 1.02; font-weight: var(--fw-medium); }
+h2 { letter-spacing: -0.02em; line-height: 1.14; font-weight: var(--fw-light); }
+h3 { letter-spacing: -0.01em; line-height: 1.35; font-weight: var(--fw-medium); }
+
+/* 공통 컨테이너 — 페이지를 관통하는 단일 수직 정렬선 */
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--page-max));
+  margin-inline: auto;
+}
+
+/* 마이크로 캡스 라벨 */
+.eyebrow {
+  font-size: var(--fs-1);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  line-height: 1;
+}
+
+/* 포커스 — 파일 전체에 단 하나의 규칙 */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* 실버 그라디언트 텍스트 — 고대비 모드 폴백 필수 */
+.silver {
+  background: var(--gradient-silver);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+@media (forced-colors: active) {
+  .silver {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: CanvasText;
+  }
+}
+
+/* ── 모션 안전망 (모션 코드보다 먼저 로드된다) ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 이동만 죽이고 페이드는 남긴다 — 전정 문제를 만드는 것은 이동이지 페이드가 아니다 */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transform: none !important; transition: opacity 200ms linear !important; }
+}
+/* 수동 스위치는 OS 설정 경로와 같은 범위를 덮어야 한다 —
+   덮지 못하면 aria-pressed가 사실과 다른 상태를 알리게 된다. */
+[data-motion="reduced"] { scroll-behavior: auto; }
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+/* 스크롤 타임라인은 duration이 진행률로 재해석되므로 명시적으로 끈다 */
+[data-motion="reduced"] .spine::after { animation: none !important; transform: scaleY(1); }
+[data-motion="reduced"] .reveal {
+  transform: none !important;
+  transition: opacity 200ms linear !important;
+}
+
+/* 무JS 안전망 — .js 없이는 리빌 CSS가 걸리지 않는다 */
+.reveal { opacity: 1; }
+.js .reveal {
+  opacity: 0;
+  transition:
+    opacity var(--d-4) var(--e-quart) var(--reveal-delay, 0ms),
+    transform var(--d-5) var(--e-out) var(--reveal-delay, 0ms);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+/* 인쇄 — 다크 모드 그대로 인쇄하면 페이지가 백지로 나온다.
+   반전 밴드(.contact)도 흰 종이 위 흰 글자가 되므로 함께 중화한다. */
+@media print {
+  :root, :root[data-theme="dark"], :root[data-theme="light"] {
+    --bg: #ffffff;
+    --surface-1: #ffffff;
+    --surface-2: #ffffff;
+    --surface-3: #ffffff;
+    --border-subtle: #cccccc;
+    --border: #999999;
+    --border-strong: #666666;
+    --text: #000000;
+    --text-dim: #333333;
+    --text-mute: #555555;
+    --accent-bright: #000000;
+    --grid-line: transparent;
+    --hero-glow: transparent;
+  }
+  body { background: #fff !important; color: #000 !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .contact { background: #fff !important; color: #000 !important; }
+  .contact .section-title, .contact .ch-mail, .contact .masthead-r,
+  .contact .eyebrow, .contact .section-index { color: #000 !important; opacity: 1 !important; }
+  .card, .card-in { background: #fff !important; }
+  nav, .nav-overlay, .icon-btn, .skip { display: none !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #555; }
+}
