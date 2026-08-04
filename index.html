@@ -3,105 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PALDYN — The force that accompanies</title>
-  <meta name="description" content="PALDYN - The force that accompanies. 함께하는 힘, 팔딘.">
+  <title>PALDYN — 직접 만들고, 끝까지 운영합니다</title>
+  <meta name="description" content="PALDYN은 소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오입니다. Nemo, DevDock, AI Lab, Ascend — 지금 돌아가고 있는 제품이 우리가 일하는 방식입니다.">
+  <link rel="canonical" href="https://paldyn.com/">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PALDYN">
+  <meta property="og:url" content="https://paldyn.com/">
+  <meta property="og:title" content="PALDYN — 직접 만들고, 끝까지 운영합니다">
+  <meta property="og:description" content="소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오. Nemo · DevDock · AI Lab · Ascend.">
+  <meta property="og:image" content="https://paldyn.com/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PALDYN — 직접 만들고, 끝까지 운영합니다">
+  <meta name="twitter:description" content="소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오. Nemo · DevDock · AI Lab · Ascend.">
+  <meta name="twitter:image" content="https://paldyn.com/assets/og.png">
+
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
-  <link rel="shortcut icon" href="./favicon.ico">
   <link rel="icon" type="image/png" sizes="256x256" href="./assets/favicon.png">
   <link rel="apple-touch-icon" href="./assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css">
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css">
+  <link rel="stylesheet" href="./assets/tokens.css">
+
   <script>
-    (function() {
-      var t = localStorage.getItem('theme');
-      if (t) document.documentElement.setAttribute('data-theme', t);
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+        if (localStorage.getItem('motion') === 'reduced') d.setAttribute('data-motion', 'reduced');
+      } catch (e) {}
     })();
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PALDYN",
+    "alternateName": "팔딘",
+    "url": "https://paldyn.com/",
+    "logo": "https://paldyn.com/assets/favicon.png",
+    "slogan": "The force that accompanies",
+    "description": "소프트웨어를 직접 만들고 직접 운영하는 제품 스튜디오",
+    "email": "contact@paldyn.com",
+    "sameAs": [
+      "https://nemo.paldyn.com/",
+      "https://devdock.paldyn.com/",
+      "https://ailab.paldyn.com/",
+      "https://techblog.paldyn.com/"
+    ]
+  }
+  </script>
+
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #ffffff;
-      --bg-subtle: #f5f5f5;
-      --surface: #f0f0f0;
-      --border: #e0e0e0;
-      --text: #1a1a1a;
-      --text-dim: #666666;
-      --accent: #444444;
-      --accent-bright: #000000;
-      --gradient-silver: linear-gradient(135deg, #999 0%, #555 40%, #222 50%, #555 60%, #999 100%);
-      --nav-scrolled-bg: rgba(255, 255, 255, 0.85);
-      --mobile-nav-bg: rgba(255, 255, 255, 0.98);
-      --hero-glow: rgba(0, 0, 0, 0.03);
-      --grid-line: rgba(0, 0, 0, 0.05);
-    }
-
-    [data-theme="dark"] {
-      --bg: #000000;
-      --bg-subtle: #0a0a0a;
-      --surface: #111111;
-      --border: #1a1a1a;
-      --text: #e8e8e8;
-      --text-dim: #888888;
-      --accent: #c0c0c0;
-      --accent-bright: #ffffff;
-      --gradient-silver: linear-gradient(135deg, #666 0%, #ccc 40%, #fff 50%, #ccc 60%, #666 100%);
-      --nav-scrolled-bg: rgba(0, 0, 0, 0.85);
-      --mobile-nav-bg: rgba(0, 0, 0, 0.98);
-      --hero-glow: rgba(255, 255, 255, 0.03);
-      --grid-line: rgba(255, 255, 255, 0.05);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* ── 스킵 링크 ─────────────────────────────────────────────────────── */
+    .skip {
+      position: absolute;
+      left: var(--gutter);
+      top: -60px;
+      z-index: 300;
+      padding: 10px 16px;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1.5rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.4s, backdrop-filter 0.4s;
-    }
-
-    nav.scrolled {
-      background: var(--nav-scrolled-bg);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      height: 32px;
+      border: 1px solid var(--border-strong);
+      font-size: var(--fs-2);
       text-decoration: none;
-      color: var(--text);
+      transition: top var(--d-2) var(--e-out);
+    }
+    .skip:focus { top: 14px; }
+
+    /* ── 내비게이션 ────────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      transition: background-color var(--d-2) var(--e-quart);
+    }
+    .nav::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 1px;
+      background: var(--border-subtle);
+      opacity: 0;
+      transition: opacity var(--d-2) var(--e-quart);
+    }
+    .nav.is-stuck {
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav.is-stuck::after { opacity: 1; }
+    .js .nav { animation: fadeIn 400ms linear both; }
+
+    .nav-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: var(--s4);
+      width: min(100% - 2 * var(--gutter), var(--page-max));
+      margin-inline: auto;
     }
 
-    .nav-logo .logo-symbol {
-      height: 28px;
-      width: auto;
-      display: block;
+    .lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      justify-self: start;
     }
-
-    .nav-logo .logo-text {
-      font-size: 18px;
-      font-weight: 700;
+    .lockup .symbol { width: 24px; height: 24px; }
+    .lockup .wordmark {
+      font-size: 1rem;
+      font-weight: var(--fw-medium);
       letter-spacing: 0.14em;
       line-height: 1;
       color: var(--text);
@@ -109,974 +134,1227 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: var(--s6);
       list-style: none;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
     }
-
     .nav-links a {
+      position: relative;
+      font-size: var(--fs-2);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.02em;
       color: var(--text-dim);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      transition: color 0.3s;
+      transition: color var(--d-2) var(--e-quart);
     }
-
     .nav-links a:hover { color: var(--accent-bright); }
 
-    .nav-ext {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+    .underline { position: relative; }
+    .underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform var(--d-2) var(--e-inout);
     }
-
-    .nav-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      text-decoration: none;
-      white-space: nowrap;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .nav-pill:hover {
-      border-color: var(--accent-bright);
-      color: var(--accent-bright);
-    }
-    .nav-pill .ext {
-      font-size: 0.72rem;
-      opacity: 0.7;
-    }
-
-    .nav-mobile-only { display: none; }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .nav-toggle span {
-      width: 24px;
-      height: 1.5px;
-      background: var(--text);
-      transition: 0.3s;
-    }
-
-    /* Theme Toggle */
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-dim);
-      transition: color 0.3s, border-color 0.3s;
-    }
-
-    .theme-toggle:hover {
-      color: var(--accent-bright);
-      border-color: var(--accent);
-    }
-
-    .theme-toggle svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .theme-toggle .icon-moon { display: block; }
-    .theme-toggle .icon-sun { display: none; }
-
-    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    .underline:hover::after { transform: scaleX(1); transform-origin: left; }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: var(--s3);
+      justify-self: end;
     }
 
-    /* Hero Section */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 32px;
+      padding: 0 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-2);
+      font-weight: var(--fw-medium);
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint);
+    }
+    .pill:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
+    .pill .ext { font-size: var(--fs-1); opacity: 0.75; }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      color: var(--text-dim);
+      transition: color var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint);
+    }
+    .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
+    .icon-btn svg { width: 17px; height: 17px; }
+
+    .icon-sun { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .icon-moon { display: none; }
+      :root:not([data-theme="light"]) .icon-sun { display: block; }
+    }
+    :root[data-theme="dark"] .icon-moon { display: none; }
+    :root[data-theme="dark"] .icon-sun { display: block; }
+    :root[data-theme="light"] .icon-moon { display: block; }
+    :root[data-theme="light"] .icon-sun { display: none; }
+
+    .nav-toggle { display: none; }
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: currentColor;
+      transition: transform var(--d-2) var(--e-out), opacity var(--d-1) linear;
+    }
+    .nav-toggle span + span { margin-top: 5px; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* 오버레이는 nav의 형제다 — nav에 backdrop-filter가 걸리면
+       fixed 자손이 nav 박스에 갇히기 때문(실제 재현되던 버그). */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 190;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--s5);
+      padding: var(--s9) var(--gutter) var(--s8);
+      background: var(--overlay-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .nav-overlay.is-open { display: flex; }
+    .nav-overlay ul { list-style: none; display: grid; gap: var(--s5); }
+    .nav-overlay a {
+      font-size: 1.5rem;
+      font-weight: var(--fw-light);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-overlay .ov-sub {
+      display: grid;
+      gap: var(--s4);
+      padding-top: var(--s5);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .nav-overlay .ov-sub a { font-size: var(--fs-3); color: var(--text-dim); letter-spacing: 0.02em; }
+
+    /* ── 히어로 ────────────────────────────────────────────────────────── */
     .hero {
-      min-height: 92vh;
-      max-width: none;
-      margin: 0;
       position: relative;
-      overflow: hidden;
+      min-height: 88svh;
       display: flex;
       align-items: center;
-      padding: 130px 3rem 84px;
+      padding: 152px 0 112px;
       isolation: isolate;
+      overflow: hidden;
+      overflow: clip;
     }
+
+    /* 고정 nav 아래로 들어가지 않게 — 각주 칩·nav 링크가 가리키는 모든 목표 */
+    :target,
+    section[id],
+    .card[id] { scroll-margin-top: 88px; }
     .hero::before {
       content: '';
       position: absolute;
-      width: min(54vw, 640px);
+      width: min(54vw, 620px);
       aspect-ratio: 1;
-      right: -180px;
-      top: -120px;
-      border-radius: 999px;
+      right: -160px;
+      top: -140px;
+      border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, var(--hero-glow), transparent 68%);
-      z-index: 0;
+      z-index: -1;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 64px,
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 64px 100%;
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 76%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 76%, transparent 100%);
+      opacity: 0.55;
+    }
+    .js .hero-bg { animation: fadeIn 900ms linear both; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--s5);
+      row-gap: var(--s7);
+      align-items: end;
+    }
+    .hero-copy { grid-column: 1 / span 7; }
+
+    /* 라벨은 시임에 매달린 레지스터 마크로 읽힌다 —
+       틱이 축까지 뻗고 라벨 자체는 콘텐츠 정렬선에 정확히 선다. */
+    .tick {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tick::before {
+      content: '';
+      width: 12px;
+      margin-left: -20px;
+      height: 1px;
+      background: var(--border-strong);
+      flex: none;
+    }
+    @media (max-width: 1024px) {
+      .tick { gap: 10px; }
+      .tick::before { width: 8px; margin-left: 0; }
+    }
+
+    .hero-title {
+      margin-top: var(--s4);
+      font-size: var(--fs-8);
+      color: var(--accent-bright);
+    }
+    .hero-title .line {
+      display: block;
+      overflow: hidden;
+      /* 받침 있는 한글은 em 박스를 꽉 채운다 — 클립 창만 넓히고 레이아웃은 유지 */
+      padding-block: 0.14em;
+      margin-block: -0.14em;
+    }
+    .hero-title .line > span { display: block; }
+    .js .hero-title .line > span {
+      animation: lineUp var(--d-5) var(--e-out) both;
+    }
+    .js .hero-title .line:nth-child(1) > span { animation-delay: 80ms; }
+    .js .hero-title .line:nth-child(2) > span { animation-delay: 160ms; }
+
+    .hero-en {
+      margin-top: var(--s5);
+      font-size: var(--fs-2);
+      letter-spacing: 0.06em;
+      color: var(--text-mute);
+    }
+    .hero-desc {
+      margin-top: var(--s3);
+      max-width: 52ch;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .js .hero-en, .js .hero-desc { animation: riseIn 560ms var(--e-quart) 300ms both; }
+
+    .hero-ctas { display: flex; gap: var(--s2); margin-top: var(--s7); }
+    .js .hero-ctas > * { animation: riseIn var(--d-4) var(--e-out) both; }
+    .js .hero-ctas > *:nth-child(1) { animation-delay: 380ms; }
+    .js .hero-ctas > *:nth-child(2) { animation-delay: 440ms; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 148px;
+      height: 46px;
+      padding: 0 var(--s5);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-2);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.02em;
+      color: var(--text);
+      text-decoration: none;
+      transition: transform var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint), color var(--d-3) var(--e-quint);
+    }
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent-bright); color: var(--accent-bright); transition-duration: var(--d-1); }
+    .btn .arw { transition: transform var(--d-2) var(--e-out); }
+    .btn:hover .arw { transform: translateX(3px); }
+    .btn-primary {
+      background: var(--accent-bright);
+      border-color: var(--accent-bright);
+      color: var(--bg);
+    }
+    .btn-primary:hover { color: var(--bg); opacity: 0.88; }
+
+    /* 히어로 우측 상태 스트립 — 스크롤 0에서 제품이 이름으로 노출된다 */
+    .status-strip {
+      grid-column: 9 / span 4;
+      list-style: none;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .js .status-strip { animation: riseIn 560ms var(--e-quart) 460ms both; }
+    .status-strip a {
+      display: grid;
+      grid-template-columns: 12px 1fr auto;
+      align-items: center;
+      gap: var(--s3);
+      height: 44px;
+      border-bottom: 1px solid var(--border-subtle);
+      text-decoration: none;
+      transition: border-color var(--d-3) var(--e-quint);
+    }
+    .status-strip a:hover { border-color: var(--border-strong); }
+    .status-strip .nm { font-size: var(--fs-3); font-weight: var(--fw-medium); color: var(--text); }
+    .status-strip .ct { font-size: var(--fs-1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); }
+
+    /* 색을 쓰지 않고 형태로 상태를 구분한다 (색맹·고대비 모드 대응) */
+    .dot {
+      width: 9px;
+      height: 9px;
+      border: 1px solid var(--text-dim);
+      flex: none;
+    }
+    .dot-live { background: var(--text); border-color: var(--text); }
+    .dot-limited { background: linear-gradient(135deg, var(--text) 0 50%, transparent 50% 100%); border-color: var(--text-dim); }
+    .dot-soon { background: none; }
+
+    /* ── 시임(척추) — 히어로 아래부터 푸터까지 관통하는 정렬선 ────────── */
+    .spine { position: relative; }
+    .spine::before,
+    .spine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(max(var(--gutter), (100% - var(--page-max)) / 2) - 20px);
+      width: 1px;
       pointer-events: none;
     }
-    .hero::after {
+    .spine::before { background: var(--border-subtle); }
+    .spine::after {
+      background: var(--gradient-silver);
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    @supports (animation-timeline: scroll()) {
+      .spine::after {
+        animation: fillDown linear both;
+        animation-timeline: scroll(root block);
+      }
+    }
+    @media (max-width: 1024px) {
+      .spine::before, .spine::after { display: none; }
+    }
+
+    section { padding-block: var(--s10); }
+
+    /* ── 섹션 마스트헤드 ───────────────────────────────────────────────── */
+    .masthead {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--s5);
+      row-gap: var(--s4);
+      align-items: baseline;
+    }
+    .masthead-l { grid-column: 1 / span 7; }
+    .masthead-r {
+      grid-column: 9 / span 4;
+      font-size: var(--fs-3);
+      color: var(--text-dim);
+    }
+    .section-index {
+      font-size: var(--fs-1);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.18em;
+    }
+    .section-title {
+      margin-top: var(--s3);
+      font-size: var(--fs-7);
+      color: var(--text);
+    }
+
+    /* ── 제품 ─────────────────────────────────────────────────────────── */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s5);
+      margin-top: var(--s8);
+    }
+
+    /* 노치 카드 — 팔각 심볼의 45° 파세트를 카드 언어로 확장 */
+    .card {
+      --notch: 12px;
+      display: block;
+      padding: 1px;
+      background: var(--border);
+      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--d-3) var(--e-quint), background-color var(--d-3) var(--e-quint);
+    }
+    .card:hover { transform: translateY(-3px); background: var(--border-strong); transition-duration: var(--d-1); }
+    /* clip-path는 요소가 그리는 아웃라인까지 잘라낸다 — 포커스 표시는 클립 안쪽에 그린다 */
+    .card:focus-visible { outline: none; }
+    .card:focus-visible .card-in { box-shadow: inset 0 0 0 2px var(--focus); }
+    .card-in {
+      display: flex;
+      flex-direction: column;
+      min-height: 268px;
+      padding: var(--s6);
+      background: var(--surface-2);
+      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+    }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
+    .monogram { width: 30px; height: 30px; color: var(--text); transition: color var(--d-2) var(--e-quart); }
+    .card:hover .monogram { color: var(--accent-bright); }
+    .card-id { font-size: var(--fs-1); letter-spacing: 0.12em; color: var(--text-mute); }
+    .card h3 { margin-top: var(--s5); font-size: var(--fs-5); }
+    .card-cat {
+      margin-top: 6px;
+      font-size: var(--fs-1);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .card p {
+      margin-top: var(--s3);
+      font-size: var(--fs-3);
+      line-height: 1.7;
+      color: var(--text-dim);
+    }
+    .card-meta {
+      margin-top: auto;
+      padding-top: var(--s5);
+      display: grid;
+      gap: 6px;
+    }
+    .card-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--fs-1);
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+    }
+    .card-domain {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s2);
+      font-size: var(--fs-2);
+      color: var(--text-mute);
+    }
+    .card .arw { transition: transform var(--d-2) var(--e-out); }
+    .card:hover .arw { transform: translate(2px, -2px); }
+    .card.is-cited {
+      background: var(--border-strong);
+    }
+
+    /* ── 우리가 만드는 방식 ────────────────────────────────────────────── */
+    .build-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--s5);
+    }
+    .build-l { grid-column: 1 / span 4; }
+    .build-r { grid-column: 6 / span 7; }
+    @media (min-width: 1025px) and (min-height: 700px) {
+      .build-l { position: sticky; top: calc(50vh - 96px); align-self: start; }
+    }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: var(--s7);
+      padding-block: var(--s7);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .principle:first-child { border-top: 1px solid var(--border-subtle); }
+    .principle-no {
+      position: relative;
+      font-size: var(--fs-2);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.2em;
+      color: var(--text-mute);
+      transition: color var(--d-2) var(--e-quart);
+    }
+    .principle-no::before {
+      content: '';
+      position: absolute;
+      left: -14px;
+      top: 4px;
+      width: 2px;
+      height: 14px;
+      background: var(--accent-bright);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform var(--d-1) var(--e-out);
+    }
+    .principle.is-active .principle-no { color: var(--accent-bright); }
+    .principle.is-active .principle-no::before { transform: scaleY(1); }
+    .principle h3 { font-size: var(--fs-5); }
+    .principle p {
+      margin-top: var(--s3);
+      max-width: 58ch;
+      font-size: var(--fs-4);
+      line-height: 1.75;
+      color: var(--text-dim);
+    }
+    /* 각주 칩 — 역량은 독립 주장이 아니라 제품에 대한 주석이다.
+       칩 없는 항목은 이 섹션에 추가하지 않는다. */
+    .cites { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s4); }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 26px;
+      padding: 0 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-1);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: border-color var(--d-3) var(--e-quint), color var(--d-3) var(--e-quint);
+    }
+    .chip:hover { border-color: var(--border-strong); color: var(--text); transition-duration: var(--d-1); }
+    .chip .lead { transition: transform var(--d-2) var(--e-out); }
+    .chip:hover .lead { transform: translateX(2px); }
+
+    /* ── 회사 ─────────────────────────────────────────────────────────── */
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--s5);
+      row-gap: var(--s8);
+      align-items: start;
+      margin-top: var(--s8);
+    }
+    .company-l { grid-column: 1 / span 6; }
+    .company-l p { max-width: 54ch; color: var(--text-dim); line-height: 1.75; }
+    .company-l p + p { margin-top: var(--s4); }
+    .company-r { grid-column: 8 / span 5; }
+
+    .blueprint {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin-inline: auto;
+      aspect-ratio: 1;
+    }
+    .blueprint::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 54px,
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 54px 100%;
-      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 78%, transparent 100%);
-      opacity: 0.55;
-      z-index: 0;
-      pointer-events: none;
+        linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 24px,
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 24px 100%;
+      mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 86%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 86%);
     }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 980px;
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: clamp(1.2rem, 2.8vw, 2.2rem);
+    .blueprint svg { position: relative; }
+    .blueprint svg { width: 100%; height: 100%; }
+    .bp-half { transition: transform var(--d-5) var(--e-out); }
+    .js .bp-half-l { transform: translateX(-14px); }
+    .js .bp-half-r { transform: translateX(14px); }
+    .js .blueprint.is-in .bp-half { transform: none; }
+    .bp-lead {
+      transform: scaleX(0);
+      transition: transform var(--d-3) var(--e-mech);
     }
-
-    .hero-copy { max-width: 760px; }
-
-    .hero-title {
-      font-size: clamp(2.35rem, 6vw, 5.3rem);
-      font-weight: 560;
-      letter-spacing: -0.035em;
-      line-height: 1.02;
-      color: var(--accent-bright);
-      margin: 0;
+    .js .blueprint.is-in .bp-lead { transform: scaleX(1); }
+    .js .blueprint.is-in .bp-lead-1 { transition-delay: 560ms; }
+    .js .blueprint.is-in .bp-lead-2 { transition-delay: 630ms; }
+    .js .blueprint.is-in .bp-lead-3 { transition-delay: 700ms; }
+    .js .blueprint.is-in .bp-lead-4 { transition-delay: 770ms; }
+    .bp-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      fill: var(--text-mute);
       opacity: 0;
-      animation: fadeInUp 0.9s ease-out 0.12s forwards;
+      transition: opacity var(--d-3) linear;
     }
-    .hero-title .accent {
-      display: inline;
-      color: var(--text-dim);
-      font-weight: 480;
-    }
+    .js .blueprint.is-in .bp-label { opacity: 1; }
+    .js .blueprint.is-in .bp-label-1 { transition-delay: 640ms; }
+    .js .blueprint.is-in .bp-label-2 { transition-delay: 710ms; }
+    .js .blueprint.is-in .bp-label-3 { transition-delay: 780ms; }
+    .js .blueprint.is-in .bp-label-4 { transition-delay: 850ms; }
 
-    .hero-desc {
-      margin-top: 1rem;
-      font-size: clamp(0.98rem, 1.2vw, 1.12rem);
-      font-weight: 430;
-      line-height: 1.62;
-      color: var(--text-dim);
-      max-width: 560px;
-      opacity: 0;
-      animation: fadeInUp 0.9s ease-out 0.24s forwards;
+    /* ── 연락 — 마지막 지면만 반전해서 페이지를 닫는다 ────────────────── */
+    .contact {
+      background: var(--accent-bright);
+      color: var(--bg);
+      margin-top: var(--s10);
     }
+    .contact .section-index,
+    .contact .eyebrow { color: var(--bg); opacity: 0.62; }
+    .contact .section-title { color: var(--bg); }
+    .contact .masthead-r { color: var(--bg); opacity: 0.72; }
+    .contact .tick::before { background: var(--bg); opacity: 0.5; }
+    .contact :focus-visible { outline-color: var(--bg); }
 
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-top: 1.8rem;
-      opacity: 0;
-      animation: fadeInUp 0.9s ease-out 0.36s forwards;
+    .channels {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--s5);
+      margin-top: var(--s8);
+      max-width: 820px;
     }
-    .hero-btn {
+    .channel { padding-top: var(--s5); border-top: 1px solid rgba(128, 128, 128, 0.45); }
+    .channel .ch-name {
+      font-size: var(--fs-1);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.62;
+    }
+    .channel .ch-mail {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-width: 122px;
-      padding: 0.62rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: transform 0.2s, border-color 0.2s, background 0.2s;
-    }
-    .hero-btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--text-dim);
-    }
-    .hero-btn.primary {
-      background: var(--accent-bright);
+      gap: 8px;
+      margin-top: var(--s3);
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
       color: var(--bg);
-      border-color: var(--accent-bright);
+      text-decoration: none;
     }
+    .channel .ch-note { margin-top: 6px; font-size: var(--fs-2); opacity: 0.7; }
 
-    .nav-logo .logo-light { display: block; }
-    .nav-logo .logo-dark { display: none; }
-    [data-theme="dark"] .nav-logo .logo-light { display: none; }
-    [data-theme="dark"] .nav-logo .logo-dark { display: block; }
-
-    /* Sections Common */
-    section:not(.hero) {
-      padding: 8rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
-      line-height: 1.3;
-    }
-
-    .section-desc {
-      font-size: 1rem;
-      color: var(--text-dim);
-      max-width: 600px;
-      line-height: 1.9;
-      font-weight: 300;
-    }
-
-    /* Divider */
-    .divider {
-      max-width: 1200px;
-      margin: 0 auto;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border), transparent);
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-top: 4rem;
-    }
-
-    .about-visual {
-      aspect-ratio: 1;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .about-visual .ring {
+    /* ── 푸터 ─────────────────────────────────────────────────────────── */
+    .footer { position: relative; padding-block: var(--s8) var(--s7); }
+    .footer::before {
+      content: '';
       position: absolute;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      animation: ringRotate 20s linear infinite;
-    }
-
-    .about-visual .ring:nth-child(1) { width: 80%; height: 80%; }
-    .about-visual .ring:nth-child(2) { width: 60%; height: 60%; animation-duration: 15s; animation-direction: reverse; }
-    .about-visual .ring:nth-child(3) { width: 40%; height: 40%; animation-duration: 25s; }
-
-    .about-visual .core {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 30px rgba(255,255,255,0.1);
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .stat-item .stat-number {
-      font-size: 2rem;
-      font-weight: 300;
-      letter-spacing: 0.05em;
+      inset: 0 0 auto 0;
+      height: 1px;
       background: var(--gradient-silver);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      opacity: 0.5;
     }
-
-    .stat-item .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      letter-spacing: 0.1em;
-      margin-top: 0.3rem;
-    }
-
-    /* Services */
-    .services-grid {
+    .footer-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 4rem;
+      grid-template-columns: 2fr repeat(4, 1fr);
+      gap: var(--s7) var(--s5);
     }
-
-    .service-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2.5rem;
-      transition: border-color 0.4s, transform 0.4s;
+    .footer-brand .wordmark { font-size: 1rem; font-weight: var(--fw-medium); letter-spacing: 0.14em; }
+    .footer-brand p { margin-top: var(--s3); font-size: var(--fs-1); letter-spacing: 0.06em; color: var(--text-mute); }
+    .footer-col h4 {
+      font-size: var(--fs-1);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-mute);
     }
-
-    .service-card:hover {
-      border-color: var(--text-dim);
-      transform: translateY(-4px);
-    }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1.5rem;
-      stroke: var(--accent);
-    }
-
-    .service-card h3 {
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
-    }
-
-    .service-card p {
-      font-size: 0.9rem;
+    .footer-col ul { list-style: none; margin-top: var(--s4); display: grid; gap: var(--s3); }
+    .footer-col a {
+      font-size: var(--fs-2);
       color: var(--text-dim);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* Products */
-    .products-block { margin-top: 6rem; }
-
-    .products-block .section-label { margin-bottom: 0.8rem; }
-
-    .products-title {
-      font-size: 1.6rem;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.8rem;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .product-card {
-      display: block;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2.5rem;
-      color: var(--text);
       text-decoration: none;
-      transition: border-color 0.4s, transform 0.4s;
+      transition: color var(--d-2) var(--e-quart);
     }
-
-    .product-card:hover {
-      border-color: var(--text-dim);
-      transform: translateY(-4px);
-    }
-
-    .product-top {
+    .footer-col a:hover { color: var(--accent-bright); }
+    .footer-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: var(--s4);
+      margin-top: var(--s7);
+      padding-top: var(--s5);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--fs-2);
+      color: var(--text-mute);
     }
+    .footer-tools { display: flex; gap: var(--s2); }
 
-    .product-card h3 {
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-    }
+    /* ── 키프레임 ──────────────────────────────────────────────────────── */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes lineUp { from { transform: translateY(101%); } to { transform: translateY(0); } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes fillDown { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
-    .product-arrow {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      transition: color 0.3s, transform 0.3s;
-    }
+    /* 리빌 거리는 요소 종류의 함수 — 32px를 넘기지 않는다 */
+    .js .reveal { transform: translateY(14px); }
+    .js .reveal-title { transform: translateY(18px); }
+    .js .reveal-card { transform: translateY(26px); }
 
-    .product-card:hover .product-arrow {
-      color: var(--accent-bright);
-      transform: translate(2px, -2px);
-    }
-
-    .product-domain {
-      display: block;
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-    }
-
-    .product-badge {
-      display: inline-block;
-      margin-top: 0.25rem;
-      padding: 3px 10px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      color: var(--text-dim);
-      background: var(--bg);
-    }
-
-    .product-card p {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* Values */
-    .values-list {
-      display: grid;
-      gap: 0;
-      margin-top: 4rem;
-    }
-
-    .value-item {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 3rem;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
-    }
-
-    .value-item:first-child { border-top: 1px solid var(--border); }
-
-    .value-number {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      letter-spacing: 0.2em;
-      padding-top: 0.3rem;
-    }
-
-    .value-content h3 {
-      font-size: 1.3rem;
-      font-weight: 400;
-      margin-bottom: 0.8rem;
-      letter-spacing: 0.05em;
-    }
-
-    .value-content p {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      font-weight: 300;
-      max-width: 600px;
-    }
-
-    /* Contact */
-    .contact-section {
-      text-align: center;
-      padding: 10rem 3rem;
-    }
-
-    .contact-section .section-title {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-section .section-desc {
-      margin: 0 auto 3rem;
-    }
-
-    .contact-btn {
-      display: inline-block;
-      padding: 1rem 3rem;
-      border: 1px solid var(--accent);
-      color: var(--accent-bright);
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    .contact-btn:hover {
-      background: var(--accent-bright);
-      color: var(--bg);
-    }
-
-    /* Footer */
-    footer {
-      padding: 3rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-left {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      letter-spacing: 0.1em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-links a {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover { color: var(--accent-bright); }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
-    @keyframes ringRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-logo { height: 27px; gap: 6px; }
-      .nav-logo .logo-symbol { height: 24px; }
-      .nav-logo .logo-text { font-size: 15px; }
-
-      .nav-links {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--mobile-nav-bg);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-      }
-
-      .nav-links.open { display: flex; }
-
-      .nav-links a { font-size: 1.2rem; }
-
-      .nav-mobile-only { display: block; }
-
-      .nav-ext { display: none; }
-
-      .nav-toggle { display: flex; }
-
-      section:not(.hero) { padding: 5rem 1.5rem; }
-
-      .hero {
-        padding: 106px 1.25rem 62px;
-        min-height: auto;
-      }
-      .hero-inner {
-        gap: 1.3rem;
-      }
-      .hero-title { font-size: clamp(2.05rem, 9vw, 3.15rem); }
-      .hero-desc { font-size: 0.94rem; line-height: 1.62; }
-      .hero-ctas {
-        width: 100%;
-        gap: 0.55rem;
-      }
-      .hero-btn {
-        min-width: 0;
-        flex: 1;
-      }
-
-      .section-title { font-size: 1.8rem; }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      .about-visual { max-width: 300px; margin: 0 auto; }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .products-block { margin-top: 4rem; }
-      .products-title { font-size: 1.4rem; }
-
-      .products-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .value-item {
-        grid-template-columns: 50px 1fr;
-        gap: 1.5rem;
-        padding: 2rem 0;
-      }
-
-      .contact-section { padding: 6rem 1.5rem; }
-      .contact-section .section-title { font-size: 2rem; }
-
-      footer {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-        padding: 2rem 1.5rem;
+    /* ── 테마 전환: 세로 스캔라인 와이프 (축 기반 레이아웃과 방향을 맞춤) ── */
+    @media (prefers-reduced-motion: no-preference) {
+      ::view-transition-old(root) { animation: none; }
+      ::view-transition-new(root) {
+        animation: wipeIn 420ms var(--e-inout) both;
+        z-index: 1;
       }
     }
+    @keyframes wipeIn {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    /* ── 반응형 ───────────────────────────────────────────────────────── */
+    @media (max-width: 1199px) {
+      .products { grid-template-columns: repeat(2, 1fr); }
+      .hero-copy { grid-column: 1 / span 12; }
+      .status-strip { grid-column: 1 / span 12; max-width: 520px; }
+      .masthead-l { grid-column: 1 / span 12; }
+      .masthead-r { grid-column: 1 / span 12; }
+      .build-l { grid-column: 1 / span 12; margin-bottom: var(--s6); }
+      .build-r { grid-column: 1 / span 12; }
+      .company-l, .company-r { grid-column: 1 / span 12; }
+      .footer-grid { grid-template-columns: repeat(4, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 1024px) {
+      section { padding-block: var(--s9); }
+      .nav-links, .nav-right .pill { display: none; }
+      .nav-toggle { display: block; }
+      .contact { margin-top: var(--s9); }
+    }
+
+    @media (max-width: 720px) {
+      section { padding-block: var(--s8); }
+      .hero { padding: 116px 0 var(--s8); min-height: auto; }
+      .hero-grid { row-gap: var(--s6); }
+      .hero-ctas { gap: 8px; }
+      .btn { flex: 1; min-width: 0; padding: 0 var(--s3); }
+      .products { grid-template-columns: 1fr; }
+      .card { --notch: 10px; }
+      .card-in { min-height: 0; padding: var(--s5); }
+      .principle { grid-template-columns: 48px 1fr; gap: var(--s4); padding-block: var(--s6); }
+      .channels { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-bar { flex-direction: column; align-items: flex-start; }
+      .contact { margin-top: var(--s8); }
+    }
+
+    /* 저사양 기기 — 비용이 큰 것만 끈다 */
+    .motion-lite .nav.is-stuck { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--bg); }
+    .motion-lite .nav-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav id="navbar">
-    <a href="#" class="nav-logo" aria-label="PALDYN">
-      <img class="logo-symbol logo-light" src="assets/logo-symbol-dark.png" alt="" aria-hidden="true">
-      <img class="logo-symbol logo-dark" src="assets/logo-symbol-light.png" alt="" aria-hidden="true">
-      <span class="logo-text">PALDYN</span>
+<a class="skip" href="#products">본문으로 건너뛰기</a>
+
+<!-- 심볼 정의 — 두 반쪽 팔각형 + 중앙 팔각 음각 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- 공유 심볼에는 어떤 애니메이션 클래스도 붙이지 않는다 —
+         <use> 클론은 문서 CSS의 후손 셀렉터가 닿지 않는 섀도 트리에 있어,
+         원본에 걸린 상태 클래스가 클론에서 되돌려지지 않는다.
+         결합 모션이 필요한 곳(#blueprint)은 path를 직접 인라인한다. -->
+    <g id="pd-symbol">
+      <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
+      <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
+    </g>
+  </defs>
+</svg>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="lockup" href="/" aria-label="PALDYN 홈">
+      <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
+      <span class="wordmark">PALDYN</span>
     </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about" onclick="closeNav()">About</a></li>
-      <li><a href="#services" onclick="closeNav()">Services</a></li>
-      <li><a href="#values" onclick="closeNav()">Values</a></li>
-      <li><a href="#contact" onclick="closeNav()">Contact</a></li>
-      <li class="nav-mobile-only"><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener" onclick="closeNav()">AI Lab ↗</a></li>
-      <li class="nav-mobile-only"><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener" onclick="closeNav()">Tech Blog ↗</a></li>
+
+    <ul class="nav-links">
+      <li><a class="underline" href="#products">Products</a></li>
+      <li><a class="underline" href="#build">How we build</a></li>
+      <li><a class="underline" href="#company">Company</a></li>
+      <li><a class="underline" href="#contact">Contact</a></li>
     </ul>
+
     <div class="nav-right">
-      <div class="nav-ext">
-        <a href="https://ailab.paldyn.com/" target="_blank" rel="noopener" class="nav-pill">AI Lab <span class="ext">↗</span></a>
-        <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener" class="nav-pill">Tech Blog <span class="ext">↗</span></a>
-      </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
-        </svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="5"/>
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-        </svg>
+      <a class="pill" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog <span class="ext" aria-hidden="true">↗</span></a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       </button>
-      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="navOverlay">
         <span></span><span></span><span></span>
       </button>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero" aria-label="PALDYN">
-    <div class="hero-inner">
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="메뉴" hidden>
+  <ul>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#build">How we build</a></li>
+    <li><a href="#company">Company</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="ov-sub">
+    <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a>
+    <a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a>
+  </div>
+</div>
+
+<main>
+  <span id="navSentinel" aria-hidden="true"></span>
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
       <div class="hero-copy">
-        <h1 class="hero-title">혼자보다 강한 방식,<br><span class="accent">함께하는 힘 PALDYN.</span></h1>
-        <p class="hero-desc">PALDYN은 여러분과 끝까지 함께 책임집니다.<br>기획, 개발, 운영이 하나로 맞물려 고객의 하루를 더 풍요롭게 만듭니다.</p>
+        <p class="eyebrow tick">PALDYN — 함께하는 힘</p>
+        <h1 class="hero-title">
+          <span class="line"><span>직접 만들고,</span></span>
+          <span class="line"><span>끝까지 운영합니다.</span></span>
+        </h1>
+        <p class="hero-en">The force that accompanies.</p>
+        <p class="hero-desc">기획부터 운영까지 직접 합니다. 노트 앱, 개발자 도구, AI 리서치 플랫폼, 운동 기록 앱 — 지금 돌아가고 있는 제품이 우리가 일하는 방식입니다.</p>
         <div class="hero-ctas">
-          <a href="#services" class="hero-btn primary">Services</a>
-          <a href="#contact" class="hero-btn">Contact</a>
+          <a class="btn btn-primary" href="#products">제품 보기 <span class="arw" aria-hidden="true">→</span></a>
+          <a class="btn" href="#contact">문의하기</a>
         </div>
       </div>
+
+      <ul class="status-strip">
+        <li><a href="#p-nemo"><span class="dot dot-limited" aria-hidden="true"></span><span class="nm">Nemo</span><span class="ct">Notes</span></a></li>
+        <li><a href="#p-devdock"><span class="dot dot-limited" aria-hidden="true"></span><span class="nm">DevDock</span><span class="ct">Utilities</span></a></li>
+        <li><a href="#p-ailab"><span class="dot dot-live" aria-hidden="true"></span><span class="nm">AI Lab</span><span class="ct">Research</span></a></li>
+        <li><a href="#p-ascend"><span class="dot dot-soon" aria-hidden="true"></span><span class="nm">Ascend</span><span class="ct">Workout</span></a></li>
+      </ul>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="spine">
 
-  <!-- About -->
-  <section id="about">
-    <div class="reveal">
-      <p class="section-label">About Us</p>
-      <div class="about-grid">
-        <div>
-          <h2 class="section-title">운영으로 완성되는 경험을 만듭니다</h2>
-          <p class="section-desc">
-            PALDYN은 출시 이후가 시작이라고 믿습니다.
-            데이터와 사용자 피드백을 바탕으로 서비스를 꾸준히 개선하며,
-            함께하는 힘으로 고객의 일상을 더 편리하게 만듭니다.
-          </p>
-          <div class="about-stats">
-            <div class="stat-item">
-              <div class="stat-number">10+</div>
-              <div class="stat-label">Years of Experience</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">200+</div>
-              <div class="stat-label">Projects Delivered</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">50+</div>
-              <div class="stat-label">Global Partners</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">99.9%</div>
-              <div class="stat-label">Client Satisfaction</div>
-            </div>
+    <!-- ── 제품 ─────────────────────────────────────────────────────── -->
+    <section id="products">
+      <div class="wrap">
+        <div class="masthead">
+          <div class="masthead-l">
+            <p class="eyebrow tick"><span class="section-index silver">01</span> &nbsp;PRODUCTS</p>
+            <h2 class="section-title reveal reveal-title">지금 돌아가고 있는 것</h2>
           </div>
+          <p class="masthead-r reveal">네 개를 만들었고, 세 개가 돌아가고 있습니다. 하나는 출시를 준비 중입니다.</p>
         </div>
-        <div class="about-visual">
-          <div class="ring"></div>
-          <div class="ring"></div>
-          <div class="ring"></div>
-          <div class="core"></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="divider"></div>
-
-  <!-- Services -->
-  <section id="services">
-    <div class="reveal">
-      <p class="section-label">Services</p>
-      <h2 class="section-title">우리가 제공하는 가치</h2>
-      <p class="section-desc">비즈니스의 본질에 집중하여 최적의 솔루션을 설계합니다.</p>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="6" y="6" width="36" height="36" rx="4"/>
-            <path d="M16 20l4 4-4 4M24 28h8"/>
-          </svg>
-          <h3>디지털 트랜스포메이션</h3>
-          <p>비즈니스 프로세스의 디지털 전환을 통해 효율성을 극대화하고 새로운 기회를 창출합니다.</p>
-        </div>
-        <div class="service-card">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="24" cy="24" r="18"/>
-            <path d="M24 14v10l7 7"/>
-          </svg>
-          <h3>전략 컨설팅</h3>
-          <p>데이터 기반의 인사이트로 기업의 핵심 전략을 수립하고 실행을 지원합니다.</p>
-        </div>
-        <div class="service-card">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M8 36l8-12 8 8 8-16 8 10"/>
-            <path d="M8 40h32"/>
-          </svg>
-          <h3>기술 솔루션</h3>
-          <p>AI, 클라우드, 데이터 분석 등 첨단 기술을 활용한 맞춤형 솔루션을 개발합니다.</p>
-        </div>
-        <div class="service-card">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M24 6v4M24 38v4M6 24h4M38 24h4M11 11l3 3M34 34l3 3M11 37l3-3M34 14l3-3"/>
-            <circle cx="24" cy="24" r="8"/>
-          </svg>
-          <h3>R&D 혁신</h3>
-          <p>차세대 기술 연구개발을 통해 산업의 패러다임을 변화시키는 혁신을 추구합니다.</p>
-        </div>
-        <div class="service-card">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M16 8h16v32H16z"/>
-            <circle cx="24" cy="34" r="2"/>
-            <line x1="20" y1="12" x2="28" y2="12"/>
-          </svg>
-          <h3>UX/UI 디자인</h3>
-          <p>사용자 중심의 직관적이고 아름다운 디지털 경험을 설계합니다.</p>
-        </div>
-        <div class="service-card">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 12h24v20H12z"/>
-            <path d="M8 32h32"/>
-            <path d="M20 32v6M28 32v6M16 38h16"/>
-          </svg>
-          <h3>시스템 통합</h3>
-          <p>분산된 시스템을 통합하여 운영 효율을 높이고 비용을 절감합니다.</p>
-        </div>
-      </div>
-
-      <div class="products-block">
-        <p class="section-label">Products</p>
-        <h3 class="products-title">우리가 직접 만들고 운영하는 서비스</h3>
-        <p class="section-desc">사용해 보시면 우리가 일하는 방식이 가장 잘 보입니다.</p>
-
-        <div class="products-grid">
-          <a href="https://nemo.paldyn.com/" target="_blank" rel="noopener" class="product-card">
-            <div class="product-top">
+        <div class="products" data-stagger>
+          <a class="card reveal reveal-card" id="p-nemo" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">
+            <span class="card-in">
+              <span class="card-top">
+                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9.5 5 L19 5 L19 19 L5 19 L5 9.5 Z"/>
+                  <path d="M13 13 L27 13 L27 22.5 L22.5 27 L13 27 Z"/>
+                </svg>
+                <span class="card-id">P-01</span>
+              </span>
               <h3>Nemo</h3>
-              <span class="product-arrow" aria-hidden="true">↗</span>
-            </div>
-            <span class="product-domain">nemo.paldyn.com</span>
-            <p>생각을 정리하고 기록하는 미니멀 워크스페이스. 노트와 저널을 한곳에서 차분하게 관리합니다.</p>
+              <span class="card-cat">Notes &amp; Journal</span>
+              <p>생각이 머무는 자리. 노트와 저널을 한곳에서.</p>
+              <span class="card-meta">
+                <span class="card-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
+                <span class="card-domain">nemo.paldyn.com <span class="arw" aria-hidden="true">↗</span></span>
+              </span>
+            </span>
           </a>
-          <a href="https://devdock.paldyn.com/" target="_blank" rel="noopener" class="product-card">
-            <div class="product-top">
+
+          <a class="card reveal reveal-card" id="p-devdock" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">
+            <span class="card-in">
+              <span class="card-top">
+                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4.5 10 L5.5 9 L7.5 9 L8.5 10 L8.5 17 L7.5 18 L5.5 18 L4.5 17 Z"/>
+                  <path d="M14 7 L15 6 L17 6 L18 7 L18 17 L17 18 L15 18 L14 17 Z"/>
+                  <path d="M23.5 10 L24.5 9 L26.5 9 L27.5 10 L27.5 17 L26.5 18 L24.5 18 L23.5 17 Z"/>
+                  <path d="M4.5 22.5 L5.5 21.5 L26.5 21.5 L27.5 22.5 L27.5 24.5 L26.5 25.5 L5.5 25.5 L4.5 24.5 Z"/>
+                </svg>
+                <span class="card-id">P-02</span>
+              </span>
               <h3>DevDock</h3>
-              <span class="product-arrow" aria-hidden="true">↗</span>
-            </div>
-            <span class="product-domain">devdock.paldyn.com</span>
-            <p>개발자를 위한 유틸리티 모음. JSON 포매터, JWT 디코더, 해시·UUID 생성 등을 브라우저에서 바로 씁니다.</p>
+              <span class="card-cat">Developer Utilities</span>
+              <p>JSON·JWT·해시·UUID까지. 설치 없이 브라우저에서 바로.</p>
+              <span class="card-meta">
+                <span class="card-status"><span class="dot dot-limited" aria-hidden="true"></span>운영 중 · 로그인 필요</span>
+                <span class="card-domain">devdock.paldyn.com <span class="arw" aria-hidden="true">↗</span></span>
+              </span>
+            </span>
           </a>
-          <!-- TODO: 앱 출시 후 별도 소개·다운로드 페이지(QR/스토어 배지) 구축 시 링크 교체 -->
-          <a href="/ascend/" class="product-card">
-            <div class="product-top">
+
+          <a class="card reveal reveal-card" id="p-ailab" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">
+            <span class="card-in">
+              <span class="card-top">
+                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 5A11 11 0 1 0 27 16"/>
+                  <path d="M16 10A6 6 0 1 0 22 16"/>
+                  <path d="M17.85 15.23L16.77 14.15L15.23 14.15L14.15 15.23L14.15 16.77L15.23 17.85L16.77 17.85L17.85 16.77Z" fill="currentColor" stroke="none"/>
+                  <circle cx="25.5" cy="6.5" r="2.2" fill="currentColor" stroke="none"/>
+                </svg>
+                <span class="card-id">P-03</span>
+              </span>
+              <h3>AI Lab</h3>
+              <span class="card-cat">AI News &amp; Research</span>
+              <p>새 모델과 글로벌 AI 기업의 움직임을 매일 추적합니다.</p>
+              <span class="card-meta">
+                <span class="card-status"><span class="dot dot-live" aria-hidden="true"></span>운영 중</span>
+                <span class="card-domain">ailab.paldyn.com <span class="arw" aria-hidden="true">↗</span></span>
+              </span>
+            </span>
+          </a>
+
+          <a class="card reveal reveal-card" id="p-ascend" href="/ascend/">
+            <span class="card-in">
+              <span class="card-top">
+                <svg class="monogram" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4.5 25.5 L4.5 20.5 L7 18 L9.5 18 L9.5 25.5 Z"/>
+                  <path d="M13.5 22.5 L13.5 14.5 L16 12 L18.5 12 L18.5 22.5 Z"/>
+                  <path d="M22.5 19.5 L22.5 8.5 L25 6 L27.5 6 L27.5 19.5 Z"/>
+                </svg>
+                <span class="card-id">P-04</span>
+              </span>
               <h3>Ascend</h3>
-              <span class="product-arrow" aria-hidden="true">→</span>
-            </div>
-            <span class="product-badge">출시 예정 · iOS/Android</span>
-            <p>세트 하나에 탭 한 번으로 끝내는 웨이트 트레이닝 기록 앱. 계정 없이 바로 시작합니다.</p>
+              <span class="card-cat">Workout Tracking</span>
+              <p>세트 하나에 탭 한 번. 계정 요구도 광고도 없습니다.</p>
+              <span class="card-meta">
+                <span class="card-status"><span class="dot dot-soon" aria-hidden="true"></span>출시 준비 · 비공개 테스트</span>
+                <span class="card-domain">iOS · Android <span class="arw" aria-hidden="true">→</span></span>
+              </span>
+            </span>
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="divider"></div>
+    <!-- ── 우리가 만드는 방식 ───────────────────────────────────────── -->
+    <section id="build">
+      <div class="wrap build-grid">
+        <div class="build-l">
+          <p class="eyebrow tick"><span class="section-index silver">02</span> &nbsp;HOW WE BUILD</p>
+          <h2 class="section-title reveal reveal-title">우리가 만드는 방식</h2>
+          <p class="masthead-r reveal" style="grid-column:auto; margin-top: var(--s4);">역량을 나열하는 대신, 위 제품들이 어떻게 만들어졌는지 적습니다. 각 항목 끝의 이름은 그 원칙이 실제로 적용된 제품입니다.</p>
+        </div>
 
-  <!-- Values -->
-  <section id="values">
-    <div class="reveal">
-      <p class="section-label">Core Values</p>
-      <h2 class="section-title">우리가 믿는 것</h2>
+        <div class="build-r" data-stagger>
+          <article class="principle reveal">
+            <div class="principle-no">01</div>
+            <div>
+              <h3>직접 만들고 직접 씁니다</h3>
+              <p>우리가 매일 쓰지 않는 도구는 만들지 않습니다. DevDock의 유틸리티는 작업 중에 필요해서 하나씩 늘어난 목록입니다.</p>
+              <div class="cites">
+                <a class="chip" href="#p-devdock" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-02 DevDock</a>
+                <a class="chip" href="#p-nemo" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-01 Nemo</a>
+              </div>
+            </div>
+          </article>
 
-      <div class="values-list">
-        <div class="value-item">
-          <div class="value-number">01</div>
-          <div class="value-content">
-            <h3>동반 성장</h3>
-            <p>고객의 성공이 곧 우리의 성공입니다. 함께하는 힘으로 더 큰 가치를 만들어갑니다.</p>
+          <article class="principle reveal">
+            <div class="principle-no">02</div>
+            <div>
+              <h3>출시 이후를 설계합니다</h3>
+              <p>릴리스는 마감이 아니라 시작점입니다. 운영 데이터와 사용자 피드백으로 고치는 주기를 제품 안에 미리 넣어 둡니다.</p>
+              <div class="cites">
+                <a class="chip" href="#p-ailab" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-03 AI Lab</a>
+                <a class="chip" href="#p-nemo" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-01 Nemo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="principle reveal">
+            <div class="principle-no">03</div>
+            <div>
+              <h3>기본값을 지킵니다</h3>
+              <p>광고를 넣지 않고, 추적하지 않고, 필요 없는 곳에서 계정을 요구하지 않습니다. Ascend는 이 세 가지를 모두 지킨 채로 출시합니다.</p>
+              <div class="cites">
+                <a class="chip" href="#p-ascend" data-cite><svg class="lead" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 1.5 V7.5 H9.5"/><path d="M7.5 5.5 L9.8 7.5 L7.5 9.5"/></svg> P-04 Ascend</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 회사 ─────────────────────────────────────────────────────── -->
+    <section id="company">
+      <div class="wrap">
+        <div class="masthead">
+          <div class="masthead-l">
+            <p class="eyebrow tick"><span class="section-index silver">03</span> &nbsp;COMPANY</p>
+            <h2 class="section-title reveal reveal-title">PALDYN은 이런 회사입니다</h2>
           </div>
         </div>
-        <div class="value-item">
-          <div class="value-number">02</div>
-          <div class="value-content">
-            <h3>기술 혁신</h3>
-            <p>끊임없는 연구와 도전으로 기술의 경계를 넓히고, 내일의 표준을 오늘 만듭니다.</p>
+
+        <div class="company-grid">
+          <div class="company-l reveal">
+            <p>PALDYN은 소프트웨어를 직접 만들고 직접 운영하는 스튜디오입니다. 외주로 만들어 넘기는 대신, 우리가 끝까지 책임지는 제품을 늘려갑니다.</p>
+            <p>출시 이후가 시작이라고 믿습니다. 데이터와 사용자 피드백으로 고치는 주기를 제품 안에 넣어 두고, 그 과정에서 배운 것은 <a class="underline" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog</a>에 남깁니다.</p>
+            <p>브랜드 심볼은 마주 보는 두 반쪽이 하나의 팔각형을 이루는 형태입니다. 45° 파세트, 1px 시임, 중앙 음각 — 이 사이트의 카드 노치와 좌측 정렬선이 모두 여기에서 나왔습니다.</p>
+          </div>
+
+          <div class="company-r">
+            <div class="blueprint" id="blueprint">
+              <svg viewBox="0 0 400 400" aria-hidden="true">
+                <g fill="currentColor" transform="translate(80 80)">
+                  <path class="bp-half bp-half-l" fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
+                  <path class="bp-half bp-half-r" fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
+                </g>
+                <g stroke="var(--border-strong)" stroke-width="1" fill="none">
+                  <line class="bp-lead bp-lead-1" x1="126" y1="133" x2="90" y2="133" style="transform-origin:126px 133px"/>
+                  <line class="bp-lead bp-lead-2" x1="200" y1="133" x2="310" y2="133" style="transform-origin:200px 133px"/>
+                  <line class="bp-lead bp-lead-3" x1="155" y1="200" x2="90" y2="200" style="transform-origin:155px 200px"/>
+                  <line class="bp-lead bp-lead-4" x1="274" y1="267" x2="310" y2="267" style="transform-origin:274px 267px"/>
+                </g>
+                <text class="bp-label bp-label-1" x="84" y="136" text-anchor="end">45° FACET</text>
+                <text class="bp-label bp-label-2" x="316" y="136">SEAM · 1PX</text>
+                <text class="bp-label bp-label-3" x="84" y="203" text-anchor="end">COUNTER</text>
+                <text class="bp-label bp-label-4" x="316" y="270">RADIUS 0</text>
+              </svg>
+            </div>
           </div>
         </div>
-        <div class="value-item">
-          <div class="value-number">03</div>
-          <div class="value-content">
-            <h3>신뢰와 투명성</h3>
-            <p>모든 과정에서 투명한 소통과 정직한 실행으로 깊은 신뢰를 구축합니다.</p>
-          </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── 연락 ───────────────────────────────────────────────────────── -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="masthead">
+        <div class="masthead-l">
+          <p class="eyebrow tick"><span class="section-index">04</span> &nbsp;CONTACT</p>
+          <h2 class="section-title reveal reveal-title">어디로 연락하면 되는지</h2>
         </div>
-        <div class="value-item">
-          <div class="value-number">04</div>
-          <div class="value-content">
-            <h3>지속 가능성</h3>
-            <p>단기적 성과를 넘어, 장기적 관점에서 지속 가능한 솔루션을 추구합니다.</p>
-          </div>
+        <p class="masthead-r reveal">제휴와 제품 문의는 채널이 다릅니다. 아래 주소로 바로 보내 주세요.</p>
+      </div>
+
+      <div class="channels" data-stagger>
+        <div class="channel reveal">
+          <p class="ch-name">일반 · 제휴 문의</p>
+          <a class="ch-mail underline" href="mailto:contact@paldyn.com">contact@paldyn.com</a>
+          <p class="ch-note">협업, 제안, 그 밖의 모든 문의</p>
+        </div>
+        <div class="channel reveal">
+          <p class="ch-name">제품 지원</p>
+          <a class="ch-mail underline" href="mailto:support@paldyn.com">support@paldyn.com</a>
+          <p class="ch-note">Ascend 및 서비스 이용 문의</p>
         </div>
       </div>
     </div>
   </section>
+</main>
 
-  <div class="divider"></div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="lockup" href="/" aria-label="PALDYN 홈">
+          <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true" style="width:26px;height:26px"><use href="#pd-symbol"/></svg>
+          <span class="wordmark">PALDYN</span>
+        </a>
+        <p>The force that accompanies.</p>
+      </div>
 
-  <!-- Contact -->
-  <section id="contact" class="contact-section">
-    <div class="reveal">
-      <p class="section-label">Contact</p>
-      <h2 class="section-title">함께 시작하세요</h2>
-      <p class="section-desc">
-        새로운 가능성을 함께 탐색하고 싶으시다면 언제든 연락해 주세요.
-      </p>
-      <a href="mailto:contact@paldyn.com" class="contact-btn">GET IN TOUCH</a>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a class="underline" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo</a></li>
+          <li><a class="underline" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock</a></li>
+          <li><a class="underline" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab</a></li>
+          <li><a class="underline" href="/ascend/">Ascend</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a class="underline" href="#build">우리가 만드는 방식</a></li>
+          <li><a class="underline" href="#company">회사 소개</a></li>
+          <li><a class="underline" href="#contact">문의</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a class="underline" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></li>
+          <li><a class="underline" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a class="underline" href="/ascend/privacy">Ascend 개인정보처리방침</a></li>
+        </ul>
+      </div>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-left">&copy; 2026 PALDYN. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#values">Values</a>
-      <a href="mailto:contact@paldyn.com">Contact</a>
-      <a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a>
-      <a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a>
+    <div class="footer-bar">
+      <span>© 2026 PALDYN</span>
+      <div class="footer-tools">
+        <button class="icon-btn motion-toggle" id="motionToggle" type="button" aria-label="모션 줄이기" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h6M14 12h6"/><circle cx="12" cy="12" r="2.5"/></svg>
+        </button>
+        <button class="icon-btn" id="themeToggleFoot" type="button" aria-label="테마 전환">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }
-    themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var reduced = function () {
+    return root.getAttribute('data-motion') === 'reduced' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
+  /* 저사양 티어링 — 비용 큰 효과만 끈다 */
+  if ((navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4) {
+    root.classList.add('motion-lite');
+  }
+
+  /* ── 테마 ─────────────────────────────────────────────────────────── */
+  function currentTheme() {
+    return root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function applyTheme() {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  }
+  function toggleTheme() {
+    if (!document.startViewTransition || reduced()) { applyTheme(); return; }
+    document.startViewTransition(applyTheme);
+  }
+  ['themeToggle', 'themeToggleFoot'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', toggleTheme);
+  });
+
+  /* ── 모션 스위치 — 시스템 설정을 바꿀 수 없는 환경을 위한 수동 제어 ─── */
+  var motionBtn = document.getElementById('motionToggle');
+  if (motionBtn) {
+    var syncMotion = function () {
+      motionBtn.setAttribute('aria-pressed', root.getAttribute('data-motion') === 'reduced' ? 'true' : 'false');
+    };
+    /* OS 설정으로 이미 줄어든 상태면 눌린 상태로 표시한다 */
+    motionBtn.setAttribute('aria-pressed', reduced() ? 'true' : 'false');
+    motionBtn.addEventListener('click', function () {
+      var on = root.getAttribute('data-motion') === 'reduced';
+      if (on) { root.removeAttribute('data-motion'); } else { root.setAttribute('data-motion', 'reduced'); }
+      try { localStorage.setItem('motion', on ? 'full' : 'reduced'); } catch (e) {}
+      syncMotion();
     });
+  }
 
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+  /* ── 모바일 메뉴 ──────────────────────────────────────────────────── */
+  var navToggle = document.getElementById('navToggle');
+  var overlay = document.getElementById('navOverlay');
+  var behind = [document.querySelector('main'), document.querySelector('footer')];
+
+  function setMenu(open) {
+    overlay.hidden = !open;
+    overlay.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+    /* 오버레이 뒤 콘텐츠로 Tab이 빠져나가지 않게 격리한다 */
+    behind.forEach(function (el) { if (el) { if (open) { el.setAttribute('inert', ''); } else { el.removeAttribute('inert'); } } });
+    if (open) { var f = overlay.querySelector('a'); if (f) f.focus(); }
+  }
+  navToggle.addEventListener('click', function () {
+    setMenu(!overlay.classList.contains('is-open'));
+  });
+  overlay.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || !overlay.classList.contains('is-open')) return;
+    setMenu(false);
+    navToggle.focus();
+  });
+  /* inert 미지원 브라우저 대비 — 오버레이 안에서 Tab을 순환시킨다 */
+  overlay.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var items = overlay.querySelectorAll('a[href]');
+    if (!items.length) return;
+    var first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  /* 메뉴가 열린 채 데스크톱 폭으로 넘어가면 닫기 버튼이 사라진다 */
+  var wide = window.matchMedia('(min-width: 1025px)');
+  (wide.addEventListener ? wide.addEventListener.bind(wide, 'change') : wide.addListener.bind(wide))(function (e) {
+    if (e.matches && overlay.classList.contains('is-open')) setMenu(false);
+  });
+
+  /* ── nav 고착 — 스크롤 리스너 없이 sentinel 관측 ──────────────────── */
+  var nav = document.getElementById('nav');
+  var sentinel = document.getElementById('navSentinel');
+  if ('IntersectionObserver' in window && sentinel) {
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle('is-stuck', entries[0].boundingClientRect.top <= 64);
+    }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(sentinel);
+  }
+
+  /* ── 리빌 — 뷰포트 바닥 12%에 고정된 아이라인에서 모두가 발화한다 ──── */
+  var staggerMs = 70;
+  document.querySelectorAll('[data-stagger]').forEach(function (group) {
+    var items = group.querySelectorAll(':scope > .reveal, :scope > * > .reveal');
+    items.forEach(function (el, i) {
+      el.style.setProperty('--reveal-delay', Math.min(i, 6) * staggerMs + 'ms');
     });
+  });
 
-    // Mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-    function closeNav() {
-      navLinks.classList.remove('open');
-    }
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
       });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ── 심볼 기술 도면 ───────────────────────────────────────────────── */
+  var bp = document.getElementById('blueprint');
+  if (bp && 'IntersectionObserver' in window) {
+    var bpIo = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      bp.classList.add('is-in');
+      bpIo.disconnect();
+    }, { threshold: 0.35 });
+    bpIo.observe(bp);
+  } else if (bp) {
+    bp.classList.add('is-in');
+  }
+
+  /* ── 읽는 중인 원칙 표시 — 화면 중앙 밴드만 관측 ──────────────────── */
+  var principles = document.querySelectorAll('.principle');
+  if (principles.length && 'IntersectionObserver' in window) {
+    var activeIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('is-active', entry.isIntersecting);
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    principles.forEach(function (el) { activeIo.observe(el); });
+  }
+
+  /* ── 각주 칩 → 해당 제품 카드 강조 ────────────────────────────────── */
+  document.querySelectorAll('[data-cite]').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var target = document.querySelector(chip.getAttribute('href'));
+      if (!target) return;
+      target.classList.add('is-cited');
+      setTimeout(function () { target.classList.remove('is-cited'); }, 1400);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
