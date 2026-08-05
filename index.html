@@ -434,6 +434,8 @@
       gap: 2rem;
       margin-top: 3rem;
     }
+    /* 그리드 칸으로 들어가면 칸이 이미 자리를 잡아 준다 — 위 여백은 필요 없다 */
+    .about-grid > .about-stats { margin-top: 0; }
 
     .stat-item .stat-number {
       font-size: 2rem;
@@ -898,33 +900,34 @@
   <section id="about">
     <div class="reveal">
       <p class="section-label">About Us</p>
+      <!-- 제목과 설명은 그리드 밖 전폭에 둔다.
+           2열 안에 두면 칸 너비가 520px 인데 제목 한 줄은 581px 이 필요해 반드시 접힌다.
+           폰트를 줄이지 않고 한 줄을 지키는 방법은 칸을 벗어나는 것뿐이다. -->
+      <h2 class="section-title">운영으로 완성되는 경험을 만듭니다</h2>
+      <p class="section-desc">
+        PALDYN은 출시 이후가 시작이라고 믿습니다.
+        데이터와 사용자 피드백을 바탕으로 서비스를 꾸준히 개선하며,
+        함께하는 힘으로 고객의 일상을 더 편리하게 만듭니다.
+      </p>
       <div class="about-grid">
-        <div>
-          <h2 class="section-title">운영으로 완성되는 경험을 만듭니다</h2>
-          <p class="section-desc">
-            PALDYN은 출시 이후가 시작이라고 믿습니다.
-            데이터와 사용자 피드백을 바탕으로 서비스를 꾸준히 개선하며,
-            함께하는 힘으로 고객의 일상을 더 편리하게 만듭니다.
-          </p>
-          <div class="about-stats">
-            <!-- 전부 이 사이트가 스스로 증명하는 값만 쓴다. 확인할 수 없는 수치는 올리지 않는다.
-                 제품별 상태(운영 중 / 비공개 테스트)는 Products 카드의 상태 필이 이미 말한다. -->
-            <div class="stat-item">
-              <div class="stat-number">2026</div>
-              <div class="stat-label">설립</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">직접 개발 · 운영</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">3</div>
-              <div class="stat-label">자체 제품</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">2</div>
-              <div class="stat-label">리서치 채널</div>
-            </div>
+        <div class="about-stats">
+          <!-- 전부 이 사이트가 스스로 증명하는 값만 쓴다. 확인할 수 없는 수치는 올리지 않는다.
+               제품별 상태(운영 중 / 비공개 테스트)는 Products 카드의 상태 필이 이미 말한다. -->
+          <div class="stat-item">
+            <div class="stat-number">2026</div>
+            <div class="stat-label">설립</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">직접 개발 · 운영</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">자체 제품</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">2</div>
+            <div class="stat-label">리서치 채널</div>
           </div>
         </div>
         <div class="about-visual">
@@ -1293,8 +1296,8 @@
       const s = t * 0.001;
       /* 기울기(x)는 반사를 수평선 위아래로 옮겨 밝기를 출렁이게 한다 — 작게.
          회전(y)은 방위각만 바꿔 밝기가 안정적이다 — 크게. */
-      group.rotation.y = Math.sin(s * 0.28) * 0.42;
-      group.rotation.x = Math.sin(s * 0.21) * 0.07;
+      group.rotation.y = Math.sin(s * 0.62) * 0.42;
+      group.rotation.x = Math.sin(s * 0.47) * 0.07;
       renderer.render(scene, camera);
       if (!shown) { shown = true; canvas.classList.add('on'); }
     };
