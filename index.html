@@ -32,7 +32,7 @@
       --accent-bright: #000000;
       --gradient-silver: linear-gradient(135deg, #999 0%, #555 40%, #222 50%, #555 60%, #999 100%);
       --nav-scrolled-bg: rgba(255, 255, 255, 0.85);
-      --mobile-nav-bg: rgba(255, 255, 255, 0.98);
+      --mobile-nav-bg: #ffffff;          /* 반투명이면 뒤 본문이 비쳐 겹쳐 보인다 */
       --hero-glow: rgba(0, 0, 0, 0.03);
     }
 
@@ -47,7 +47,7 @@
       --accent-bright: #ffffff;
       --gradient-silver: linear-gradient(135deg, #666 0%, #ccc 40%, #fff 50%, #ccc 60%, #666 100%);
       --nav-scrolled-bg: rgba(0, 0, 0, 0.85);
-      --mobile-nav-bg: rgba(0, 0, 0, 0.98);
+      --mobile-nav-bg: #000000;
       --hero-glow: rgba(255, 255, 255, 0.03);
     }
 
@@ -97,6 +97,11 @@
        둘을 1·3열에 못 박아 두면 자동 배치가 알아서 2열에 넣는다. */
     .nav-logo  { grid-column: 1; }
     .nav-right { grid-column: 3; justify-self: end; }
+
+    /* 드로어는 위치 지정된 요소라, 위치 지정이 없는 형제(로고·테마 토글)를 덮는다.
+       열린 동안에도 헤더는 그대로 보이고 눌려야 하므로 위로 올린다.
+       특히 닫기(X)가 이 안에 있어서 안 올리면 메뉴를 닫을 수 없다. */
+    .nav-logo, .nav-right { position: relative; z-index: 1; }
 
     .nav-logo {
       display: flex;
@@ -176,8 +181,18 @@
       width: 24px;
       height: 1.5px;
       background: var(--text);
-      transition: 0.3s;
+      transform-origin: center;
+      transition: transform 0.3s, opacity 0.2s, background 0.3s;
     }
+
+    /* 열리면 세 줄이 X 가 된다. 막대 높이 1.5 + 간격 5 → 중심 간 거리 6.5px. */
+    .nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* 드로어가 열린 동안 본문 스크롤을 막는다.
+       안 막으면 뒤 본문이 그대로 움직여 메뉴와 겹쳐 보인다. */
+    html.nav-open, body.nav-open { overflow: hidden; }
 
     /* Theme Toggle */
     .theme-toggle {
@@ -750,6 +765,10 @@
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        /* 항목이 많아 화면을 넘길 때를 대비한다. 위 여백은 헤더(로고·닫기) 자리다. */
+        padding: 5.5rem 1.5rem 3rem;
+        overflow-y: auto;
+        overscroll-behavior: contain;
       }
 
       .nav-links.open { display: flex; }
@@ -842,7 +861,8 @@
           <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
         </svg>
       </button>
-      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+      <button class="nav-toggle" id="navToggle" type="button"
+              aria-label="메뉴 열기" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -1065,12 +1085,30 @@
     // Mobile nav toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-    function closeNav() {
-      navLinks.classList.remove('open');
+
+    function setNav(open) {
+      navLinks.classList.toggle('open', open);
+      navToggle.classList.toggle('is-open', open);      // 햄버거 → X
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+      // 뒤 본문이 스크롤되면 메뉴와 겹쳐 보인다. 열려 있는 동안 잠근다.
+      document.documentElement.classList.toggle('nav-open', open);
+      document.body.classList.toggle('nav-open', open);
     }
+
+    navToggle.addEventListener('click', () => {
+      setNav(!navLinks.classList.contains('open'));
+    });
+
+    function closeNav() { setNav(false); }
+
+    // Esc 로 닫기, 그리고 데스크톱 폭으로 넓어지면 열린 채로 남지 않게 한다
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeNav();
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && navLinks.classList.contains('open')) closeNav();
+    });
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
