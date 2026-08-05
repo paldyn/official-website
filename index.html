@@ -451,8 +451,8 @@
 
     .about-stats {
       display: grid;
-      /* 셋으로 줄어서 2열이면 하나가 혼자 남는다. 폭에 따라 3열↔2열로 알아서 접히게 둔다. */
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      /* 넷이라 2열이 딱 떨어진다(2×2). auto-fit 으로 두면 3+1 로 갈라진다. */
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       margin-top: 3rem;
     }
@@ -904,12 +904,16 @@
               <div class="stat-label">설립</div>
             </div>
             <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">직접 개발 · 운영</div>
+            </div>
+            <div class="stat-item">
               <div class="stat-number">3</div>
               <div class="stat-label">자체 제품</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">직접 개발 · 운영</div>
+              <div class="stat-number">2</div>
+              <div class="stat-label">리서치 채널</div>
             </div>
           </div>
         </div>
