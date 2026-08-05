@@ -85,6 +85,19 @@
       border-bottom: 1px solid var(--border);
     }
 
+    /* ★ 로고와 우측 묶음만 칸을 못 박는다.
+       모바일에서 .nav-links 가 position:fixed 로 바뀌면 그리드 아이템에서 빠지고,
+       자동 배치가 우측 묶음을 가운데 1fr 칸으로 끌어와 3열이 0px 로 찌그러진다.
+       그러면 토글·햄버거가 오른쪽 끝이 아니라 화면 중앙에 떠 버린다.
+
+       ★ .nav-links 에는 grid-column 을 주지 말 것.
+       그리드 컨테이너의 고정·절대 배치 자식에 grid-column 을 지정하면
+       컨테이닝 블록이 뷰포트가 아니라 그 그리드 칸이 되어,
+       inset:0 을 줘도 모바일 드로어가 2열 너비로 찌그러진다.
+       둘을 1·3열에 못 박아 두면 자동 배치가 알아서 2열에 넣는다. */
+    .nav-logo  { grid-column: 1; }
+    .nav-right { grid-column: 3; justify-self: end; }
+
     .nav-logo {
       display: flex;
       align-items: center;
@@ -723,6 +736,11 @@
       .nav-links {
         display: none;
         position: fixed;
+        /* ★ justify-self 를 반드시 풀어 준다.
+           그리드의 고정 배치 자식에도 정렬 속성이 적용되어, 데스크톱용
+           justify-self:center 가 남아 있으면 inset:0 을 줘도 드로어가
+           내용 폭으로 줄어든 뒤 가운데 정렬된다. */
+        justify-self: stretch;
         top: 0;
         left: 0;
         right: 0;
