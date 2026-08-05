@@ -32,7 +32,8 @@
 
   --nav-bg: #ffffff;
   --overlay-bg: rgba(255, 255, 255, 0.98);
-  --grid-line: rgba(0, 0, 0, 0.05);
+  /* 격자(--grid-line)는 삭제했다. 네모칸은 팔딘의 형태 언어가 아니다 —
+     배경에 반복 도형이 필요하면 심볼과 같은 팔각형을 쓴다. */
   --gradient-silver: linear-gradient(135deg, #9a9a9a 0%, #555 40%, #1a1a1a 50%, #555 60%, #9a9a9a 100%);
 
   /* ── 고도 ──────────────────────────────────────────────────────────────
@@ -128,7 +129,6 @@
     --brand-vivid: #ff6400;
     --nav-bg: #000000;
     --overlay-bg: rgba(0, 0, 0, 0.98);
-    --grid-line: rgba(255, 255, 255, 0.055);
     --gradient-silver: linear-gradient(135deg, #5a5a5a 0%, #c8c8c8 40%, #ffffff 50%, #c8c8c8 60%, #5a5a5a 100%);
     /* 검정 위 검정 그림자는 거의 안 보인다 — 알파를 올리고, 고도의 실제 신호는 상단 1px 스페큘러가 진다 */
     --sh-rest:  0 0 1px rgb(0 0 0 / 0.26), 0 2px 4px rgb(0 0 0 / 0.30);
@@ -156,7 +156,6 @@
   --brand-vivid: #ff6400;
   --nav-bg: #000000;
   --overlay-bg: rgba(0, 0, 0, 0.98);
-  --grid-line: rgba(255, 255, 255, 0.055);
   --gradient-silver: linear-gradient(135deg, #5a5a5a 0%, #c8c8c8 40%, #ffffff 50%, #c8c8c8 60%, #5a5a5a 100%);
   --sh-rest:  0 0 1px rgb(0 0 0 / 0.26), 0 2px 4px rgb(0 0 0 / 0.30);
   --sh-lift:  0 0 1px rgb(0 0 0 / 0.26), 0 8px 16px rgb(0 0 0 / 0.34);
@@ -282,7 +281,6 @@ p, li, dd { line-height: calc(1em + 8px); }
     --text-dim: #333333;
     --text-mute: #555555;
     --accent-bright: #000000;
-    --grid-line: transparent;
     --brand: #000000;
     --brand-vivid: #000000;
     --sh-rest: none; --sh-lift: none; --sh-flat: none;
