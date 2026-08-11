@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>루틴 링크 — Ascend | PALDYN</title>
+  <meta name="description" content="Ascend 루틴 공유 링크를 여는 페이지입니다. 루틴 내용은 주소의 # 뒤에 담겨 있어 서버로 전송되지 않습니다.">
+  <link rel="canonical" href="https://paldyn.com/ascend/r">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <!-- 이 주소는 검색에 올릴 것이 없다. 페이지 내용은 전부 프래그먼트에서 온다. -->
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PALDYN">
+  <meta property="og:title" content="Ascend 루틴을 받았어요">
+  <meta property="og:description" content="링크를 열면 루틴을 내 앱으로 가져올 수 있습니다.">
+  <meta property="og:image" content="https://paldyn.com/assets/og.png">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../../assets/favicon.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css">
+  <link rel="stylesheet" href="../../assets/tokens.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+        if (localStorage.getItem('motion') === 'reduced') d.setAttribute('data-motion', 'reduced');
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    /* 토큰·리셋·포커스는 assets/tokens.css 가 담당한다. 여기에는 이 페이지 고유 레이아웃만 둔다. */
+    .wrap { --page-max: 560px; }
+
+    header.bar {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    header.bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); }
+    .brand .symbol { width: 22px; height: 22px; }
+    .brand .wordmark { font-size: 0.9375rem; font-weight: var(--fw-medium); letter-spacing: 0.14em; line-height: 1; }
+    .brand .sep { width: 1px; height: 14px; background: var(--border-strong); margin: 0 2px; }
+    .brand .product { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em; color: var(--text-mute); }
+    .bar-right { display: flex; align-items: center; gap: var(--s3); }
+    .bar-right a { color: var(--text-dim); text-decoration: none; font-size: var(--fs-2); font-weight: var(--fw-medium); }
+    .bar-right a:hover { color: var(--accent-bright); }
+
+    .icon-btn {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border: 1px solid var(--border-strong); border-radius: 50%;
+      color: var(--text-dim);
+      transition: color var(--d-3) var(--e-sig), border-color var(--d-3) var(--e-sig);
+    }
+    .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
+    .icon-btn svg { width: 16px; height: 16px; }
+    .icon-sun { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .icon-moon { display: none; }
+      :root:not([data-theme="light"]) .icon-sun { display: block; }
+    }
+    :root[data-theme="dark"] .icon-moon { display: none; }
+    :root[data-theme="dark"] .icon-sun { display: block; }
+    :root[data-theme="light"] .icon-moon { display: block; }
+    :root[data-theme="light"] .icon-sun { display: none; }
+
+    main.wrap { padding: var(--s8) var(--gutter) var(--s7); }
+    .eyebrow-plain { text-transform: none; letter-spacing: 0.14em; }
+    h1 {
+      font-size: clamp(1.75rem, 5.5vw, 2.25rem);
+      font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-display);
+      margin: var(--s3) 0 var(--s4);
+    }
+    .lede { font-size: var(--fs-4); color: var(--text-dim); line-height: 1.7; }
+
+    /* 링크에서 읽어 낸 루틴 요약 — 무엇을 여는지 보고 누르게 한다 */
+    .card {
+      --notch: 10px;
+      margin-top: var(--s6);
+      padding: 1px;
+      background: var(--border);
+      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+    }
+    .card > div {
+      padding: var(--s5);
+      background: var(--surface-2);
+      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+    }
+    .card .label { font-size: var(--fs-1); letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-mute); }
+    .card .name {
+      font-size: var(--fs-6); font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-display); color: var(--text);
+      margin: var(--s2) 0 var(--s1);
+      overflow-wrap: anywhere;
+    }
+    .card .meta { font-size: var(--fs-3); color: var(--text-dim); }
+
+    .actions { display: grid; gap: var(--s3); margin-top: var(--s6); }
+    /* 작성자 스타일은 UA 스타일시트를 항상 이긴다 — display 를 준 순간 hidden 이 죽는다 */
+    .actions[hidden] { display: none; }
+    .btn {
+      display: block; text-align: center; text-decoration: none;
+      padding: 15px 20px;
+      font-size: var(--fs-4); font-weight: var(--fw-medium);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      transition: border-color var(--d-1) var(--e-sig), color var(--d-1) var(--e-sig);
+    }
+    .btn:hover { border-color: var(--accent-bright); color: var(--accent-bright); }
+    .btn.primary {
+      background: var(--brand); border-color: var(--brand); color: #ffffff;
+    }
+    .btn.primary:hover { background: var(--brand-vivid); border-color: var(--brand-vivid); color: #ffffff; }
+
+    .note {
+      margin-top: var(--s6);
+      padding-top: var(--s4);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--fs-2); color: var(--text-mute); line-height: 1.75;
+    }
+    .note b { font-weight: var(--fw-medium); color: var(--text-dim); }
+
+    footer.bar {
+      margin-top: var(--s7);
+      padding: var(--s5) 0 var(--s7);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--fs-2); color: var(--text-mute);
+    }
+    footer.bar .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    footer.bar a { color: var(--text-mute); text-decoration: none; }
+    footer.bar a:hover { color: var(--accent-bright); }
+
+    @media (max-width: 560px) {
+      .brand .product, .brand .sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="pd-symbol">
+      <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
+      <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="/ascend/" aria-label="Ascend 소개">
+      <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
+      <span class="wordmark">PALDYN</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="product">ASCEND</span>
+    </a>
+    <div class="bar-right">
+      <a href="/ascend/">앱 소개</a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow eyebrow-plain">ASCEND · 루틴 공유</p>
+  <h1 id="title">루틴을 받았어요</h1>
+  <p class="lede" id="lede">앱에서 열면 이 루틴을 그대로 내 루틴 목록에 담을 수 있어요.</p>
+
+  <div class="card" id="card" hidden><div>
+    <p class="label">받은 루틴</p>
+    <p class="name" id="rName"></p>
+    <p class="meta" id="rMeta"></p>
+  </div></div>
+
+  <div class="actions" id="actions" hidden>
+    <a class="btn primary" id="openApp" href="#">앱에서 열기</a>
+    <a class="btn" href="/ascend/">Ascend 받기</a>
+  </div>
+
+  <div class="actions" id="noLink" hidden>
+    <a class="btn" href="/ascend/">Ascend 앱 소개 보기</a>
+  </div>
+
+  <p class="note">
+    <b>이 링크는 서버를 거치지 않습니다.</b> 루틴 내용은 주소의 <code>#</code> 뒤에 담겨 있고,
+    <code>#</code> 뒤는 브라우저가 서버로 보내지 않습니다(RFC 3986 §3.5).
+    이 페이지는 그 값을 브라우저 안에서만 읽어 요약을 보여 줄 뿐, 어디로도 전송하거나 저장하지 않습니다.
+  </p>
+</main>
+
+<footer class="bar">
+  <div class="wrap">
+    <span>© 2026 PALDYN</span>
+    <span><a href="/">paldyn.com</a> · <a href="/ascend/privacy">개인정보처리방침</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function currentTheme() {
+    return root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function applyTheme() {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  }
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function () {
+    var reduced = root.getAttribute('data-motion') === 'reduced' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || reduced) { applyTheme(); return; }
+    document.startViewTransition(applyTheme);
+  });
+})();
+
+// ── 루틴 링크 처리 ──────────────────────────────────────────────────────
+//
+// 앱 쪽 인코딩은 lib/domain/routine/routine_share.dart 와 짝이다:
+//   #a1.<base64url(gzip(json))>   ·   json = {n: 이름, e: [{i, r, s: [[무게, 횟수], …]}]}
+//
+// 여기서는 **요약만** 보여 준다. 운동 이름은 앱 안의 마스터에 있으므로 웹에서는 알 수 없다 —
+// 개수만 말하고 나머지는 앱이 보여 준다. 굳이 요약을 보여 주는 이유는, 무엇을 여는지
+// 모른 채 버튼을 누르게 하지 않기 위해서다.
+//
+// **자동으로 ascend:// 로 넘기지 않는다.** 앱이 없는 사람의 사파리에서는
+// "주소를 열 수 없습니다" 경고만 뜬다. 공유의 상대는 대개 앱이 없는 사람이다.
+(function () {
+  var TAG = 'a1';
+  var MAX_PAYLOAD = 4000;   // 운동 30개 링크가 1,000자 안쪽 — 그 4배까지만 본다
+  var MAX_INFLATED = 65536; // 압축 폭탄 방어
+
+  var title = document.getElementById('title');
+  var lede = document.getElementById('lede');
+  var card = document.getElementById('card');
+  var actions = document.getElementById('actions');
+  var noLink = document.getElementById('noLink');
+  var openApp = document.getElementById('openApp');
+
+  function showNoLink(msg) {
+    title.textContent = '열 수 있는 루틴 링크가 아니에요';
+    lede.textContent = msg;
+    noLink.hidden = false;
+  }
+
+  var hash = window.location.hash.slice(1);
+  if (!hash) {
+    showNoLink('공유받은 링크를 통째로 다시 열어 주세요. 링크 끝의 # 뒤가 빠지면 루틴을 찾을 수 없어요.');
+    return;
+  }
+  if (hash.slice(0, TAG.length + 1) !== TAG + '.' || hash.length > MAX_PAYLOAD) {
+    showNoLink('이 링크의 형식을 알아보지 못했어요. 더 새 버전의 앱에서 만든 링크일 수 있어요.');
+    return;
+  }
+
+  // 앱이 있는 사람은 이 버튼 하나로 끝난다. 프래그먼트를 그대로 넘긴다.
+  openApp.href = 'ascend://r#' + hash;
+  actions.hidden = false;
+
+  // 요약은 되면 좋고 안 되면 그만이다 — 버튼은 이미 살아 있다.
+  function bytesFromB64url(s) {
+    s = s.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    var bin = atob(s);
+    var out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  function inflate(bytes) {
+    if (typeof DecompressionStream === 'undefined') return Promise.reject(new Error('no gzip'));
+    var stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+    return new Response(stream).arrayBuffer();
+  }
+
+  try {
+    inflate(bytesFromB64url(hash.slice(TAG.length + 1))).then(function (buf) {
+      if (buf.byteLength > MAX_INFLATED) throw new Error('too large');
+      var j = JSON.parse(new TextDecoder().decode(new Uint8Array(buf)));
+      if (!j || typeof j.n !== 'string' || !Array.isArray(j.e) || j.e.length === 0) return;
+      var sets = 0;
+      for (var i = 0; i < j.e.length; i++) {
+        if (j.e[i] && Array.isArray(j.e[i].s)) sets += j.e[i].s.length;
+      }
+      document.getElementById('rName').textContent = j.n;
+      document.getElementById('rMeta').textContent =
+        '운동 ' + j.e.length + '개 · ' + sets + '세트';
+      card.hidden = false;
+    }).catch(function () { /* 요약만 못 보여 줄 뿐이다 */ });
+  } catch (e) { /* 같다 */ }
+})();
+</script>
+
+</body>
+</html>
