@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom New Tab 개인정보처리방침 — PALDYN</title>
+  <meta name="description" content="Custom New Tab by PALDYN 개인정보처리방침. 이용자가 입력한 이동 주소 하나만 저장하며, Chrome 동기화를 켜 두신 경우 그 값이 기기를 벗어난다는 점을 적었습니다.">
+  <link rel="canonical" href="https://paldyn.com/cnt/privacy">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../../assets/favicon.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css">
+  <link rel="stylesheet" href="../../assets/tokens.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+        if (localStorage.getItem('motion') === 'reduced') d.setAttribute('data-motion', 'reduced');
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    /* 토큰·리셋·포커스는 assets/tokens.css 가 담당한다. 여기에는 이 문서 고유 스타일만 둔다. */
+    .wrap { --page-max: 760px; }
+
+    header.bar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    header.bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); }
+    .brand .symbol { width: 22px; height: 22px; }
+    .brand .wordmark { font-size: 0.9375rem; font-weight: var(--fw-medium); letter-spacing: 0.14em; line-height: 1; }
+    .brand .sep { width: 1px; height: 14px; background: var(--border-strong); margin: 0 2px; }
+    .brand .product { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em; color: var(--text-mute); }
+    .bar-right { display: flex; align-items: center; gap: var(--s3); }
+    .bar-right a { color: var(--text-dim); text-decoration: none; font-size: var(--fs-2); font-weight: var(--fw-medium); }
+    .bar-right a:hover { color: var(--accent-bright); }
+
+    .icon-btn {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border: 1px solid var(--border-strong); border-radius: 50%;
+      color: var(--text-dim);
+      /* ascend 쪽 문서는 --e-quint 를 쓰는데 tokens.css 에 없는 이름이다(전환이 안 걸린다). */
+      transition: color var(--d-3) var(--e-inout), border-color var(--d-3) var(--e-inout);
+    }
+    .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
+    .icon-btn svg { width: 16px; height: 16px; }
+    .icon-sun { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .icon-moon { display: none; }
+      :root:not([data-theme="light"]) .icon-sun { display: block; }
+    }
+    :root[data-theme="dark"] .icon-moon { display: none; }
+    :root[data-theme="dark"] .icon-sun { display: block; }
+    :root[data-theme="light"] .icon-moon { display: block; }
+    :root[data-theme="light"] .icon-sun { display: none; }
+
+    .doc-head { padding: var(--s8) 0 var(--s5); border-bottom: 1px solid var(--border-subtle); }
+    .doc-head .eyebrow { margin-bottom: var(--s3); }
+    h1 { font-size: clamp(1.75rem, 5vw, 2.375rem); font-weight: var(--fw-medium); margin-bottom: var(--s5); }
+    dl.meta { display: grid; grid-template-columns: auto 1fr; gap: 6px var(--s4); font-size: var(--fs-2); }
+    dl.meta dt { color: var(--text-mute); font-weight: var(--fw-medium); }
+    dl.meta dd { color: var(--text-dim); }
+    main a { color: var(--text); }
+
+    .lede {
+      margin: var(--s6) 0 0;
+      padding: var(--s5);
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      font-size: var(--fs-4);
+      font-weight: var(--fw-medium);
+      line-height: 1.7;
+    }
+
+    section { padding-top: var(--s7); }
+    h2 {
+      font-size: var(--fs-5); font-weight: var(--fw-medium);
+      margin-bottom: var(--s4); padding-bottom: var(--s3);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    h3 { font-size: var(--fs-4); font-weight: var(--fw-medium); margin: var(--s5) 0 var(--s2); }
+    p { margin-bottom: var(--s3); color: var(--text-dim); }
+    strong { font-weight: var(--fw-medium); color: var(--accent-bright); }
+
+    ul { margin: 0 0 var(--s3); padding-left: 20px; color: var(--text-dim); }
+    li { margin-bottom: 7px; }
+
+    .table-scroll { overflow-x: auto; margin: 0 0 var(--s4); border: 1px solid var(--border); }
+    table { border-collapse: collapse; width: 100%; font-size: var(--fs-2); min-width: 480px; }
+    th, td {
+      padding: 11px 14px; text-align: left; vertical-align: top;
+      border-bottom: 1px solid var(--border-subtle); line-height: 1.6;
+      color: var(--text-dim);
+    }
+    th { background: var(--surface-1); font-weight: var(--fw-medium); white-space: nowrap; color: var(--text); }
+    tr:last-child td { border-bottom: none; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em;
+      background: var(--surface-2);
+      padding: 1px 5px;
+    }
+
+    footer.bar {
+      margin-top: var(--s8); padding: var(--s5) 0 var(--s7);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--fs-2); color: var(--text-mute);
+    }
+    footer.bar .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    footer.bar a { color: var(--text-mute); text-decoration: none; }
+    footer.bar a:hover { color: var(--accent-bright); }
+
+    @media (max-width: 560px) {
+      .doc-head { padding-top: var(--s7); }
+      dl.meta { grid-template-columns: 1fr; gap: 2px; }
+      dl.meta dt { margin-top: 8px; }
+      .brand .product, .brand .sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="pd-symbol">
+      <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
+      <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="PALDYN 홈">
+      <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
+      <span class="wordmark">PALDYN</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="product">CUSTOM NEW TAB</span>
+    </a>
+    <div class="bar-right">
+      <a href="/#products">다른 제품</a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="doc-head">
+    <p class="eyebrow">Custom New Tab</p>
+    <h1>개인정보처리방침</h1>
+    <dl class="meta">
+      <dt>서비스명</dt><dd>Custom New Tab by PALDYN (Chrome 확장 프로그램)</dd>
+      <dt>제공자</dt><dd>Paldyn (팔딘)</dd>
+      <dt>개인정보 보호책임자</dt><dd>Paldyn 고객지원 · <a href="mailto:support@paldyn.com">support@paldyn.com</a></dd>
+      <dt>시행일</dt><dd>2026년 8월 26일</dd>
+      <dt>최종 개정</dt><dd>2026년 8월 26일 (1차) — 최초 제정.
+      이 확장이 <strong>이용자가 직접 입력한 이동 주소 하나</strong>만 저장한다는 점과,
+      그 값이 <strong>Chrome 동기화를 켜 두신 경우 기기를 벗어난다</strong>는 점을 적었습니다.</dd>
+    </dl>
+  </div>
+
+  <div class="lede">이 확장은 이용자가 직접 입력한 <strong>이동 주소(URL) 하나</strong>만 저장합니다.
+    방문 기록도, 열어 본 탭도, 검색어도 읽지 않습니다. 팔딘은 이 확장을 위한 서버를 운영하지 않으며,
+    확장은 팔딘의 어떤 주소로도 요청을 보내지 않습니다.</div>
+
+  <section id="s1">
+    <h2>1. 요약 — 우리가 수집하는 개인정보</h2>
+    <p>이 확장이 저장하는 것은 <strong>이용자가 설정 화면에 직접 입력한 이동 주소 하나</strong>가 전부입니다.
+    새 탭을 열었을 때 어디로 갈지를 정하는 값이며, 그 밖의 어떤 정보도 수집하지 않습니다.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>무엇</th><th>자세히</th></tr></thead>
+        <tbody>
+          <tr><td>이동 주소 (URL)</td><td>이용자가 설정 화면에 직접 입력한 값 하나. 저장 키는 <code>redirectUrl</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>수집하지 않는 것</h3>
+    <p>아래는 이 확장이 <strong>읽지도, 저장하지도, 전송하지도 않는</strong> 것들입니다.</p>
+    <ul>
+      <li>방문 기록·검색어·열어 본 탭·북마크</li>
+      <li>쿠키·기기 식별자·IP 주소</li>
+      <li>이름·이메일·전화번호 등 신원 정보 (계정이나 로그인 자체가 없습니다)</li>
+      <li>사용 통계·오류 보고·행동 분석</li>
+    </ul>
+    <p>이 확장이 요구하는 권한은 <code>storage</code> 하나뿐입니다.
+    브라우징 기록이나 탭에 접근하는 권한은 <strong>요구하지 않으며, 요구하지 않으므로 접근할 수도 없습니다.</strong>
+    확장이 실제로 요구하는 권한은 Chrome 설치 화면과 <code>chrome://extensions</code> 에서 직접 확인하실 수 있습니다.</p>
+  </section>
+
+  <section id="s2">
+    <h2>2. 처리 목적</h2>
+    <p>저장된 주소는 <strong>새 탭을 그 주소로 이동시키는 데에만</strong> 쓰입니다.
+    분석·광고·프로파일링에 쓰지 않고, 다른 목적으로 이용하지 않습니다.</p>
+  </section>
+
+  <section id="s3">
+    <h2>3. 저장 위치 — Chrome 동기화를 쓰신다면</h2>
+    <p>입력하신 주소는 Chrome 확장 API 인 <code>chrome.storage.sync</code> 에 저장됩니다.</p>
+    <p><strong>Chrome 동기화를 켜 두셨다면 이 값은 기기 안에만 머무르지 않습니다.</strong>
+    Chrome 이 로그인된 Google 계정을 통해 이용자의 다른 기기로 이 값을 동기화하며,
+    그 전송은 Chrome 이 수행하고 Google 의 개인정보처리방침을 따릅니다.
+    Chrome 에 로그인하지 않으셨거나 확장 동기화를 꺼 두셨다면 이 값은 해당 기기에만 저장됩니다.</p>
+    <p>어느 쪽이든 <strong>팔딘은 이 값을 받지 않습니다.</strong>
+    팔딘은 이 확장을 위한 서버를 운영하지 않습니다.</p>
+    <p>기기 안에만 두고 싶으시다면 <code>chrome://settings/syncSetup</code> 에서 확장 동기화를 끄시면 됩니다.</p>
+
+    <h3>국외 이전</h3>
+    <p>팔딘이 이전하는 정보는 없습니다. 위에 적은 Chrome 동기화는 이용자와 Google 사이에서
+    이루어지는 것이며, 이용자가 Chrome 설정에서 직접 끄실 수 있습니다.</p>
+  </section>
+
+  <section id="s4">
+    <h2>4. 제3자 제공·처리위탁</h2>
+    <p><strong>없습니다.</strong> 저장된 주소를 판매·공유·제공하지 않으며, 처리를 위탁하지도 않습니다.</p>
+  </section>
+
+  <section id="s5">
+    <h2>5. 외부 통신과 자동 수집 장치</h2>
+    <p>확장 자체는 외부에 어떤 요청도 보내지 않습니다. 화면에 필요한 <strong>글꼴과 아이콘을 포함한
+    모든 자원이 확장 안에 들어 있습니다.</strong> 광고 식별자·분석 SDK·추적 픽셀을 쓰지 않고,
+    쿠키를 만들지 않습니다.</p>
+    <p>이용자가 지정하신 주소로 이동한 뒤 일어나는 통신은 <strong>그 웹사이트와 이용자 브라우저 사이의 일</strong>이며,
+    이 확장은 관여하지 않습니다. 해당 사이트의 개인정보 처리는 그 사이트의 방침을 따릅니다.</p>
+  </section>
+
+  <section id="s6">
+    <h2>6. 보유 기간과 파기</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>언제</th><th>어떻게 됩니까</th></tr></thead>
+        <tbody>
+          <tr><td>설정 화면에서 <strong>초기화</strong></td><td>저장된 주소가 즉시 지워집니다</td></tr>
+          <tr><td>새 주소로 <strong>저장</strong></td><td>이전 값을 덮어씁니다. 이전 값은 남지 않습니다</td></tr>
+          <tr><td>확장 <strong>삭제</strong></td><td>Chrome 이 저장된 값을 함께 제거하며, 동기화해 두신 다른 기기에도 그 삭제를 전파합니다</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>별도의 보관 기간을 두지 않습니다. 이용자가 지우시면 그것으로 끝입니다.</p>
+  </section>
+
+  <section id="s7">
+    <h2>7. 이용자의 권리와 행사 방법</h2>
+    <p>저장된 값은 <strong>이용자의 브라우저 안에 있고, 이용자가 직접 열람·수정·삭제하실 수 있습니다.</strong>
+    팔딘에 요청하실 필요가 없고, 팔딘은 그 값을 가지고 있지 않아 대신 처리해 드릴 수도 없습니다.</p>
+    <ul>
+      <li><strong>열람·수정</strong> — 툴바의 PALDYN 아이콘을 눌러 설정 화면을 여시면 현재 값이 그대로 보입니다</li>
+      <li><strong>삭제</strong> — 같은 화면의 <strong>초기화</strong>, 또는 확장 삭제</li>
+    </ul>
+    <p>그 밖에 문의하실 내용이 있으시면 <a href="mailto:support@paldyn.com">support@paldyn.com</a> 으로 보내 주세요.</p>
+  </section>
+
+  <section id="s8">
+    <h2>8. 안전성 확보 조치</h2>
+    <p>수집하는 정보가 <strong>이용자 브라우저 안의 주소 문자열 하나</strong>뿐이고 팔딘 서버로 나가지 않으므로,
+    전송 중 유출이나 서버 침해로 이 값이 새어 나갈 경로 자체가 없습니다.</p>
+    <p>확장은 Chrome 확장 프로그램 Manifest V3 의 격리된 실행 환경에서 동작하며,
+    필요 최소한의 권한(<code>storage</code>)만 선언합니다.
+    배포는 Chrome 웹 스토어를 통해서만 이루어지고, 스토어가 패키지 서명과 무결성을 담당합니다.</p>
+  </section>
+
+  <section id="s9">
+    <h2>9. 아동의 개인정보</h2>
+    <p>이 확장은 아동을 대상으로 하지 않으며, <strong>연령을 식별할 수 있는 어떤 정보도 수집하지 않습니다.</strong></p>
+  </section>
+
+  <section id="s10">
+    <h2>10. 개인정보 보호책임자</h2>
+    <div class="table-scroll">
+      <table>
+        <tbody>
+          <tr><th>담당</th><td>Paldyn 고객지원</td></tr>
+          <tr><th>이메일</th><td><a href="mailto:support@paldyn.com">support@paldyn.com</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s11">
+    <h2>11. 권익침해 구제 방법</h2>
+    <p>개인정보 침해에 대한 신고나 상담이 필요하시면 아래 기관에 문의하실 수 있습니다.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>기관</th><th>연락처</th></tr></thead>
+        <tbody>
+          <tr><td>개인정보침해신고센터</td><td>privacy.kisa.or.kr · 국번 없이 118</td></tr>
+          <tr><td>개인정보 분쟁조정위원회</td><td>kopico.go.kr · 1833-6972</td></tr>
+          <tr><td>대검찰청 사이버수사과</td><td>spo.go.kr · 국번 없이 1301</td></tr>
+          <tr><td>경찰청 사이버수사국</td><td>ecrm.police.go.kr · 국번 없이 182</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s12">
+    <h2>12. 고지</h2>
+    <p>이 방침이 변경되는 경우 <strong>확장 업데이트 또는 스토어 설명을 통해 공지</strong>합니다.
+    변경 내용과 시행일은 이 페이지 위쪽의 개정 이력에 남깁니다.</p>
+  </section>
+
+  <section id="s13">
+    <h2>13. Summary in English</h2>
+    <p>This Chrome extension stores exactly one piece of data: <strong>the redirect URL you type in yourself</strong>,
+    under the key <code>redirectUrl</code>. It collects no browsing history, search terms, open tabs, cookies,
+    device identifiers, analytics, or crash reports, and it requests a single permission, <code>storage</code>.</p>
+    <p>The value is saved through <code>chrome.storage.sync</code>. <strong>If you have Chrome Sync enabled,
+    Chrome synchronises it to your other signed-in devices through your Google account</strong>; that transfer is
+    performed by Chrome and governed by Google's privacy policy. If you are signed out, or extension sync is off,
+    it stays on that device. Either way, <strong>PALDYN never receives it</strong> — we operate no server for this
+    extension, and it makes no outbound requests of its own. Every asset it needs, fonts and icons included,
+    is bundled inside the extension.</p>
+    <p>It is never sold, shared, or disclosed to third parties. To delete it, press <strong>초기화 (Reset)</strong>
+    on the settings screen, or uninstall the extension — Chrome then removes the value and propagates that removal
+    to your synced devices. Questions: <a href="mailto:support@paldyn.com">support@paldyn.com</a>.</p>
+  </section>
+
+</main>
+
+<footer class="bar">
+  <div class="wrap">
+    <span>© 2026 PALDYN</span>
+    <span><a href="/">paldyn.com</a> · <a href="mailto:support@paldyn.com">support@paldyn.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function currentTheme() {
+    return root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function applyTheme() {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  }
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function () {
+    var reduced = root.getAttribute('data-motion') === 'reduced' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || reduced) { applyTheme(); return; }
+    document.startViewTransition(applyTheme);
+  });
+})();
+</script>
+
+</body>
+</html>
