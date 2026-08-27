@@ -172,7 +172,10 @@
       <dt>제공자</dt><dd>Paldyn (팔딘)</dd>
       <dt>개인정보 보호책임자</dt><dd>Paldyn 고객지원 · <a href="mailto:support@paldyn.com">support@paldyn.com</a></dd>
       <dt>시행일</dt><dd>2026년 8월 26일</dd>
-      <dt>최종 개정</dt><dd>2026년 8월 26일 (1차) — 최초 제정.
+      <dt>최종 개정</dt><dd>2026년 8월 27일 (2차) — 화면 표시에만 쓰는 값 두 가지
+      (라이트/다크 선택, 이동 주소 설정 여부 표시)가 브라우저 로컬 저장소에 남는다는 점을 명시했습니다.
+      기기를 벗어나지 않고 전송되지 않는 값입니다.</dd>
+      <dt>직전 개정</dt><dd>2026년 8월 26일 (1차) — 최초 제정.
       이 확장이 <strong>이용자가 직접 입력한 이동 주소 하나</strong>만 저장한다는 점과,
       그 값이 <strong>Chrome 동기화를 켜 두신 경우 기기를 벗어난다</strong>는 점을 적었습니다.</dd>
     </dl>
@@ -207,6 +210,13 @@
     <p>이 확장이 요구하는 권한은 <code>storage</code> 하나뿐입니다.
     브라우징 기록이나 탭에 접근하는 권한은 <strong>요구하지 않으며, 요구하지 않으므로 접근할 수도 없습니다.</strong>
     확장이 실제로 요구하는 권한은 Chrome 설치 화면과 <code>chrome://extensions</code> 에서 직접 확인하실 수 있습니다.</p>
+
+    <h3>화면 표시에만 쓰는 값</h3>
+    <p>위 이동 주소와 별개로, <strong>화면 표시에만 쓰는 값 두 가지</strong>가 브라우저의 로컬 저장소
+    (<code>localStorage</code>)에 남습니다. 라이트/다크 선택과, 이동할 주소가 설정돼 있는지를 나타내는
+    표시 하나입니다. 후자는 새 탭을 열었을 때 빈 화면이 한 번 스쳐 지나가지 않도록 쓰입니다.</p>
+    <p>둘 다 <strong>그 기기의 브라우저 안에만</strong> 있습니다. 동기화되지 않고, 어디로도 전송되지 않으며,
+    개인을 식별할 수 있는 내용이 아닙니다. 브라우저의 사이트 데이터 삭제로 함께 지워집니다.</p>
   </section>
 
   <section id="s2">
@@ -324,6 +334,9 @@
     <p>This Chrome extension stores exactly one piece of data: <strong>the redirect URL you type in yourself</strong>,
     under the key <code>redirectUrl</code>. It collects no browsing history, search terms, open tabs, cookies,
     device identifiers, analytics, or crash reports, and it requests a single permission, <code>storage</code>.</p>
+    <p>Separately, two display-only values are kept in the browser's <code>localStorage</code>: your light/dark
+    choice, and a flag recording whether a redirect URL is set (used to avoid a blank frame when a new tab opens).
+    Both stay in that browser on that device, are not synchronised, and are never transmitted. Neither identifies you.</p>
     <p>The value is saved through <code>chrome.storage.sync</code>. <strong>If you have Chrome Sync enabled,
     Chrome synchronises it to your other signed-in devices through your Google account</strong>; that transfer is
     performed by Chrome and governed by Google's privacy policy. If you are signed out, or extension sync is off,
