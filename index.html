@@ -6,7 +6,7 @@
   <title>PALDYN — 서비스를 만들고, 직접 운영하는 기술 기업</title>
   <meta name="description" content="PALDYN은 소프트웨어 제품과 디지털 서비스를 직접 기획·개발·운영하는 기술 기업입니다. 자회사 NBYTE와 함께 더 나은 일상과 업무 경험을 만듭니다.">
   <link rel="canonical" href="https://paldyn.com/">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PALDYN">
   <meta property="og:url" content="https://paldyn.com/">
@@ -40,24 +40,26 @@
   </script>
   <style>
     :root {
-      color-scheme: light;
-      --black:#101010;
-      --ink:#171717;
+      color-scheme: dark;
+      --black:#000000;
+      --ink:#f4f4f4;
       --white:#ffffff;
-      --paper:#f7f7f5;
-      --muted:#6c6c68;
-      --line:#d9d9d5;
-      --orange:#bf4100;
+      --paper:#1f1f1f;
+      --surface:#171717;
+      --surface-hover:#272727;
+      --muted:#9b9b9b;
+      --line:#2a2a2a;
+      --orange:#ff6400;
       --orange-vivid:#ff6400;
       --page:1280px;
       --gutter:clamp(20px,4vw,48px);
     }
 
     *,*::before,*::after { box-sizing:border-box; }
-    html { scroll-behavior:smooth; background:var(--white); }
+    html { scroll-behavior:smooth; background:var(--black); }
     body {
       margin:0;
-      background:var(--white);
+      background:var(--black);
       color:var(--ink);
       font-family:'Wanted Sans Variable','Wanted Sans',-apple-system,BlinkMacSystemFont,sans-serif;
       line-height:1.55;
@@ -80,8 +82,8 @@
       left:12px;
       z-index:1000;
       padding:10px 14px;
-      background:var(--black);
-      color:var(--white);
+      background:var(--white);
+      color:var(--black);
       text-decoration:none;
       transform:translateY(-170%);
       transition:transform .2s ease;
@@ -91,30 +93,32 @@
     .site-header {
       position:relative;
       z-index:20;
-      height:84px;
+      width:100%;
+      height:64px;
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:34px;
-      border-bottom:1px solid var(--line);
+      gap:32px;
+      padding-inline:32px;
     }
     .brand {
       display:flex;
       align-items:center;
       gap:10px;
       text-decoration:none;
-      font-size:13px;
+      color:var(--white);
+      font-size:17px;
       font-weight:750;
       letter-spacing:.16em;
     }
-    .brand img { width:25px; height:25px; }
-    .nav { display:flex; justify-content:center; gap:28px; color:var(--muted); font-size:12px; }
+    .brand img { width:26px; height:26px; }
+    .nav { display:flex; justify-content:flex-start; gap:32px; color:#b5b5b5; font-size:14px; }
     .nav a { text-decoration:none; transition:color .2s ease; }
-    .nav a:hover { color:var(--ink); }
-    .header-actions { display:flex; align-items:center; gap:18px; font-size:12px; }
+    .nav a:hover { color:var(--white); }
+    .header-actions { display:flex; align-items:center; gap:8px; font-size:14px; }
     .header-actions a { text-decoration:none; }
-    .header-actions .nbyte { color:var(--orange); font-weight:650; }
-    .header-actions .contact { padding:8px 12px; background:var(--black); color:var(--white); }
+    .header-actions .nbyte { padding:10px 18px; border-radius:999px; background:#1c1c1c; color:var(--white); font-weight:500; }
+    .header-actions .contact { padding:10px 18px; border-radius:999px; background:var(--white); color:var(--black); font-weight:600; }
     .menu-toggle {
       display:none;
       width:36px;
@@ -124,19 +128,20 @@
       background:transparent;
       cursor:pointer;
     }
-    .menu-toggle span { display:block; width:22px; height:1px; margin:5px auto; background:var(--ink); transition:transform .2s ease,opacity .2s ease; }
+    .menu-toggle span { display:block; width:22px; height:1px; margin:5px auto; background:var(--white); transition:transform .2s ease,opacity .2s ease; }
     .menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(3px) rotate(45deg); }
     .menu-toggle[aria-expanded="true"] span:last-child { transform:translateY(-3px) rotate(-45deg); }
 
     .hero {
-      display:grid;
-      grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);
-      gap:96px;
-      align-items:end;
-      min-height:650px;
-      padding:128px 0 116px;
+      min-height:455px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:96px 0 70px;
+      text-align:center;
     }
-    .eyebrow,.section-label {
+    .section-label {
       margin:0 0 22px;
       color:var(--orange);
       font-size:11px;
@@ -144,59 +149,69 @@
       letter-spacing:.18em;
       text-transform:uppercase;
     }
-    h1 {
-      max-width:820px;
-      margin:0;
-      font-size:clamp(62px,8vw,124px);
-      line-height:.87;
-      letter-spacing:-.095em;
-      font-weight:600;
-    }
-    h1 span { color:var(--orange); }
-    .hero-copy { max-width:410px; margin:34px 0 0; color:var(--muted); font-size:15px; line-height:1.8; }
-    .prompt { border:1px solid var(--line); background:var(--paper); }
-    .prompt-head {
+    h1 { margin:0 0 28px; font-size:clamp(27px,2.7vw,38px); line-height:1.2; letter-spacing:-.045em; font-weight:520; }
+    .prompt { width:min(760px,100%); }
+    .prompt-input {
+      min-height:104px;
       display:flex;
+      align-items:flex-start;
       justify-content:space-between;
-      padding:15px 18px;
-      border-bottom:1px solid var(--line);
-      color:var(--muted);
-      font-size:10px;
-      letter-spacing:.13em;
-      text-transform:uppercase;
+      gap:20px;
+      padding:19px 18px 17px 20px;
+      border-radius:24px;
+      background:var(--paper);
+      color:#a7a7a7;
+      font-size:16px;
+      text-align:left;
     }
-    .prompt-body {
-      min-height:170px;
-      display:flex;
-      align-items:center;
-      padding:26px 22px;
-      font-size:clamp(24px,3vw,40px);
-      line-height:1.02;
-      letter-spacing:-.07em;
+    .prompt-submit {
+      align-self:flex-end;
+      flex:0 0 auto;
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#3a3a3a;
+      color:#c9c9c9;
+      text-decoration:none;
+      font-size:22px;
+      transition:background .2s ease,color .2s ease;
     }
-    .prompt-body::before { content:''; width:10px; height:10px; flex:0 0 auto; margin-right:11px; background:var(--orange-vivid); border-radius:50%; }
-    .prompt-foot { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:15px 18px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
-    .prompt-links { display:flex; gap:16px; flex-wrap:wrap; }
-    .prompt-foot a { color:var(--orange); text-decoration:none; font-weight:650; }
+    .prompt-submit:hover { background:var(--orange); color:var(--black); }
+    .quick-links { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:22px; }
+    .quick-links a { padding:9px 14px; border:1px solid #363636; border-radius:999px; color:#aaa; font-size:13px; text-decoration:none; transition:border-color .2s ease,color .2s ease; }
+    .quick-links a:hover { border-color:#656565; color:var(--white); }
+
+    .spotlight { display:grid; grid-template-columns:minmax(0,3fr) minmax(230px,1fr); gap:24px; padding-bottom:96px; }
+    .spotlight-card { position:relative; min-height:365px; overflow:hidden; border-radius:3px; background:var(--paper); color:var(--white); text-decoration:none; }
+    .spotlight-card img { width:100%; height:100%; min-height:365px; object-fit:cover; transition:transform .45s ease; }
+    .spotlight-card:hover img { transform:scale(1.015); }
+    .spotlight-caption { position:absolute; inset:auto 0 0; display:flex; justify-content:space-between; gap:30px; padding:52px 24px 22px; background:linear-gradient(transparent,rgba(0,0,0,.88)); font-size:13px; }
+    .spotlight-caption strong { font-size:18px; font-weight:600; }
+    .spotlight-side { display:flex; flex-direction:column; justify-content:space-between; padding:24px; background:#1f1f1f; }
+    .spotlight-side small { color:var(--orange); font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+    .spotlight-side strong { display:block; margin-top:auto; font-size:clamp(42px,5vw,72px); line-height:.9; letter-spacing:-.07em; }
+    .spotlight-side span { display:block; margin-top:18px; color:var(--muted); font-size:13px; }
 
     .section-band { padding:120px 0; border-top:1px solid var(--line); }
     .section-head { display:flex; justify-content:space-between; align-items:end; gap:50px; margin-bottom:46px; }
     .section-head h2 { max-width:780px; margin:0; font-size:clamp(38px,5vw,70px); line-height:.94; letter-spacing:-.08em; font-weight:600; }
     .section-head > p { max-width:320px; margin:0; color:var(--muted); font-size:14px; line-height:1.8; }
 
-    .products { padding:0 0 150px; }
+    .products { padding:80px 0 150px; border-top:1px solid var(--line); }
     .product-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:2px; background:var(--line); }
     .product {
       min-height:320px;
       display:flex;
       flex-direction:column;
       padding:24px;
-      background:var(--paper);
+      background:var(--surface);
       text-decoration:none;
       transition:background .25s ease,color .25s ease;
     }
-    .product:hover { background:var(--white); }
-    .product-main { min-height:490px; background:var(--black); color:var(--white); }
+    .product:hover { background:var(--surface-hover); }
+    .product-main { min-height:490px; background:#151515; color:var(--white); }
     .product-main:hover { background:#202020; }
     .product-label { color:var(--orange); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
     .product-main .product-label { color:#ff9a6d; }
@@ -208,7 +223,7 @@
     .product-meta span:last-child { color:var(--orange); }
     .product-main .product-meta span:last-child { color:#ff9a6d; }
 
-    .updates { background:var(--white); }
+    .updates { background:var(--black); }
     .update-list { border-top:1px solid var(--ink); }
     .update-row {
       display:grid;
@@ -220,28 +235,28 @@
       text-decoration:none;
       transition:padding .25s ease,background .25s ease;
     }
-    .update-row:hover { padding-inline:18px; background:var(--paper); }
+    .update-row:hover { padding-inline:18px; background:var(--surface); }
     .update-row small { color:var(--orange); font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
     .update-row strong { font-size:18px; font-weight:550; letter-spacing:-.03em; }
     .update-row span { color:var(--muted); font-size:12px; }
 
-    .stories { background:var(--paper); }
+    .stories { background:#0b0b0b; }
     .story-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); }
     .story {
       min-height:340px;
       display:flex;
       flex-direction:column;
       padding:24px;
-      background:var(--paper);
+      background:var(--surface);
       text-decoration:none;
       transition:background .25s ease;
     }
-    .story:hover { background:var(--white); }
+    .story:hover { background:var(--surface-hover); }
     .story small { color:var(--orange); font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
     .story h3 { margin:auto 0 12px; font-size:clamp(30px,4vw,54px); line-height:.92; letter-spacing:-.07em; font-weight:600; }
     .story p { max-width:390px; margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
 
-    .group { background:var(--white); }
+    .group { background:var(--black); }
     .group-list { border-top:1px solid var(--ink); }
     .group-row { display:grid; grid-template-columns:180px 1fr auto; gap:24px; align-items:center; min-height:118px; border-bottom:1px solid var(--line); }
     .group-row small { color:var(--muted); font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
@@ -251,7 +266,7 @@
     .group-row.nbyte strong,.group-row.nbyte a { color:var(--orange); }
     .group-row.nbyte a:hover { text-decoration:underline; }
 
-    .business { padding:150px 0 170px; background:var(--black); color:var(--white); }
+    .business { padding:150px 0 170px; border-top:1px solid var(--line); background:var(--black); color:var(--white); }
     .business-grid { display:grid; grid-template-columns:1fr minmax(260px,.55fr); gap:100px; align-items:end; }
     .business .section-label { color:#ff9a6d; }
     .business h2 { max-width:860px; margin:0; font-size:clamp(48px,7vw,108px); line-height:.88; letter-spacing:-.09em; font-weight:600; }
@@ -264,7 +279,7 @@
     .footer-brand p { max-width:260px; margin:22px 0 0; color:var(--muted); font-size:12px; line-height:1.7; }
     .footer-col h3 { margin:0 0 18px; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
     .footer-col a { display:block; width:max-content; margin:10px 0; color:var(--muted); font-size:12px; text-decoration:none; }
-    .footer-col a:hover { color:var(--ink); }
+    .footer-col a:hover { color:var(--white); }
     .footer-bottom { display:flex; justify-content:space-between; gap:24px; margin-top:74px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
 
     .reveal { opacity:0; transform:translateY(18px); transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1); }
@@ -277,29 +292,32 @@
     }
 
     @media (max-width:900px) {
-      .site-header { display:flex; justify-content:space-between; height:72px; }
+      .site-header { display:flex; justify-content:space-between; height:64px; padding-inline:20px; }
       .header-actions { margin-left:auto; }
       .header-actions .contact { display:none; }
       .menu-toggle { display:block; }
       .nav {
         position:fixed;
-        inset:72px 0 0;
+        inset:64px 0 0;
         z-index:19;
         display:flex;
         flex-direction:column;
         justify-content:flex-start;
         gap:0;
         padding:32px var(--gutter);
-        background:var(--white);
+        background:var(--black);
         opacity:0;
         visibility:hidden;
         transform:translateY(-12px);
         transition:opacity .2s ease,transform .2s ease,visibility .2s;
       }
       .nav.is-open { opacity:1; visibility:visible; transform:none; }
-      .nav a { padding:18px 0; border-bottom:1px solid var(--line); color:var(--ink); font-size:24px; letter-spacing:-.04em; }
-      .hero { display:block; min-height:auto; padding:92px 0 96px; }
-      .prompt { margin-top:54px; }
+      .nav a { padding:18px 0; border-bottom:1px solid var(--line); color:var(--white); font-size:24px; letter-spacing:-.04em; }
+      .hero { min-height:420px; padding:78px 0 58px; }
+      .spotlight { grid-template-columns:1fr; gap:14px; padding-bottom:72px; }
+      .spotlight-card { min-height:310px; }
+      .spotlight-card img { min-height:310px; }
+      .spotlight-side { min-height:250px; }
       .products { padding-bottom:92px; }
       .section-head,.business-grid { display:block; }
       .section-head > p { margin-top:22px; }
@@ -318,9 +336,11 @@
     }
 
     @media (max-width:620px) {
-      h1 { font-size:clamp(56px,18vw,88px); }
-      .prompt-foot { display:block; }
-      .prompt-links { margin-top:12px; }
+      h1 { font-size:28px; }
+      .hero { min-height:400px; padding:70px 0 52px; }
+      .prompt-input { min-height:96px; border-radius:22px; }
+      .quick-links { gap:7px; }
+      .quick-links a { padding:8px 12px; font-size:12px; }
       .header-actions .nbyte { display:none; }
       .footer-grid { grid-template-columns:1fr 1fr; }
       .footer-brand { grid-column:1 / -1; grid-row:auto; margin-bottom:18px; }
@@ -332,33 +352,33 @@
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
 
-  <header class="site-header wrap">
-    <a class="brand" href="./" aria-label="PALDYN 홈"><img src="./assets/logo-symbol-dark.png" alt="">PALDYN</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="PALDYN 홈"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</a>
     <nav id="primaryNav" class="nav" aria-label="주요 메뉴">
-      <a href="#products">Products</a>
-      <a href="#research">Research</a>
-      <a href="#business">Business</a>
-      <a href="#company">Company</a>
+      <a href="#research">리서치</a>
+      <a href="#products">제품</a>
+      <a href="#business">비즈니스</a>
+      <a href="#company">회사</a>
     </nav>
     <div class="header-actions">
-      <a class="nbyte" href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE ↗</a>
-      <a class="contact" href="mailto:contact@paldyn.com">Contact</a>
+      <a class="nbyte" href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE</a>
+      <a class="contact" href="mailto:contact@paldyn.com">문의하기 ↗</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="메뉴 열기"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
     <section class="hero wrap" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow">PALDYN / Products · Research · Operation</p>
-        <h1 id="hero-title">무엇을<br><span>만들까요?</span></h1>
-        <p class="hero-copy">PALDYN은 소프트웨어 제품과 디지털 서비스를 직접 만들고 운영합니다. 자회사 NBYTE와 함께 사람들이 매일 사용하는 기술을 설계합니다.</p>
-      </div>
+      <h1 id="hero-title">무엇을 만들어드릴까요?</h1>
       <div class="prompt" aria-label="PALDYN 탐색">
-        <div class="prompt-head"><span>PALDYN / 2026</span><span>Explore</span></div>
-        <div class="prompt-body">필요한 것을<br>먼저 만듭니다.</div>
-        <div class="prompt-foot"><span>PALDYN 살펴보기</span><div class="prompt-links"><a href="#products">Products</a><a href="#research">Research</a><a href="#company">Company</a></div></div>
+        <div class="prompt-input"><span>PALDYN의 서비스와 연구를 살펴보세요</span><a class="prompt-submit" href="#products" aria-label="제품 섹션으로 이동">↑</a></div>
       </div>
+      <div class="quick-links" aria-label="빠른 링크"><a href="#products">제품 살펴보기</a><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock</a><a href="#research">리서치</a><a href="#company">더 보기</a></div>
+    </section>
+
+    <section class="spotlight wrap reveal" aria-label="PALDYN 주요 콘텐츠">
+      <a class="spotlight-card" href="#products"><img src="./assets/og.png" alt="PALDYN — 서비스를 만들고 직접 운영하고 인공지능을 연구합니다"><span class="spotlight-caption"><strong>PALDYN이 만드는 것</strong><span>Products · Research · Operation ↘</span></span></a>
+      <a class="spotlight-card spotlight-side" href="https://nbyte.xyz/" target="_blank" rel="noopener"><small>PALDYN Subsidiary</small><strong>NBYTE</strong><span>소프트웨어 제품 자회사<br>nbyte.xyz ↗</span></a>
     </section>
 
     <section id="products" class="products wrap reveal" aria-labelledby="products-title">
@@ -424,7 +444,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
-        <div class="footer-brand"><a class="brand" href="./"><img src="./assets/logo-symbol-dark.png" alt="">PALDYN</a><p>소프트웨어 제품과 디지털 서비스를 직접 만들고 운영합니다.</p></div>
+        <div class="footer-brand"><a class="brand" href="./"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</a><p>소프트웨어 제품과 디지털 서비스를 직접 만들고 운영합니다.</p></div>
         <div class="footer-col"><h3>Products</h3><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo ↗</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock ↗</a><a href="./ascend/">Ascend</a></div>
         <div class="footer-col"><h3>Research</h3><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></div>
         <div class="footer-col"><h3>Group</h3><a href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE ↗</a><a href="#company">PALDYN Group</a></div>
