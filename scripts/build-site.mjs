@@ -12,6 +12,7 @@ const publicEntries = [
   'assets',
   'ascend',
   'cnt',
+  'drafts',
 ];
 
 const mimeTypes = {
