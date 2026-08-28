@@ -87,6 +87,7 @@ output.json
 !/[Aa]ssets/**/*.meta
 
 # Build output
+/dist/
 *.apk
 *.aab
 *.unitypackage

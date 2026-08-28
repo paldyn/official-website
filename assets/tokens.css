@@ -1,7 +1,7 @@
 /* ==========================================================================
    PALDYN — design tokens & base
-   이 파일이 index.html / ascend/ / ascend/privacy/ 의 단일 진실 공급원이다.
-   페이지별 CSS에서 :root 토큰을 다시 선언하지 말 것.
+   이 파일은 제품·정책 페이지(ascend/ 및 관련 문서)의 단일 진실 공급원이다.
+   기업 메인(index.html)은 독립된 레이아웃·테마 토큰을 인라인으로 관리한다.
 
    수치 근거: apple.com · tesla.com · microsoft.com 을 1512px에서 실측해 얻은 규칙.
    · 행간은 비율이 아니라 가산이다 (제목 +4px / 본문 +8px)
