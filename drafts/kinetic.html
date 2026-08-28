@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PALDYN — Kinetic Motion home concept">
+  <title>PALDYN — Kinetic Motion</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css">
+  <style>
+    :root { --bg:#0a0a0a; --paper:#f1efe9; --ink:#efeee9; --muted:#8e8d88; --line:#30302e; --orange:#ff642d; --lime:#c8ff91; --mx:50vw; --my:40vh; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--bg); }
+    body { margin:0; overflow-x:hidden; background:var(--bg); color:var(--ink); font-family:'Wanted Sans Variable',Arial,sans-serif; }
+    body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:10; opacity:.08; background-image:radial-gradient(#fff .7px,transparent .7px); background-size:5px 5px; mix-blend-mode:screen; }
+    body::after { content:''; position:fixed; width:55vw; aspect-ratio:1; left:calc(var(--mx) - 28vw); top:calc(var(--my) - 28vw); pointer-events:none; z-index:0; border-radius:50%; background:radial-gradient(circle,rgba(255,100,45,.16),transparent 66%); transition:left .5s ease-out,top .5s ease-out; }
+    a { color:inherit; }
+    .wrap { width:min(1240px,calc(100% - 72px)); margin:0 auto; position:relative; z-index:1; }
+    nav { height:84px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); position:relative; z-index:3; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; font-size:13px; font-weight:700; letter-spacing:.16em; }
+    .brand img { width:26px; height:26px; filter:invert(1); }
+    .nav-meta { display:flex; align-items:center; gap:24px; color:var(--muted); font:11px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.08em; }
+    .nav-meta a { color:var(--orange); text-decoration:none; }
+    .hero { min-height:calc(100svh - 84px); padding:70px 0 48px; display:flex; flex-direction:column; justify-content:space-between; }
+    .hero-top { display:flex; justify-content:space-between; color:var(--muted); font:10px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.15em; text-transform:uppercase; }
+    .hero h1 { margin:8vh 0 0; max-width:1050px; font-size:clamp(58px,11vw,170px); line-height:.83; letter-spacing:-.095em; font-weight:650; text-transform:uppercase; }
+    .hero h1 span { display:block; }
+    .hero h1 .stroke { color:transparent; -webkit-text-stroke:1px var(--ink); }
+    .hero h1 .orange { color:var(--orange); }
+    .hero-bottom { display:flex; align-items:end; justify-content:space-between; gap:32px; margin-top:72px; }
+    .hero-bottom p { max-width:430px; margin:0; color:var(--muted); font-size:15px; line-height:1.75; }
+    .scroll-cue { display:flex; align-items:center; gap:12px; color:var(--lime); font:11px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em; text-transform:uppercase; }
+    .scroll-cue::after { content:'↓'; display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--lime); border-radius:50%; font-size:17px; }
+    .marquee { overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); white-space:nowrap; }
+    .marquee-track { display:inline-flex; gap:36px; padding:18px 0; color:var(--muted); font:11px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.15em; text-transform:uppercase; animation:marquee 24s linear infinite; }
+    .marquee-track b { color:var(--orange); font-weight:500; }
+    @keyframes marquee { to { transform:translateX(-25%); } }
+    section { padding:150px 0; border-bottom:1px solid var(--line); }
+    .section-kicker { margin:0 0 18px; color:var(--orange); font:11px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.15em; text-transform:uppercase; }
+    .section-head { display:flex; justify-content:space-between; gap:60px; align-items:end; }
+    .section-head h2 { max-width:780px; margin:0; font-size:clamp(40px,6vw,92px); line-height:.9; letter-spacing:-.08em; font-weight:620; }
+    .section-head p { max-width:340px; margin:0; color:var(--muted); font-size:14px; line-height:1.75; }
+    .rail { display:flex; gap:14px; overflow-x:auto; padding:58px max(0px,calc((100vw - 1240px)/2)) 14px; margin-left:calc((100% - 100vw)/2); margin-right:calc((100% - 100vw)/2); scroll-snap-type:x mandatory; scrollbar-width:none; }
+    .rail::-webkit-scrollbar { display:none; }
+    .service { flex:0 0 min(44vw,540px); min-height:520px; padding:28px; scroll-snap-align:start; border:1px solid var(--line); background:#111; text-decoration:none; display:flex; flex-direction:column; transition:transform .35s ease,border-color .35s ease; }
+    .service:hover { transform:translateY(-10px); border-color:var(--orange); }
+    .service:first-child { background:var(--orange); color:#15110e; border-color:var(--orange); }
+    .service:nth-child(3) { background:var(--lime); color:#151b12; border-color:var(--lime); }
+    .service-top { display:flex; justify-content:space-between; font:11px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em; }
+    .service-number { opacity:.65; }
+    .service h3 { margin:auto 0 18px; font-size:clamp(44px,6vw,76px); line-height:.9; letter-spacing:-.075em; }
+    .service p { max-width:340px; margin:0; font-size:14px; line-height:1.7; opacity:.72; }
+    .service-meta { display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid currentColor; font:11px ui-monospace,SFMono-Regular,Menlo,monospace; opacity:.7; }
+    .service-arrow { color:var(--orange); }
+    .service:first-child .service-arrow { color:#15110e; }
+    .service:nth-child(3) .service-arrow { color:#151b12; }
+    .group { display:grid; grid-template-columns:.8fr 1.2fr; gap:100px; align-items:center; }
+    .group h2 { margin:0; max-width:600px; font-size:clamp(42px,6vw,92px); line-height:.9; letter-spacing:-.08em; }
+    .group-copy p:last-child { max-width:370px; margin:28px 0 0; color:var(--muted); line-height:1.75; }
+    .group-card { border:1px solid var(--line); background:var(--panel,#111); }
+    .group-row { display:grid; grid-template-columns:120px 1fr auto; gap:18px; align-items:center; padding:22px 24px; border-bottom:1px solid var(--line); font:12px ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .group-row:last-child { border-bottom:0; }
+    .group-row small { color:var(--muted); text-transform:uppercase; letter-spacing:.1em; }
+    .group-row strong { font:600 28px 'Wanted Sans Variable',Arial,sans-serif; letter-spacing:.04em; }
+    .group-row.nbyte { background:var(--orange); color:#15110e; }
+    .group-row.nbyte small { color:#7e2d16; }
+    .group-row a { color:var(--lime); text-decoration:none; }
+    .group-row.nbyte a { color:#15110e; }
+    .research-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:60px; }
+    .research-card { min-height:290px; padding:26px; border:1px solid var(--line); text-decoration:none; display:flex; flex-direction:column; }
+    .research-card:hover { border-color:var(--lime); }
+    .research-card small { color:var(--muted); font:10px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.14em; }
+    .research-card h3 { margin:auto 0 12px; font-size:34px; letter-spacing:-.06em; }
+    .research-card p { max-width:360px; margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
+    .contact { padding-bottom:100px; }
+    .contact h2 { margin:0; max-width:1000px; font-size:clamp(48px,10vw,150px); line-height:.82; letter-spacing:-.095em; text-transform:uppercase; }
+    .contact-foot { display:flex; justify-content:space-between; align-items:end; gap:32px; margin-top:80px; }
+    .contact-foot p { max-width:330px; color:var(--muted); line-height:1.7; font-size:14px; }
+    .contact-foot a { padding:15px 20px; background:var(--orange); color:#15110e; text-decoration:none; font:11px ui-monospace,SFMono-Regular,Menlo,monospace; }
+    footer { display:flex; justify-content:space-between; padding:24px 0 42px; color:var(--muted); font:10px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.08em; }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1); }
+    .reveal.is-visible { opacity:1; transform:none; }
+    @media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto}.marquee-track{animation:none}.reveal{opacity:1;transform:none;transition:none}body::after{display:none}.service{transition:none} }
+    @media(max-width:800px){ .wrap{width:min(100% - 36px,600px)} .nav-meta{gap:10px;font-size:10px}.nav-meta span{display:none}.hero{min-height:auto;padding:62px 0 74px}.hero h1{margin-top:18vh;font-size:clamp(52px,15vw,92px)}.hero-bottom{display:block;margin-top:60px}.scroll-cue{margin-top:28px}.marquee-track{gap:22px}.section-head,.group,.contact-foot{display:block}.section-head p{margin-top:22px}.rail{padding-top:40px}.service{flex-basis:82vw;min-height:420px}.group-card{margin-top:44px}.group-row{grid-template-columns:92px 1fr;gap:10px}.group-row a{grid-column:2}.research-grid{grid-template-columns:1fr;margin-top:40px}section{padding:100px 0}.contact-foot a{display:inline-block;margin-top:18px}footer{display:block}.footer-right{display:block;margin-top:10px} }
+  </style>
+</head>
+<body>
+  <nav class="wrap"><a class="brand" href="../"><img src="../assets/logo-symbol-light.png" alt="">PALDYN</a><div class="nav-meta"><span>BUILD / OPERATE / IMPROVE</span><a href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE ↗</a></div></nav>
+  <main>
+    <section class="hero wrap"><div class="hero-top"><span>PALDYN / 2026</span><span>HOME — 00</span></div><div><h1><span>Make</span><span class="stroke">Useful</span><span class="orange">Things.</span></h1><div class="hero-bottom"><p>팔딘은 소프트웨어 제품과 디지털 서비스를 직접 만들고 운영합니다. 자회사 NBYTE와 함께 사람들이 매일 사용하는 기술을 설계합니다.</p><span class="scroll-cue">Explore services</span></div></div></section>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>PALDYN GROUP</span><b>✳</b><span>PRODUCTS</span><b>✳</b><span>RESEARCH</span><b>✳</b><span>OPERATION</span><b>✳</b><span>PALDYN GROUP</span><b>✳</b><span>PRODUCTS</span><b>✳</b><span>RESEARCH</span><b>✳</b><span>OPERATION</span></div></div>
+    <section id="services" class="wrap reveal"><div class="section-head"><div><p class="section-kicker">01 / Services</p><h2>쓰는 순간<br>이해되는 도구</h2></div><p>문제 정의부터 운영과 개선까지. 서비스의 전체 수명 주기를 하나의 팀이 연결합니다.</p></div><div class="rail" aria-label="PALDYN 서비스 목록"><a class="service" href="https://nemo.paldyn.com/" target="_blank" rel="noopener"><div class="service-top"><span class="service-number">01</span><span>PRODUCTIVITY</span></div><h3>Nemo</h3><p>노트와 저널을 한곳에 모으는 작업 공간.</p><span class="service-meta"><span>WEB SERVICE</span><span class="service-arrow">OPEN ↗</span></span></a><a class="service" href="https://devdock.paldyn.com/" target="_blank" rel="noopener"><div class="service-top"><span class="service-number">02</span><span>DEVELOPER TOOLS</span></div><h3>DevDock</h3><p>JSON · JWT · 해시 · UUID를 한 탭에.</p><span class="service-meta"><span>WEB UTILITY</span><span class="service-arrow">OPEN ↗</span></span></a><a class="service" href="../ascend/"><div class="service-top"><span class="service-number">03</span><span>FITNESS</span></div><h3>Ascend</h3><p>운동 기록을 더 빠르고 간단하게.</p><span class="service-meta"><span>PRIVATE TEST</span><span class="service-arrow">VIEW →</span></span></a></div></section>
+    <section id="group" class="wrap reveal"><div class="group"><div class="group-copy"><p class="section-kicker">02 / PALDYN GROUP</p><h2>한 방향,<br>두 개의 엔진</h2><p>PALDYN은 서비스 전략과 운영을 이어가고, 소프트웨어 제품 자회사 NBYTE와 함께 더 넓은 디지털 경험을 만듭니다.</p></div><div class="group-card"><div class="group-row"><small>Parent</small><strong>PALDYN</strong><span>active</span></div><div class="group-row nbyte"><small>Subsidiary</small><strong>NBYTE</strong><a href="https://nbyte.xyz/" target="_blank" rel="noopener">nbyte.xyz ↗</a></div></div></div></section>
+    <section id="research" class="wrap reveal"><div class="section-head"><div><p class="section-kicker">03 / Research</p><h2>기록은 다음<br>빌드가 됩니다</h2></div><p>AI Lab과 Tech Blog에서 기술과 운영의 과정을 기록합니다.</p></div><div class="research-grid"><a class="research-card" href="https://ailab.paldyn.com/" target="_blank" rel="noopener"><small>AI RESEARCH ↗</small><h3>AI Lab</h3><p>새로운 모델과 산업의 변화를 제품 관점에서 정리합니다.</p></a><a class="research-card" href="https://techblog.paldyn.com/" target="_blank" rel="noopener"><small>ENGINEERING ↗</small><h3>Tech Blog</h3><p>제품을 만들며 마주한 문제와 해법을 남깁니다.</p></a></div></section>
+    <section class="contact wrap reveal"><p class="section-kicker">04 / Contact</p><h2>Let's build<br>what's next.</h2><div class="contact-foot"><p>제품, 기술 협업, 사업 제휴에 관한 제안을 기다립니다.</p><a href="mailto:contact@paldyn.com">CONTACT PALDYN ↗</a></div></section>
+  </main><footer class="wrap"><span>© 2026 PALDYN</span><span class="footer-right">PALDYN GROUP / NBYTE</span></footer>
+  <script>
+    const root=document.documentElement;
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!reduced){window.addEventListener('pointermove',(event)=>{root.style.setProperty('--mx',event.clientX+'px');root.style.setProperty('--my',event.clientY+'px')},{passive:true})}
+    const items=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window&&!reduced){const observer=new IntersectionObserver((entries)=>entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.15});items.forEach((item)=>observer.observe(item))}else{items.forEach((item)=>item.classList.add('is-visible'))}
+  </script>
+</body>
+</html>

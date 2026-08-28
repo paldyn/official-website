@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PALDYN — 홈 시안 비교</title>
+  <meta name="description" content="PALDYN 공식 사이트 홈 화면 디자인 시안 비교">
+  <style>
+    :root { color-scheme: light; --ink:#131313; --muted:#6a6a6a; --line:#dadada; --paper:#f3f3f0; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial, 'Apple SD Gothic Neo', sans-serif; }
+    main { width:min(1320px, calc(100% - 48px)); margin:0 auto; padding:56px 0 80px; }
+    .masthead { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; padding-bottom:28px; border-bottom:1px solid var(--ink); }
+    .eyebrow { margin:0 0 12px; font:600 11px/1.2 Arial, sans-serif; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+    h1 { margin:0; font-size:clamp(32px,5vw,70px); line-height:.96; letter-spacing:-.055em; font-weight:700; }
+    .masthead-note { max-width:300px; margin:0; color:var(--muted); font-size:14px; line-height:1.65; }
+    .featured { margin-top:24px; }
+    .concept-featured { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(260px,.45fr); align-items:stretch; gap:18px; }
+    .concept-featured iframe { height:620px; }
+    .concept-featured .concept-info { align-self:center; padding:28px 18px 28px 10px; }
+    .grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px; margin-top:18px; }
+    .concept { display:flex; flex-direction:column; min-width:0; padding:12px; border:1px solid var(--line); background:#fff; }
+    .concept iframe { display:block; width:100%; height:490px; border:0; background:#fff; }
+    .concept-info { padding:20px 8px 10px; }
+    .concept-tag { margin:0 0 8px; color:var(--muted); font:600 11px/1.2 Arial,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    h2 { margin:0 0 8px; font-size:22px; letter-spacing:-.04em; }
+    .concept-info p { margin:0; color:var(--muted); font-size:14px; line-height:1.6; }
+    .links { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    .links a { padding:9px 12px; border:1px solid var(--ink); color:var(--ink); text-decoration:none; font-size:12px; }
+    .links a:hover { background:var(--ink); color:#fff; }
+    footer { margin-top:22px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    @media (max-width: 980px) { .concept-featured { display:block; } .concept-featured iframe { height:560px; } .grid { grid-template-columns:1fr; } .concept iframe { height:560px; } }
+    @media (max-width: 620px) { main { width:min(100% - 28px, 560px); padding-top:32px; } .masthead { display:block; } .masthead-note { margin-top:18px; } .concept iframe { height:520px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div><p class="eyebrow">PALDYN / HOME CONCEPTS</p><h1>네 가지 방향,<br>하나의 회사.</h1></div>
+      <p class="masthead-note">서비스와 NBYTE를 중심으로 홈 화면의 인상을 다르게 설계했습니다. 첫 번째 시안은 Landing.love에서 영감을 받은 모션·타이포그래피 방향입니다.</p>
+    </header>
+    <section class="featured" aria-label="대표 홈 페이지 시안">
+      <article class="concept concept-featured">
+        <iframe src="./kinetic.html" title="D안 — Kinetic Motion 미리보기"></iframe>
+        <div class="concept-info"><p class="concept-tag">D / Kinetic Motion</p><h2>기깔나는 모션·타이포</h2><p>강한 첫 화면, 수평 서비스 레일, 오렌지와 라임 신호색으로 팔딘의 ‘만들고 운영하는 회사’ 정체성을 가장 선명하게 보여주는 방향.</p><div class="links"><a href="./kinetic.html">전체 시안 보기 ↗</a></div></div>
+      </article>
+    </section>
+    <section class="grid" aria-label="홈 페이지 시안 목록">
+      <article class="concept">
+        <iframe src="./enterprise.html" title="A안 — Executive Grid 미리보기"></iframe>
+        <div class="concept-info"><p class="concept-tag">A / Executive Grid</p><h2>정통 엔터프라이즈</h2><p>신뢰감 있는 그리드와 낮은 채도의 블루. 서비스 포트폴리오와 사업 구조를 가장 빠르게 읽는 방향.</p><div class="links"><a href="./enterprise.html">전체 시안 보기 ↗</a></div></div>
+      </article>
+      <article class="concept">
+        <iframe src="./human.html" title="B안 — Human Systems 미리보기"></iframe>
+        <div class="concept-info"><p class="concept-tag">B / Human Systems</p><h2>밝고 따뜻한 B2B</h2><p>아이보리와 코랄을 포인트로 사용해 기술 회사의 차가움을 낮추고, 파트너십 인상을 강화한 방향.</p><div class="links"><a href="./human.html">전체 시안 보기 ↗</a></div></div>
+      </article>
+      <article class="concept">
+        <iframe src="./system.html" title="C안 — NBYTE Tech System 미리보기"></iframe>
+        <div class="concept-info"><p class="concept-tag">C / Tech System</p><h2>테크 랩 시스템</h2><p>다크 바탕과 모노스페이스 라벨, 오렌지 신호색. PALDYN과 NBYTE의 기술적 관계를 가장 강하게 드러내는 방향.</p><div class="links"><a href="./system.html">전체 시안 보기 ↗</a></div></div>
+      </article>
+    </section>
+    <footer>현재 메인 사이트는 그대로 유지됩니다. 방향을 고르면 선택한 시안을 실제 메인 페이지에 반영합니다.</footer>
+  </main>
+</body>
+</html>
