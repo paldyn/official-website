@@ -183,45 +183,58 @@
     .quick-links a { padding:9px 14px; border:1px solid #363636; border-radius:999px; color:#aaa; font-size:13px; text-decoration:none; transition:border-color .2s ease,color .2s ease; }
     .quick-links a:hover { border-color:#656565; color:var(--white); }
 
-    .spotlight { display:grid; grid-template-columns:minmax(0,3fr) minmax(230px,1fr); gap:24px; padding-bottom:96px; }
-    .spotlight-card { position:relative; min-height:365px; overflow:hidden; border-radius:3px; background:var(--paper); color:var(--white); text-decoration:none; }
-    .spotlight-card img { width:100%; height:100%; min-height:365px; object-fit:cover; transition:transform .45s ease; }
-    .spotlight-card:hover img { transform:scale(1.015); }
-    .spotlight-caption { position:absolute; inset:auto 0 0; display:flex; justify-content:space-between; gap:30px; padding:52px 24px 22px; background:linear-gradient(transparent,rgba(0,0,0,.88)); font-size:13px; }
-    .spotlight-caption strong { font-size:18px; font-weight:600; }
-    .spotlight-side { display:flex; flex-direction:column; justify-content:space-between; padding:24px; background:#1f1f1f; }
-    .spotlight-side small { color:var(--orange); font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
-    .spotlight-side strong { display:block; margin-top:auto; font-size:clamp(42px,5vw,72px); line-height:.9; letter-spacing:-.07em; }
-    .spotlight-side span { display:block; margin-top:18px; color:var(--muted); font-size:13px; }
-
     .section-band { padding:120px 0; border-top:1px solid var(--line); }
     .section-head { display:flex; justify-content:space-between; align-items:end; gap:50px; margin-bottom:46px; }
     .section-head h2 { max-width:780px; margin:0; font-size:clamp(38px,5vw,70px); line-height:.94; letter-spacing:-.08em; font-weight:600; }
     .section-head > p { max-width:320px; margin:0; color:var(--muted); font-size:14px; line-height:1.8; }
 
-    .products { padding:80px 0 150px; border-top:1px solid var(--line); }
-    .product-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:2px; background:var(--line); }
+    .products { padding:96px 0 150px; border-top:1px solid var(--line); }
+    .product-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .product {
-      min-height:320px;
+      --product-accent:#fff;
+      --product-surface:#171717;
+      --product-border:#303030;
+      position:relative;
+      min-height:440px;
       display:flex;
       flex-direction:column;
-      padding:24px;
-      background:var(--surface);
+      overflow:hidden;
+      padding:26px;
+      border:1px solid var(--product-border);
+      border-radius:4px;
+      background:var(--product-surface);
+      background:
+        radial-gradient(circle at 88% 4%,color-mix(in srgb,var(--product-accent) 20%,transparent),transparent 36%),
+        linear-gradient(150deg,var(--product-surface),#141414 72%);
       text-decoration:none;
-      transition:background .25s ease,color .25s ease;
+      transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s ease,background .3s ease;
     }
-    .product:hover { background:var(--surface-hover); }
-    .product-main { min-height:490px; background:#151515; color:var(--white); }
-    .product-main:hover { background:#202020; }
-    .product-label { color:var(--orange); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
-    .product-main .product-label { color:#ff9a6d; }
+    .product::after { content:''; position:absolute; inset:0 0 auto; height:2px; background:var(--product-accent); opacity:.88; }
+    .product:hover { transform:translateY(-5px); border-color:color-mix(in srgb,var(--product-accent) 62%,#333); }
+    .product--nemo { --product-accent:#a798ff; --product-surface:#1d1930; --product-border:#39325c; }
+    .product--devdock { --product-accent:#4fd4ff; --product-surface:#10232b; --product-border:#245064; }
+    .product--ascend { --product-accent:#ff805c; --product-surface:#2b1813; --product-border:#5a3025; }
+    .product-top { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
+    .product-label { padding-top:4px; color:var(--product-accent); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .product-mark {
+      flex:0 0 auto;
+      width:74px;
+      height:74px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--product-border);
+      border-color:color-mix(in srgb,var(--product-accent) 45%,transparent);
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      background:color-mix(in srgb,var(--product-accent) 12%,rgba(255,255,255,.02));
+    }
+    .product-mark img { width:56px; height:56px; object-fit:contain; }
+    .product--devdock .product-mark img { width:62px; height:62px; }
+    .product--ascend .product-mark img { width:66px; height:66px; }
     .product h3 { margin:auto 0 11px; font-size:clamp(30px,4.2vw,60px); line-height:.92; letter-spacing:-.075em; font-weight:600; }
     .product p { max-width:330px; margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
-    .product-main p { color:#a4a4a4; }
     .product-meta { display:flex; justify-content:space-between; margin-top:28px; padding-top:15px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
-    .product-main .product-meta { border-color:#414141; color:#aaa; }
-    .product-meta span:last-child { color:var(--orange); }
-    .product-main .product-meta span:last-child { color:#ff9a6d; }
+    .product-meta span:last-child { color:var(--product-accent); }
 
     .updates { background:var(--black); }
     .update-list { border-top:1px solid var(--ink); }
@@ -314,15 +327,11 @@
       .nav.is-open { opacity:1; visibility:visible; transform:none; }
       .nav a { padding:18px 0; border-bottom:1px solid var(--line); color:var(--white); font-size:24px; letter-spacing:-.04em; }
       .hero { min-height:420px; padding:78px 0 58px; }
-      .spotlight { grid-template-columns:1fr; gap:14px; padding-bottom:72px; }
-      .spotlight-card { min-height:310px; }
-      .spotlight-card img { min-height:310px; }
-      .spotlight-side { min-height:250px; }
       .products { padding-bottom:92px; }
       .section-head,.business-grid { display:block; }
       .section-head > p { margin-top:22px; }
       .product-grid,.story-grid { grid-template-columns:1fr; }
-      .product-main { min-height:340px; }
+      .product { min-height:360px; }
       .section-band { padding:90px 0; }
       .update-row { grid-template-columns:86px 1fr; gap:10px; min-height:92px; padding:14px 0; }
       .update-row span { grid-column:2; }
@@ -355,10 +364,10 @@
   <header class="site-header">
     <a class="brand" href="./" aria-label="PALDYN 홈"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</a>
     <nav id="primaryNav" class="nav" aria-label="주요 메뉴">
-      <a href="#research">리서치</a>
       <a href="#products">제품</a>
-      <a href="#business">비즈니스</a>
+      <a href="#research">리서치</a>
       <a href="#company">회사</a>
+      <a href="#business">비즈니스</a>
     </nav>
     <div class="header-actions">
       <a class="nbyte" href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE</a>
@@ -373,12 +382,7 @@
       <div class="prompt" aria-label="PALDYN 탐색">
         <div class="prompt-input"><span>PALDYN의 서비스와 연구를 살펴보세요</span><a class="prompt-submit" href="#products" aria-label="제품 섹션으로 이동">↑</a></div>
       </div>
-      <div class="quick-links" aria-label="빠른 링크"><a href="#products">제품 살펴보기</a><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock</a><a href="#research">리서치</a><a href="#company">더 보기</a></div>
-    </section>
-
-    <section class="spotlight wrap reveal" aria-label="PALDYN 주요 콘텐츠">
-      <a class="spotlight-card" href="#products"><img src="./assets/og.png" alt="PALDYN — 서비스를 만들고 직접 운영하고 인공지능을 연구합니다"><span class="spotlight-caption"><strong>PALDYN이 만드는 것</strong><span>Products · Research · Operation ↘</span></span></a>
-      <a class="spotlight-card spotlight-side" href="https://nbyte.xyz/" target="_blank" rel="noopener"><small>PALDYN Subsidiary</small><strong>NBYTE</strong><span>소프트웨어 제품 자회사<br>nbyte.xyz ↗</span></a>
+      <div class="quick-links" aria-label="빠른 링크"><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock</a><a href="./ascend/">Ascend</a><a href="#research">리서치</a><a href="#company">PALDYN Group</a></div>
     </section>
 
     <section id="products" class="products wrap reveal" aria-labelledby="products-title">
@@ -387,9 +391,9 @@
         <p>작은 문제를 발견하고 실제로 쓰이는 서비스로 만듭니다. 기획부터 운영과 개선까지 하나의 팀이 연결합니다.</p>
       </div>
       <div class="product-grid">
-        <a class="product product-main" href="https://nemo.paldyn.com/" target="_blank" rel="noopener"><span class="product-label">01 / PRODUCTIVITY</span><h3>Nemo</h3><p>노트와 저널을 한곳에 모으는 작업 공간.</p><span class="product-meta"><span>Web Service</span><span>Open ↗</span></span></a>
-        <a class="product" href="https://devdock.paldyn.com/" target="_blank" rel="noopener"><span class="product-label">02 / DEVELOPER TOOLS</span><h3>DevDock</h3><p>JSON · JWT · 해시 · UUID를 한 탭에.</p><span class="product-meta"><span>Web Utility</span><span>Open ↗</span></span></a>
-        <a class="product" href="./ascend/"><span class="product-label">03 / FITNESS</span><h3>Ascend</h3><p>운동 기록을 더 빠르고 간단하게.</p><span class="product-meta"><span>Private Test</span><span>View →</span></span></a>
+        <a class="product product--nemo" href="https://nemo.paldyn.com/" target="_blank" rel="noopener"><span class="product-top"><span class="product-label">01 / PRODUCTIVITY</span><span class="product-mark"><img src="./assets/products/nemo-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span></span><h3>Nemo</h3><p>노트와 저널을 한곳에 모으는 작업 공간.</p><span class="product-meta"><span>Web Service</span><span>Open ↗</span></span></a>
+        <a class="product product--devdock" href="https://devdock.paldyn.com/" target="_blank" rel="noopener"><span class="product-top"><span class="product-label">02 / DEVELOPER TOOLS</span><span class="product-mark"><img src="./assets/products/devdock-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span></span><h3>DevDock</h3><p>JSON · JWT · 해시 · UUID를 한 탭에.</p><span class="product-meta"><span>Web Utility</span><span>Open ↗</span></span></a>
+        <a class="product product--ascend" href="./ascend/"><span class="product-top"><span class="product-label">03 / FITNESS</span><span class="product-mark"><img src="./assets/products/ascend-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span></span><h3>Ascend</h3><p>운동 기록을 더 빠르고 간단하게.</p><span class="product-meta"><span>Private Test</span><span>View →</span></span></a>
       </div>
     </section>
 
