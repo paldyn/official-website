@@ -737,8 +737,126 @@
     }
     .product-meta span:last-child { color: var(--product-accent); }
 
-    /* Research 는 두 장뿐이라 3열 격자에 흘리지 않는다 */
-    .research-grid { grid-template-columns: repeat(2, 1fr); }
+    /* Research — 카드 대신 편집형 인덱스로 제품 영역과 다른 리듬을 만든다. */
+    section.research-modern { padding: 7.5rem 3rem 8rem; }
+    .research-intro {
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(280px,.65fr);
+      gap:clamp(48px,8vw,100px);
+      align-items:end;
+      margin-bottom:4rem;
+    }
+    .research-intro .section-label { margin-bottom:.9rem; }
+    .research-intro h2 {
+      max-width:680px;
+      margin:0;
+      font-size:clamp(2.55rem,4.5vw,4.1rem);
+      line-height:1.02;
+      letter-spacing:-.06em;
+      font-weight:590;
+    }
+    .research-intro > p {
+      max-width:430px;
+      margin:0 0 .35rem;
+      color:var(--text-dim);
+      font-size:.92rem;
+      line-height:1.8;
+    }
+    .research-list {
+      margin:0;
+      padding:0;
+      border-top:1px solid var(--accent);
+      list-style:none;
+    }
+    .research-row {
+      position:relative;
+      min-height:174px;
+      display:grid;
+      grid-template-columns:70px minmax(200px,.72fr) minmax(260px,1fr) 52px;
+      gap:30px;
+      align-items:center;
+      overflow:hidden;
+      padding:26px 8px 26px 0;
+      border-bottom:1px solid var(--border);
+      color:var(--text);
+      text-decoration:none;
+      isolation:isolate;
+    }
+    .research-row::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:var(--accent-bright);
+      transform:scaleY(0);
+      transform-origin:bottom;
+      transition:transform .34s cubic-bezier(.22,1,.36,1);
+    }
+    .research-row:focus-visible::before { transform:scaleY(1); }
+    .research-index {
+      color:var(--text-dim);
+      font-size:.72rem;
+      font-variant-numeric:tabular-nums;
+      letter-spacing:.12em;
+      transition:color .2s ease;
+    }
+    .research-name small {
+      display:block;
+      margin-bottom:10px;
+      color:var(--text-dim);
+      font-size:.64rem;
+      font-weight:650;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      transition:color .2s ease;
+    }
+    .research-name h3 {
+      margin:0;
+      font-size:clamp(2.15rem,3.8vw,3.2rem);
+      line-height:.95;
+      letter-spacing:-.06em;
+      font-weight:600;
+    }
+    .research-row > p {
+      max-width:440px;
+      margin:0;
+      color:var(--text-dim);
+      font-size:.86rem;
+      line-height:1.75;
+      transition:color .2s ease;
+    }
+    .research-arrow {
+      width:48px;
+      height:48px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--border);
+      border-radius:50%;
+      color:var(--text-dim);
+      font-size:1.1rem;
+      transition:transform .25s ease,border-color .2s ease,color .2s ease;
+    }
+    .research-row:focus-visible { color:var(--bg); outline:none; }
+    .research-row:focus-visible .research-index,
+    .research-row:focus-visible .research-name small,
+    .research-row:focus-visible > p { color:var(--bg); }
+    .research-row:focus-visible .research-arrow {
+      color:var(--bg);
+      border-color:var(--bg);
+      transform:translate(2px,-2px);
+    }
+    @media (hover:hover) {
+      .research-row:hover::before { transform:scaleY(1); }
+      .research-row:hover { color:var(--bg); }
+      .research-row:hover .research-index,
+      .research-row:hover .research-name small,
+      .research-row:hover > p { color:var(--bg); }
+      .research-row:hover .research-arrow {
+        color:var(--bg);
+        border-color:var(--bg);
+        transform:translate(2px,-2px);
+      }
+    }
 
     /* Values */
     .values-list {
@@ -944,14 +1062,32 @@
 
       .about-visual { max-width: 300px; margin: 0 auto; }
 
-      .services-grid,
-      .research-grid {
+      .services-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
       section.products { padding: 5rem 1.5rem 5.75rem; }
       .product-grid { grid-template-columns: 1fr; }
       .product { min-height: 360px; }
+
+      section.research-modern { padding:5.2rem 1.5rem 5.75rem; }
+      .research-intro {
+        grid-template-columns:1fr;
+        gap:24px;
+        margin-bottom:3rem;
+      }
+      .research-intro h2 { font-size:clamp(2.5rem,8vw,3.6rem); }
+      .research-intro > p { max-width:560px; }
+      .research-row {
+        min-height:auto;
+        grid-template-columns:54px minmax(0,1fr) auto;
+        gap:12px 16px;
+        padding:26px 0;
+      }
+      .research-index { grid-column:1; grid-row:1; }
+      .research-name { grid-column:2; grid-row:1; }
+      .research-arrow { grid-column:3; grid-row:1; }
+      .research-row > p { grid-column:2 / -1; grid-row:2; }
 
       .value-item {
         grid-template-columns: 50px 1fr;
@@ -970,6 +1106,15 @@
     @media (max-width: 620px) {
       .product-section-head { margin-bottom: 2.5rem; }
       .product-section-head h2 { font-size: 2rem; }
+      .research-intro h2 { font-size:2.35rem; }
+      .research-row {
+        grid-template-columns:40px minmax(0,1fr) auto;
+        gap:10px;
+        padding:22px 0;
+      }
+      .research-name h3 { font-size:2rem; }
+      .research-row > p { font-size:.8rem; }
+      .research-arrow { width:42px; height:42px; }
       .footer-grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
       .footer-brand { grid-column:1 / -1; grid-row:auto; margin-bottom:18px; }
       .footer-bottom { display:block; margin-top:56px; }
@@ -980,6 +1125,13 @@
       .product,
       .contact-btn { transition:none; }
       .contact-btn:hover { transform:none; }
+      .research-row::before,
+      .research-index,
+      .research-name small,
+      .research-row > p,
+      .research-arrow { transition:none; }
+      .research-row:hover .research-arrow,
+      .research-row:focus-visible .research-arrow { transform:none; }
     }
   </style>
 </head>
@@ -1104,35 +1256,35 @@
 
   <div class="divider"></div>
 
-  <!-- Research — 제품이 아니라 읽고 적어 두는 곳 -->
-  <section id="research">
+  <!-- Research -->
+  <section id="research" class="research-modern">
     <div class="reveal">
-      <p class="section-label">Research</p>
-      <h2 class="section-title">읽고, 적어 둡니다</h2>
-      <p class="section-desc">제품이 아닙니다. 우리가 다시 찾아보려고 쓰는 글이라 결론만 남기지 않고 과정을 남깁니다.</p>
+      <header class="research-intro">
+        <div>
+          <p class="section-label">Research</p>
+          <h2>발견을 기록하고,<br>다음 제품에 연결합니다.</h2>
+        </div>
+        <p>AI의 변화와 제품을 만드는 과정에서 얻은 지식과 판단을 공유합니다.</p>
+      </header>
 
-      <div class="services-grid research-grid">
-        <a class="service-card" href="https://ailab.paldyn.com/" target="_blank" rel="noopener">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M24 8a16 16 0 1016 16"/>
-            <path d="M24 15a9 9 0 109 9"/>
-            <circle cx="38" cy="10" r="3"/>
-          </svg>
-          <h3>AI Lab</h3>
-          <p>새로운 모델과 AI 산업 동향을 정리합니다.</p>
-          <span class="card-meta">ailab.paldyn.com ↗</span>
-        </a>
-        <a class="service-card" href="https://techblog.paldyn.com/" target="_blank" rel="noopener">
-          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 8h18l6 6v26H12z"/>
-            <path d="M30 8v6h6"/>
-            <path d="M18 23h12M18 30h8"/>
-          </svg>
-          <h3>Tech Blog</h3>
-          <p>제품을 만들며 마주한 문제와 해법을 적어 둡니다.</p>
-          <span class="card-meta">techblog.paldyn.com ↗</span>
-        </a>
-      </div>
+      <ol class="research-list">
+        <li>
+          <a class="research-row" href="https://ailab.paldyn.com/" target="_blank" rel="noopener" aria-label="AI Lab 새 창에서 열기">
+            <span class="research-index" aria-hidden="true">01</span>
+            <div class="research-name"><small>AI Research</small><h3>AI Lab</h3></div>
+            <p>새로운 모델과 AI 산업의 변화를 제품 관점에서 해석합니다.</p>
+            <span class="research-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a class="research-row" href="https://techblog.paldyn.com/" target="_blank" rel="noopener" aria-label="Tech Blog 새 창에서 열기">
+            <span class="research-index" aria-hidden="true">02</span>
+            <div class="research-name"><small>Engineering</small><h3>Tech Blog</h3></div>
+            <p>제품을 만들고 운영하며 마주한 선택과 해법을 기록합니다.</p>
+            <span class="research-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ol>
     </div>
   </section>
 
