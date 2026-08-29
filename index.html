@@ -11,11 +11,11 @@
   <meta property="og:site_name" content="PALDYN">
   <meta property="og:url" content="https://paldyn.com/">
   <meta property="og:title" content="PALDYN — 서비스를 만들고, 직접 운영하는 기술 기업">
-  <meta property="og:description" content="제품, 연구, 운영을 하나의 흐름으로 연결해 더 나은 디지털 경험을 만듭니다.">
+  <meta property="og:description" content="사람 가까이에서 시작해 계속 나아지는 디지털 서비스를 만듭니다.">
   <meta property="og:image" content="https://paldyn.com/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PALDYN — 서비스를 만들고, 직접 운영하는 기술 기업">
-  <meta name="twitter:description" content="제품, 연구, 운영을 하나의 흐름으로 연결해 더 나은 디지털 경험을 만듭니다.">
+  <meta name="twitter:description" content="사람 가까이에서 시작해 계속 나아지는 디지털 서비스를 만듭니다.">
   <meta name="twitter:image" content="https://paldyn.com/assets/og.png">
   <link rel="icon" href="./favicon.ico">
   <link rel="icon" type="image/png" sizes="256x256" href="./assets/favicon.png">
@@ -33,7 +33,7 @@
     "email": "contact@paldyn.com",
     "subOrganization": {
       "@type": "Organization",
-      "name": "NBYTE Corporation",
+      "name": "NBYTE",
       "url": "https://nbyte.xyz/"
     }
   }
@@ -96,11 +96,15 @@
       z-index:20;
       width:100%;
       height:64px;
+    }
+    .header-inner {
+      width:min(calc(100% - 2 * var(--gutter)),var(--page));
+      height:100%;
+      margin-inline:auto;
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:32px;
-      padding-inline:32px;
+      gap:40px;
     }
     .brand {
       display:flex;
@@ -121,8 +125,8 @@
     .header-actions .contact { padding:10px 18px; border-radius:999px; background:var(--white); color:var(--black); font-weight:600; }
     .menu-toggle {
       display:none;
-      width:36px;
-      height:36px;
+      width:44px;
+      height:44px;
       padding:0;
       border:0;
       background:transparent;
@@ -139,8 +143,8 @@
       text-align:center;
     }
     .hero-inner { width:min(100%,800px); }
-    .hero-kicker { display:inline-flex; align-items:center; gap:9px; margin:0 0 22px; color:#898989; font-size:10px; font-weight:650; letter-spacing:.14em; text-transform:uppercase; }
-    .hero-kicker::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--orange); }
+    .hero-kicker { display:inline-flex; align-items:center; gap:11px; margin:0 0 22px; color:#969696; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+    .hero-kicker .hero-plus { color:var(--orange); font-style:normal; font-weight:500; }
     .hero h1 { margin:0; font-size:clamp(42px,5vw,64px); line-height:1.03; letter-spacing:-.065em; font-weight:600; }
     .hero-copy { max-width:620px; margin:24px auto 0; color:#9a9a9a; font-size:15px; line-height:1.75; }
     .hero-actions { display:flex; justify-content:center; gap:9px; flex-wrap:wrap; margin-top:30px; }
@@ -234,27 +238,50 @@
     .story:hover .story-arrow { border-color:#888; color:var(--white); }
 
     .group { background:var(--black); }
-    .company-panel { max-width:1040px; margin:0 auto; overflow:hidden; border:1px solid var(--line); border-radius:4px; background:#0d0d0d; }
-    .company-primary { display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center; padding:42px; }
+    .company-profile {
+      max-width:960px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);
+      gap:72px;
+      align-items:start;
+      padding:38px 0 40px;
+      border-top:1px solid #555;
+      border-bottom:1px solid var(--line);
+    }
     .company-lockup { display:flex; align-items:center; gap:16px; }
-    .company-lockup img { width:46px; height:46px; }
-    .company-lockup h3 { margin:0; font-size:28px; font-weight:700; letter-spacing:.1em; }
-    .company-primary-copy p { max-width:460px; margin:0; color:var(--muted); font-size:14px; line-height:1.75; }
-    .company-fields { display:flex; gap:8px; flex-wrap:wrap; margin:20px 0 0; padding:0; list-style:none; }
-    .company-fields li { padding:7px 10px; border:1px solid #343434; border-radius:999px; color:#888; font-size:10px; }
-    .company-companies { padding:13px 28px; border-top:1px solid var(--line); background:#111; color:#727272; font-size:9px; font-weight:650; letter-spacing:.14em; text-transform:uppercase; }
-    .company-affiliate { min-height:84px; display:grid; grid-template-columns:minmax(160px,.65fr) 1fr auto; gap:24px; align-items:center; padding:0 28px; border-top:1px solid var(--line); color:inherit; text-decoration:none; transition:background .2s ease; }
-    .company-affiliate:hover { background:#171717; }
-    .company-affiliate strong { font-size:24px; font-weight:600; letter-spacing:-.045em; }
-    .company-affiliate span { color:var(--muted); font-size:12px; }
-    .company-affiliate .company-link { color:#bbb; }
+    .company-lockup img { width:44px; height:44px; }
+    .company-lockup h3 { margin:0; font-size:26px; font-weight:700; letter-spacing:.11em; }
+    .company-place { display:block; margin:16px 0 0 60px; color:#686868; font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    .company-primary-copy > p { max-width:520px; margin:0; color:#b1b1b1; font-size:15px; line-height:1.8; }
+    .company-values { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:30px 0 0; padding:24px 0 0; border-top:1px solid var(--line); }
+    .company-values div { min-width:0; }
+    .company-values dt { margin:0 0 7px; color:#707070; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .company-values dd { margin:0; color:#d0d0d0; font-size:12px; line-height:1.65; }
 
     .business { padding:104px 0; border-top:1px solid var(--line); background:var(--black); color:var(--white); }
-    .business-card { max-width:860px; margin:0 auto; padding:62px 32px; border:1px solid var(--line); border-radius:4px; background:#0d0d0d; text-align:center; }
+    .business-inner { max-width:900px; margin:0 auto; text-align:center; }
     .business h2 { margin:0; font-size:clamp(34px,4vw,48px); line-height:1.08; letter-spacing:-.055em; font-weight:600; }
     .business-copy { max-width:520px; margin:18px auto 0; color:#929292; font-size:14px; line-height:1.75; }
-    .business-link { min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:10px; margin-top:28px; padding:0 18px; border-radius:999px; background:var(--white); color:var(--black); font-size:13px; font-weight:650; text-decoration:none; }
-    .business-link:hover { background:#ddd; }
+    .business-link {
+      min-height:82px;
+      display:grid;
+      grid-template-columns:100px 1fr auto;
+      gap:24px;
+      align-items:center;
+      margin-top:40px;
+      padding:0 4px;
+      border-top:1px solid #5a5a5a;
+      border-bottom:1px solid var(--line);
+      color:inherit;
+      text-align:left;
+      text-decoration:none;
+      transition:padding .2s ease,background .2s ease;
+    }
+    .business-link:hover { padding-inline:18px; background:#0d0d0d; }
+    .business-link-label { color:#727272; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .business-link strong { font-size:18px; font-weight:520; letter-spacing:-.025em; }
+    .business-link-arrow { color:#888; font-size:17px; }
 
     .site-footer { padding:72px 0 34px; border-top:1px solid var(--line); }
     .footer-grid { display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:40px; }
@@ -270,11 +297,12 @@
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
       .reveal { opacity:1; transform:none; transition:none; }
-      .product,.story,.company-affiliate,.nav a { transition:none; }
+      .product,.story,.business-link,.nav a { transition:none; }
     }
 
     @media (max-width:900px) {
-      .site-header { display:flex; justify-content:space-between; height:64px; padding-inline:20px; }
+      .site-header { height:64px; }
+      .header-inner { width:calc(100% - 40px); display:flex; justify-content:space-between; gap:24px; }
       .header-actions { margin-left:auto; }
       .header-actions .contact { display:none; }
       .menu-toggle { display:block; }
@@ -306,10 +334,8 @@
       .story-title { grid-column:2; grid-row:1; }
       .story-arrow { grid-column:3; grid-row:1; }
       .story p { grid-column:2 / -1; grid-row:2; }
-      .company-primary { grid-template-columns:1fr; gap:28px; padding:34px; }
-      .company-affiliate { grid-template-columns:minmax(150px,.65fr) 1fr auto; }
+      .company-profile { grid-template-columns:1fr; gap:34px; }
       .business { padding:86px 0; }
-      .business-card { padding:54px 28px; }
       .footer-grid { grid-template-columns:1.4fr 1fr 1fr; }
       .footer-brand { grid-row:span 2; }
     }
@@ -326,13 +352,14 @@
       .story:hover { padding-inline:10px; }
       .story p { font-size:12px; }
       .story-arrow { width:40px; height:40px; }
-      .company-primary { gap:24px; padding:26px 22px; }
       .company-lockup img { width:38px; height:38px; }
       .company-lockup h3 { font-size:22px; }
-      .company-affiliate { grid-template-columns:1fr auto; gap:8px 16px; min-height:94px; padding:17px 22px; }
-      .company-affiliate > span:not(.company-link) { grid-column:1; }
-      .company-affiliate .company-link { grid-column:2; grid-row:1 / span 2; }
-      .business-card { padding:46px 20px; }
+      .company-place { margin-left:54px; }
+      .company-values { grid-template-columns:1fr; gap:18px; }
+      .business-link { grid-template-columns:1fr auto; gap:4px 16px; min-height:90px; padding:16px 4px; }
+      .business-link-label { grid-column:1; }
+      .business-link strong { grid-column:1; font-size:16px; }
+      .business-link-arrow { grid-column:2; grid-row:1 / span 2; }
       .footer-grid { grid-template-columns:1fr 1fr; }
       .footer-brand { grid-column:1 / -1; grid-row:auto; margin-bottom:18px; }
       .footer-bottom { display:block; }
@@ -344,25 +371,27 @@
   <a class="skip-link" href="#main">본문으로 바로가기</a>
 
   <header class="site-header">
-    <a class="brand" href="./" aria-label="PALDYN 홈"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</a>
-    <nav id="primaryNav" class="nav" aria-label="주요 메뉴">
-      <a href="#products">제품</a>
-      <a href="#research">리서치</a>
-      <a href="#company">회사</a>
-      <a href="#business">문의</a>
-    </nav>
-    <div class="header-actions">
-      <a class="contact" href="mailto:contact@paldyn.com">문의하기 ↗</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="메뉴 열기"><span></span><span></span></button>
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="PALDYN 홈"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</a>
+      <nav id="primaryNav" class="nav" aria-label="주요 메뉴">
+        <a href="#products">제품</a>
+        <a href="#research">리서치</a>
+        <a href="#company">회사</a>
+        <a href="#business">문의</a>
+      </nav>
+      <div class="header-actions">
+        <a class="contact" href="mailto:contact@paldyn.com">문의하기 ↗</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="메뉴 열기"><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-inner">
-        <p class="hero-kicker">Product · Research · Operation</p>
-        <h1 id="hero-title">기술을 서비스로,<br>아이디어를 경험으로.</h1>
-        <p class="hero-copy">PALDYN은 일상과 업무의 문제를 소프트웨어 제품으로 만들고, 출시 이후의 운영과 개선까지 직접 이어갑니다.</p>
+        <p class="hero-kicker" aria-label="PAL 더하기 DYN"><span>PAL</span><i class="hero-plus" aria-hidden="true">+</i><span>DYN</span></p>
+        <h1 id="hero-title">함께 만들고,<br>계속 발전시킵니다.</h1>
+        <p class="hero-copy">PAL에는 함께하는 동반자를, DYN에는 변화하며 나아가는 움직임을 담았습니다. PALDYN은 제품을 직접 만들고 운영하며 더 나은 경험으로 발전시킵니다.</p>
         <div class="hero-actions"><a class="primary" href="#products">제품 살펴보기</a><a class="secondary" href="#company">회사 소개</a></div>
       </div>
     </section>
@@ -395,23 +424,25 @@
     <section id="company" class="section-band group reveal" aria-labelledby="company-title">
       <div class="wrap">
         <div class="section-head">
-          <div><p class="section-label">Company</p><h2 id="company-title">제품을 중심으로 움직이는 기술 회사.</h2></div>
-          <p>제품 전략과 기술 연구, 서비스 운영을 하나의 흐름으로 연결합니다.</p>
+          <div><p class="section-label">Company</p><h2 id="company-title">제품을 만들고 운영하는 기술 회사입니다.</h2></div>
+          <p>소프트웨어 제품과 디지털 서비스를 직접 기획하고 개발하며, 운영을 통해 꾸준히 개선합니다.</p>
         </div>
-        <div class="company-panel">
-          <article class="company-primary" aria-labelledby="company-core-title">
+        <article class="company-profile" aria-labelledby="company-core-title">
+          <div>
             <div class="company-lockup"><img src="./assets/logo-symbol-light.png" alt=""><h3 id="company-core-title">PALDYN</h3></div>
-            <div class="company-primary-copy"><p>소프트웨어 제품과 디지털 서비스를 직접 기획하고 개발하며, 운영을 통해 더 나은 경험으로 개선합니다.</p><ul class="company-fields" aria-label="PALDYN 핵심 영역"><li>Product</li><li>Research</li><li>Operation</li></ul></div>
-          </article>
-          <div class="company-companies">PALDYN Companies</div>
-          <a class="company-affiliate" href="https://nbyte.xyz/" target="_blank" rel="noopener" aria-label="PALDYN 관계사 NBYTE 공식 사이트, 새 창"><strong>NBYTE</strong><span>Software products</span><span class="company-link">nbyte.xyz ↗</span></a>
-        </div>
+            <span class="company-place">Seoul, Korea</span>
+          </div>
+          <div class="company-primary-copy">
+            <p>일상과 업무 속 작은 문제를 발견하고, 오래 쓰이는 서비스로 만듭니다. 출시가 끝이 되지 않도록 사용자의 경험을 살피며 다음 개선을 이어갑니다.</p>
+            <dl class="company-values"><div><dt>01 / Build</dt><dd>문제를 발견하고 직접 제품으로 만듭니다.</dd></div><div><dt>02 / Evolve</dt><dd>운영하며 배우고 다음 버전으로 발전시킵니다.</dd></div></dl>
+          </div>
+        </article>
       </div>
     </section>
 
     <section id="business" class="business reveal" aria-labelledby="business-title">
       <div class="wrap">
-        <div class="business-card"><p class="section-label">Contact</p><h2 id="business-title">함께 만들 이야기가 있다면.</h2><p class="business-copy">제품, 기술 협업, 사업 제휴에 관한 제안을 기다립니다.</p><a class="business-link" href="mailto:contact@paldyn.com" aria-label="이메일로 협업 문의하기">contact@paldyn.com</a></div>
+        <div class="business-inner"><p class="section-label">Contact</p><h2 id="business-title">함께 이야기해 주세요.</h2><p class="business-copy">제품, 기술 협업, 사업 제휴에 관한 문의를 기다립니다.</p><a class="business-link" href="mailto:contact@paldyn.com" aria-label="contact@paldyn.com으로 이메일 문의하기"><span class="business-link-label">Email</span><strong>contact@paldyn.com</strong><span class="business-link-arrow" aria-hidden="true">↗</span></a></div>
       </div>
     </section>
   </main>
@@ -422,10 +453,10 @@
         <div class="footer-brand"><a class="brand" href="./"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</a><p>소프트웨어 제품과 디지털 서비스를 직접 만들고 운영합니다.</p></div>
         <div class="footer-col"><h3>Products</h3><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo ↗</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock ↗</a><a href="./ascend/">Ascend</a></div>
         <div class="footer-col"><h3>Research</h3><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></div>
-        <div class="footer-col"><h3>Companies</h3><a href="#company">PALDYN</a><a href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE ↗</a></div>
+        <div class="footer-col"><h3>PALDYN Network</h3><a href="https://nbyte.xyz/" target="_blank" rel="noopener" aria-label="PALDYN 네트워크 회사 NBYTE 공식 사이트, 새 창">NBYTE ↗</a></div>
         <div class="footer-col"><h3>Company</h3><a href="mailto:contact@paldyn.com">Contact</a><a href="./cnt/privacy/">Privacy</a></div>
       </div>
-      <div class="footer-bottom"><span>© 2026 PALDYN</span><span>Product · Research · Operation</span></div>
+      <div class="footer-bottom"><span>© 2026 PALDYN</span><span>PAL + DYN — 함께 만들고, 계속 발전시킵니다.</span></div>
     </div>
   </footer>
 
