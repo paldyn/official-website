@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PALDYN — 서비스를 만들고, 직접 운영하는 기술 기업</title>
-  <meta name="description" content="PALDYN은 소프트웨어 제품과 디지털 서비스를 직접 기획·개발·운영하는 기술 기업이며, NBYTE는 PALDYN의 자회사입니다.">
+  <meta name="description" content="PALDYN은 소프트웨어 제품과 디지털 서비스를 직접 기획·개발·운영하는 기술 기업입니다.">
   <link rel="canonical" href="https://paldyn.com/">
   <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PALDYN">
   <meta property="og:url" content="https://paldyn.com/">
   <meta property="og:title" content="PALDYN — 서비스를 만들고, 직접 운영하는 기술 기업">
-  <meta property="og:description" content="제품, 연구, 운영을 하나의 흐름으로 연결합니다. NBYTE는 PALDYN의 자회사입니다.">
+  <meta property="og:description" content="제품, 연구, 운영을 하나의 흐름으로 연결해 더 나은 디지털 경험을 만듭니다.">
   <meta property="og:image" content="https://paldyn.com/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PALDYN — 서비스를 만들고, 직접 운영하는 기술 기업">
-  <meta name="twitter:description" content="제품, 연구, 운영을 하나의 흐름으로 연결합니다. NBYTE는 PALDYN의 자회사입니다.">
+  <meta name="twitter:description" content="제품, 연구, 운영을 하나의 흐름으로 연결해 더 나은 디지털 경험을 만듭니다.">
   <meta name="twitter:image" content="https://paldyn.com/assets/og.png">
   <link rel="icon" href="./favicon.ico">
   <link rel="icon" type="image/png" sizes="256x256" href="./assets/favicon.png">
@@ -118,7 +118,6 @@
     .nav a:hover { color:var(--white); }
     .header-actions { display:flex; align-items:center; gap:8px; font-size:14px; }
     .header-actions a { text-decoration:none; }
-    .header-actions .nbyte { padding:10px 18px; border-radius:999px; background:#1c1c1c; color:var(--white); font-weight:500; }
     .header-actions .contact { padding:10px 18px; border-radius:999px; background:var(--white); color:var(--black); font-weight:600; }
     .menu-toggle {
       display:none;
@@ -134,52 +133,44 @@
     .menu-toggle[aria-expanded="true"] span:last-child { transform:translateY(-3px) rotate(-45deg); }
 
     .hero {
-      min-height:calc(100vh - 64px);
-      min-height:calc(100svh - 64px);
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:86px 0 48px;
+      display:grid;
+      place-items:center;
+      padding:132px 0 112px;
+      text-align:center;
     }
-    .hero-kicker-row { display:flex; justify-content:space-between; gap:24px; margin-bottom:auto; padding-bottom:64px; }
-    .hero-kicker,.hero-code { margin:0; font-size:11px; font-weight:650; letter-spacing:.16em; text-transform:uppercase; }
-    .hero-kicker { color:var(--orange); }
-    .hero-code { color:#676767; }
-    .hero h1 { max-width:1120px; margin:0; font-size:clamp(58px,8.2vw,126px); line-height:.88; letter-spacing:-.085em; font-weight:600; }
-    .hero h1 span { color:#777; }
-    .hero-lower { display:grid; grid-template-columns:1fr minmax(310px,.58fr); gap:80px; align-items:end; margin-top:58px; padding-top:24px; border-top:1px solid var(--line); }
-    .hero-pillars { display:flex; gap:34px; flex-wrap:wrap; margin:0; padding:0; color:#888; font-size:11px; letter-spacing:.08em; text-transform:uppercase; list-style:none; }
-    .hero-pillars li { display:flex; align-items:center; gap:9px; }
-    .hero-pillars i { width:5px; height:5px; border-radius:50%; background:var(--orange); }
-    .hero-message p { max-width:460px; margin:0; color:#a5a5a5; font-size:15px; line-height:1.75; }
-    .hero-actions { display:flex; gap:9px; flex-wrap:wrap; margin-top:24px; }
+    .hero-inner { width:min(100%,800px); }
+    .hero-kicker { display:inline-flex; align-items:center; gap:9px; margin:0 0 22px; color:#898989; font-size:10px; font-weight:650; letter-spacing:.14em; text-transform:uppercase; }
+    .hero-kicker::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--orange); }
+    .hero h1 { margin:0; font-size:clamp(42px,5vw,64px); line-height:1.03; letter-spacing:-.065em; font-weight:600; }
+    .hero-copy { max-width:620px; margin:24px auto 0; color:#9a9a9a; font-size:15px; line-height:1.75; }
+    .hero-actions { display:flex; justify-content:center; gap:9px; flex-wrap:wrap; margin-top:30px; }
     .hero-actions a { min-height:44px; display:inline-flex; align-items:center; justify-content:center; padding:0 18px; border-radius:999px; font-size:13px; font-weight:600; text-decoration:none; transition:background .2s ease,color .2s ease,border-color .2s ease; }
     .hero-actions .primary { background:var(--white); color:var(--black); }
     .hero-actions .primary:hover { background:#ddd; }
     .hero-actions .secondary { border:1px solid #3b3b3b; color:#bbb; }
     .hero-actions .secondary:hover { border-color:#777; color:var(--white); }
     .section-label {
-      margin:0 0 22px;
-      color:var(--orange);
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.18em;
+      margin:0 0 13px;
+      color:#7d7d7d;
+      font-size:10px;
+      font-weight:650;
+      letter-spacing:.15em;
       text-transform:uppercase;
     }
 
-    .section-band { padding:120px 0; border-top:1px solid var(--line); }
-    .section-head { display:flex; justify-content:space-between; align-items:end; gap:50px; margin-bottom:46px; }
-    .section-head h2 { max-width:780px; margin:0; font-size:clamp(38px,5vw,70px); line-height:.94; letter-spacing:-.08em; font-weight:600; }
-    .section-head > p { max-width:320px; margin:0; color:var(--muted); font-size:14px; line-height:1.8; }
+    .section-band { padding:104px 0; border-top:1px solid var(--line); }
+    .section-head { max-width:760px; margin:0 auto 50px; text-align:center; }
+    .section-head h2 { margin:0; font-size:clamp(34px,4vw,50px); line-height:1.06; letter-spacing:-.06em; font-weight:600; }
+    .section-head > p { max-width:580px; margin:18px auto 0; color:var(--muted); font-size:14px; line-height:1.75; }
 
-    .products { padding:96px 0 150px; border-top:1px solid var(--line); }
+    .products { padding:104px 0 124px; border-top:1px solid var(--line); }
     .product-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .product {
       --product-accent:#fff;
       --product-surface:#171717;
       --product-border:#303030;
       position:relative;
-      min-height:440px;
+      min-height:400px;
       display:flex;
       flex-direction:column;
       overflow:hidden;
@@ -215,7 +206,7 @@
     .product-mark img { width:56px; height:56px; object-fit:contain; }
     .product--devdock .product-mark img { width:62px; height:62px; }
     .product--ascend .product-mark img { width:66px; height:66px; }
-    .product h3 { margin:auto 0 11px; font-size:clamp(30px,4.2vw,60px); line-height:.92; letter-spacing:-.075em; font-weight:600; }
+    .product h3 { margin:auto 0 11px; font-size:clamp(30px,3.4vw,48px); line-height:.95; letter-spacing:-.065em; font-weight:600; }
     .product p { max-width:330px; margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
     .product-meta { display:flex; justify-content:space-between; margin-top:28px; padding-top:15px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
     .product-meta span:last-child { color:var(--product-accent); }
@@ -236,38 +227,34 @@
     }
     .story:hover { padding-inline:18px; background:#0d0d0d; }
     .story-index { color:#666; font-size:11px; font-variant-numeric:tabular-nums; }
-    .story-title small { display:block; margin-bottom:11px; color:var(--orange); font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
-    .story h3 { margin:0; font-size:clamp(30px,3.6vw,50px); line-height:.92; letter-spacing:-.065em; font-weight:600; }
+    .story-title small { display:block; margin-bottom:9px; color:#777; font-size:10px; font-weight:650; letter-spacing:.13em; text-transform:uppercase; }
+    .story h3 { margin:0; font-size:clamp(27px,2.8vw,38px); line-height:.98; letter-spacing:-.055em; font-weight:600; }
     .story p { max-width:390px; margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
     .story-arrow { width:44px; height:44px; display:grid; place-items:center; border:1px solid #3a3a3a; border-radius:50%; color:#aaa; font-size:18px; transition:border-color .2s ease,color .2s ease; }
-    .story:hover .story-arrow { border-color:var(--orange); color:var(--orange); }
+    .story:hover .story-arrow { border-color:#888; color:var(--white); }
 
     .group { background:var(--black); }
-    .company-grid { display:grid; grid-template-columns:minmax(0,2fr) minmax(280px,.72fr); gap:14px; align-items:end; }
-    .company-core,.company-subsidiary { border:1px solid var(--line); border-radius:4px; }
-    .company-core { min-height:410px; display:flex; flex-direction:column; padding:30px; background:#111; }
-    .company-core-top { display:flex; justify-content:space-between; gap:24px; align-items:center; color:#777; font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
-    .company-core-brand { display:flex; align-items:center; gap:14px; color:var(--white); font-size:15px; font-weight:700; letter-spacing:.14em; }
-    .company-core-brand img { width:42px; height:42px; }
-    .company-core h3 { max-width:700px; margin:auto 0 34px; font-size:clamp(38px,5.3vw,74px); line-height:.94; letter-spacing:-.075em; font-weight:600; }
-    .company-capabilities { display:grid; grid-template-columns:repeat(3,1fr); margin:0; padding:0; border-top:1px solid var(--line); list-style:none; }
-    .company-capabilities li { padding:17px 0 0; color:#aaa; font-size:12px; }
-    .company-capabilities small { display:block; margin-bottom:5px; color:#606060; font-size:9px; letter-spacing:.1em; }
-    .company-subsidiary { min-height:300px; display:flex; flex-direction:column; padding:28px; background:#171717; color:inherit; text-decoration:none; transition:background .25s ease,border-color .25s ease; }
-    .company-subsidiary:hover { border-color:#4b4b4b; background:#1d1d1d; }
-    .company-relation { color:var(--orange); font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
-    .company-subsidiary-body { margin:auto 0; }
-    .company-subsidiary h3 { margin:0 0 16px; color:var(--white); font-size:clamp(38px,4.5vw,58px); line-height:.9; letter-spacing:-.07em; font-weight:600; }
-    .company-subsidiary p { margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
-    .company-link { display:flex; justify-content:space-between; gap:16px; padding-top:17px; border-top:1px solid var(--line); color:#aaa; font-size:11px; }
+    .company-panel { max-width:1040px; margin:0 auto; overflow:hidden; border:1px solid var(--line); border-radius:4px; background:#0d0d0d; }
+    .company-primary { display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center; padding:42px; }
+    .company-lockup { display:flex; align-items:center; gap:16px; }
+    .company-lockup img { width:46px; height:46px; }
+    .company-lockup h3 { margin:0; font-size:28px; font-weight:700; letter-spacing:.1em; }
+    .company-primary-copy p { max-width:460px; margin:0; color:var(--muted); font-size:14px; line-height:1.75; }
+    .company-fields { display:flex; gap:8px; flex-wrap:wrap; margin:20px 0 0; padding:0; list-style:none; }
+    .company-fields li { padding:7px 10px; border:1px solid #343434; border-radius:999px; color:#888; font-size:10px; }
+    .company-companies { padding:13px 28px; border-top:1px solid var(--line); background:#111; color:#727272; font-size:9px; font-weight:650; letter-spacing:.14em; text-transform:uppercase; }
+    .company-affiliate { min-height:84px; display:grid; grid-template-columns:minmax(160px,.65fr) 1fr auto; gap:24px; align-items:center; padding:0 28px; border-top:1px solid var(--line); color:inherit; text-decoration:none; transition:background .2s ease; }
+    .company-affiliate:hover { background:#171717; }
+    .company-affiliate strong { font-size:24px; font-weight:600; letter-spacing:-.045em; }
+    .company-affiliate span { color:var(--muted); font-size:12px; }
+    .company-affiliate .company-link { color:#bbb; }
 
-    .business { padding:150px 0 170px; border-top:1px solid var(--line); background:var(--black); color:var(--white); }
-    .business-grid { display:grid; grid-template-columns:1fr minmax(260px,.55fr); gap:100px; align-items:end; }
-    .business .section-label { color:#ff9a6d; }
-    .business h2 { max-width:860px; margin:0; font-size:clamp(48px,7vw,108px); line-height:.88; letter-spacing:-.09em; font-weight:600; }
-    .business-copy { max-width:310px; margin:0; color:#a5a5a5; font-size:14px; line-height:1.8; }
-    .business-link { display:inline-flex; align-items:center; gap:12px; margin-top:28px; color:#ff9a6d; font-size:12px; font-weight:650; text-decoration:none; }
-    .business-link::after { content:'↗'; font-size:17px; }
+    .business { padding:104px 0; border-top:1px solid var(--line); background:var(--black); color:var(--white); }
+    .business-card { max-width:860px; margin:0 auto; padding:62px 32px; border:1px solid var(--line); border-radius:4px; background:#0d0d0d; text-align:center; }
+    .business h2 { margin:0; font-size:clamp(34px,4vw,48px); line-height:1.08; letter-spacing:-.055em; font-weight:600; }
+    .business-copy { max-width:520px; margin:18px auto 0; color:#929292; font-size:14px; line-height:1.75; }
+    .business-link { min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:10px; margin-top:28px; padding:0 18px; border-radius:999px; background:var(--white); color:var(--black); font-size:13px; font-weight:650; text-decoration:none; }
+    .business-link:hover { background:#ddd; }
 
     .site-footer { padding:72px 0 34px; border-top:1px solid var(--line); }
     .footer-grid { display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:40px; }
@@ -283,7 +270,7 @@
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
       .reveal { opacity:1; transform:none; transition:none; }
-      .product,.story,.company-subsidiary,.nav a { transition:none; }
+      .product,.story,.company-affiliate,.nav a { transition:none; }
     }
 
     @media (max-width:900px) {
@@ -308,50 +295,44 @@
       }
       .nav.is-open { opacity:1; visibility:visible; transform:none; }
       .nav a { padding:18px 0; border-bottom:1px solid var(--line); color:var(--white); font-size:24px; letter-spacing:-.04em; }
-      .hero { min-height:620px; padding:70px 0 42px; }
-      .hero h1 { font-size:clamp(54px,10.8vw,88px); }
-      .hero-lower { grid-template-columns:1fr; gap:28px; margin-top:46px; }
+      .hero { padding:110px 0 90px; }
+      .hero h1 { font-size:clamp(40px,7.5vw,58px); }
       .products { padding-bottom:92px; }
-      .section-head,.business-grid { display:block; }
-      .section-head > p { margin-top:22px; }
       .product-grid { grid-template-columns:1fr; }
       .product { min-height:360px; }
-      .section-band { padding:90px 0; }
+      .section-band { padding:86px 0; }
       .story { grid-template-columns:58px 1fr auto; gap:18px; }
       .story-index { grid-column:1; grid-row:1; }
       .story-title { grid-column:2; grid-row:1; }
       .story-arrow { grid-column:3; grid-row:1; }
       .story p { grid-column:2 / -1; grid-row:2; }
-      .company-grid { grid-template-columns:1fr; }
-      .company-core { min-height:350px; }
-      .company-subsidiary { width:min(100%,520px); min-height:250px; margin-left:auto; }
-      .business { padding:100px 0 115px; }
-      .business-copy { margin-top:38px; }
+      .company-primary { grid-template-columns:1fr; gap:28px; padding:34px; }
+      .company-affiliate { grid-template-columns:minmax(150px,.65fr) 1fr auto; }
+      .business { padding:86px 0; }
+      .business-card { padding:54px 28px; }
       .footer-grid { grid-template-columns:1.4fr 1fr 1fr; }
       .footer-brand { grid-row:span 2; }
     }
 
     @media (max-width:620px) {
-      .hero { min-height:570px; padding:56px 0 34px; }
-      .hero-kicker-row { margin-bottom:auto; padding-bottom:40px; }
-      .hero-code { display:none; }
-      .hero h1 { font-size:clamp(46px,14vw,64px); }
-      .hero-lower { margin-top:38px; padding-top:19px; }
-      .hero-pillars { gap:15px; font-size:9px; }
-      .hero-message p { font-size:14px; }
+      .hero { padding:86px 0 72px; }
+      .hero h1 { font-size:clamp(38px,11vw,48px); }
+      .hero h1 br { display:none; }
+      .hero-copy { margin-top:20px; font-size:14px; }
       .hero-actions a { flex:1 1 auto; }
+      .section-head { margin-bottom:40px; }
+      .section-band { padding:78px 0; }
       .story { grid-template-columns:42px 1fr auto; gap:12px; min-height:150px; padding:22px 0; }
       .story:hover { padding-inline:10px; }
       .story p { font-size:12px; }
       .story-arrow { width:40px; height:40px; }
-      .company-core { min-height:310px; padding:22px; }
-      .company-subsidiary { min-height:230px; padding:22px; }
-      .company-core-top { align-items:flex-start; }
-      .company-core-brand { font-size:13px; }
-      .company-core-brand img { width:34px; height:34px; }
-      .company-core h3 { margin-bottom:28px; font-size:clamp(36px,11.5vw,54px); }
-      .company-capabilities li { font-size:10px; }
-      .header-actions .nbyte { display:none; }
+      .company-primary { gap:24px; padding:26px 22px; }
+      .company-lockup img { width:38px; height:38px; }
+      .company-lockup h3 { font-size:22px; }
+      .company-affiliate { grid-template-columns:1fr auto; gap:8px 16px; min-height:94px; padding:17px 22px; }
+      .company-affiliate > span:not(.company-link) { grid-column:1; }
+      .company-affiliate .company-link { grid-column:2; grid-row:1 / span 2; }
+      .business-card { padding:46px 20px; }
       .footer-grid { grid-template-columns:1fr 1fr; }
       .footer-brand { grid-column:1 / -1; grid-row:auto; margin-bottom:18px; }
       .footer-bottom { display:block; }
@@ -368,10 +349,9 @@
       <a href="#products">제품</a>
       <a href="#research">리서치</a>
       <a href="#company">회사</a>
-      <a href="#business">비즈니스</a>
+      <a href="#business">문의</a>
     </nav>
     <div class="header-actions">
-      <a class="nbyte" href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE</a>
       <a class="contact" href="mailto:contact@paldyn.com">문의하기 ↗</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="메뉴 열기"><span></span><span></span></button>
     </div>
@@ -379,27 +359,17 @@
 
   <main id="main" tabindex="-1">
     <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-kicker-row">
-        <p class="hero-kicker">PALDYN / Product &amp; Technology Company</p>
-        <p class="hero-code">Seoul · 2026</p>
-      </div>
-      <h1 id="hero-title">서비스를 만들고,<br><span>운영으로 증명합니다.</span></h1>
-      <div class="hero-lower">
-        <ul class="hero-pillars" aria-label="PALDYN 핵심 활동">
-          <li><i aria-hidden="true"></i>Product</li>
-          <li><i aria-hidden="true"></i>Research</li>
-          <li><i aria-hidden="true"></i>Operation</li>
-        </ul>
-        <div class="hero-message">
-          <p>PALDYN은 소프트웨어 제품과 디지털 서비스를 기획부터 개발, 운영과 개선까지 직접 연결합니다.</p>
-          <div class="hero-actions"><a class="primary" href="#products">제품 살펴보기 ↘</a><a class="secondary" href="#business">협업 문의 ↗</a></div>
-        </div>
+      <div class="hero-inner">
+        <p class="hero-kicker">Product · Research · Operation</p>
+        <h1 id="hero-title">기술을 서비스로,<br>아이디어를 경험으로.</h1>
+        <p class="hero-copy">PALDYN은 일상과 업무의 문제를 소프트웨어 제품으로 만들고, 출시 이후의 운영과 개선까지 직접 이어갑니다.</p>
+        <div class="hero-actions"><a class="primary" href="#products">제품 살펴보기</a><a class="secondary" href="#company">회사 소개</a></div>
       </div>
     </section>
 
     <section id="products" class="products wrap reveal" aria-labelledby="products-title">
       <div class="section-head">
-        <div><p class="section-label">Products / 01</p><h2 id="products-title">쓰이는 것을<br>만듭니다.</h2></div>
+        <div><p class="section-label">Products</p><h2 id="products-title">쓰이는 것을 만듭니다.</h2></div>
         <p>작은 문제를 발견하고 실제로 쓰이는 서비스로 만듭니다. 기획부터 운영과 개선까지 하나의 팀이 연결합니다.</p>
       </div>
       <div class="product-grid">
@@ -412,7 +382,7 @@
     <section id="research" class="section-band stories reveal" aria-labelledby="research-title">
       <div class="wrap">
         <div class="section-head">
-          <div><p class="section-label">Research / 02</p><h2 id="research-title">배운 것을 기록하고,<br>다음 제품에 연결합니다.</h2></div>
+          <div><p class="section-label">Research</p><h2 id="research-title">배운 것을 다음 제품에 연결합니다.</h2></div>
           <p>새로운 기술과 운영의 경험을 정리해 실제 제품의 선택과 개선으로 이어갑니다.</p>
         </div>
         <div class="story-list">
@@ -425,28 +395,23 @@
     <section id="company" class="section-band group reveal" aria-labelledby="company-title">
       <div class="wrap">
         <div class="section-head">
-          <div><p class="section-label">Company / 03</p><h2 id="company-title">PALDYN</h2></div>
-          <p>제품 전략, 기술 연구, 서비스 운영을 직접 수행하며 하나의 기준으로 디지털 경험을 확장합니다.</p>
+          <div><p class="section-label">Company</p><h2 id="company-title">제품을 중심으로 움직이는 기술 회사.</h2></div>
+          <p>제품 전략과 기술 연구, 서비스 운영을 하나의 흐름으로 연결합니다.</p>
         </div>
-        <div class="company-grid">
-          <article class="company-core" aria-labelledby="company-core-title">
-            <div class="company-core-top"><span class="company-core-brand"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</span><span>Parent Company</span></div>
-            <h3 id="company-core-title">제품부터 연구와<br>운영까지, 하나의 팀.</h3>
-            <ul class="company-capabilities" aria-label="PALDYN 핵심 영역"><li><small>01</small>Product</li><li><small>02</small>Research</li><li><small>03</small>Operation</li></ul>
+        <div class="company-panel">
+          <article class="company-primary" aria-labelledby="company-core-title">
+            <div class="company-lockup"><img src="./assets/logo-symbol-light.png" alt=""><h3 id="company-core-title">PALDYN</h3></div>
+            <div class="company-primary-copy"><p>소프트웨어 제품과 디지털 서비스를 직접 기획하고 개발하며, 운영을 통해 더 나은 경험으로 개선합니다.</p><ul class="company-fields" aria-label="PALDYN 핵심 영역"><li>Product</li><li>Research</li><li>Operation</li></ul></div>
           </article>
-          <a class="company-subsidiary" href="https://nbyte.xyz/" target="_blank" rel="noopener">
-            <span class="company-relation">PALDYN Subsidiary</span>
-            <div class="company-subsidiary-body"><h3>NBYTE</h3><p>PALDYN의 소프트웨어 제품 자회사입니다.</p></div>
-            <span class="company-link"><span>nbyte.xyz</span><span aria-hidden="true">↗</span><span class="sr-only">새 창</span></span>
-          </a>
+          <div class="company-companies">PALDYN Companies</div>
+          <a class="company-affiliate" href="https://nbyte.xyz/" target="_blank" rel="noopener" aria-label="PALDYN 관계사 NBYTE 공식 사이트, 새 창"><strong>NBYTE</strong><span>Software products</span><span class="company-link">nbyte.xyz ↗</span></a>
         </div>
       </div>
     </section>
 
     <section id="business" class="business reveal" aria-labelledby="business-title">
-      <div class="wrap business-grid">
-        <div><p class="section-label">Business / 04</p><h2 id="business-title">좋은 질문은<br>좋은 제품이 됩니다.</h2></div>
-        <div><p class="business-copy">제품, 기술 협업, 사업 제휴에 관한 제안을 기다립니다.</p><a class="business-link" href="mailto:contact@paldyn.com">PALDYN과 이야기하기</a></div>
+      <div class="wrap">
+        <div class="business-card"><p class="section-label">Contact</p><h2 id="business-title">함께 만들 이야기가 있다면.</h2><p class="business-copy">제품, 기술 협업, 사업 제휴에 관한 제안을 기다립니다.</p><a class="business-link" href="mailto:contact@paldyn.com" aria-label="이메일로 협업 문의하기">contact@paldyn.com</a></div>
       </div>
     </section>
   </main>
@@ -457,7 +422,7 @@
         <div class="footer-brand"><a class="brand" href="./"><img src="./assets/logo-symbol-light.png" alt="">PALDYN</a><p>소프트웨어 제품과 디지털 서비스를 직접 만들고 운영합니다.</p></div>
         <div class="footer-col"><h3>Products</h3><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo ↗</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock ↗</a><a href="./ascend/">Ascend</a></div>
         <div class="footer-col"><h3>Research</h3><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></div>
-        <div class="footer-col"><h3>Group</h3><a href="#company">PALDYN</a><a href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE ↗</a></div>
+        <div class="footer-col"><h3>Companies</h3><a href="#company">PALDYN</a><a href="https://nbyte.xyz/" target="_blank" rel="noopener">NBYTE ↗</a></div>
         <div class="footer-col"><h3>Company</h3><a href="mailto:contact@paldyn.com">Contact</a><a href="./cnt/privacy/">Privacy</a></div>
       </div>
       <div class="footer-bottom"><span>© 2026 PALDYN</span><span>Product · Research · Operation</span></div>
