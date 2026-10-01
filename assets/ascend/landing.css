@@ -34,7 +34,7 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-store:disabled { opacity:1; cursor:default; }
 #ascend-daily-focus .dr-cta .dr-release { font-size:11px; line-height:1.6; margin-top:10px; color:var(--dr-muted); }
 #ascend-daily-focus .dr-cta .dr-platform { display:flex; align-items:center; padding:8px 0; min-height:36px; font-size:11px; line-height:1.6; color:var(--dr-muted); }
-#ascend-daily-focus .dr-art { width:100%; max-width:var(--dr-art-width,340px); height:auto; aspect-ratio:16/9; justify-self:center; }
+#ascend-daily-focus .dr-art { width:100%; max-width:540px; height:auto; aspect-ratio:16/9; justify-self:center; }
 #ascend-daily-focus .dr-art img { display:block; width:100%; height:100%; object-fit:contain; }
 #ascend-daily-focus .dr-trust { margin:0 var(--dr-inset); padding:24px 0; border-top:1px solid var(--dr-line); border-bottom:1px solid var(--dr-line); display:flex; align-items:center; justify-content:center; gap:32px; }
 #ascend-daily-focus .dr-trust p { display:flex; align-items:center; gap:9px; font-size:12px; color:var(--dr-muted); }
@@ -49,6 +49,51 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-feature-icon svg { width:24px; height:24px; }
 #ascend-daily-focus .dr-feature h3 { font-size:21px; line-height:1.35; font-weight:600; letter-spacing:-.025em; }
 #ascend-daily-focus .dr-feature p { margin-top:12px; font-size:13px; line-height:1.8; color:var(--dr-muted); }
+#ascend-daily-focus .dr-preview { padding:56px var(--dr-inset); background:#FFF4EB; display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:var(--dr-column-gap); align-items:center; }
+#ascend-daily-focus .dr-preview-copy { min-width:0; }
+#ascend-daily-focus .dr-preview-copy .dr-kicker { margin-bottom:16px; }
+#ascend-daily-focus .dr-preview-copy .dr-copy { margin-top:24px; }
+#ascend-daily-focus .dr-preview-steps { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:28px; font-size:12px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-preview-steps b { margin-right:8px; color:var(--dr-label); font-size:11px; }
+#ascend-daily-focus .dr-preview-caption { margin-top:28px!important; font-size:11px; line-height:1.7; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phones { display:flex; justify-content:center; align-items:center; gap:24px; padding:24px 12px 32px; min-width:0; }
+#ascend-daily-focus .dr-phone { position:relative; flex:0 0 236px; height:470px; padding:7px; border-radius:38px; background:#21252B; box-shadow:0 24px 40px -18px #713A1B40,0 0 0 1px #FFFFFF80 inset; }
+#ascend-daily-focus .dr-phone--log { transform:rotate(-4deg); }
+#ascend-daily-focus .dr-phone--record { transform:translateY(24px) rotate(5deg); }
+#ascend-daily-focus .dr-phone-screen { height:100%; display:flex; flex-direction:column; padding:12px 16px 16px; border-radius:31px; background:#FFFFFF; overflow:hidden; }
+#ascend-daily-focus .dr-phone-status { display:flex; justify-content:space-between; align-items:center; min-height:16px; font-size:9px; font-weight:600; }
+#ascend-daily-focus .dr-phone-island { width:66px; height:17px; border-radius:12px; background:#13171C; }
+#ascend-daily-focus .dr-phone-status > span:last-child { font-size:8px; letter-spacing:.02em; }
+#ascend-daily-focus .dr-phone-eyebrow { margin-top:28px!important; font-size:10px; line-height:1.5; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phone-screen h3 { margin-top:7px; font-size:25px; line-height:1.2; letter-spacing:-.05em; font-weight:650; }
+#ascend-daily-focus .dr-phone-date { margin-top:8px!important; font-size:9px; line-height:1.5; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phone-exercise { display:flex; justify-content:space-between; align-items:center; margin-top:24px; padding-bottom:14px; border-bottom:1px solid var(--dr-line); }
+#ascend-daily-focus .dr-phone-exercise strong { font-size:12px; font-weight:600; }
+#ascend-daily-focus .dr-phone-exercise > span { font-size:9px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-set-head,#ascend-daily-focus .dr-set { display:grid; grid-template-columns:24px 1fr 1fr 28px; align-items:center; text-align:center; gap:6px; }
+#ascend-daily-focus .dr-set-head { margin-top:12px; font-size:8px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-set { min-height:44px; font-size:12px; font-weight:500; border-bottom:1px solid #F0F1F3; }
+#ascend-daily-focus .dr-set > span:first-child { font-size:10px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-set-input { padding:7px 2px; background:var(--dr-soft); border-radius:6px; }
+#ascend-daily-focus .dr-set-check { display:grid; place-items:center; width:24px; height:24px; border:1px solid var(--dr-line); border-radius:7px; color:#B4B9C2; font-size:13px; }
+#ascend-daily-focus .dr-set-check--done { background:var(--dr-orange); border-color:var(--dr-orange); color:#FFFFFF; }
+#ascend-daily-focus .dr-phone-rest { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px; margin-top:14px; background:#FFF0E4; border-radius:12px; }
+#ascend-daily-focus .dr-phone-rest span { font-size:9px; line-height:1.6; color:var(--dr-label); }
+#ascend-daily-focus .dr-phone-rest strong { font-size:22px; font-weight:600; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+#ascend-daily-focus .dr-phone-nav { display:flex; justify-content:space-around; gap:8px; margin-top:auto; padding-top:18px; font-size:9px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phone-nav b { color:var(--dr-label); font-weight:600; }
+#ascend-daily-focus .dr-phone-tabs { display:flex; gap:4px; margin-top:24px; padding:4px; border-radius:9px; background:var(--dr-soft); font-size:10px; }
+#ascend-daily-focus .dr-phone-tabs span { flex:1; padding:8px 2px; text-align:center; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phone-tabs .dr-phone-tab-active { background:#FFFFFF; border-radius:6px; color:var(--dr-ink); box-shadow:0 1px 4px #0D111710; }
+#ascend-daily-focus .dr-phone-metric { margin-top:24px!important; font-size:9px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phone-value { display:flex; align-items:baseline; gap:6px; margin-top:6px; }
+#ascend-daily-focus .dr-phone-value strong { font-size:30px; font-weight:600; letter-spacing:-.05em; }
+#ascend-daily-focus .dr-phone-value span { font-size:10px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phone-chart { display:flex; align-items:flex-end; gap:10px; height:104px; padding:0 4px; margin-top:20px; border-bottom:1px solid var(--dr-line); background:repeating-linear-gradient(to top,transparent 0,transparent 33px,#F0F1F3 33px,#F0F1F3 34px); }
+#ascend-daily-focus .dr-phone-chart span { flex:1; height:var(--dr-bar); border-radius:4px 4px 0 0; background:#FFD7B9; }
+#ascend-daily-focus .dr-phone-chart span:last-child { background:var(--dr-orange); }
+#ascend-daily-focus .dr-phone-axis { display:flex; justify-content:space-between; margin-top:8px; padding:0 4px; font-size:8px; color:var(--dr-muted); }
+#ascend-daily-focus .dr-phone-record-note { margin-top:20px!important; font-size:9px; color:var(--dr-label); line-height:1.5; }
 #ascend-daily-focus .dr-connect { display:grid; grid-template-columns:1fr 1fr; gap:var(--dr-column-gap); padding:48px var(--dr-inset); border-top:1px solid var(--dr-line); }
 #ascend-daily-focus .dr-connect-icon { display:flex; gap:10px; align-items:center; color:var(--dr-label); font-size:11px; letter-spacing:.04em; }
 #ascend-daily-focus .dr-connect-icon svg { width:17px; height:17px; }
@@ -71,6 +116,14 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-footer-nav { display:flex; align-items:center; flex-wrap:wrap; gap:8px 24px; }
 #ascend-daily-focus .dr-footer a { display:inline-flex; align-items:center; min-height:24px; font-size:12px; color:var(--dr-muted); text-decoration:none; line-height:1.7; }
 #ascend-daily-focus .dr-footer a:hover { color:var(--dr-label); }
+@media(max-width:1100px) {
+  #ascend-daily-focus .dr-preview { grid-template-columns:1fr; gap:20px; }
+  #ascend-daily-focus .dr-preview-copy { max-width:540px; text-align:center; justify-self:center; }
+  #ascend-daily-focus .dr-preview-copy .dr-heading span { display:inline; }
+  #ascend-daily-focus .dr-preview-copy .dr-copy { margin-top:16px; }
+  #ascend-daily-focus .dr-preview-steps { justify-content:center; margin-top:20px; }
+  #ascend-daily-focus .dr-preview-caption { margin-top:20px!important; }
+}
 @media(max-width:760px) {
   #ascend-daily-focus .dr-provider { display:none; }
   #ascend-daily-focus .dr-page { --dr-column-gap:32px; }
@@ -89,7 +142,16 @@ body { margin:0; background:#FFFFFF; }
 }
 @media(max-width:640px) {
   #ascend-daily-focus .dr-hero { grid-template-columns:1fr; gap:24px; }
-  #ascend-daily-focus .dr-art { justify-self:start; }
+  #ascend-daily-focus .dr-art { justify-self:center; }
+  #ascend-daily-focus .dr-preview { padding-block:40px; }
+  #ascend-daily-focus .dr-phones { width:100%; padding:20px 0 30px; gap:20px; }
+  #ascend-daily-focus .dr-phone { flex-basis:232px; height:462px; border-radius:35px; }
+  #ascend-daily-focus .dr-phone-screen { padding-inline:13px; border-radius:28px; }
+  #ascend-daily-focus .dr-phone-screen h3 { font-size:23px; }
+  #ascend-daily-focus .dr-phone-eyebrow { margin-top:22px!important; }
+  #ascend-daily-focus .dr-phone-exercise { margin-top:20px; }
+  #ascend-daily-focus .dr-phone-tabs { margin-top:20px; }
+  #ascend-daily-focus .dr-phone-chart { height:88px; }
   #ascend-daily-focus .dr-section-head { grid-template-columns:1fr; gap:20px; }
   #ascend-daily-focus .dr-feature-grid { grid-template-columns:1fr; }
   #ascend-daily-focus .dr-feature { padding:24px; }
@@ -121,5 +183,16 @@ body { margin:0; background:#FFFFFF; }
   #ascend-daily-focus .dr-end h2 { font-size:27px; }
   #ascend-daily-focus .dr-end .dr-copy { font-size:13px; }
   #ascend-daily-focus .dr-footer { padding:20px var(--dr-inset); }
+}
+@media(max-width:560px) {
+  #ascend-daily-focus .dr-preview-copy .dr-heading span { display:block; }
+  #ascend-daily-focus .dr-preview-copy .dr-copy { font-size:13px; }
+  #ascend-daily-focus .dr-phones { flex-direction:column; gap:36px; padding:20px 0; }
+  #ascend-daily-focus .dr-phone { flex-basis:auto; width:232px; height:462px; }
+  #ascend-daily-focus .dr-phone--log { transform:rotate(-3deg); }
+  #ascend-daily-focus .dr-phone--record { transform:rotate(3deg); }
+  #ascend-daily-focus .dr-phone-screen { padding-inline:16px; }
+  #ascend-daily-focus .dr-phone-eyebrow { margin-top:28px!important; }
+  #ascend-daily-focus .dr-phone-chart { height:104px; }
 }
 @media(pointer:coarse) { #ascend-daily-focus .dr-footer a { min-width:44px; min-height:44px; } }
