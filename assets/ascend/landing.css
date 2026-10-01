@@ -11,7 +11,7 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-page a { color:inherit; }
 #ascend-daily-focus .dr-page button { font-family:inherit; }
 #ascend-daily-focus .dr-latin { font-family:Montserrat,sans-serif; }
-#ascend-daily-focus .dr-header { position:absolute; inset:0 0 auto; z-index:2; padding:16px var(--dr-gutter); min-height:80px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+#ascend-daily-focus .dr-header { position:relative; z-index:2; padding:16px var(--dr-gutter); min-height:80px; display:flex; align-items:center; justify-content:space-between; gap:24px; background:var(--dr-paper); border-bottom:1px solid var(--dr-line); }
 #ascend-daily-focus .dr-brand { display:flex; align-items:center; gap:10px; font-size:14px; font-weight:700; letter-spacing:.18em; }
 #ascend-daily-focus .dr-mark { width:32px; height:32px; border-radius:9px; display:grid; place-items:center; flex-shrink:0; background:var(--dr-orange); box-shadow:0 0 0 1px #FFFFFF66 inset; }
 #ascend-daily-focus .dr-mark img { display:block; width:26px; height:26px; object-fit:contain; }
@@ -26,7 +26,7 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-heading span { display:block; }
 #ascend-daily-focus .dr-copy { font-size:15px; line-height:1.8; color:var(--dr-muted); }
 #ascend-daily-focus .dr-hero { position:relative; isolation:isolate; padding:0; display:flex; align-items:center; min-height:clamp(640px,52vw,960px); background:#FFFFFF; }
-#ascend-daily-focus .dr-hero-top { position:relative; z-index:1; width:43%; min-width:0; padding:120px 24px 64px var(--dr-gutter); display:flex; flex-direction:column; justify-content:center; }
+#ascend-daily-focus .dr-hero-top { position:relative; z-index:1; width:43%; min-width:0; padding:64px 24px 64px var(--dr-gutter); display:flex; flex-direction:column; justify-content:center; }
 #ascend-daily-focus .dr-hero .dr-title { font-size:clamp(48px,5.1vw,76px); line-height:1.16; font-weight:620; letter-spacing:-.045em; }
 #ascend-daily-focus .dr-hero .dr-title span:last-child { color:#ED6400; }
 #ascend-daily-focus .dr-hero .dr-hero-lead { margin-top:24px; font-size:15px; line-height:1.8; color:#50565F; }
@@ -88,7 +88,7 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-footer a:hover { color:var(--dr-label); }
 @media(max-width:1100px) {
   #ascend-daily-focus .dr-hero { display:flex; flex-direction:column; align-items:stretch; min-height:0; }
-  #ascend-daily-focus .dr-hero-top { width:100%; padding:112px var(--dr-gutter) 36px; }
+  #ascend-daily-focus .dr-hero-top { width:100%; padding:32px var(--dr-gutter) 36px; }
   #ascend-daily-focus .dr-hero .dr-title { font-size:clamp(48px,6.5vw,64px); }
   #ascend-daily-focus .dr-art { position:relative; inset:auto; width:100%; height:auto; aspect-ratio:16/9; mask-image:none; }
   #ascend-daily-focus .dr-preview { grid-template-columns:1fr; gap:20px; }
@@ -114,7 +114,7 @@ body { margin:0; background:#FFFFFF; }
   #ascend-daily-focus .dr-footer-nav { gap:8px 16px; }
 }
 @media(max-width:640px) {
-  #ascend-daily-focus .dr-hero-top { padding:96px var(--dr-gutter) 28px; }
+  #ascend-daily-focus .dr-hero-top { padding:28px var(--dr-gutter); }
   #ascend-daily-focus .dr-hero .dr-title { font-size:clamp(44px,11.5vw,60px); }
   #ascend-daily-focus .dr-hero .dr-hero-lead { margin-top:16px; font-size:13px; line-height:1.7; }
   #ascend-daily-focus .dr-hero .dr-cta { margin-top:24px; }
