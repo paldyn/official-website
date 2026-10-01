@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Ascend의 독립 앱 브랜드 랜딩 페이지 디자인 시안 — 퍼플 플레이">
+  <title>Ascend — 퍼플 플레이 디자인 시안</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css">
+  <style>
+    body { margin: 0; }
+    #ascend-play { --ap-purple: #7140f5; --ap-purple-dark: #542acb; --ap-ink: #252136; --ap-muted: #6c667c; --ap-paper: #fff; --ap-soft: #f6f3ff; --ap-lime: #deff93; --ap-radius: 26px; color-scheme: light; font-family: 'Wanted Sans Variable', 'Apple SD Gothic Neo', sans-serif; color: var(--ap-ink); background: var(--ap-paper); line-height: 1.6; overflow: clip; }
+    #ascend-play *, #ascend-play *::before, #ascend-play *::after { box-sizing: border-box; }
+    #ascend-play h1, #ascend-play h2, #ascend-play h3, #ascend-play p { margin: 0; }
+    #ascend-play a { color: inherit; text-decoration: none; }
+    #ascend-play button { font: inherit; cursor: pointer; }
+    #ascend-play button:focus-visible, #ascend-play a:focus-visible { outline: 3px solid #a2e02c; outline-offset: 5px; }
+    #ascend-play [hidden] { display: none !important; }
+    #ascend-play .ap-wrap { width: min(1180px, calc(100% - 96px)); margin-inline: auto; }
+    #ascend-play .ap-review { padding: 8px 24px; background: #f1edfa; color: #625475; font-size: 11px; text-align: center; letter-spacing: .02em; }
+    #ascend-play .ap-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 88px; }
+    #ascend-play .ap-brand { display: inline-flex; align-items: center; gap: 10px; font-size: 27px; font-weight: 850; letter-spacing: -.055em; }
+    #ascend-play .ap-icon { width: 34px; height: 34px; border-radius: 11px; background: #0c0c0c; padding: 4px; object-fit: contain; }
+    #ascend-play .ap-nav-links { display: flex; align-items: center; gap: 30px; font-size: 14px; font-weight: 650; }
+    #ascend-play .ap-nav-download { background: var(--ap-purple); color: #fff; border-radius: 100px; padding: 10px 23px; }
+    #ascend-play .ap-hero { position: relative; background: var(--ap-purple); color: #fff; }
+    #ascend-play .ap-hero-inner { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 18px; min-height: 666px; padding-block: 62px 72px; position: relative; }
+    #ascend-play .ap-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 650; letter-spacing: .01em; }
+    #ascend-play .ap-eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--ap-lime); }
+    #ascend-play h1 { font-size: clamp(46px, 6.25vw, 86px); font-weight: 900; line-height: 1.14; letter-spacing: -.065em; margin-top: 24px; }
+    #ascend-play h1 em { font-style: normal; color: var(--ap-lime); }
+    #ascend-play .ap-lead { font-size: 17px; line-height: 1.75; margin-top: 25px; color: #efe7ff; letter-spacing: -.025em; }
+    #ascend-play .ap-store-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+    #ascend-play .ap-store { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-width: 174px; padding: 13px 18px; border: none; border-radius: 14px; background: #fff; color: #252136; text-align: left; font-size: 16px; font-weight: 750; line-height: 1.25; transition: transform .18s; }
+    #ascend-play .ap-store:hover { transform: translateY(-3px); }
+    #ascend-play .ap-store small { display: block; font-size: 10px; color: #736c81; font-weight: 500; margin-bottom: 5px; }
+    #ascend-play .ap-store-note { font-size: 11px; color: #e9ddff; margin-top: 12px; }
+    #ascend-play .ap-device-stage { position: relative; display: flex; justify-content: center; align-items: center; min-height: 510px; padding-bottom: 42px; }
+    #ascend-play .ap-orbit { position: absolute; width: 440px; height: 440px; border-radius: 50%; background: #fff; opacity: .1; right: -14px; }
+    #ascend-play .ap-stair { position: absolute; right: -35px; bottom: 24px; display: flex; align-items: flex-end; gap: 9px; opacity: .3; }
+    #ascend-play .ap-stair span { width: 55px; height: 120px; background: #cdb5ff; border-radius: 18px 18px 0 0; }
+    #ascend-play .ap-stair span:nth-child(2) { height: 190px; }
+    #ascend-play .ap-stair span:nth-child(3) { height: 264px; }
+    #ascend-play .ap-phone { position: relative; width: 276px; padding: 12px 15px 14px; background: #faf9fd; color: #252136; border: 7px solid #252136; border-radius: 43px; box-shadow: 8px 20px 0 #4d23b4, 0 22px 50px #331a6c40; transform: rotate(6deg); }
+    #ascend-play .ap-phone-top { display: flex; align-items: center; justify-content: space-between; padding: 0 3px 12px; font-size: 10px; font-weight: 700; }
+    #ascend-play .ap-island { width: 75px; height: 20px; background: #252136; border-radius: 20px; }
+    #ascend-play .ap-app-header { display: flex; align-items: center; justify-content: space-between; padding: 5px 0 19px; font-size: 19px; font-weight: 850; letter-spacing: -.05em; }
+    #ascend-play .ap-avatar { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: #ece4ff; font-size: 12px; color: #542acb; }
+    #ascend-play .ap-app-meta { font-size: 10px; font-weight: 600; color: #827d90; }
+    #ascend-play .ap-routine-title { font-size: 24px; font-weight: 850; margin-block: 3px 13px; line-height: 1.3; letter-spacing: -.055em; }
+    #ascend-play .ap-session-strip { display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 12px; background: #ede6ff; font-size: 11px; color: #542acb; font-weight: 650; }
+    #ascend-play .ap-exercise { padding: 16px 0 10px; font-size: 14px; font-weight: 750; }
+    #ascend-play .ap-last-record { font-size: 10px; color: #827d90; font-weight: 500; margin-top: 3px; }
+    #ascend-play .ap-set-head, #ascend-play .ap-set { display: grid; grid-template-columns: 31px 1fr 1fr 32px; align-items: center; gap: 3px; text-align: center; }
+    #ascend-play .ap-set-head { padding: 8px 0; font-size: 9px; color: #827d90; }
+    #ascend-play .ap-set { padding: 9px 0; font-size: 13px; border-top: 1px solid #eeeaf4; font-weight: 700; }
+    #ascend-play .ap-set-number { font-size: 11px; color: #827d90; }
+    #ascend-play .ap-check { width: 29px; height: 29px; padding: 0; background: #eeeaf5; color: #807592; border: none; border-radius: 9px; font-size: 15px; }
+    #ascend-play .ap-check[aria-pressed='true'] { color: #fff; background: var(--ap-purple); }
+    #ascend-play .ap-rest { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; border-radius: 12px; background: #ede6ff; color: #542acb; padding: 11px 12px; font-size: 10px; font-weight: 650; }
+    #ascend-play .ap-rest strong { font-size: 22px; font-weight: 850; line-height: 1; }
+    #ascend-play .ap-rest.is-resting { background: var(--ap-purple); color: #fff; }
+    #ascend-play .ap-home-indicator { width: 82px; height: 4px; border-radius: 4px; background: #252136; margin: 19px auto 0; }
+    #ascend-play .ap-sticker { position: absolute; left: -14px; top: 88px; z-index: 1; padding: 11px 18px; border-radius: 16px; color: #252136; background: var(--ap-lime); box-shadow: 0 8px 20px #40215b20; transform: rotate(-8deg); font-size: 13px; font-weight: 800; }
+    #ascend-play .ap-floating-note { position: absolute; right: -14px; bottom: 62px; color: #fff; font-size: 21px; font-weight: 750; letter-spacing: -.04em; transform: rotate(-9deg); }
+    #ascend-play .ap-ui-caption { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #ece1ff; font-size: 10px; }
+    #ascend-play .ap-promise { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 32px; padding: 23px; border-bottom: 1px solid #eeeaf5; color: #665e78; font-size: 13px; font-weight: 600; }
+    #ascend-play .ap-promise b { color: var(--ap-purple); margin-right: 7px; font-size: 16px; }
+    #ascend-play .ap-story { padding-block: 100px 90px; }
+    #ascend-play .ap-section-label { color: var(--ap-purple); font-size: 12px; font-weight: 750; letter-spacing: .08em; }
+    #ascend-play h2 { font-size: clamp(30px, 4.2vw, 54px); font-weight: 850; letter-spacing: -.055em; line-height: 1.2; margin-top: 14px; }
+    #ascend-play .ap-story-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; }
+    #ascend-play .ap-story-top > p { max-width: 285px; font-size: 15px; color: var(--ap-muted); }
+    #ascend-play .ap-feature-layout { display: grid; grid-template-columns: .9fr 1.2fr; align-items: stretch; gap: 30px; margin-top: 42px; }
+    #ascend-play .ap-feature-picker { display: flex; flex-direction: column; gap: 3px; }
+    #ascend-play .ap-feature-button { display: flex; gap: 18px; align-items: flex-start; text-align: left; border: none; background: transparent; padding: 24px 23px; border-radius: 18px; color: var(--ap-ink); transition: background .18s; }
+    #ascend-play .ap-feature-button[aria-pressed='true'] { background: var(--ap-soft); }
+    #ascend-play .ap-feature-num { color: #aaa2b9; font-size: 12px; padding-top: 4px; font-weight: 750; }
+    #ascend-play .ap-feature-button[aria-pressed='true'] .ap-feature-num { color: var(--ap-purple); }
+    #ascend-play .ap-feature-button h3 { font-size: 20px; font-weight: 800; letter-spacing: -.04em; }
+    #ascend-play .ap-feature-button p { font-size: 13px; color: var(--ap-muted); line-height: 1.65; margin-top: 7px; max-width: 260px; }
+    #ascend-play .ap-feature-art { display: grid; place-items: center; min-height: 354px; border-radius: var(--ap-radius); background: var(--ap-soft); padding: 28px; }
+    #ascend-play .ap-art-pane { width: min(100%, 360px); }
+    #ascend-play .ap-sample-label { display: block; text-align: center; font-size: 10px; color: #81768f; margin-top: 20px; }
+    #ascend-play .ap-log-demo { background: #fff; padding: 23px; border-radius: 22px; box-shadow: 0 12px 32px #5735a00c; }
+    #ascend-play .ap-log-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 23px; font-size: 17px; font-weight: 800; }
+    #ascend-play .ap-log-header small { color: #82768f; font-size: 10px; font-weight: 500; }
+    #ascend-play .ap-log-values { display: grid; grid-template-columns: 1fr 1fr 55px; gap: 10px; align-items: center; }
+    #ascend-play .ap-log-values > div { padding: 13px; background: #f6f3fb; border-radius: 11px; }
+    #ascend-play .ap-log-values small { display: block; color: #82768f; font-size: 10px; }
+    #ascend-play .ap-log-values strong { font-size: 28px; letter-spacing: -.045em; }
+    #ascend-play .ap-large-check { width: 55px; height: 68px; border-radius: 13px; background: var(--ap-purple); border: none; color: #fff; font-size: 24px; }
+    #ascend-play .ap-log-foot { margin-top: 20px; color: #6c627f; font-size: 11px; }
+    #ascend-play .ap-timer { width: 215px; height: 215px; padding: 13px; margin-inline: auto; border-radius: 50%; background: conic-gradient(var(--ap-purple) 0 78%, #e8dffa 78% 100%); }
+    #ascend-play .ap-timer > div { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; background: var(--ap-soft); border-radius: 50%; }
+    #ascend-play .ap-timer small { font-size: 12px; color: #786d8c; }
+    #ascend-play .ap-timer strong { font-size: 56px; font-weight: 850; letter-spacing: -.06em; line-height: 1.4; }
+    #ascend-play .ap-timer span { color: var(--ap-purple); font-size: 12px; }
+    #ascend-play .ap-growth-card { padding: 26px; border-radius: 22px; background: #fff; }
+    #ascend-play .ap-growth-card > p { font-size: 12px; color: #786d8c; }
+    #ascend-play .ap-growth-card > strong { display: block; margin-top: 4px; font-size: 36px; font-weight: 850; letter-spacing: -.055em; }
+    #ascend-play .ap-growth-bars { display: flex; align-items: flex-end; height: 100px; gap: 12px; margin-top: 20px; }
+    #ascend-play .ap-growth-bars span { flex: 1; background: #d6c7fa; border-radius: 9px 9px 0 0; }
+    #ascend-play .ap-growth-bars span:last-child { background: var(--ap-purple); }
+    #ascend-play .ap-growth-labels { display: flex; justify-content: space-between; margin-top: 8px; color: #82768f; font-size: 10px; }
+    #ascend-play .ap-quiet { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: 40px; padding: 30px 34px; background: #f9f8fb; border-radius: 20px; }
+    #ascend-play .ap-quiet h3 { font-size: 21px; font-weight: 800; letter-spacing: -.04em; }
+    #ascend-play .ap-quiet p { font-size: 13px; color: var(--ap-muted); margin-top: 5px; }
+    #ascend-play .ap-quiet-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    #ascend-play .ap-quiet-tags span { padding: 7px 12px; border-radius: 100px; background: #ece7f7; color: #5d4c7d; font-size: 12px; white-space: nowrap; }
+    #ascend-play .ap-download { position: relative; padding: 68px 0 72px; background: var(--ap-purple); color: #fff; text-align: center; }
+    #ascend-play .ap-download .ap-icon { width: 56px; height: 56px; border-radius: 17px; padding: 6px; }
+    #ascend-play .ap-download h2 { margin-top: 21px; font-size: clamp(34px, 5vw, 62px); }
+    #ascend-play .ap-download p { color: #eee4ff; margin-top: 16px; font-size: 15px; }
+    #ascend-play .ap-download .ap-store-row { justify-content: center; margin-top: 27px; }
+    #ascend-play .ap-footer { padding-block: 35px 40px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; color: #756d83; font-size: 11px; }
+    #ascend-play .ap-footer strong { color: #252136; font-size: 19px; font-weight: 850; letter-spacing: -.05em; }
+    #ascend-play .ap-footer p { margin-top: 8px; }
+    #ascend-play .ap-footer-links { display: flex; flex-wrap: wrap; gap: 10px 18px; padding-top: 7px; }
+    #ascend-play .ap-status { padding: 15px 22px; background: #ede6ff; color: #542acb; text-align: center; font-size: 13px; font-weight: 600; }
+    @media (min-width: 1400px) { #ascend-play .ap-hero-inner { min-height: 720px; } }
+    @media (max-width: 1050px) { #ascend-play .ap-wrap { width: calc(100% - 64px); } #ascend-play .ap-hero-inner { min-height: 635px; } #ascend-play .ap-device-stage { min-height: 505px; } #ascend-play .ap-sticker { left: -15px; } #ascend-play .ap-phone { width: 254px; } #ascend-play .ap-store { min-width: 155px; gap: 15px; } #ascend-play .ap-feature-layout { gap: 16px; } }
+    @media (max-width: 760px) { #ascend-play .ap-wrap { width: calc(100% - 40px); } #ascend-play .ap-nav { height: 74px; } #ascend-play .ap-nav-links { gap: 14px; font-size: 12px; } #ascend-play .ap-nav-links > a:first-child { display: none; } #ascend-play .ap-nav-download { padding: 9px 18px; } #ascend-play .ap-hero-inner { grid-template-columns: 1fr; text-align: center; padding-block: 52px 28px; gap: 29px; } #ascend-play h1 { font-size: clamp(45px, 8.7vw, 66px); margin-top: 19px; } #ascend-play .ap-lead { font-size: 15px; margin-top: 21px; } #ascend-play .ap-store-row { justify-content: center; } #ascend-play .ap-device-stage { width: min(100%, 410px); margin-inline: auto; min-height: 512px; text-align: left; } #ascend-play .ap-phone { width: 262px; } #ascend-play .ap-orbit { width: 360px; height: 360px; right: -15px; } #ascend-play .ap-sticker { left: 0; top: 70px; font-size: 11px; padding: 10px 14px; } #ascend-play .ap-floating-note { right: 0; font-size: 19px; } #ascend-play .ap-promise { gap: 9px 19px; padding: 19px 15px; font-size: 11px; } #ascend-play .ap-story { padding-block: 64px; } #ascend-play .ap-story-top { display: block; } #ascend-play .ap-story-top > p { margin-top: 17px; max-width: none; font-size: 14px; } #ascend-play .ap-feature-layout { grid-template-columns: 1fr; margin-top: 28px; gap: 21px; } #ascend-play .ap-feature-picker { gap: 3px; } #ascend-play .ap-feature-button { padding: 18px; } #ascend-play .ap-feature-button p { max-width: none; } #ascend-play .ap-feature-art { min-height: 340px; padding: 24px 18px; } #ascend-play .ap-quiet { display: block; padding: 24px; margin-top: 28px; } #ascend-play .ap-quiet-tags { margin-top: 17px; } #ascend-play .ap-download { padding-block: 52px 56px; } #ascend-play .ap-footer { display: block; } #ascend-play .ap-footer-links { margin-top: 18px; } }
+    @media (max-width: 380px) { #ascend-play .ap-store { min-width: 136px; padding-inline: 12px; font-size: 14px; } #ascend-play .ap-lead br { display: none; } #ascend-play .ap-device-stage { min-height: 505px; } #ascend-play .ap-phone { width: 243px; transform: rotate(4deg); } #ascend-play .ap-sticker { top: 57px; left: -2px; } #ascend-play .ap-floating-note { bottom: 30px; right: -5px; font-size: 17px; } }
+    @media (prefers-reduced-motion: reduce) { #ascend-play *, #ascend-play *::before, #ascend-play *::after { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+<main id="ascend-play" aria-label="퍼플 플레이 시안">
+  <div class="ap-review">디자인 시안 · 앱 화면과 운동 수치는 예시입니다</div>
+  <nav class="ap-nav ap-wrap" aria-label="Ascend 메뉴">
+    <a class="ap-brand" href="#ap-top" aria-label="Ascend 처음으로"><img class="ap-icon" src="../assets/products/ascend-mark.png" alt="">ascend</a>
+    <div class="ap-nav-links"><a href="#ap-features">앱 소개</a><a href="mailto:support@paldyn.com">문의하기</a><a class="ap-nav-download" href="#ap-download">다운로드 ↗</a></div>
+  </nav>
+  <header class="ap-hero" id="ap-top">
+    <div class="ap-wrap ap-hero-inner">
+      <div class="ap-hero-copy">
+        <p class="ap-eyebrow">운동에 집중하는 가장 가벼운 방법</p>
+        <h1>운동은 깊게.<br>기록은 <em>가볍게.</em></h1>
+        <p class="ap-lead">방금 한 세트, 탭 한 번이면 끝.<br>어센드와 기록은 줄이고, 운동에 더 집중하세요.</p>
+        <div class="ap-store-row"><button class="ap-store" type="button" data-platform="iOS"><span><small>iOS 앱</small>App Store</span><span aria-hidden="true">↗</span></button><button class="ap-store" type="button" data-platform="Android"><span><small>Android 앱</small>Google Play</span><span aria-hidden="true">↗</span></button></div>
+        <p class="ap-store-note">출시 준비 중 · 다운로드 안내를 확인하세요</p>
+      </div>
+      <div class="ap-device-stage" aria-label="세트 기록 화면 콘셉트">
+        <div class="ap-orbit" aria-hidden="true"></div><div class="ap-stair" aria-hidden="true"><span></span><span></span><span></span></div>
+        <span class="ap-sticker" id="ap-sticker">✓ 한 세트씩, 더 높이</span>
+        <div class="ap-phone">
+          <div class="ap-phone-top" aria-hidden="true"><span>9:41</span><span class="ap-island"></span><span>▰</span></div>
+          <div class="ap-app-header"><span>ascend</span><span class="ap-avatar">A</span></div>
+          <p class="ap-app-meta">오늘도 나의 페이스로</p><div class="ap-routine-title">가슴 · 삼두 루틴</div>
+          <div class="ap-session-strip"><span>운동 중 · 24:08</span><span id="ap-set-count">2 / 4 세트</span></div>
+          <div class="ap-exercise">바벨 벤치프레스<p class="ap-last-record">지난 운동 · 60kg × 10회</p></div>
+          <div class="ap-set-head" aria-hidden="true"><span>세트</span><span>무게 kg</span><span>횟수</span><span>완료</span></div>
+          <div class="ap-set"><span class="ap-set-number">1</span><span>60</span><span>10</span><button class="ap-check" type="button" aria-label="1세트 완료" aria-pressed="true" data-set="1">✓</button></div>
+          <div class="ap-set"><span class="ap-set-number">2</span><span>60</span><span>10</span><button class="ap-check" type="button" aria-label="2세트 완료" aria-pressed="true" data-set="2">✓</button></div>
+          <div class="ap-set"><span class="ap-set-number">3</span><span>60</span><span>10</span><button class="ap-check" type="button" aria-label="3세트 기록" aria-pressed="false" data-set="3">✓</button></div>
+          <div class="ap-set"><span class="ap-set-number">4</span><span>60</span><span>10</span><button class="ap-check" type="button" aria-label="4세트 기록" aria-pressed="false" data-set="4">✓</button></div>
+          <div class="ap-rest" id="ap-rest" aria-live="polite"><span id="ap-rest-label">세트를 체크해 보세요</span><strong id="ap-rest-time">✓</strong></div>
+          <div class="ap-home-indicator" aria-hidden="true"></div>
+        </div>
+        <span class="ap-floating-note" aria-hidden="true">한 세트 더. ↗</span><span class="ap-ui-caption">앱 화면 콘셉트 · 체크 버튼을 눌러보세요</span>
+      </div>
+    </div>
+  </header>
+  <div class="ap-status" id="ap-status" role="status" hidden></div>
+  <div class="ap-promise"><span><b>✓</b>지난 기록 미리 채우기</span><span><b>✓</b>자동 휴식 타이머</span><span><b>✓</b>쌓이는 성장 기록</span></div>
+  <section class="ap-story ap-wrap" id="ap-features">
+    <div class="ap-story-top"><div><p class="ap-section-label">LESS TAPPING. MORE LIFTING.</p><h2>폰을 내려놓고,<br>나에게 집중할 시간.</h2></div><p>무게를 들고, 세트를 끝내고, 잠깐 쉬고.<br>운동의 흐름에 맞춰 기록합니다.</p></div>
+    <div class="ap-feature-layout">
+      <div class="ap-feature-picker" role="group" aria-label="앱 기능 살펴보기">
+        <button class="ap-feature-button" type="button" aria-pressed="true" aria-controls="ap-record-pane" data-feature="record"><span class="ap-feature-num">01</span><span><h3>한 세트, 한 번의 탭.</h3><p>지난번 무게와 횟수는 미리 채워둘게요.<br>같으면 체크만, 달라졌으면 숫자만.</p></span></button>
+        <button class="ap-feature-button" type="button" aria-pressed="false" aria-controls="ap-timer-pane" data-feature="timer"><span class="ap-feature-num">02</span><span><h3>쉬는 시간까지, 알아서.</h3><p>세트를 끝내는 순간 타이머가 시작돼요.<br>다음 세트도 내 페이스에 맞게.</p></span></button>
+        <button class="ap-feature-button" type="button" aria-pressed="false" aria-controls="ap-growth-pane" data-feature="growth"><span class="ap-feature-num">03</span><span><h3>어제의 내가, 오늘의 기준.</h3><p>최대 무게, 추정 1RM, 세트 볼륨까지.<br>쌓인 기록으로 변화를 확인해요.</p></span></button>
+      </div>
+      <div class="ap-feature-art" aria-live="polite">
+        <div class="ap-art-pane" id="ap-record-pane" data-pane="record"><div class="ap-log-demo"><div class="ap-log-header"><span>바벨 벤치프레스</span><small>3세트</small></div><div class="ap-log-values"><div><small>무게 kg</small><strong>60</strong></div><div><small>횟수</small><strong>10</strong></div><button class="ap-large-check" id="ap-demo-check" type="button" aria-label="예시 세트 기록 후 타이머 보기">✓</button></div><p class="ap-log-foot">지난 기록 그대로. 체크 한 번으로 완료.</p></div><small class="ap-sample-label">기록 화면 콘셉트 · 예시 수치</small></div>
+        <div class="ap-art-pane" id="ap-timer-pane" data-pane="timer" hidden><div class="ap-timer"><div><small>다음 세트까지</small><strong>01:30</strong><span>편하게 숨을 고르세요</span></div></div><small class="ap-sample-label">자동 휴식 타이머 콘셉트</small></div>
+        <div class="ap-art-pane" id="ap-growth-pane" data-pane="growth" hidden><div class="ap-growth-card"><p>바벨 벤치프레스 · 최대 무게</p><strong>65 <small>kg</small> ↗</strong><div class="ap-growth-bars" role="img" aria-label="예시 최대 무게: 1주차 50kg, 2주차 55kg, 3주차 55kg, 4주차 60kg, 5주차 60kg, 6주차 65kg"><span style="height:45%"></span><span style="height:56%"></span><span style="height:56%"></span><span style="height:72%"></span><span style="height:72%"></span><span style="height:91%"></span></div><div class="ap-growth-labels"><span>1주차</span><span>6주차</span></div></div><small class="ap-sample-label">성장 기록 콘셉트 · 예시 수치</small></div>
+      </div>
+    </div>
+    <div class="ap-quiet"><div><h3>운동만 생각해도 충분하니까.</h3><p>광고와 구독 없이, 가볍게 시작하세요.</p></div><div class="ap-quiet-tags"><span>광고 없음</span><span>구독 없음</span><span>인앱 구매 없음</span></div></div>
+  </section>
+  <section class="ap-download" id="ap-download"><div class="ap-wrap"><img class="ap-icon" src="../assets/products/ascend-mark.png" alt="Ascend"><h2>다음 한 세트는,<br>어센드와 함께.</h2><p>나의 페이스로 쌓아가는 운동 기록.</p><div class="ap-store-row"><button class="ap-store" type="button" data-platform="iOS"><span><small>iOS 앱</small>App Store</span><span aria-hidden="true">↗</span></button><button class="ap-store" type="button" data-platform="Android"><span><small>Android 앱</small>Google Play</span><span aria-hidden="true">↗</span></button></div><p class="ap-store-note">출시 준비 중 · iOS / Android</p><div class="ap-status" id="ap-download-status" role="status" hidden></div></div></section>
+  <footer class="ap-footer ap-wrap"><div><strong>ascend</strong><p>© 2026 PALDYN · 어센드를 만드는 팔딘</p></div><div class="ap-footer-links"><a href="/ascend/privacy/">개인정보처리방침</a><a href="/ascend/terms/">이용약관</a><a href="mailto:support@paldyn.com">문의하기</a><a href="/">PALDYN ↗</a></div></footer>
+</main>
+<script>
+(() => {
+  const root = document.getElementById('ascend-play');
+  const checks = [...root.querySelectorAll('[data-set]')];
+  const count = root.querySelector('#ap-set-count');
+  const rest = root.querySelector('#ap-rest');
+  let timer = null;
+  function saveState(feature) {
+    if (window.openai && window.openai.setWidgetState) window.openai.setWidgetState({modelContent:{ascendDesign:'퍼플 플레이',feature},privateContent:{completedSets:checks.filter(button=>button.getAttribute('aria-pressed')==='true').map(button=>button.dataset.set)}}).catch(()=>{});
+  }
+  function updateSets() { count.textContent = checks.filter(button => button.getAttribute('aria-pressed') === 'true').length + ' / 4 세트'; }
+  function startRest(set) {
+    clearInterval(timer); let seconds = 90; rest.classList.add('is-resting');
+    root.querySelector('#ap-rest-label').textContent = set + '세트 완료 · 휴식 중';
+    root.querySelector('#ap-sticker').textContent = '✓ ' + set + '세트 완료!';
+    const renderTime = () => { root.querySelector('#ap-rest-time').textContent = String(Math.floor(seconds / 60)).padStart(2,'0') + ':' + String(seconds % 60).padStart(2,'0'); };
+    renderTime(); timer = setInterval(() => { seconds = Math.max(0, seconds - 1); renderTime(); if (!seconds) { clearInterval(timer); root.querySelector('#ap-rest-label').textContent = '다음 세트를 시작하세요'; } }, 1000);
+  }
+  checks.forEach(button => button.addEventListener('click', () => {
+    const done = button.getAttribute('aria-pressed') !== 'true'; button.setAttribute('aria-pressed', String(done)); button.setAttribute('aria-label',button.dataset.set + '세트 ' + (done ? '완료 취소' : '기록')); updateSets();
+    if (done) startRest(button.dataset.set);
+    else { clearInterval(timer); rest.classList.remove('is-resting'); root.querySelector('#ap-rest-label').textContent='세트를 체크해 보세요'; root.querySelector('#ap-rest-time').textContent='✓'; root.querySelector('#ap-sticker').textContent='✓ 한 세트씩, 더 높이'; }
+    saveState('record');
+  }));
+  function selectFeature(name) {
+    root.querySelectorAll('[data-feature]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.feature === name)));
+    root.querySelectorAll('[data-pane]').forEach(pane => pane.hidden = pane.dataset.pane !== name);
+  }
+  root.querySelectorAll('[data-feature]').forEach(button => button.addEventListener('click',() => { selectFeature(button.dataset.feature); saveState(button.dataset.feature); }));
+  root.querySelector('#ap-demo-check').addEventListener('click',() => { selectFeature('timer'); saveState('timer'); });
+  root.querySelectorAll('[data-platform]').forEach(button => button.addEventListener('click',() => {
+    const status = button.closest('#ap-download') ? root.querySelector('#ap-download-status') : root.querySelector('#ap-status');
+    status.hidden = false; status.textContent = button.dataset.platform + ' 앱은 출시 준비 중입니다. 스토어 공개 후 이 버튼으로 다운로드할 수 있어요.';
+    if (!button.closest('#ap-download')) status.scrollIntoView({block:'nearest',behavior:'smooth'});
+  }));
+  function restoreState(state) {
+    if (!state || !state.modelContent || state.modelContent.ascendDesign !== '퍼플 플레이') return;
+    const feature = state.modelContent.feature; if (['record','timer','growth'].includes(feature)) selectFeature(feature);
+    const completed = state.privateContent && state.privateContent.completedSets;
+    if (Array.isArray(completed)) { checks.forEach(button=>button.setAttribute('aria-pressed',String(completed.includes(button.dataset.set)))); updateSets(); }
+  }
+  if (window.openai) restoreState(window.openai.widgetState);
+  window.addEventListener('openai:set_globals',event=>restoreState(event.detail && event.detail.globals && event.detail.globals.widgetState));
+  if (globalThis.Tweak) {
+    const design = {accent:'#7140f5',radius:26};
+    const tweak = new Tweak({container:root,onChange:()=>{root.style.setProperty('--ap-purple',design.accent);root.style.setProperty('--ap-radius',design.radius+'px');}});
+    tweak.addColorPicker(design,'accent',{label:'브랜드 보라색',reference:'--ap-purple'});
+    tweak.addSlider(design,'radius',{label:'화면 모서리',min:0,max:40,unit:'px'});
+  }
+})();
+</script>
+</body>
+</html>
