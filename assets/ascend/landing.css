@@ -49,18 +49,18 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-feature-icon svg { width:24px; height:24px; }
 #ascend-daily-focus .dr-feature h3 { font-size:21px; line-height:1.35; font-weight:600; letter-spacing:-.025em; }
 #ascend-daily-focus .dr-feature p { margin-top:12px; font-size:13px; line-height:1.8; color:var(--dr-muted); }
-#ascend-daily-focus .dr-preview { padding:56px var(--dr-inset); background:#FFF4EB; display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:var(--dr-column-gap); align-items:center; }
+#ascend-daily-focus .dr-preview { --dr-muted:#3A210F; --dr-label:#3A210F; padding:56px var(--dr-inset); background:var(--dr-orange); display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:var(--dr-column-gap); align-items:center; }
 #ascend-daily-focus .dr-preview-copy { min-width:0; }
 #ascend-daily-focus .dr-preview-copy .dr-kicker { margin-bottom:16px; }
 #ascend-daily-focus .dr-preview-copy .dr-copy { margin-top:24px; }
 #ascend-daily-focus .dr-preview-steps { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:28px; font-size:12px; color:var(--dr-muted); }
 #ascend-daily-focus .dr-preview-steps b { margin-right:8px; color:var(--dr-label); font-size:11px; }
-#ascend-daily-focus .dr-preview-caption { margin-top:28px!important; font-size:11px; line-height:1.7; color:var(--dr-muted); }
+#ascend-daily-focus .dr-preview-caption { margin-top:28px!important; padding-top:16px; border-top:1px solid #3A210F33; font-size:12px; line-height:1.7; color:var(--dr-muted); }
 #ascend-daily-focus .dr-phones { display:flex; justify-content:center; align-items:center; gap:24px; padding:24px 12px 32px; min-width:0; }
 #ascend-daily-focus .dr-phone { position:relative; flex:0 0 236px; height:470px; padding:7px; border-radius:38px; background:#21252B; box-shadow:0 24px 40px -18px #713A1B40,0 0 0 1px #FFFFFF80 inset; }
 #ascend-daily-focus .dr-phone--log { transform:rotate(-4deg); }
 #ascend-daily-focus .dr-phone--record { transform:translateY(24px) rotate(5deg); }
-#ascend-daily-focus .dr-phone-screen { height:100%; display:flex; flex-direction:column; padding:12px 16px 16px; border-radius:31px; background:#FFFFFF; overflow:hidden; }
+#ascend-daily-focus .dr-phone-screen { --dr-muted:#6B7280; --dr-label:#BF4100; height:100%; display:flex; flex-direction:column; padding:12px 16px 16px; border-radius:31px; background:#FFFFFF; overflow:hidden; }
 #ascend-daily-focus .dr-phone-status { display:flex; justify-content:space-between; align-items:center; min-height:16px; font-size:9px; font-weight:600; }
 #ascend-daily-focus .dr-phone-island { width:66px; height:17px; border-radius:12px; background:#13171C; }
 #ascend-daily-focus .dr-phone-status > span:last-child { font-size:8px; letter-spacing:.02em; }
