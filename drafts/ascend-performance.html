@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#15191b">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ascend — 라임 퍼포먼스 디자인 시안</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #15191b; }
+    .ascend-performance { --ap-ink: #15191b; --ap-paper: #f3f3ea; --ap-lime: #d4fa43; font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, BlinkMacSystemFont, sans-serif; color-scheme: dark; color: var(--ap-paper); background: var(--ap-ink); overflow: clip; }
+    .ascend-performance *, .ascend-performance *::before, .ascend-performance *::after { box-sizing: border-box; }
+    .ascend-performance h1, .ascend-performance h2, .ascend-performance h3, .ascend-performance p, .ascend-performance figure { margin: 0; }
+    .ascend-performance button, .ascend-performance a { -webkit-tap-highlight-color: transparent; }
+    .ascend-performance button { font: inherit; cursor: pointer; }
+    .ascend-performance button:focus-visible, .ascend-performance a:focus-visible { outline: 3px solid #758c18; outline-offset: 5px; }
+    .ascend-performance a { color: inherit; text-decoration: none; }
+    .ascend-performance button { color: inherit; }
+    .ascend-performance-wrap { width: min(1120px, calc(100% - 96px)); margin-inline: auto; }
+    .ascend-performance-notice { padding: 9px 16px; text-align: center; background: #24292b; color: #bcc2bf; font-size: 11px; letter-spacing: .02em; }
+    .ascend-performance-header { display: flex; justify-content: space-between; align-items: center; min-height: 86px; gap: 24px; }
+    .ascend-performance-brand { display: inline-flex; align-items: center; gap: 10px; font-size: 26px; font-weight: 770; letter-spacing: -1.2px; }
+    .ascend-performance-brand img { display: block; width: 37px; height: 37px; border-radius: 9px; padding: 5px; background: #000; }
+    .ascend-performance-nav { display: flex; align-items: center; gap: 29px; font-size: 13px; font-weight: 650; }
+    .ascend-performance-nav > a { color: #bcc2bf; }
+    .ascend-performance-nav > a:hover { color: var(--ap-lime); }
+    .ascend-performance-nav-button { border: 0; background: var(--ap-lime); color: var(--ap-ink) !important; padding: 11px 19px; border-radius: 999px; }
+    .ascend-performance-hero { text-align: center; padding: 30px 0 0; }
+    .ascend-performance-eyebrow { display: flex; align-items: center; justify-content: center; gap: 9px; font-size: 11px; font-weight: 750; letter-spacing: .16em; color: var(--ap-lime); }
+    .ascend-performance-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .ascend-performance h1 { margin-top: 20px; font-size: clamp(38px, 5.3vw, 70px); line-height: 1.17; letter-spacing: -.067em; font-weight: 800; word-break: keep-all; }
+    .ascend-performance h1 em { color: var(--ap-lime); font-style: normal; }
+    .ascend-performance-intro { margin-top: 23px !important; color: #bbc1bd; font-size: 15px; line-height: 1.75; word-break: keep-all; }
+    .ascend-performance-downloads { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 23px; }
+    .ascend-performance-launch-status { margin-top: 10px !important; color: #95a487; font-size: 10px; line-height: 1.5; }
+    .ascend-performance-store { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 12px 21px; min-height: 48px; min-width: 157px; background: var(--ap-paper); color: var(--ap-ink) !important; border: 1px solid var(--ap-paper); border-radius: 10px; font-size: 14px; font-weight: 740; transition: transform .18s ease, background .18s ease; }
+    .ascend-performance-store:hover { background: var(--ap-lime); border-color: var(--ap-lime); transform: translateY(-2px); }
+    .ascend-performance-store-symbol { font-size: 22px; font-weight: 500; line-height: 1; }
+    .ascend-performance-stage { display: grid; grid-template-columns: 1fr 228px 228px 1fr; align-items: center; gap: 26px; min-height: 444px; padding: 30px 0 37px; text-align: left; }
+    .ascend-performance-stage-note { padding-inline: 8px; }
+    .ascend-performance-stage-note p:first-child { color: var(--ap-lime); font-size: 12px; font-weight: 740; letter-spacing: -.02em; }
+    .ascend-performance-stage-note h2 { margin-top: 10px; font-size: 23px; font-weight: 760; line-height: 1.35; letter-spacing: -.05em; word-break: keep-all; }
+    .ascend-performance-stage-note p:last-child { margin-top: 12px; font-size: 12px; line-height: 1.7; color: #a4aea6; word-break: keep-all; }
+    .ascend-performance-stage-note--right { text-align: right; }
+    .ascend-performance-stage-note--right::before { content: '↗'; display: block; color: var(--ap-lime); font-size: 50px; line-height: 1; margin-bottom: 17px; }
+    .ascend-performance-device { padding: 7px; height: 397px; background: #353b39; border-radius: 35px; box-shadow: 0 15px 30px #0004; position: relative; }
+    .ascend-performance-device--log { transform: rotate(-4deg) translateY(2px); }
+    .ascend-performance-device--record { transform: rotate(5deg) translateY(20px); background: #485044; }
+    .ascend-performance-screen { height: 100%; overflow: hidden; background: #f3f3ea; border-radius: 29px; color: #15191b; padding: 10px 13px 12px; display: flex; flex-direction: column; }
+    .ascend-performance-screen--dark { background: #242b27; color: #f3f3ea; }
+    .ascend-performance-device-top { display: flex; justify-content: space-between; align-items: center; font-size: 9px; font-weight: 720; min-height: 13px; }
+    .ascend-performance-device-top i { display: block; height: 11px; width: 58px; border-radius: 7px; background: #15191b; }
+    .ascend-performance-device-top span:last-child { font-size: 8px; letter-spacing: -.1em; }
+    .ascend-performance-screen-label { margin-top: 24px !important; font-size: 9px; font-weight: 670; color: #737e72; }
+    .ascend-performance-screen h3 { margin-top: 5px; font-size: 22px; font-weight: 770; letter-spacing: -.05em; line-height: 1.2; }
+    .ascend-performance-screen-date { margin-top: 5px !important; font-size: 9px; color: #737e72; }
+    .ascend-performance-exercise { display: flex; align-items: center; justify-content: space-between; margin-top: 19px; padding-bottom: 10px; border-bottom: 1px solid #d9dfd1; }
+    .ascend-performance-exercise strong { font-size: 11px; letter-spacing: -.03em; }
+    .ascend-performance-exercise span { color: #76836e; font-size: 9px; }
+    .ascend-performance-set-head, .ascend-performance-set { display: grid; grid-template-columns: 24px 1fr 1fr 28px; align-items: center; text-align: center; }
+    .ascend-performance-set-head { color: #798274; font-size: 8px; margin-top: 11px; }
+    .ascend-performance-set { font-size: 11px; min-height: 39px; border-bottom: 1px solid #e0e4d7; font-weight: 710; }
+    .ascend-performance-set > span:first-child { color: #788472; font-size: 9px; }
+    .ascend-performance-set--completed { color: #697657; }
+    .ascend-performance-set-input { background: #e8eddf; border-radius: 5px; padding: 6px 4px; margin-inline: 5px; }
+    .ascend-performance-set-check { height: 27px; width: 27px; padding: 0; border: 1px solid #c9d0be; border-radius: 7px; background: transparent; color: #c3cbb7 !important; font-size: 14px; }
+    .ascend-performance-set-check[aria-pressed="true"] { color: #15191b !important; background: #d4fa43; border-color: #d4fa43; }
+    .ascend-performance-rest { display: flex; align-items: center; justify-content: space-between; background: #15191b; color: #d4fa43; margin-top: 10px; border-radius: 9px; min-height: 45px; padding: 8px 12px; }
+    .ascend-performance-rest[hidden] { display: none; }
+    .ascend-performance-rest span { font-size: 8px; color: #c1c9b7; line-height: 1.5; }
+    .ascend-performance-rest strong { font-variant-numeric: tabular-nums; font-size: 19px; }
+    .ascend-performance-tap-hint { margin-top: 11px !important; text-align: center; color: #6d7a62; font-size: 9px; line-height: 1.5; }
+    .ascend-performance-tabs { display: flex; background: #353e32; border-radius: 7px; padding: 3px; gap: 3px; margin-top: 19px; }
+    .ascend-performance-tabs button { flex: 1; border: 0; border-radius: 5px; padding: 7px 2px; font-size: 9px; font-weight: 740; background: transparent; color: #a6b19d; }
+    .ascend-performance-tabs button[aria-pressed="true"] { background: #d4fa43; color: #15191b; }
+    .ascend-performance-chart-label { margin-top: 17px !important; font-size: 9px; color: #a6b19d; }
+    .ascend-performance-chart-value { display: flex; align-items: baseline; gap: 5px; margin-top: 4px; }
+    .ascend-performance-chart-value strong { font-size: 25px; letter-spacing: -.06em; }
+    .ascend-performance-chart-value span { font-size: 10px; color: #9bac8b; }
+    .ascend-performance-chart { display: flex; align-items: flex-end; gap: 9px; height: 86px; margin-top: 13px; padding: 0 5px; border-bottom: 1px solid #596047; background: repeating-linear-gradient(to top, transparent 0, transparent 26px, #ffffff0b 26px, #ffffff0b 27px); }
+    .ascend-performance-chart span { flex: 1; border-radius: 3px 3px 0 0; background: #6f863c; height: var(--bar-height); transition: height .25s ease; }
+    .ascend-performance-chart span:last-child { background: #d4fa43; }
+    .ascend-performance-chart-axis { display: flex; justify-content: space-between; margin: 7px 5px 0; color: #8f9c83; font-size: 7px; }
+    .ascend-performance-record-footer { margin-top: 18px !important; padding-top: 10px; border-top: 1px solid #394432; display: flex; justify-content: space-between; gap: 8px; font-size: 9px; color: #a6b19d; }
+    .ascend-performance-record-footer strong { color: #d4fa43; }
+    .ascend-performance-phone-nav { display: flex; justify-content: space-around; padding-top: 12px; margin-top: auto; color: #8c977f; font-size: 8px; }
+    .ascend-performance-phone-nav b { color: #51653b; }
+    .ascend-performance-screen--dark .ascend-performance-phone-nav b { color: #d4fa43; }
+    .ascend-performance-caption { color: #829077; font-size: 10px; margin-bottom: 24px !important; }
+    .ascend-performance-story { background: var(--ap-paper); color: var(--ap-ink); }
+    .ascend-performance-story-grid { display: grid; grid-template-columns: 75px 1fr 1fr; align-items: center; gap: 38px; min-height: 268px; padding-block: 36px; }
+    .ascend-performance-section-number { font-size: 12px; align-self: start; padding-top: 6px; font-weight: 730; letter-spacing: .03em; }
+    .ascend-performance-section-number span { display: block; margin-top: 13px; width: 38px; height: 3px; background: currentColor; }
+    .ascend-performance-story h2 { font-size: clamp(28px, 3vw, 39px); line-height: 1.3; letter-spacing: -.06em; font-weight: 780; word-break: keep-all; }
+    .ascend-performance-story-copy { margin-top: 17px !important; color: #65715e; font-size: 13px; line-height: 1.8; word-break: keep-all; max-width: 340px; }
+    .ascend-performance-autofill { padding: 24px 27px; border-radius: 16px; background: #e8ebde; max-width: 395px; }
+    .ascend-performance-autofill-head { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; font-weight: 710; }
+    .ascend-performance-autofill-head span { color: #6b765c; font-size: 10px; }
+    .ascend-performance-autofill-data { display: flex; align-items: center; gap: 19px; margin-top: 24px; }
+    .ascend-performance-autofill-data div { min-width: 70px; display: flex; flex-direction: column; gap: 6px; }
+    .ascend-performance-autofill-data small { font-size: 10px; color: #6b765c; }
+    .ascend-performance-autofill-data strong { font-size: 28px; font-weight: 770; letter-spacing: -.06em; }
+    .ascend-performance-autofill-data strong span { font-size: 12px; font-weight: 550; letter-spacing: 0; }
+    .ascend-performance-autofill-tick { display: grid; place-items: center; margin-left: auto; height: 52px; width: 52px; border-radius: 13px; background: #d4fa43; font-size: 26px; }
+    .ascend-performance-autofill-caption { margin-top: 18px !important; color: #6b765c; font-size: 10px; line-height: 1.6; }
+    .ascend-performance-story--record { background: #252d26; color: var(--ap-paper); }
+    .ascend-performance-story--record .ascend-performance-story-grid { min-height: 266px; }
+    .ascend-performance-story--record .ascend-performance-section-number { color: var(--ap-lime); }
+    .ascend-performance-story--record .ascend-performance-story-copy { color: #abb8a1; }
+    .ascend-performance-progress { padding: 10px 0; max-width: 395px; }
+    .ascend-performance-progress-label { display: flex; align-items: center; justify-content: space-between; color: #b9c4b0; font-size: 11px; }
+    .ascend-performance-progress-label span { color: #899a7c; font-size: 10px; }
+    .ascend-performance-progress-track { height: 105px; position: relative; margin-top: 23px; border-bottom: 1px solid #657354; }
+    .ascend-performance-progress-track::before { content: ''; position: absolute; left: 3%; right: 0; bottom: 36px; height: 2px; background: #d4fa43; transform-origin: left center; transform: rotate(-9deg); }
+    .ascend-performance-progress-track::after { content: ''; position: absolute; left: 3%; width: 9px; height: 9px; border-radius: 50%; bottom: 32px; background: #d4fa43; box-shadow: 106px -17px 0 #d4fa43, 214px -35px 0 #d4fa43; }
+    .ascend-performance-progress-track span { position: absolute; right: 0; top: 0; padding: 9px 12px; border-radius: 10px; background: var(--ap-lime); color: #15191b; font-size: 13px; font-weight: 770; }
+    .ascend-performance-progress-track span small { display: block; font-size: 9px; font-weight: 570; margin-top: 3px; }
+    .ascend-performance-progress-caption { display: flex; justify-content: space-between; margin-top: 10px !important; font-size: 10px; color: #91a182; }
+    .ascend-performance-final { background: var(--ap-lime); color: var(--ap-ink); text-align: center; padding: 43px 24px 39px; }
+    .ascend-performance-final h2 { font-size: clamp(30px, 3.5vw, 44px); letter-spacing: -.06em; font-weight: 790; line-height: 1.3; word-break: keep-all; }
+    .ascend-performance-final p { margin-top: 11px; font-size: 13px; line-height: 1.7; color: #4c5c21; word-break: keep-all; }
+    .ascend-performance-final .ascend-performance-launch-status { font-size: 10px; }
+    .ascend-performance-final .ascend-performance-downloads { margin-top: 21px; }
+    .ascend-performance-final .ascend-performance-store { background: #15191b; border-color: #15191b; color: #f3f3ea !important; }
+    .ascend-performance-final .ascend-performance-store:hover { background: #32392e; }
+    .ascend-performance-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 81px; font-size: 10px; color: #899382; }
+    .ascend-performance-footer-brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px; }
+    .ascend-performance-footer-brand strong { color: #dbe2d3; font-size: 18px; letter-spacing: -.04em; }
+    .ascend-performance-footer-brand a { font-size: 10px; letter-spacing: .07em; }
+    .ascend-performance-footer nav { display: flex; flex-wrap: wrap; gap: 19px; }
+    .ascend-performance-footer a:hover { color: #d4fa43; }
+    .ascend-performance-dialog { width: min(440px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 30px; border: 0; border-radius: 20px; background: #f3f3ea; color: #15191b; }
+    .ascend-performance-dialog::backdrop { background: #101812b8; backdrop-filter: blur(5px); }
+    .ascend-performance-dialog-label { color: #637a2b; font-size: 11px; font-weight: 740; letter-spacing: .08em; }
+    .ascend-performance-dialog h2 { margin-top: 14px; font-size: 27px; font-weight: 760; letter-spacing: -.05em; line-height: 1.35; }
+    .ascend-performance-dialog p { margin-top: 14px; font-size: 14px; line-height: 1.75; color: #64705e; word-break: keep-all; }
+    .ascend-performance-dialog button { width: 100%; margin-top: 26px; border: 0; border-radius: 10px; min-height: 46px; background: #15191b; color: #f3f3ea; font-weight: 730; }
+    @media (min-width: 1400px) { .ascend-performance-hero { padding-top: 28px; } .ascend-performance-stage { min-height: 440px; } }
+    @media (max-width: 1020px) {
+      .ascend-performance-wrap { width: calc(100% - 64px); }
+      .ascend-performance-stage { grid-template-columns: 1fr 212px 212px 1fr; gap: 18px; }
+      .ascend-performance-stage-note h2 { font-size: 18px; }
+      .ascend-performance-stage-note p:last-child { font-size: 11px; }
+      .ascend-performance-story-grid { grid-template-columns: 40px 1fr 1fr; gap: 26px; }
+      .ascend-performance-autofill { padding: 23px 20px; }
+    }
+    @media (max-width: 800px) {
+      .ascend-performance-wrap { width: calc(100% - 48px); }
+      .ascend-performance-nav { gap: 18px; }
+      .ascend-performance-stage { grid-template-columns: 212px 212px; justify-content: center; gap: 24px; min-height: 432px; }
+      .ascend-performance-stage-note { display: none; }
+      .ascend-performance-story-grid { grid-template-columns: 1fr 1fr; gap: 27px; }
+      .ascend-performance-section-number { display: none; }
+      .ascend-performance-story h2 { font-size: 31px; }
+      .ascend-performance-autofill-data { gap: 10px; }
+      .ascend-performance-autofill-data div { min-width: 58px; }
+      .ascend-performance-autofill-tick { width: 43px; height: 43px; flex: none; }
+      .ascend-performance-autofill-head { flex-wrap: wrap; }
+    }
+    @media (max-width: 560px) {
+      .ascend-performance-wrap { width: calc(100% - 40px); }
+      .ascend-performance-header { min-height: 72px; gap: 12px; }
+      .ascend-performance-brand { font-size: 24px; gap: 7px; }
+      .ascend-performance-brand img { width: 33px; height: 33px; }
+      .ascend-performance-nav > a { display: none; }
+      .ascend-performance-nav-button { padding: 10px 15px; font-size: 11px; }
+      .ascend-performance-hero { padding-top: 26px; }
+      .ascend-performance-eyebrow { font-size: 10px; letter-spacing: .13em; }
+      .ascend-performance h1 { font-size: clamp(33px, 8.6vw, 46px); line-height: 1.22; margin-top: 21px; letter-spacing: -.07em; }
+      .ascend-performance-intro { margin-top: 20px !important; font-size: 13px; }
+      .ascend-performance-downloads { gap: 8px; margin-top: 22px; }
+      .ascend-performance-store { min-width: 131px; padding: 11px 13px; font-size: 12px; gap: 9px; }
+      .ascend-performance-store-symbol { font-size: 20px; }
+      .ascend-performance-stage { width: 100%; grid-template-columns: minmax(0, 250px); min-height: 405px; padding: 28px 4px 27px; }
+      .ascend-performance-device { width: 100%; height: 394px; border-radius: 31px; padding: 6px; }
+      .ascend-performance-device--log { transform: rotate(-3deg); }
+      .ascend-performance-device--record { display: none; }
+      .ascend-performance-screen { border-radius: 25px; padding: 10px 16px; }
+      .ascend-performance-device-top i { width: 58px; height: 11px; }
+      .ascend-performance-device-top { font-size: 8px; }
+      .ascend-performance-device-top span:last-child { font-size: 7px; }
+      .ascend-performance-screen-label { margin-top: 19px !important; font-size: 11px; }
+      .ascend-performance-screen h3 { font-size: 24px; }
+      .ascend-performance-screen-date { font-size: 10px; }
+      .ascend-performance-exercise { margin-top: 17px; padding-bottom: 8px; }
+      .ascend-performance-exercise strong { font-size: 12px; }
+      .ascend-performance-exercise span { font-size: 10px; }
+      .ascend-performance-set-head, .ascend-performance-set { grid-template-columns: 24px 1fr 1fr 31px; }
+      .ascend-performance-set-head { font-size: 10px; }
+      .ascend-performance-set { font-size: 12px; min-height: 35px; }
+      .ascend-performance-set > span:first-child { font-size: 11px; }
+      .ascend-performance-set-check { width: 30px; height: 30px; font-size: 15px; }
+      .ascend-performance-set-input { margin-inline: 3px; padding: 5px 2px; }
+      .ascend-performance-rest { padding: 7px 9px; min-height: 40px; margin-top: 8px; }
+      .ascend-performance-rest span { font-size: 10px; }
+      .ascend-performance-rest strong { font-size: 17px; }
+      .ascend-performance-tap-hint { font-size: 11px; margin-top: 9px !important; }
+      .ascend-performance-tabs { margin-top: 14px; }
+      .ascend-performance-tabs button { font-size: 8px; padding: 6px 2px; }
+      .ascend-performance-chart-label { margin-top: 12px !important; font-size: 8px; }
+      .ascend-performance-chart-value strong { font-size: 23px; }
+      .ascend-performance-chart { height: 64px; gap: 7px; margin-top: 10px; }
+      .ascend-performance-chart-axis { font-size: 6px; }
+      .ascend-performance-record-footer { margin-top: 12px !important; padding-top: 8px; font-size: 8px; }
+      .ascend-performance-phone-nav { font-size: 10px; padding-top: 10px; }
+      .ascend-performance-caption { font-size: 9px; margin-bottom: 25px !important; }
+      .ascend-performance-story-grid { display: block; padding-block: 34px; }
+      .ascend-performance-story h2 { font-size: 30px; }
+      .ascend-performance-story-copy { font-size: 12px; margin-top: 13px !important; max-width: 100%; }
+      .ascend-performance-autofill { margin-top: 23px; max-width: 100%; padding: 20px 22px; }
+      .ascend-performance-autofill-head { flex-wrap: nowrap; }
+      .ascend-performance-autofill-data { margin-top: 18px; gap: 24px; }
+      .ascend-performance-autofill-caption { margin-top: 14px !important; }
+      .ascend-performance-story--record .ascend-performance-story-grid { min-height: 0; }
+      .ascend-performance-progress { margin-top: 26px; max-width: 100%; }
+      .ascend-performance-progress-track { height: 90px; margin-top: 16px; }
+      .ascend-performance-progress-track::after { box-shadow: 87px -14px 0 #d4fa43, 174px -28px 0 #d4fa43; }
+      .ascend-performance-final { padding: 37px 20px 36px; }
+      .ascend-performance-final h2 { font-size: 31px; }
+      .ascend-performance-final p { font-size: 12px; }
+      .ascend-performance-footer { padding-block: 26px; min-height: 0; flex-wrap: wrap; gap: 19px; }
+      .ascend-performance-footer-brand { width: 100%; }
+      .ascend-performance-footer nav { gap: 22px; }
+    }
+    @media (max-width: 360px) {
+      .ascend-performance-wrap { width: calc(100% - 32px); }
+      .ascend-performance h1 { font-size: 30px; }
+      .ascend-performance-stage { gap: 10px; padding-inline: 3px; }
+      .ascend-performance-screen { padding-inline: 14px; }
+      .ascend-performance-chart-value strong { font-size: 20px; }
+      .ascend-performance-autofill { padding-inline: 18px; }
+      .ascend-performance-autofill-data { gap: 17px; }
+      .ascend-performance-autofill-head span { font-size: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ascend-performance *, .ascend-performance *::before, .ascend-performance *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main id="ascend-performance" class="ascend-performance">
+    <div class="ascend-performance-notice">디자인 시안 · 앱 화면은 예시입니다</div>
+    <header class="ascend-performance-header ascend-performance-wrap">
+      <a class="ascend-performance-brand" href="#ascend-performance" aria-label="Ascend 처음으로"><img src="../assets/products/ascend-mark.png" alt="" width="37" height="37">Ascend</a>
+      <nav class="ascend-performance-nav" aria-label="Ascend 메뉴">
+        <a href="#ascend-performance-routine">운동 기록</a>
+        <a href="#ascend-performance-record">성장 보기</a>
+        <button class="ascend-performance-nav-button" type="button" data-ascend-download="앱 다운로드">앱 다운로드 ↗</button>
+      </nav>
+    </header>
+    <section class="ascend-performance-hero" aria-labelledby="ascend-performance-heading">
+      <div class="ascend-performance-wrap">
+        <p class="ascend-performance-eyebrow">A LITTLE MORE. A LITTLE BETTER.</p>
+        <h1 id="ascend-performance-heading">오늘의 한 세트가,<br><em>내일의 나를 만드니까.</em></h1>
+        <p class="ascend-performance-intro">운동에 집중하는 순간, 기록은 가볍게.<br>나의 다음 한 세트를 위한 운동 기록 앱, Ascend.</p>
+        <div class="ascend-performance-downloads" aria-label="앱 다운로드 안내">
+          <button class="ascend-performance-store" type="button" data-ascend-download="App Store"><span class="ascend-performance-store-symbol" aria-hidden="true">↓</span>App Store</button>
+          <button class="ascend-performance-store" type="button" data-ascend-download="Google Play"><span class="ascend-performance-store-symbol" aria-hidden="true">▷</span>Google Play</button>
+        </div>
+        <p class="ascend-performance-launch-status">출시 준비 중 · iOS / Android</p>
+        <div class="ascend-performance-stage">
+          <div class="ascend-performance-stage-note">
+            <p>LESS TAPPING</p>
+            <h2>체크 한 번.<br>다음 세트 준비 끝.</h2>
+            <p>이전 기록은 미리 채우고,<br>휴식은 알아서 시작해요.</p>
+          </div>
+          <figure class="ascend-performance-device ascend-performance-device--log" aria-label="운동 기록 화면 예시. 세트 완료 버튼을 눌러 휴식 타이머를 체험할 수 있습니다.">
+            <div class="ascend-performance-screen">
+              <div class="ascend-performance-device-top" aria-hidden="true"><span>9:41</span><i></i><span>● ▰</span></div>
+              <p class="ascend-performance-screen-label">오늘의 운동</p>
+              <h3>가슴 · 어깨</h3>
+              <p class="ascend-performance-screen-date">나의 루틴으로 시작하는 월요일</p>
+              <div class="ascend-performance-exercise"><strong>벤치 프레스</strong><span>3 SETS</span></div>
+              <div class="ascend-performance-set-head" aria-hidden="true"><span>세트</span><span>KG</span><span>횟수</span><span>완료</span></div>
+              <div class="ascend-performance-set ascend-performance-set--completed"><span>1</span><span>60</span><span>10</span><button class="ascend-performance-set-check" type="button" aria-label="벤치 프레스 1세트 완료 취소" aria-pressed="true" data-ascend-set="1">✓</button></div>
+              <div class="ascend-performance-set"><span>2</span><span class="ascend-performance-set-input">60</span><span class="ascend-performance-set-input">10</span><button class="ascend-performance-set-check" type="button" aria-label="벤치 프레스 2세트 완료" aria-pressed="false" data-ascend-set="2">✓</button></div>
+              <div class="ascend-performance-set"><span>3</span><span class="ascend-performance-set-input">60</span><span class="ascend-performance-set-input">10</span><button class="ascend-performance-set-check" type="button" aria-label="벤치 프레스 3세트 완료" aria-pressed="false" data-ascend-set="3">✓</button></div>
+              <div class="ascend-performance-rest" id="ascend-performance-rest" hidden><span>세트 완료!<br>잠깐 숨을 고르세요.</span><strong id="ascend-performance-rest-time">01:30</strong></div>
+              <p class="ascend-performance-tap-hint" id="ascend-performance-tap-hint" aria-live="polite">체크 버튼을 눌러 보세요 ↑</p>
+              <div class="ascend-performance-phone-nav" aria-hidden="true"><b>운동</b><span>기록</span><span>프로필</span></div>
+            </div>
+          </figure>
+          <figure class="ascend-performance-device ascend-performance-device--record" aria-label="운동 기록 추이 화면 예시. 수치는 예시 데이터입니다.">
+            <div class="ascend-performance-screen ascend-performance-screen--dark">
+              <div class="ascend-performance-device-top" aria-hidden="true"><span>9:41</span><i></i><span>● ▰</span></div>
+              <p class="ascend-performance-screen-label">쌓여가는 나의 기록</p>
+              <h3>한눈에 보는 성장</h3>
+              <p class="ascend-performance-screen-date">벤치 프레스 · 최근 6회</p>
+              <div class="ascend-performance-tabs" aria-label="기록 지표 선택"><button type="button" aria-pressed="true" data-ascend-metric="volume">볼륨</button><button type="button" aria-pressed="false" data-ascend-metric="1rm">추정 1RM</button></div>
+              <p class="ascend-performance-chart-label" id="ascend-performance-metric-label">최근 운동 볼륨</p>
+              <div class="ascend-performance-chart-value"><strong id="ascend-performance-metric-value">1,800</strong><span>kg</span></div>
+              <div class="ascend-performance-chart" id="ascend-performance-chart" aria-hidden="true"><span style="--bar-height: 40%"></span><span style="--bar-height: 51%"></span><span style="--bar-height: 46%"></span><span style="--bar-height: 63%"></span><span style="--bar-height: 73%"></span><span style="--bar-height: 91%"></span></div>
+              <div class="ascend-performance-chart-axis" aria-hidden="true"><span>1회</span><span>2회</span><span>3회</span><span>4회</span><span>5회</span><span>6회</span></div>
+              <p class="ascend-performance-record-footer"><span>나의 지난 기록을 기준으로</span><strong>한 세트 더 ↗</strong></p>
+              <div class="ascend-performance-phone-nav" aria-hidden="true"><span>운동</span><b>기록</b><span>프로필</span></div>
+            </div>
+          </figure>
+          <div class="ascend-performance-stage-note ascend-performance-stage-note--right">
+            <p>MORE PROGRESS</p>
+            <h2>기록이 쌓이면,<br>변화가 보여요.</h2>
+            <p>볼륨부터 추정 1RM까지.<br>어제의 나와 비교하세요.</p>
+          </div>
+        </div>
+        <p class="ascend-performance-caption">앱 UI를 재구성한 예시 · 수치와 루틴은 시연용입니다.</p>
+      </div>
+    </section>
+    <section id="ascend-performance-routine" class="ascend-performance-story" aria-labelledby="ascend-performance-routine-heading">
+      <div class="ascend-performance-story-grid ascend-performance-wrap">
+        <p class="ascend-performance-section-number" aria-hidden="true">01<span></span></p>
+        <div>
+          <h2 id="ascend-performance-routine-heading">기록은 짧게.<br>운동은 내 페이스로.</h2>
+          <p class="ascend-performance-story-copy">지난 세트의 무게와 횟수가 미리 채워져 있어요.<br>운동을 마치면 체크 한 번. 휴식 타이머가 시작돼요.</p>
+        </div>
+        <div class="ascend-performance-autofill" aria-label="이전 기록 자동 입력 기능의 예시">
+          <div class="ascend-performance-autofill-head"><strong>벤치 프레스 · 2세트</strong><span>이전 기록 자동 입력</span></div>
+          <div class="ascend-performance-autofill-data"><div><small>무게</small><strong>60 <span>kg</span></strong></div><div><small>횟수</small><strong>10 <span>회</span></strong></div><span class="ascend-performance-autofill-tick" aria-hidden="true">✓</span></div>
+          <p class="ascend-performance-autofill-caption">입력하고, 저장하고, 타이머를 찾는 대신.<br>한 번의 체크로 다음 세트를 준비하세요. · 화면 예시</p>
+        </div>
+      </div>
+    </section>
+    <section id="ascend-performance-record" class="ascend-performance-story ascend-performance-story--record" aria-labelledby="ascend-performance-record-heading">
+      <div class="ascend-performance-story-grid ascend-performance-wrap">
+        <p class="ascend-performance-section-number" aria-hidden="true">02<span></span></p>
+        <div>
+          <h2 id="ascend-performance-record-heading">나의 노력에는<br>기록이 남으니까.</h2>
+          <p class="ascend-performance-story-copy">매번의 볼륨과 추정 1RM을 이어서 살펴보세요.<br>남의 기준보다, 지난번의 나를 넘어서는 즐거움.</p>
+        </div>
+        <div class="ascend-performance-progress" aria-label="추정 1RM 기록의 변화 예시. 수치는 시연용입니다.">
+          <p class="ascend-performance-progress-label">벤치 프레스 · 추정 1RM<span>RECORD EXAMPLE</span></p>
+          <div class="ascend-performance-progress-track" aria-hidden="true"><span>80 kg<small>마지막 운동 기록</small></span></div>
+          <p class="ascend-performance-progress-caption"><span>지난 운동</span><span>조금씩, 꾸준히 ↗</span></p>
+        </div>
+      </div>
+    </section>
+    <section class="ascend-performance-final" aria-labelledby="ascend-performance-final-heading">
+      <h2 id="ascend-performance-final-heading">당신의 다음 한 세트, Ascend와 함께.</h2>
+      <p>오늘의 운동이 내일의 기록으로 이어지도록.</p>
+      <div class="ascend-performance-downloads" aria-label="앱 다운로드 안내">
+        <button class="ascend-performance-store" type="button" data-ascend-download="App Store"><span class="ascend-performance-store-symbol" aria-hidden="true">↓</span>App Store</button>
+        <button class="ascend-performance-store" type="button" data-ascend-download="Google Play"><span class="ascend-performance-store-symbol" aria-hidden="true">▷</span>Google Play</button>
+      </div>
+      <p class="ascend-performance-launch-status">출시 준비 중 · iOS / Android</p>
+    </section>
+    <footer class="ascend-performance-footer ascend-performance-wrap">
+      <div class="ascend-performance-footer-brand"><strong>Ascend</strong><a href="/" aria-label="PALDYN 공식 사이트">BY PALDYN</a></div>
+      <nav aria-label="법적 정보"><a href="/ascend/privacy/">개인정보처리방침</a><a href="/ascend/terms/">이용약관</a></nav>
+      <span>© PALDYN</span>
+    </footer>
+    <dialog class="ascend-performance-dialog" id="ascend-performance-download-dialog" aria-labelledby="ascend-performance-dialog-title" aria-describedby="ascend-performance-dialog-copy">
+      <div class="ascend-performance-dialog-label" id="ascend-performance-dialog-store">ASCEND</div>
+      <h2 id="ascend-performance-dialog-title">출시 준비 중이에요.</h2>
+      <p id="ascend-performance-dialog-copy">Ascend는 아직 다운로드할 수 없어요. 앱이 출시되면 이곳에서 스토어로 연결해 드릴게요.</p>
+      <button id="ascend-performance-dialog-close" type="button">확인</button>
+    </dialog>
+  </main>
+  <script>
+    (() => {
+      const root = document.getElementById('ascend-performance');
+      const dialog = root.querySelector('#ascend-performance-download-dialog');
+      const storeLabel = root.querySelector('#ascend-performance-dialog-store');
+      root.querySelectorAll('[data-ascend-download]').forEach((button) => {
+        button.addEventListener('click', () => {
+          storeLabel.textContent = button.dataset.ascendDownload.toUpperCase();
+          dialog.showModal();
+        });
+      });
+      root.querySelector('#ascend-performance-dialog-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => {
+        const box = dialog.getBoundingClientRect();
+        if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+      });
+      const rest = root.querySelector('#ascend-performance-rest');
+      const clock = root.querySelector('#ascend-performance-rest-time');
+      const hint = root.querySelector('#ascend-performance-tap-hint');
+      let seconds = 90;
+      let interval = null;
+      const renderTime = () => { clock.textContent = `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`; };
+      const stopTimer = () => { clearInterval(interval); interval = null; };
+      root.querySelectorAll('[data-ascend-set]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const complete = button.getAttribute('aria-pressed') !== 'true';
+          button.setAttribute('aria-pressed', String(complete));
+          button.setAttribute('aria-label', `벤치 프레스 ${button.dataset.ascendSet}세트 ${complete ? '완료 취소' : '완료'}`);
+          button.parentElement.classList.toggle('ascend-performance-set--completed', complete);
+          stopTimer();
+          if (!complete) {
+            rest.hidden = true;
+            hint.textContent = '체크 버튼을 눌러 보세요 ↑';
+            return;
+          }
+          seconds = 90;
+          rest.hidden = false;
+          renderTime();
+          hint.textContent = `${button.dataset.ascendSet}세트 완료 · 휴식 시작`;
+          interval = setInterval(() => {
+            seconds -= 1;
+            renderTime();
+            if (seconds === 0) {
+              stopTimer();
+              hint.textContent = '휴식 끝! 다음 세트를 시작해요.';
+            }
+          }, 1000);
+        });
+      });
+      const metrics = {
+        volume: { label: '최근 운동 볼륨', value: '1,800', heights: [40, 51, 46, 63, 73, 91] },
+        '1rm': { label: '최근 추정 1RM', value: '80', heights: [47, 54, 52, 68, 78, 91] }
+      };
+      root.querySelectorAll('[data-ascend-metric]').forEach((button) => {
+        button.addEventListener('click', () => {
+          root.querySelectorAll('[data-ascend-metric]').forEach((tab) => tab.setAttribute('aria-pressed', String(tab === button)));
+          const metric = metrics[button.dataset.ascendMetric];
+          root.querySelector('#ascend-performance-metric-label').textContent = metric.label;
+          root.querySelector('#ascend-performance-metric-value').textContent = metric.value;
+          root.querySelectorAll('#ascend-performance-chart > span').forEach((bar, index) => bar.style.setProperty('--bar-height', `${metric.heights[index]}%`));
+        });
+      });
+      window.addEventListener('pagehide', stopTimer);
+    })();
+  </script>
+</body>
+</html>
