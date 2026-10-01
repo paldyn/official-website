@@ -1,254 +1,233 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ascend — 세트 하나로 끝내는 운동 기록 | PALDYN</title>
-  <meta name="description" content="Ascend는 헬스장에서 폰을 드는 시간을 줄이기 위해 만든 웨이트 트레이닝 기록 앱입니다. 광고도 추적도 없습니다.">
-  <link rel="canonical" href="https://paldyn.com/ascend/">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="PALDYN">
-  <meta property="og:url" content="https://paldyn.com/ascend/">
-  <meta property="og:title" content="Ascend — 세트 하나로 끝내는 운동 기록">
-  <meta property="og:description" content="지난 기록이 세트마다 미리 떠 있고, 체크하면 휴식 타이머가 알아서 시작됩니다. 광고도 추적도 없습니다.">
-  <meta property="og:image" content="https://paldyn.com/assets/og.png">
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
-  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
-  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css">
-  <link rel="stylesheet" href="../assets/tokens.css">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('js');
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
-        if (localStorage.getItem('motion') === 'reduced') d.setAttribute('data-motion', 'reduced');
-      } catch (e) {}
-    })();
-  </script>
-  <style>
-    /* 토큰·리셋·포커스는 assets/tokens.css 가 담당한다. 여기에는 이 페이지 고유 레이아웃만 둔다. */
-    .wrap { --page-max: 760px; }
-
-    header.bar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--nav-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    header.bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .brand {
-      display: inline-flex; align-items: center; gap: 9px;
-      text-decoration: none; color: var(--text);
-    }
-    .brand .symbol { width: 22px; height: 22px; }
-    .brand .wordmark { font-size: 0.9375rem; font-weight: var(--fw-medium); letter-spacing: 0.14em; line-height: 1; }
-    .brand .sep { width: 1px; height: 14px; background: var(--border-strong); margin: 0 2px; }
-    .brand .product { font-size: var(--fs-1); font-weight: var(--fw-medium); letter-spacing: 0.18em; color: var(--text-mute); }
-    .bar-right { display: flex; align-items: center; gap: var(--s3); }
-    .bar-right a { color: var(--text-dim); text-decoration: none; font-size: var(--fs-2); font-weight: var(--fw-medium); }
-    .bar-right a:hover { color: var(--accent-bright); }
-
-    .icon-btn {
-      width: 34px; height: 34px; display: grid; place-items: center;
-      border: 1px solid var(--border-strong); border-radius: 50%;
-      color: var(--text-dim);
-      transition: color var(--d-3) var(--e-quint), border-color var(--d-3) var(--e-quint);
-    }
-    .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-bright); transition-duration: var(--d-1); }
-    .icon-btn svg { width: 16px; height: 16px; }
-    .icon-sun { display: none; }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) .icon-moon { display: none; }
-      :root:not([data-theme="light"]) .icon-sun { display: block; }
-    }
-    :root[data-theme="dark"] .icon-moon { display: none; }
-    :root[data-theme="dark"] .icon-sun { display: block; }
-    :root[data-theme="light"] .icon-moon { display: block; }
-    :root[data-theme="light"] .icon-sun { display: none; }
-
-    .hero { padding: var(--s9) 0 var(--s7); }
-    .hero .eyebrow { margin-bottom: var(--s3); }
-    .eyebrow-plain { text-transform: none; letter-spacing: 0.14em; }
-    h1 {
-      font-size: clamp(2rem, 6vw, 3rem);
-      font-weight: var(--fw-medium);
-      margin-bottom: var(--s4);
-    }
-    .tagline { font-size: clamp(1rem, 2.4vw, 1.1875rem); color: var(--text-dim); line-height: 1.7; }
-
-    .status {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: var(--s6);
-      padding: 7px 16px;
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-pill);
-      font-size: var(--fs-2); color: var(--text-dim);
-    }
-    .status .dot { width: 9px; height: 9px; border: 1px solid var(--text-dim); flex: none; }
-
-    section { padding-top: var(--s7); }
-    h2 {
-      font-size: var(--fs-5);
-      font-weight: var(--fw-medium);
-      margin-bottom: var(--s4);
-      padding-bottom: var(--s3);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    p { margin-bottom: var(--s3); }
-    strong { font-weight: var(--fw-medium); color: var(--accent-bright); }
-    main a { color: var(--text); }
-
-    .features { display: grid; gap: var(--s3); }
-    .feature {
-      --notch: 10px;
-      padding: 1px;
-      background: var(--border);
-      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
-    }
-    .feature > div {
-      padding: var(--s4) var(--s5);
-      background: var(--surface-2);
-      clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
-    }
-    .feature h3 { font-size: var(--fs-4); font-weight: var(--fw-medium); margin-bottom: 4px; }
-    .feature p { font-size: var(--fs-3); color: var(--text-dim); margin: 0; }
-
-    dl.contact { display: grid; grid-template-columns: auto 1fr; gap: var(--s2) var(--s5); font-size: var(--fs-3); }
-    dl.contact dt { color: var(--text-mute); font-weight: var(--fw-medium); white-space: nowrap; }
-
-    footer.bar {
-      margin-top: var(--s8);
-      padding: var(--s5) 0 var(--s7);
-      border-top: 1px solid var(--border-subtle);
-      font-size: var(--fs-2);
-      color: var(--text-mute);
-    }
-    footer.bar .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
-    footer.bar a { color: var(--text-mute); text-decoration: none; }
-    footer.bar a:hover { color: var(--accent-bright); }
-
-    @media (max-width: 560px) {
-      .hero { padding-top: var(--s8); }
-      dl.contact { grid-template-columns: 1fr; gap: 2px; }
-      dl.contact dt { margin-top: 10px; }
-      .brand .product { display: none; }
-      .brand .sep { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASCEND — 오늘도, 한 세트씩.</title>
+<meta name="description" content="지난 기록은 미리 채우고, 세트가 끝나면 체크 한 번. 기록부터 휴식까지, ASCEND와 함께. iPhone 앱 출시를 준비 중입니다.">
+<meta name="theme-color" content="#FF6B00">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ASCEND">
+<meta property="og:title" content="ASCEND — 오늘도, 한 세트씩.">
+<meta property="og:description" content="기록은 가볍게. 운동은 나답게. iPhone에서 만날 나의 운동 기록 앱.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://paldyn.com/ascend/">
+<meta property="og:url" content="https://paldyn.com/ascend/">
+<meta property="og:image" content="https://paldyn.com/assets/ascend/workout-illustration.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta property="og:image:alt" content="밝은 체육관에서 운동하고 휴식하는 두 성인의 일러스트">
+<link rel="icon" type="image/svg+xml" href="../assets/ascend/favicon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.css" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/ascend/landing.css">
+<script src="../assets/ascend/landing.js" defer>
+</script>
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <g id="pd-symbol">
-      <path fill-rule="evenodd" d="M113.67 27.76 L45.5 53.2 L15.1 120 L45.5 186.8 L113.67 212.24 Z M113.67 81.86 L88.1 91.4 L75.1 120 L88.1 148.6 L113.67 158.14 Z"/>
-      <path fill-rule="evenodd" d="M126.33 27.76 L194.5 53.2 L224.9 120 L194.5 186.8 L126.33 212.24 Z M126.33 81.86 L151.9 91.4 L164.9 120 L151.9 148.6 L126.33 158.14 Z"/>
-    </g>
-  </defs>
-</svg>
-
-<header class="bar">
-  <div class="wrap">
-    <a class="brand" href="/" aria-label="PALDYN 홈">
-      <svg class="symbol" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true"><use href="#pd-symbol"/></svg>
-      <span class="wordmark">PALDYN</span>
-      <span class="sep" aria-hidden="true"></span>
-      <span class="product">ASCEND</span>
-    </a>
-    <div class="bar-right">
-      <a href="/#products">다른 제품</a>
-      <button class="icon-btn" id="themeToggle" type="button" aria-label="테마 전환">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      </button>
-    </div>
-  </div>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<div id="ascend-daily-focus">
+<div class="dr-page dr-focus" aria-label="Ascend 운동 기록 앱">
+<header class="dr-header">
+<div class="dr-brand dr-latin">
+<span class="dr-mark">
+<img src="../assets/products/ascend-mark.png" alt="Ascend A 로고" width="26" height="26">
+</span>ASCEND</div>
+<div class="dr-header-right">
+<a class="dr-provider dr-latin" href="../">BY PALDYN</a>
+<a class="dr-header-action" href="#ascend-launch">앱 출시 안내 ↗</a>
+</div>
 </header>
-
-<main class="wrap">
-
-  <div class="hero">
-    <p class="eyebrow eyebrow-plain">iOS · Android</p>
-    <h1>Ascend</h1>
-    <p class="tagline">
-      헬스장에서 폰을 드는 시간을 줄이기 위해 만든 웨이트 트레이닝 기록 앱입니다.<br>
-      지난 기록이 세트마다 미리 떠 있고, 체크하면 휴식 타이머가 알아서 시작됩니다.
-    </p>
-    <div class="status"><span class="dot" aria-hidden="true"></span>출시 준비 중 · 비공개 테스트 진행</div>
-  </div>
-
-  <section id="features">
-    <h2>이런 앱입니다</h2>
-    <div class="features">
-      <div class="feature"><div>
-        <h3>세트 하나에 탭 한 번</h3>
-        <p>지난 세션에 들었던 무게와 횟수가 각 세트에 미리 떠 있습니다. 같으면 체크만, 늘렸으면 숫자만 고치세요.</p>
-      </div></div>
-      <div class="feature"><div>
-        <h3>휴식 타이머는 알아서</h3>
-        <p>세트를 체크하는 순간 휴식이 시작됩니다. 알림을 허용하면 폰을 주머니에 넣어도 끝나는 순간 알려줍니다.</p>
-      </div></div>
-      <div class="feature"><div>
-        <h3>기록이 다음 운동의 연료</h3>
-        <p>최대 무게·추정 1RM·세트 볼륨을 자동으로 계산해 신기록을 그 자리에서 알려줍니다.</p>
-      </div></div>
-      <div class="feature"><div>
-        <h3>광고도 추적도 없이</h3>
-        <p>Apple · Google · 카카오 중 하나로 로그인하시면 됩니다. 아이디와 비밀번호를 만드는 회원가입은 없고, 광고와 추적이 없습니다.</p>
-      </div></div>
-    </div>
-  </section>
-
-  <section id="support">
-    <h2>지원 및 문의</h2>
-    <p>사용 중 문제가 생기거나 제안하실 내용이 있으면 메일로 보내 주세요.
-    가능한 한 빠르게 답변드리겠습니다.</p>
-    <dl class="contact">
-      <dt>이메일</dt><dd><a href="mailto:support@paldyn.com">support@paldyn.com</a></dd>
-      <dt>개인정보처리방침</dt><dd><a href="./privacy">paldyn.com/ascend/privacy</a></dd>
-      <dt>제공자</dt><dd>Paldyn (팔딘)</dd>
-    </dl>
-  </section>
-
+<main id="main">
+<section class="dr-hero" aria-label="운동 기록도 손쉽게">
+<div class="dr-hero-top">
+<div>
+<p class="dr-kicker dr-latin">EVERY SET, SIMPLY.</p>
+<h1 class="dr-title">
+<span>운동 기록도,</span>
+<span>손쉽게.</span>
+</h1>
+</div>
+<div class="dr-hero-summary">
+<p class="dr-copy">지난 기록은 미리 채우고,<br>세트가 끝나면 체크 한 번.<br>기록부터 휴식까지, ASCEND와 함께.</p>
+<div class="dr-cta">
+<button type="button" class="dr-store" disabled>App Store 출시 예정</button>
+<p class="dr-release">iPhone · iOS 15 이상</p>
+<p class="dr-platform">Android는 준비 중이에요</p>
+</div>
+</div>
+</div>
+<figure class="dr-art">
+<img src="../assets/ascend/workout-illustration.jpg" alt="밝은 체육관에서 운동하고 휴식하는 두 성인의 일러스트" width="1200" height="675" fetchpriority="high" decoding="async">
+</figure>
+</section>
+<div class="dr-trust" aria-label="가볍게 시작하는 운동 기록">
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" aria-hidden="true" class="lucide lucide-check">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>현재 모든 기능 무료</p>
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" aria-hidden="true" class="lucide lucide-sparkles">
+<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
+</path>
+<path d="M20 2v4">
+</path>
+<path d="M22 4h-4">
+</path>
+<circle cx="4" cy="20" r="2">
+</circle>
+</svg>광고 없는 운동 시간</p>
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="wifi-off" aria-hidden="true" class="lucide lucide-wifi-off">
+<path d="M12 20h.01">
+</path>
+<path d="M8.5 16.429a5 5 0 0 1 7 0">
+</path>
+<path d="M5 12.859a10 10 0 0 1 5.17-2.69">
+</path>
+<path d="M19 12.859a10 10 0 0 0-2.007-1.523">
+</path>
+<path d="M2 8.82a15 15 0 0 1 4.177-2.643">
+</path>
+<path d="M22 8.82a15 15 0 0 0-11.288-3.764">
+</path>
+<path d="m2 2 20 20">
+</path>
+</svg>첫 로그인 후 오프라인 이용</p>
+</div>
+<section class="dr-features" aria-label="기록 휴식 변화">
+<div class="dr-section-head">
+<div>
+<p class="dr-kicker dr-latin">MADE FOR YOUR WORKOUT.</p>
+<h2 class="dr-heading">
+<span>기록은 가볍게.</span>
+<span>운동은 나답게.</span>
+</h2>
+</div>
+<p>숫자를 입력하는 시간은 줄이고,<br>오늘의 운동을 차곡차곡 남겨요.</p>
+</div>
+<div class="dr-feature-grid">
+<article class="dr-feature">
+<div class="dr-feature-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-check" aria-hidden="true" class="lucide lucide-check-check">
+<path d="M18 6 7 17l-5-5">
+</path>
+<path d="m22 10-7.5 7.5L13 16">
+</path>
+</svg>
+</div>
+<h3>지난 기록은 미리.</h3>
+<p>지난 세션의 무게와 횟수가 채워져 있어요. 그대로라면 완료만 탭하고, 바뀌었다면 숫자만 고쳐요.</p>
+</article>
+<article class="dr-feature">
+<div class="dr-feature-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="timer" aria-hidden="true" class="lucide lucide-timer">
+<line x1="10" x2="14" y1="2" y2="2">
+</line>
+<line x1="12" x2="15" y1="14" y2="11">
+</line>
+<circle cx="12" cy="14" r="8">
+</circle>
+</svg>
+</div>
+<h3>휴식은 내 속도로.</h3>
+<p>세트를 체크하면 타이머가 시작돼요. 15초씩 조절하거나, 준비됐다면 건너뛸 수 있어요.</p>
+</article>
+<article class="dr-feature">
+<div class="dr-feature-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chart-no-axes-combined" aria-hidden="true" class="lucide lucide-chart-no-axes-combined">
+<path d="M12 16v5">
+</path>
+<path d="M16 14.639V21">
+</path>
+<path d="M20 10.656V21">
+</path>
+<path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15">
+</path>
+<path d="M4 18.463V21">
+</path>
+<path d="M8 14.656V21">
+</path>
+</svg>
+</div>
+<h3>변화는 차곡차곡.</h3>
+<p>최고 중량, 추정 1RM, 세트 볼륨과 운동별 기록의 추이를 한눈에 살펴봐요.</p>
+</article>
+</div>
+</section>
+<section class="dr-connect" aria-label="루틴 공유와 기록 백업">
+<div>
+<p class="dr-connect-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="link" aria-hidden="true" class="lucide lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+</path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+</path>
+</svg>함께 나누는 루틴</p>
+<h2>좋은 루틴은,<br>QR과 링크로.</h2>
+<p class="dr-copy">내 루틴을 간편하게 공유하고,<br>받은 루틴은 미리 살펴본 뒤 가져올 수 있어요.</p>
+</div>
+<div>
+<p class="dr-connect-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-check" aria-hidden="true" class="lucide lucide-cloud-check">
+<path d="m17 15-5.5 5.5L9 18">
+</path>
+<path d="M5.516 16.07A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 3.501 7.327">
+</path>
+</svg>이어지는 운동 기록</p>
+<h2>기록은 기기에.<br>백업은 자동으로.</h2>
+<p class="dr-copy">원본 기록은 내 기기에 저장돼요.<br>로그인 후 인터넷에 연결되면 자동 백업하고,<br>새 기기에서도 같은 계정으로 복원할 수 있어요.</p>
+</div>
+</section>
+<section class="dr-faq" aria-label="자주 묻는 질문">
+<div>
+<p class="dr-kicker">시작하기 전에</p>
+<h2>궁금한 점이 있나요?</h2>
+</div>
+<div class="dr-questions">
+<details>
+<summary>인터넷 없이도 운동할 수 있나요?</summary>
+<p>최초 로그인에는 인터넷이 필요해요. 이후에는 오프라인으로 운동하고 기록할 수 있어요.</p>
+</details>
+<details>
+<summary>휴식 타이머 알림도 받을 수 있나요?</summary>
+<p>기기의 알림 권한을 허용했다면 휴식 알림을 받을 수 있어요. 휴식 시간은 15초씩 조절하거나 건너뛸 수 있어요.</p>
+</details>
+<details>
+<summary>휴대폰을 바꿔도 기록이 이어지나요?</summary>
+<p>로그인 후 인터넷에 연결되면 한국 리전에 기록 사본이 자동으로 백업돼요. 새 기기에서 같은 계정으로 로그인하면 복원할 수 있어요.</p>
+</details>
+</div>
+</section>
+<section class="dr-end" id="ascend-launch" aria-label="Ascend 앱 출시 안내">
+<div class="dr-end-copy">
+<h2>오늘도, 한 세트씩.</h2>
+<p class="dr-copy">곧 iPhone에서 만나요. 나의 운동 기록, ASCEND.</p>
+</div>
+<div class="dr-end-action">
+<div class="dr-cta">
+<button type="button" class="dr-store" disabled>App Store 출시 예정</button>
+<p class="dr-release">iPhone · iOS 15 이상</p>
+<p class="dr-platform">Android는 준비 중이에요</p>
+</div>
+</div>
+</section>
 </main>
-
-<footer class="bar">
-  <div class="wrap">
-    <span>© 2026 PALDYN</span>
-    <span><a href="/">paldyn.com</a> · <a href="./privacy">개인정보처리방침</a></span>
-  </div>
+<footer class="dr-footer" aria-label="Ascend 지원 및 정책">
+<p class="dr-copyright dr-latin">© 2026 PALDYN. All rights reserved.</p>
+<nav class="dr-footer-nav" aria-label="Ascend 지원 및 정책">
+<a href="./privacy/">개인정보처리방침</a>
+<a href="./terms/">이용약관</a>
+<a href="mailto:support@paldyn.com">문의</a>
+</nav>
 </footer>
-
-<script>
-(function () {
-  var root = document.documentElement;
-  function currentTheme() {
-    return root.getAttribute('data-theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  }
-  function applyTheme() {
-    var next = currentTheme() === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  }
-  var btn = document.getElementById('themeToggle');
-  if (btn) btn.addEventListener('click', function () {
-    var reduced = root.getAttribute('data-motion') === 'reduced' ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!document.startViewTransition || reduced) { applyTheme(); return; }
-    document.startViewTransition(applyTheme);
-  });
-})();
-</script>
-
+</div>
+</div>
 </body>
 </html>
