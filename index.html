@@ -618,7 +618,31 @@
     a.service-card:hover .card-meta { color: var(--accent-bright); }
 
     /* Products — 제품 수에 관계없이 같은 형식으로 추가하는 앱 디렉터리. */
-    section.products { padding: 6.5rem 3rem 7rem; }
+    section.products {
+      --product-row-bg: #ffffff;
+      --product-row-border: rgba(35, 36, 45, .08);
+      --product-wash: 6%;
+      --product-hover-wash: 10%;
+      --product-pill-bg: rgba(20, 22, 35, .035);
+      max-width: none;
+      padding: 6.5rem 3rem 7rem;
+      background:
+        radial-gradient(ellipse at 5% 0%, rgba(170, 148, 240, .11), transparent 42%),
+        radial-gradient(ellipse at 100% 98%, rgba(94, 181, 213, .10), transparent 44%),
+        linear-gradient(140deg, #faf9fc, #f6f7fb 58%, #f8f8fa);
+    }
+    [data-theme="dark"] section.products {
+      --product-row-bg: #101217;
+      --product-row-border: rgba(255, 255, 255, .08);
+      --product-wash: 11%;
+      --product-hover-wash: 15%;
+      --product-pill-bg: rgba(255, 255, 255, .055);
+      background:
+        radial-gradient(ellipse at 5% 0%, rgba(149, 117, 217, .10), transparent 42%),
+        radial-gradient(ellipse at 100% 98%, rgba(67, 149, 187, .07), transparent 44%),
+        linear-gradient(140deg, #08090e, #0b0b10 58%, #080b10);
+    }
+    section.products > .reveal { max-width:1104px; margin:0 auto; }
     .product-section-head {
       margin: 0 0 2.6rem;
     }
@@ -638,25 +662,40 @@
       line-height: 1.75;
     }
     .product-directory {
+      display: grid;
+      gap: 10px;
       margin: 0;
       padding: 0;
       list-style: none;
-      border-top: 1px solid var(--border);
     }
-    .product-directory > li { border-bottom: 1px solid var(--border); }
     .product-row {
+      --product-accent: #8f93a3;
       display: grid;
-      grid-template-columns: 52px minmax(0, 1fr) 155px 20px;
+      grid-template-columns: 52px minmax(0, 1fr) 155px 32px;
       align-items: center;
       gap: 22px;
       min-height: 112px;
-      padding: 24px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--product-row-border);
+      border-radius: 14px;
+      background:
+        radial-gradient(ellipse at 0% 35%, color-mix(in srgb, var(--product-accent) var(--product-wash), transparent), transparent 60%),
+        var(--product-row-bg);
+      box-shadow: 0 3px 15px rgba(15, 20, 40, .025);
       color: var(--text);
       text-decoration: none;
       scroll-margin-top: 110px;
-      transition: background .2s ease;
+      transition: border-color .2s ease;
     }
-    a.product-row:hover { background: var(--bg-subtle); }
+    a.product-row:hover {
+      --product-wash: var(--product-hover-wash);
+      border-color: color-mix(in srgb, var(--product-accent) 20%, var(--product-row-border));
+    }
+    .product--nemo { --product-accent:#a798ff; }
+    .product--devdock { --product-accent:#4fd4ff; }
+    .product--ascend { --product-accent:#ff805c; }
+    .product--branch { --product-accent:#8267e5; }
+    .product--hanpage { --product-accent:#528bee; }
     .product-row:focus-visible,
     .contact-btn:focus-visible,
     .footer-col a:focus-visible,
@@ -664,12 +703,13 @@
     .product-mark {
       width: 52px;
       height: 52px;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       border-radius: 13px;
     }
-    .product-mark img { display:block; width:52px; height:52px; object-fit:contain; }
+    .product-mark img { display:block; flex:none; width:52px; height:52px; object-fit:contain; }
     .product--nemo .product-mark { background:#292735; }
     .product--devdock .product-mark { background:#17373c; }
     .product--devdock .product-mark img { width:58px; height:58px; }
@@ -704,8 +744,9 @@
       white-space: nowrap;
     }
     .product-platform { color:var(--text-dim); }
-    .product-status { padding:5px 7px; border-radius:4px; background:var(--surface); text-align:center; line-height:1.4; }
+    .product-status { padding:5px 7px; border-radius:4px; background:var(--product-pill-bg); text-align:center; line-height:1.4; }
     .product-arrow { text-align:right; font-size:18px; line-height:1; }
+    a.product-row .product-arrow { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--product-pill-bg); }
 
     /* Research — 카드 대신 편집형 인덱스로 제품 영역과 다른 리듬을 만든다. */
     section.research-modern { padding: 7.5rem 3rem 8rem; }
@@ -1084,13 +1125,16 @@
     }
 
     @media (max-width: 620px) {
+      section.products { padding-right:1rem; padding-left:1rem; }
+      .product-section-head { padding-inline:8px; }
       .product-section-head { margin-bottom: 2.5rem; }
       .product-section-head h2 { font-size: 2rem; }
       .product-row {
-        grid-template-columns:44px minmax(0,1fr) 16px;
+        grid-template-columns:44px minmax(0,1fr) 24px;
         gap:12px 14px;
         min-height:136px;
-        padding:18px 0;
+        padding:18px 12px;
+        border-radius:12px;
       }
       .product-mark { width:44px; height:44px; border-radius:11px; }
       .product-mark img { width:44px; height:44px; }
@@ -1103,6 +1147,7 @@
       .product-meta { grid-column:2; display:flex; gap:9px; }
       .product-status { padding:4px 7px; }
       .product-arrow { grid-column:3; grid-row:1 / 3; align-self:center; }
+      a.product-row .product-arrow { width:24px; height:24px; font-size:15px; }
       .research-intro h2 { font-size:2.35rem; }
       .research-row {
         grid-template-columns:40px minmax(0,1fr) auto;
