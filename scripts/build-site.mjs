@@ -11,6 +11,7 @@ const publicEntries = [
   'sitemap.xml',
   'assets',
   'ascend',
+  'hanpage',
   'cnt',
   'drafts',
 ];
