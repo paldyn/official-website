@@ -12,6 +12,7 @@ const publicEntries = [
   'assets',
   'ascend',
   'hanpage',
+  'branch',
   'cnt',
   'drafts',
 ];
