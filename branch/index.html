@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Branch — Git의 흐름을, 한눈에.</title>
+  <title>Branch — 흩어진 작업을, 하나로.</title>
   <meta name="description" content="저장소부터 커밋까지, 하나의 데스크톱 작업 공간. Branch는 저장소 관리, 커밋 그래프, 변경 비교를 함께 제공하는 Git 클라이언트입니다. 현재 공개 출시를 준비하고 있습니다.">
-  <meta name="theme-color" content="#6554c0">
+  <meta name="theme-color" content="#f3f0e9">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://paldyn.com/branch/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:site_name" content="Branch">
-  <meta property="og:title" content="Branch — Git의 흐름을, 한눈에.">
+  <meta property="og:title" content="Branch — 흩어진 작업을, 하나로.">
   <meta property="og:description" content="저장소, 브랜치, 커밋을 연결하는 데스크톱 Git 클라이언트. 공개 출시 준비 중.">
   <meta property="og:url" content="https://paldyn.com/branch/">
   <meta property="og:image" content="https://paldyn.com/assets/branch/workspace-preview.jpg">
@@ -22,7 +22,7 @@
   <link rel="icon" href="../assets/branch/favicon.png" type="image/png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261002">
+  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261003-warm">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -34,21 +34,24 @@
   </header>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-      <svg class="hero-graph" viewBox="0 0 1400 620" fill="none" aria-hidden="true"><path d="M1120-50v160c0 70-180 85-180 170v390M1280-50v230c0 120-340 65-340 210" stroke="#e4def5" stroke-width="2"/><circle cx="1120" cy="73" r="7" fill="#f8f6ff" stroke="#d3c8ec" stroke-width="2"/><circle cx="940" cy="335" r="7" fill="#f8f6ff" stroke="#d3c8ec" stroke-width="2"/><circle cx="1280" cy="146" r="7" fill="#f8f6ff" stroke="#d3c8ec" stroke-width="2"/></svg>
       <div class="container">
-        <div class="hero-top">
-          <div class="hero-copy"><p class="eyebrow">GIT, TIED TOGETHER.</p><h1 id="hero-title">Git의 흐름을,<br><span>한눈에.</span></h1></div>
-          <div class="hero-intro"><p>저장소부터 커밋까지,<br>하나의 데스크톱 작업 공간.</p><p class="hero-description">흩어진 프로젝트를 모으고,<br>변경의 맥락을 보며 다음 커밋을 준비하세요.</p><div class="hero-actions"><a class="button button-violet" href="#app-preview">앱 화면 살펴보기 <span aria-hidden="true">↓</span></a><span class="launch-status"><i aria-hidden="true"></i>출시 준비 중</span></div></div>
+        <div class="hero-main">
+          <div class="hero-copy"><p class="eyebrow">GIT, TIED TOGETHER.</p><h1 id="hero-title">흩어진 작업을, <br>하나로.</h1></div>
+          <div class="signature-tile"><img src="../assets/products/branch-mark.png" alt="Branch 심볼" width="256" height="256" decoding="async"></div>
+          <div class="hero-bottom"><p>당신의 프로젝트가 모이는 <br>데스크톱 Git 클라이언트.</p><a class="text-link" href="#app-preview">Branch 만나보기 <span aria-hidden="true">↘</span></a></div>
         </div>
-        <figure class="app-preview" id="app-preview">
-          <div class="preview-frame"><img src="../assets/branch/workspace-preview.jpg" alt="Branch 개발 화면. 데모 저장소의 브랜치와 커밋 그래프, 선택한 커밋의 파일 변경 내용을 한 화면에 보여줍니다." width="1280" height="720" fetchpriority="high" decoding="async"></div>
-          <figcaption><span>저장소 · 브랜치 · 커밋 · Diff</span><span>개발 중인 Branch 화면 · 데모 저장소</span></figcaption>
-        </figure>
+        <div class="workspace-preview" id="app-preview">
+          <div class="workspace-copy"><p class="eyebrow">YOUR WORKSPACE.</p><h2>열린 작업들 사이에, <br>선명한 흐름.</h2><p class="description">저장소를 정리하고, 변경을 비교하고, <br>커밋까지 자연스럽게 이어가세요.</p><p class="preview-status">Desktop app · 공개 출시 준비 중</p></div>
+          <figure class="app-preview">
+            <div class="preview-frame"><img src="../assets/branch/workspace-preview.jpg" alt="Branch 개발 화면. 데모 저장소의 브랜치와 커밋 그래프, 선택한 커밋의 파일 변경 내용을 한 화면에 보여줍니다." width="1280" height="720" fetchpriority="high" decoding="async"></div>
+            <figcaption><span>저장소 · 브랜치 · 커밋 · Diff</span><span>개발 중인 Branch 화면 · 데모 저장소</span></figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <section class="workflow-section section container" id="workflow" aria-labelledby="workflow-title">
-      <div class="section-heading"><p class="section-label">하나로 이어지는 작업 흐름</p><h2 id="workflow-title">다음 커밋에 집중하세요.</h2><p>열어야 할 저장소부터 확인해야 할 변경까지.<br>매일 하는 Git 작업을 한곳에서 이어가세요.</p></div>
+      <div class="section-heading"><p class="section-label">하나로 이어지는 작업 흐름</p><h2 id="workflow-title">다음 커밋에 집중하세요.</h2><p>열어야 할 저장소부터 확인해야 할 변경까지. <br>매일 하는 Git 작업을 한곳에서 이어가세요.</p></div>
       <div class="workflow-grid">
         <article class="workflow-card"><div class="step-top"><span>01</span><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 9a2 2 0 0 1 2-2h7l3 3h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 17h12M10 21h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>흩어진 저장소를 한곳에.</h3><p>워크스페이스와 그룹으로 프로젝트를 정리하고, 탭이나 사이드바에서 저장소를 전환하세요.</p><div class="feature-tags"><span>워크스페이스</span><span>저장소 그룹</span></div></article>
         <article class="workflow-card"><div class="step-top"><span>02</span><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M13 7H7v18h6M19 7h6v18h-6M10 13h5M17 20h5m-2.5-2.5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>변경한 만큼, 정확하게.</h3><p>파일의 Diff를 비교하고 필요한 변경을 스테이징하세요. 내용을 확인하며 커밋을 준비할 수 있어요.</p><div class="feature-tags"><span>Diff 비교</span><span>스테이징</span></div></article>
@@ -58,7 +61,7 @@
     </section>
 
     <section class="details-section section" aria-labelledby="details-title"><div class="container details-grid">
-      <div class="details-heading"><p class="section-label">익숙한 Git, 더 편한 작업 공간</p><h2 id="details-title">작업 방식은 그대로.<br>보는 방식은 더 명확하게.</h2><p>내 컴퓨터의 Git과 기존 설정을 사용해요.<br>매일 쓰는 도구를 자연스럽게 이어가세요.</p></div>
+      <div class="details-heading"><p class="section-label">익숙한 Git, 더 편한 작업 공간</p><h2 id="details-title">작업 방식은 그대로. <br>보는 방식은 더 명확하게.</h2><p>내 컴퓨터의 Git과 기존 설정을 사용해요. <br>매일 쓰는 도구를 자연스럽게 이어가세요.</p></div>
       <div class="detail-list">
         <article><span class="detail-icon" aria-hidden="true">↗</span><div><h3>원격 저장소와 연결</h3><p>Fetch, Pull, Push로 원격 저장소와 작업을 이어가세요.</p></div></article>
         <article><span class="detail-icon detail-code" aria-hidden="true">⌘</span><div><h3>손에 익는 단축키</h3><p>명령 팔레트와 검색, 원하는 키 설정으로 도구를 빠르게 사용하세요.</p></div></article>
@@ -67,7 +70,7 @@
     </div></section>
 
     <section class="release-section section container" id="release" aria-labelledby="release-title">
-      <div class="release-panel"><div class="release-copy"><p class="section-label">BRANCH FOR DESKTOP</p><h2 id="release-title">당신의 다음 커밋을 위해.</h2><p>Branch 데스크톱 앱의 공개 출시를 준비하고 있어요.<br>공개되면 이곳에서 앱을 내려받을 수 있어요.</p></div><div class="release-action"><button class="button release-button" type="button" disabled>데스크톱 앱 출시 준비 중</button><p>출시 일정과 다운로드는 추후 안내합니다.</p></div></div>
+      <div class="release-panel"><div class="release-copy"><p class="section-label">BRANCH FOR DESKTOP</p><h2 id="release-title">당신의 다음 커밋을 위해.</h2><p>Branch 데스크톱 앱의 공개 출시를 준비하고 있어요. <br>공개되면 이곳에서 앱을 내려받을 수 있어요.</p></div><div class="release-action"><button class="button release-button" type="button" disabled>데스크톱 앱 출시 준비 중</button><p>출시 일정과 다운로드는 추후 안내합니다.</p></div></div>
     </section>
 
     <section class="faq-section section container" aria-labelledby="faq-title"><div class="faq-heading"><p class="section-label">시작하기 전에</p><h2 id="faq-title">궁금한 점이 있나요?</h2><a href="mailto:support@paldyn.com?subject=Branch">문의하기 <span aria-hidden="true">↗</span></a></div><div class="faq-list">
