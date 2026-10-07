@@ -13,6 +13,7 @@ const publicEntries = [
   'ascend',
   'hanpage',
   'branch',
+  'querybase',
   'cnt',
   'drafts',
 ];

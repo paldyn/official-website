@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="6 6 52 52" role="img" aria-labelledby="querybase-app-icon-title">
+  <title id="querybase-app-icon-title">QueryBase app icon — Single Block</title>
+  <g transform="translate(6 6) scale(.8125)">
+    <rect width="64" height="64" rx="14" fill="#00B8A9"/>
+    <g transform="translate(10 10) scale(.6875)" fill="#FFFFFF">
+      <path d="M20 8H44C50.627 8 56 13.373 56 20V34H44V22C44 20.895 43.105 20 42 20H22C20.895 20 20 20.895 20 22V42C20 43.105 20.895 44 22 44H34V56H20C13.373 56 8 50.627 8 44V20C8 13.373 13.373 8 20 8Z"/>
+      <rect x="40" y="40" width="16" height="16"/>
+    </g>
+  </g>
+</svg>
