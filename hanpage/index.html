@@ -22,8 +22,8 @@
   <link rel="icon" href="../assets/hanpage/favicon.png" type="image/png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261007">
-  <script defer src="../assets/hanpage/landing.js?v=20261002"></script>
+  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261007-hero">
+  <script defer src="../assets/hanpage/landing.js?v=20261007-hero"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -35,7 +35,7 @@
       </a>
       <div class="nav-links">
         <a class="nav-feature" href="#features">기능 소개</a>
-        <a href="#start">다운로드</a>
+        <a class="nav-download" href="#start">다운로드</a>
         <a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a>
         <a class="nav-start" href="https://hanpage.paldyn.com/" target="_blank" rel="noopener">웹에서 열기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a>
       </div>
@@ -49,8 +49,20 @@
         <h1 id="hero-title">한글 문서를, <span>어디서든.</span></h1>
         <p class="hero-description">웹에서도, 데스크톱에서도.<br class="mobile-break"> 문서를 열고 편집하는 새로운 작업 공간.</p>
         <div class="hero-actions">
-          <a class="button button-blue" href="https://hanpage.paldyn.com/" target="_blank" rel="noopener">웹에서 바로 시작 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a>
-          <a class="button button-blue" href="#start">데스크톱 다운로드 <span aria-hidden="true">↓</span></a>
+          <a class="download-button hero-download" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.8/HanPage_0.8.8_aarch64.dmg" aria-label="macOS Apple Silicon용 HanPage 다운로드">
+            <span class="download-button-heading">
+              <svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+              <span>Mac 다운로드</span>
+              <svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
+            </span>
+          </a>
+          <a class="download-button hero-download" data-download="windows" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.8/HanPage_0.8.8_x64-setup.exe" aria-label="Windows x64용 HanPage 다운로드">
+            <span class="download-button-heading">
+              <svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg>
+              <span>Windows 다운로드</span>
+              <svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
+            </span>
+          </a>
         </div>
         <p class="platform-line">Web <span aria-hidden="true">/</span> macOS <span aria-hidden="true">/</span> Windows</p>
         <figure class="editor-preview">
