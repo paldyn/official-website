@@ -17,8 +17,12 @@ async function refreshDesktopRelease() {
     if (!mac?.browser_download_url?.startsWith(downloadPrefix) ||
         !windows?.browser_download_url?.startsWith(downloadPrefix) ||
         !release.html_url?.startsWith('https://github.com/paldyn/HanPage/releases/tag/') || !version) return;
-    document.querySelector('[data-download="mac"]').href = mac.browser_download_url;
-    document.querySelector('[data-download="windows"]').href = windows.browser_download_url;
+    document.querySelectorAll('[data-download="mac"]').forEach(link => {
+      link.href = mac.browser_download_url;
+    });
+    document.querySelectorAll('[data-download="windows"]').forEach(link => {
+      link.href = windows.browser_download_url;
+    });
     document.querySelector('[data-release-version]').textContent = `v${version[1]}`;
     document.querySelector('[data-release-link]').href = release.html_url;
   } catch {
