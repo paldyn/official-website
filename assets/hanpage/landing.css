@@ -85,10 +85,15 @@ h2{font-size:clamp(28px,3.15vw,42px);font-weight:700;line-height:1.3;letter-spac
 .start-card-actions{width:100%;margin-top:auto;padding-top:32px}
 .start-card-actions>.button{width:100%;min-height:62px}
 .download-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.download-button{display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:62px;padding:11px 14px;background:#edf4ff;color:var(--blue);border:1px solid #d5e3fb;border-radius:10px;transition:background .2s,border-color .2s}
-.download-button>span{display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:650;gap:8px}
-.download-button small{font-size:10px;line-height:14px;color:#4c6995}
-.download-button:hover{background:#e2edff;border-color:#b7cff8}
+.download-button{display:flex;flex-direction:column;justify-content:center;gap:7px;min-height:78px;padding:14px 16px;background:linear-gradient(135deg,#2268df,#1854bd);color:#fff;border:1px solid #1c5dcf;border-radius:12px;box-shadow:0 5px 14px #2268df20,inset 0 1px 0 #ffffff1a;transition:background .2s,border-color .2s,box-shadow .2s}
+.download-button[data-download="mac"]{background:linear-gradient(135deg,#34425d,#202d46);border-color:#25354f;box-shadow:0 5px 14px #202e451a,inset 0 1px 0 #ffffff1a}
+.download-button-heading{display:grid;grid-template-columns:22px minmax(0,1fr) 16px;align-items:center;gap:9px;font-size:15px;line-height:22px;font-weight:650;white-space:nowrap}
+.download-os-icon{display:block;width:22px;height:22px}
+.download-arrow{display:block;width:16px;height:16px;color:#eff5ff}
+.download-button small{padding-left:31px;font-size:10px;line-height:14px;color:#eff5ff;white-space:nowrap}
+.download-button[data-download="mac"] small{color:#dce6f6}
+.download-button:hover{background:linear-gradient(135deg,#1c5ecf,#1248a8);border-color:#154eb5;box-shadow:0 7px 20px #2268df30,inset 0 1px 0 #ffffff1a}
+.download-button[data-download="mac"]:hover{background:linear-gradient(135deg,#2b3851,#17243c);border-color:#1c2b43;box-shadow:0 7px 20px #202e4526,inset 0 1px 0 #ffffff1a}
 .download-note{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;margin-top:13px;font-size:11px;line-height:18px;color:#68778e}
 .download-note a{color:#44648f}
 .download-note a:hover{text-decoration:underline}
@@ -119,7 +124,7 @@ h2{font-size:clamp(28px,3.15vw,42px);font-weight:700;line-height:1.3;letter-spac
 .footer-credit{margin-top:20px;padding-top:17px;border-top:1px solid #edf1f7;font-size:10px;line-height:1.8;color:#68778e}
 .footer-credit a{text-decoration:underline;text-underline-offset:2px}
 @media(min-width:1440px){.hero{padding-top:70px}.editor-preview{margin-top:50px}}
-@media(max-width:900px){.nav-links{gap:20px}.hero{padding-top:44px}h1{letter-spacing:-2.4px}.feature-grid{gap:14px}.feature-card{padding:18px 18px 26px}.feature-card h3{font-size:20px}.feature-card p{font-size:13px}.start-card{padding:28px}.faq-section{gap:36px;grid-template-columns:1fr 1.4fr}.faq-heading h2{font-size:26px}.closing-inner h2{font-size:30px}}
+@media(max-width:900px){.nav-links{gap:20px}.hero{padding-top:44px}h1{letter-spacing:-2.4px}.feature-grid{gap:14px}.feature-card{padding:18px 18px 26px}.feature-card h3{font-size:20px}.feature-card p{font-size:13px}.start-card{padding:28px}.download-buttons{grid-template-columns:1fr}.faq-section{gap:36px;grid-template-columns:1fr 1.4fr}.faq-heading h2{font-size:26px}.closing-inner h2{font-size:30px}}
 @media(max-width:680px){
   .container{width:calc(100% - 40px)}
   .nav{height:72px;gap:16px}
@@ -174,9 +179,12 @@ h2{font-size:clamp(28px,3.15vw,42px);font-weight:700;line-height:1.3;letter-spac
   .start-description{font-size:14px;margin-top:13px}
   .start-card-actions{padding-top:27px}
   .start-label{font-size:9px}
-  .download-button{padding-inline:12px}
-  .download-button>span{font-size:14px}
-  .download-button small{font-size:9px}
+  .download-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .download-button{padding:13px 12px;min-height:76px}
+  .download-button-heading{grid-template-columns:20px minmax(0,1fr) 14px;gap:7px;font-size:14px;line-height:20px}
+  .download-os-icon{width:20px;height:20px}
+  .download-arrow{width:14px;height:14px}
+  .download-button small{padding-left:27px;font-size:9px}
   .faq-section{grid-template-columns:1fr;gap:28px}
   .faq-heading h2{font-size:28px}
   .faq-heading>a{margin-top:13px;font-size:12px}
@@ -192,5 +200,6 @@ h2{font-size:clamp(28px,3.15vw,42px);font-weight:700;line-height:1.3;letter-spac
   .footer-links{gap:18px;font-size:10px}
   .footer-credit{margin-top:17px;font-size:9px}
 }
-@media(max-width:360px){.container{width:calc(100% - 32px)}h1{font-size:42px}.hero-actions .button{font-size:11px;padding-inline:7px;gap:5px}.feature-card{padding:21px 16px;grid-template-columns:minmax(0,1fr) 90px;column-gap:10px}.feature-card h3{font-size:18px}.feature-card p{font-size:11px}.feature-art{transform:scale(.87)}.start-card{padding:24px}.download-buttons{gap:8px}.download-button{padding-inline:10px}.download-button small{font-size:8px}.closing-inner h2{font-size:26px}}
+@media(max-width:400px){.download-buttons{grid-template-columns:1fr}.download-button{padding-inline:16px}.download-button small{font-size:10px}}
+@media(max-width:360px){.container{width:calc(100% - 32px)}h1{font-size:42px}.hero-actions .button{font-size:11px;padding-inline:7px;gap:5px}.feature-card{padding:21px 16px;grid-template-columns:minmax(0,1fr) 90px;column-gap:10px}.feature-card h3{font-size:18px}.feature-card p{font-size:11px}.feature-art{transform:scale(.87)}.start-card{padding:24px}.download-buttons{gap:8px}.closing-inner h2{font-size:26px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
