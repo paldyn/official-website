@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QueryBase — 나의 데이터베이스 워크스페이스.</title>
+  <meta name="description" content="연결부터 SQL 작성과 결과 확인까지, 하나의 데이터베이스 워크스페이스. QueryBase는 개발 중인 데스크톱 데이터베이스 클라이언트입니다.">
+  <meta name="theme-color" content="#fafcfc">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://paldyn.com/querybase/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="QueryBase">
+  <meta property="og:title" content="QueryBase — 나의 데이터베이스 워크스페이스.">
+  <meta property="og:description" content="데이터베이스를 연결하고, SQL을 작성하고, 결과를 확인하세요. 개발 중인 데스크톱 앱, QueryBase.">
+  <meta property="og:url" content="https://paldyn.com/querybase/">
+  <meta property="og:image" content="https://paldyn.com/assets/querybase/workspace-preview.png">
+  <meta property="og:image:width" content="2880">
+  <meta property="og:image:height" content="1920">
+  <meta property="og:image:alt" content="QueryBase 개발 화면. 샘플 데이터베이스 탐색기, SQL 편집기와 조회 결과.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/querybase/favicon.png?v=20261007" type="image/png" sizes="128x128">
+  <link rel="icon" href="../assets/querybase/favicon.svg?v=20261007" type="image/svg+xml" sizes="any">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
+  <link rel="stylesheet" href="../assets/querybase/landing.css?v=20261007">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="QueryBase 주 메뉴">
+      <a class="brand" href="./" aria-label="QueryBase 소개 홈"><img src="../assets/products/querybase-mark.svg" alt="" width="64" height="64"><span>QueryBase</span></a>
+      <div class="nav-links">
+        <a class="nav-features" href="#features">기능 소개</a>
+        <a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a>
+        <a class="nav-release" href="#release">개발 안내 <span aria-hidden="true">↓</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR DATABASE WORKSPACE.</p>
+          <h1 id="hero-title">데이터베이스 작업을,<br><span>하나의 워크스페이스에서.</span></h1>
+          <p class="hero-description">연결하고, SQL을 작성하고, 결과를 확인하세요.<br>매일의 데이터베이스 작업을 위한 데스크톱 앱, QueryBase.</p>
+          <a class="button hero-link" href="#workspace">작업 공간 둘러보기 <span aria-hidden="true">↓</span></a>
+          <p class="hero-status"><span aria-hidden="true"></span> Desktop app · 개발 중</p>
+        </div>
+        <figure class="workspace-preview" id="workspace">
+          <div class="preview-frame"><img src="../assets/querybase/workspace-preview.png" alt="QueryBase 실제 개발 화면. 왼쪽의 SQLite 샘플 데이터베이스 탐색기, 중앙의 주문 조회 SQL, 아래의 6행 조회 결과를 함께 보여줍니다." width="2880" height="1920" fetchpriority="high" decoding="async"></div>
+          <figcaption><span>실제 앱 화면 · SQLite 샘플 데이터</span><a href="../assets/querybase/workspace-preview.png" target="_blank" rel="noopener">화면 크게 보기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></figcaption>
+        </figure>
+        <div class="database-strip" aria-label="현재 연결과 SQL 실행을 구현한 데이터베이스">
+          <p>서로 다른 데이터베이스.<br> 익숙한 하나의 작업 공간.</p>
+          <ul><li>SQLite</li><li>PostgreSQL</li><li>MySQL</li><li>Oracle</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section section container" id="features" aria-labelledby="features-title">
+      <div class="section-heading"><p class="section-label">연결에서 결과까지</p><h2 id="features-title">쿼리에 집중하는 흐름.</h2><p>데이터를 찾고, 질문을 쓰고, 답을 확인하는 일을<br class="desktop-break"> 하나의 화면에서 이어가세요.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-top"><span>01 / EXPLORE</span><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><ellipse cx="16" cy="8" rx="10" ry="4" stroke="currentColor" stroke-width="1.6"/><path d="M6 8v16c0 2.2 4.5 4 10 4s10-1.8 10-4V8M6 16c0 2.2 4.5 4 10 4s10-1.8 10-4" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <h3>구조부터 한눈에.</h3><p>연결한 데이터베이스의 스키마, 테이블과 컬럼을 탐색하세요. 객체의 DDL도 함께 살펴볼 수 있어요.</p>
+          <div class="feature-tags"><span>스키마 탐색</span><span>DDL 조회</span></div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-top"><span>02 / QUERY</span><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m11 9-7 7 7 7m10-14 7 7-7 7M18 5l-4 22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>SQL을 더 자연스럽게.</h3><p>테이블과 컬럼의 자동 완성으로 SQL을 작성하고, 선택한 영역이나 커서가 놓인 문장을 실행하세요.</p>
+          <div class="feature-tags"><span>자동 완성</span><span>문장 실행</span></div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-top"><span>03 / RESULTS</span><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="5" width="24" height="22" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M4 12h24M12 12v15M4 19h24" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <h3>답을 읽기 쉽게.</h3><p>컬럼과 결과를 그리드에서 확인하세요. 조회한 행은 CSV나 JSON으로 내보내 다음 작업에 사용할 수 있어요.</p>
+          <div class="feature-tags"><span>결과 그리드</span><span>CSV · JSON</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="flow-section section" aria-labelledby="flow-title">
+      <div class="container flow-layout">
+        <div class="flow-copy"><p class="section-label">오늘의 작업을 이어서</p><h2 id="flow-title">생각의 흐름은,<br>끊기지 않게.</h2><p>파일로 남기고, 기록에서 찾고,<br>내가 편한 화면으로 작업하세요.</p>
+          <div class="sql-note" aria-hidden="true"><span class="sql-note-label">recent_orders.sql</span><code><span class="sql-keyword">SELECT</span> *<br><span class="sql-keyword">FROM</span> orders<br><span class="sql-keyword">ORDER BY</span> created_at <span class="sql-keyword">DESC</span>;</code><div><span class="sql-dot"></span> 하나의 문장부터, 다음 작업까지.</div></div>
+        </div>
+        <div class="flow-details">
+          <article><span class="detail-number" aria-hidden="true">01</span><div><h3>파일로 이어지는 SQL</h3><p>SQL 파일을 열고 저장하세요. 편집 중인 초안과 작업 탭도 다시 이어갈 수 있어요.</p></div></article>
+          <article><span class="detail-number" aria-hidden="true">02</span><div><h3>다시 찾는 실행 기록</h3><p>실행했던 SQL과 결과 상태를 기록에서 확인하고, 필요한 쿼리를 다시 살펴보세요.</p></div></article>
+          <article><span class="detail-number" aria-hidden="true">03</span><div><h3>연결의 맥락을 확인</h3><p>연결별 환경과 보호 수준을 구분해, 지금 작업하는 데이터베이스를 확인하세요.</p></div></article>
+          <article><span class="detail-number" aria-hidden="true">04</span><div><h3>내게 맞는 작업 화면</h3><p>한국어와 영어, 라이트와 다크 테마, 강조 색과 화면 밀도를 선택할 수 있어요.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="release-section section container" id="release" aria-labelledby="release-title">
+      <div class="release-panel"><div class="release-copy"><p class="section-label">QUERYBASE FOR DESKTOP</p><h2 id="release-title">다음 쿼리를 위한 공간.<br>지금 만들고 있어요.</h2><p>macOS, Windows, Linux를 위한 데스크톱 앱을 개발 중이에요.<br>다운로드와 지원 환경은 공개 배포 시 이곳에서 안내합니다.</p></div><div class="release-status"><span class="development-badge"><span aria-hidden="true"></span> 개발 중</span><p>아직 공개 배포 전입니다.</p></div></div>
+    </section>
+
+    <section class="faq-section section container" aria-labelledby="faq-title">
+      <div class="faq-heading"><p class="section-label">알아두면 좋아요</p><h2 id="faq-title">궁금한 점이 있나요?</h2><a href="mailto:support@paldyn.com?subject=QueryBase">문의하기 <span aria-hidden="true">↗</span></a></div>
+      <div class="faq-list">
+        <details><summary>웹에서도 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>QueryBase는 데스크톱 데이터베이스 클라이언트예요. 이 페이지는 제품과 개발 중인 기능을 소개합니다.</p></details>
+        <details><summary>어떤 데이터베이스를 연결할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 SQLite, PostgreSQL, MySQL, Oracle의 연결과 SQL 실행을 구현했어요. 공개 버전의 지원 범위와 환경은 배포 시 안내할 예정입니다.</p></details>
+        <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 개발 중으로 공개 설치 파일은 아직 제공하지 않아요. 소개된 기능과 화면은 출시 과정에서 달라질 수 있습니다.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer container"><a class="footer-brand" href="./">QueryBase <span>by PALDYN</span></a><div class="footer-links"><a href="../">PALDYN</a><a href="mailto:support@paldyn.com?subject=QueryBase">문의</a><span>© 2026 PALDYN</span></div></footer>
+</body>
+</html>
