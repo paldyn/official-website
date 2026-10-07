@@ -22,7 +22,7 @@
   <link rel="icon" href="../assets/hanpage/favicon.png" type="image/png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261007-hero">
+  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261007-document">
   <script defer src="../assets/hanpage/landing.js?v=20261007-hero"></script>
 </head>
 <body>
@@ -35,7 +35,7 @@
       </a>
       <div class="nav-links">
         <a class="nav-feature" href="#features">기능 소개</a>
-        <a class="nav-download" href="#start">다운로드</a>
+        <a class="nav-download" href="#downloads">다운로드</a>
         <a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a>
         <a class="nav-start" href="https://hanpage.paldyn.com/" target="_blank" rel="noopener">웹에서 열기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a>
       </div>
@@ -48,7 +48,7 @@
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> HWP · HWPX, 더 가볍게 시작</p>
         <h1 id="hero-title">한글 문서를, <span>어디서든.</span></h1>
         <p class="hero-description">웹에서도, 데스크톱에서도.<br class="mobile-break"> 문서를 열고 편집하는 새로운 작업 공간.</p>
-        <div class="hero-actions">
+        <div class="hero-actions" id="downloads">
           <a class="download-button hero-download" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.8/HanPage_0.8.8_aarch64.dmg" aria-label="macOS Apple Silicon용 HanPage 다운로드">
             <span class="download-button-heading">
               <svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
@@ -64,7 +64,7 @@
             </span>
           </a>
         </div>
-        <p class="platform-line">Web <span aria-hidden="true">/</span> macOS <span aria-hidden="true">/</span> Windows</p>
+        <p class="platform-line">Mac · Apple Silicon <span aria-hidden="true">/</span> Windows · x64</p>
         <figure class="editor-preview">
           <div class="preview-window">
             <div class="window-bar" aria-hidden="true"><span class="window-dots"><i></i><i></i><i></i></span><span>HanPage · 문서 편집 화면</span><span class="window-label">HWP + HWPX</span></div>
@@ -103,51 +103,28 @@
       </div>
     </section>
 
-    <section class="start-section section" id="start" aria-labelledby="start-title">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">두 가지 시작, 하나의 HanPage</p>
-          <h2 id="start-title">당신의 작업 방식에 맞게.</h2>
-          <p>지금 바로 웹에서. 매일 쓰는 컴퓨터에는 앱으로.</p>
+    <section class="document-section section" aria-labelledby="document-title">
+      <div class="container document-layout">
+        <div class="document-scene" aria-hidden="true">
+          <div class="document-paper">
+            <div class="document-kicker">나의 프로젝트 노트</div>
+            <div class="document-heading">작은 아이디어를,<br>한 페이지로.</div>
+            <div class="document-rule"></div>
+            <div class="document-lines"><i></i><i></i><i></i></div>
+            <div class="document-table"><span>할 일</span><span>진행</span><span>내용 정리</span><span>진행 중</span><span>문서 검토</span><span>확인</span></div>
+            <div class="document-bottom"><div class="document-picture"><svg viewBox="0 0 64 48" fill="none"><circle cx="44" cy="14" r="5" fill="currentColor"/><path d="m7 39 16-20 12 14 7-8 15 14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="document-lines"><i></i><i></i><i></i></div></div>
+            <div class="document-page-number">01</div>
+          </div>
         </div>
-        <div class="start-grid">
-          <article class="start-card">
-            <svg class="platform-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="8" width="38" height="32" rx="5" stroke="currentColor" stroke-width="2"/><path d="M5 17h38" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="12.5" r="1" fill="currentColor"/><circle cx="14" cy="12.5" r="1" fill="currentColor"/><path d="m20 24-4 4 4 4m8-8 4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <p class="start-label">HANPAGE FOR WEB</p>
-            <h3>웹에서 바로.</h3>
-            <p class="start-description">설치 없이 브라우저를 열고<br>문서 작업을 시작하세요.</p>
-            <div class="start-card-actions">
-              <a class="button button-blue" href="https://hanpage.paldyn.com/" target="_blank" rel="noopener">웹에서 시작하기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a>
-              <p class="download-note">브라우저에서 HWP · HWPX 열기</p>
-            </div>
-          </article>
-          <article class="start-card start-card-desktop">
-            <svg class="platform-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="7" width="38" height="27" rx="4" stroke="currentColor" stroke-width="2"/><path d="M5 28h38M24 34v7m-9 0h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <p class="start-label">HANPAGE FOR DESKTOP</p>
-            <h3>내 컴퓨터에서.</h3>
-            <p class="start-description">macOS와 Windows 앱으로<br>문서를 열고 편집하세요.</p>
-            <div class="start-card-actions">
-              <div class="download-buttons">
-                <a class="download-button" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.8/HanPage_0.8.8_aarch64.dmg" aria-label="macOS Apple Silicon용 HanPage 다운로드">
-                  <span class="download-button-heading">
-                    <svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-                    <span>macOS</span>
-                    <svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
-                  </span>
-                  <small>Apple Silicon · .dmg</small>
-                </a>
-                <a class="download-button" data-download="windows" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.8/HanPage_0.8.8_x64-setup.exe" aria-label="Windows x64용 HanPage 다운로드">
-                  <span class="download-button-heading">
-                    <svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg>
-                    <span>Windows</span>
-                    <svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
-                  </span>
-                  <small>x64 · .exe</small>
-                </a>
-              </div>
-              <p class="download-note">데스크톱 <span data-release-version>v0.8.8</span><span aria-hidden="true"> · </span><a data-release-link href="https://github.com/paldyn/HanPage/releases/tag/hanpage-desktop-v0.8.8" target="_blank" rel="noopener">릴리스 노트 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></p>
-            </div>
-          </article>
+        <div class="document-copy">
+          <p class="section-label">한 페이지를 채우는 방법</p>
+          <h2 id="document-title">생각을 담고,<br>문서로 정리하세요.</h2>
+          <p class="document-description">글자와 문단을 다듬고, 표와 그림으로 내용을 더하세요. 익숙한 HWP · HWPX 문서를 나만의 흐름으로 완성해요.</p>
+          <ul class="document-details">
+            <li><span class="document-detail-number" aria-hidden="true">01</span><div><h3>글자와 문단</h3><p>서식과 정렬로 읽기 편하게.</p></div></li>
+            <li><span class="document-detail-number" aria-hidden="true">02</span><div><h3>표로 정리</h3><p>흩어진 내용을 한눈에.</p></div></li>
+            <li><span class="document-detail-number" aria-hidden="true">03</span><div><h3>그림 더하기</h3><p>텍스트에 설명을 더해요.</p></div></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -156,8 +133,8 @@
       <div class="faq-heading"><p class="section-label">알아두면 좋아요</p><h2 id="faq-title">궁금한 점이 있나요?</h2><a href="https://github.com/paldyn/HanPage/issues" target="_blank" rel="noopener">의견 보내기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div>
       <div class="faq-list">
         <details><summary>어떤 문서를 열 수 있나요?<span aria-hidden="true">+</span></summary><p>HWP와 HWPX 문서를 열고 편집할 수 있어요. 글자와 문단 서식, 표, 그림 등 문서 편집 도구를 제공합니다.</p></details>
-        <details><summary>데스크톱 앱은 어떤 컴퓨터에서 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 macOS Apple Silicon(M 시리즈)과 Windows x64용 설치 파일을 제공합니다. 위 다운로드 영역에서 내 컴퓨터에 맞는 파일을 선택해주세요.</p></details>
-        <details><summary>업데이트는 어디서 확인하나요?<span aria-hidden="true">+</span></summary><p>HanPage의 <a href="https://github.com/paldyn/HanPage/releases/latest" target="_blank" rel="noopener">GitHub 릴리스 페이지<span class="sr-only">, 새 창</span></a>에서 최신 데스크톱 버전과 변경 내용을 확인할 수 있어요.</p></details>
+        <details><summary>데스크톱 앱은 어떤 컴퓨터에서 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 macOS Apple Silicon(M 시리즈)과 Windows x64용 설치 파일을 제공합니다. 페이지 상단에서 내 컴퓨터에 맞는 다운로드 버튼을 선택해주세요.</p></details>
+        <details><summary>업데이트는 어디서 확인하나요?<span aria-hidden="true">+</span></summary><p>데스크톱 <span data-release-version>v0.8.8</span>의 변경 내용은 <a data-release-link href="https://github.com/paldyn/HanPage/releases/tag/hanpage-desktop-v0.8.8" target="_blank" rel="noopener">릴리스 노트<span class="sr-only">, 새 창</span></a>에서 확인할 수 있어요.</p></details>
       </div>
     </section>
 
