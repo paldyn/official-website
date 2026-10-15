@@ -186,3 +186,6 @@ playground.xcworkspace
 
 # 디자인 시안 (커밋하지 않음)
 _comps/
+
+# 검토용 시안. 배포·공개하지 않는다. 로컬에서만 본다.
+drafts/
