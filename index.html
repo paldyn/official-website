@@ -1272,11 +1272,42 @@
       .footer-bottom span:last-child { display:block; margin-top:8px; }
     }
 
-    /* 360px 아래에서는 "비공개 테스트" 같은 긴 상태가 한 줄로는 타일을 빠져나가
-       옆 타일을 덮는다(320px 에서 16.7px). 줄바꿈을 허용해 타일 안에 가둔다.
-       마크(52px)가 두 줄 알약보다 높아 타일 높이는 그대로다. */
+    /* 좁은 폭에서 "비공개 테스트" 같은 긴 상태는 한 줄로 타일을 빠져나가 옆 타일을 덮는다.
+       ★ 줄바꿈 허용은 마크 축소보다 넓은 구간부터 열어야 한다. 둘을 같은 360px 에 묶으면
+         361~367px 에서 알약이 아직 nowrap 인 채 폭이 모자라 타일 밖으로 3.2px 밀려난다.
+       white-space:normal 은 강제가 아니라 허용이라, 자리가 넉넉한 375px 에서는 여전히
+       한 줄로 나온다 — 넓은 쪽 모양은 그대로다. */
+    @media (max-width: 419.98px) {
+      .product-status {
+        white-space: normal;
+        text-align: center;
+        /* keep-all 이 없으면 "비공개 테/스트" 처럼 단어 중간이 잘린다. 띄어쓰기에서만 끊는다.
+           anywhere 는 최후 수단 — 한 단어가 알약보다 넓을 때만 발동해 넘침을 막는다. */
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    /* 여기서부터는 알약에 넘겨줄 폭이 모자라 마크를 줄인다.
+       제품별 광학 보정은 같은 비율로 함께 줄여 여덟 개의 상대 크기를 유지한다. */
     @media (max-width: 360px) {
-      .product-status { white-space: normal; text-align: center; }
+      .product-tile { --mark-box:46px; --mark-img:46px; }
+      .product--ascend { --mark-img:56px; }
+      .product--branch { --mark-img:42px; }
+      .product--devdock { --mark-img:51px; }
+      .product--pogae { --mark-img:60px; }
+      .tile-head { gap:7px; }
+    }
+
+    /* 333px 아래로는 마크와 알약을 한 줄에 둘 폭이 없다. 마크를 더 줄여도 소용없다 —
+       머리 높이를 정하는 쪽이 마크가 아니라 여러 줄이 된 알약이라, 줄일수록 더 어긋난다.
+       알약을 아래 줄로 내려 타일 폭을 통째로 주면 다시 한 줄로 들어간다. */
+    @media (max-width: 332.98px) {
+      .tile-head { flex-wrap: wrap; row-gap: 6px; }
+      .product-status { width: 100%; margin-top: 0; }
+      /* 가장 긴 플랫폼 문구("WEB · DESKTOP")가 두 줄이 되면 그 타일만 키가 커진다.
+         자간을 조이면 한 줄에 들어간다 — 대문자 라벨이라 자간을 줄여도 읽힌다. */
+      .product-platform { letter-spacing: .04em; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1372,7 +1403,7 @@
             <div class="stat-label">제품 운영</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">7</div>
+            <div class="stat-number">8</div>
             <div class="stat-label">제품 · 서비스</div>
           </div>
           <div class="stat-item">
