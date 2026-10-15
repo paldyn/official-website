@@ -54,6 +54,19 @@
 
     html { scroll-behavior: smooth; }
 
+    /* 화면에서는 안 보이고 보조기술에만 읽히는 글. display:none 은 읽히지도 않는다. */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
     body {
       font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
@@ -619,31 +632,33 @@
 
     /* Products — 제품 수에 관계없이 같은 형식으로 추가하는 앱 디렉터리. */
     section.products {
-      --product-row-bg: var(--bg);
-      --product-row-border: rgba(35, 36, 45, .08);
-      --product-tint: 36%;
-      --product-glow: 24%;
-      --product-fade: 18%;
-      --product-end: 10%;
-      --product-border-tint: 24%;
+      --product-tile-bg: var(--bg);
+      --product-tile-border: rgba(35, 36, 45, .09);
+      --product-tint: 14%;
+      --product-glow: 20%;
+      --product-fade: 4%;
+      --product-border-tint: 22%;
       --product-border-hover: 42%;
       --product-text-dim: #52535e;
-      --product-pill-bg: rgba(255, 255, 255, .6);
+      --product-pill-bg: rgba(255, 255, 255, .62);
+      --product-shadow: 0 2px 10px rgba(15, 20, 40, .03);
+      --product-shadow-hover: 0 8px 24px rgba(15, 20, 40, .08);
       max-width: none;
       padding: 6.5rem 3rem 7rem;
       background: var(--bg);
     }
     [data-theme="dark"] section.products {
-      --product-row-bg: var(--bg-subtle);
-      --product-row-border: rgba(255, 255, 255, .08);
-      --product-tint: 15%;
-      --product-glow: 12%;
-      --product-fade: 5%;
-      --product-end: 0%;
-      --product-border-tint: 12%;
-      --product-border-hover: 30%;
+      --product-tile-bg: var(--bg-subtle);
+      --product-tile-border: rgba(255, 255, 255, .08);
+      --product-tint: 9%;
+      --product-glow: 11%;
+      --product-fade: 0%;
+      --product-border-tint: 14%;
+      --product-border-hover: 32%;
       --product-text-dim: #a0a0a0;
       --product-pill-bg: rgba(255, 255, 255, .055);
+      --product-shadow: none;
+      --product-shadow-hover: 0 8px 24px rgba(0, 0, 0, .5);
       --text-dim: #a0a0a0;
     }
     section.products > .reveal { max-width:1104px; margin:0 auto; }
@@ -665,112 +680,115 @@
       font-size: 0.9rem;
       line-height: 1.75;
     }
-    .product-directory {
+    /* 전폭 행에서 4열 타일로. 행은 제품 8개에 1,012px 을 썼고 한 화면을 넘겼다.
+       타일은 두 줄에 들어가 같은 정보를 868px 로 담는다.
+       행에서 한 줄을 차지하던 상태 표시를 마크와 같은 줄(오른쪽 위)로 올린 것이 핵심이다. */
+    .product-grid {
       display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
-    .product-row {
+    .product-tile {
       --product-accent: #8f93a3;
       --product-companion: var(--product-accent);
+      --mark-box: 64px;
+      --mark-img: 64px;
       --text-dim: var(--product-text-dim);
-      display: grid;
-      grid-template-columns: 56px minmax(0, 1fr) 222px 32px;
-      align-items: center;
-      gap: 24px;
-      min-height: 116px;
-      padding: 24px;
-      border: 1px solid color-mix(in srgb, var(--product-accent) var(--product-border-tint), var(--product-row-border));
+      display: flex;
+      flex-direction: column;
+      min-height: 228px;
+      padding: 22px;
+      border: 1px solid color-mix(in srgb, var(--product-accent) var(--product-border-tint), var(--product-tile-border));
       border-radius: 16px;
       background:
-        radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--product-companion) var(--product-glow), transparent), transparent 65%),
-        linear-gradient(110deg, color-mix(in srgb, var(--product-accent) var(--product-tint), var(--product-row-bg)), color-mix(in srgb, var(--product-accent) var(--product-fade), var(--product-row-bg)) 58%, color-mix(in srgb, var(--product-accent) var(--product-end), var(--product-row-bg)));
-      box-shadow: 0 3px 15px rgba(15, 20, 40, .025);
+        radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--product-companion) var(--product-glow), transparent), transparent 62%),
+        linear-gradient(155deg, color-mix(in srgb, var(--product-accent) var(--product-tint), var(--product-tile-bg)), color-mix(in srgb, var(--product-accent) var(--product-fade), var(--product-tile-bg)) 70%);
+      box-shadow: var(--product-shadow);
       color: var(--text);
       text-decoration: none;
       scroll-margin-top: 110px;
-      transition: border-color .2s ease, box-shadow .2s ease;
+      transition: border-color .2s ease, box-shadow .25s ease, transform .25s ease;
     }
-    a.product-row:hover {
-      border-color: color-mix(in srgb, var(--product-accent) var(--product-border-hover), var(--product-row-border));
-      box-shadow: 0 5px 20px rgba(15, 20, 40, .045);
+    /* 호버 판정을 움직이지 않는 격자 칸(li)에 건다. 타일 자신에게 걸면 2px 떠오르는 순간
+       아래 모서리 2px 띠에서 커서가 타일 밖으로 빠져 호버가 켜졌다 꺼졌다를 반복한다. */
+    a.product-tile:hover,
+    .product-grid > li:hover > a.product-tile {
+      border-color: color-mix(in srgb, var(--product-accent) var(--product-border-hover), var(--product-tile-border));
+      box-shadow: var(--product-shadow-hover);
+      transform: translateY(-2px);
     }
-    .product--ascend { --product-accent:#f58358; --product-companion:#e8b878; }
-    .product--branch { --product-accent:#9474de; --product-companion:#c09fde; }
-    .product--querybase { --product-accent:#00b8a9; --product-companion:#75cec1; }
-    .product--hanpage { --product-accent:#528bee; --product-companion:#8eb8f1; }
-    .product--nemo { --product-accent:#aa91bd; --product-companion:#c9b6c3; }
-    .product--baro { --product-accent:#5184d6; --product-companion:#8dc6d9; }
-    .product--devdock { --product-accent:#54aaa8; --product-companion:#91c9b6; }
-    .product-row:focus-visible,
+    .product-tile:focus-visible,
     .contact-btn:focus-visible,
     .footer-col a:focus-visible,
     .footer-brand-link:focus-visible { outline:2px solid var(--accent-bright); outline-offset:4px; }
+
+    .product--ascend { --product-accent:#f58358; --product-companion:#e8b878; --mark-img:78px; }
+    .product--branch { --product-accent:#9474de; --product-companion:#c09fde; --mark-img:59px; }
+    .product--querybase { --product-accent:#00b8a9; --product-companion:#75cec1; }
+    .product--hanpage { --product-accent:#528bee; --product-companion:#8eb8f1; }
+    .product--pogae { --product-accent:#5f8a76; --product-companion:#cba9e6; --mark-img:84px; }
+    .product--nemo { --product-accent:#aa91bd; --product-companion:#c9b6c3; }
+    .product--baro { --product-accent:#5184d6; --product-companion:#8dc6d9; }
+    .product--devdock { --product-accent:#54aaa8; --product-companion:#91c9b6; --mark-img:71px; }
+
+    /* 타일 전체가 링크다. 링크 이름은 DOM 순서대로 읽히므로 제품명이 먼저 와야 한다.
+       머리를 DOM 에서 뒤로 보내고 order 로 다시 위에 올린다. 보이는 모습은 그대로고,
+       링크 이름이 여덟 개 중 다섯 개나 "운영 중"으로 시작하는 것만 사라진다. */
+    .tile-head {
+      order: -1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
     .product-mark {
-      width: 56px;
-      height: 56px;
+      flex: none;
+      width: var(--mark-box);
+      height: var(--mark-box);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border-radius: 14px;
+      border-radius: 15px;
     }
-    .product-mark img { display:block; flex:none; width:56px; height:56px; object-fit:contain; }
+    .product-mark img { display:block; flex:none; width:var(--mark-img); height:var(--mark-img); object-fit:contain; }
     .product--nemo .product-mark { background:#292735; }
     .product--devdock .product-mark { background:#17373c; }
-    .product--devdock .product-mark img { width:62px; height:62px; }
     .product--ascend .product-mark { background:#ff6b00; }
-    .product--ascend .product-mark img { width:68px; height:68px; }
     .product--branch .product-mark { background:#fff; box-shadow:inset 0 0 0 1px #ededee; }
-    .product--branch .product-mark img { width:52px; height:52px; }
     .product--hanpage .product-mark { background:#2268df; }
     /* 원본 심볼의 바깥 프레임을 표시 영역에서 제외하고 중앙 한글 마크를 보존한다. */
     .product--hanpage .product-mark img { clip-path:inset(12%); }
+    .product--pogae .product-mark { background:#F6F2E9; }
     .product--baro .product-mark { background:#fff; box-shadow:inset 0 0 0 1px #ededee; }
-    .product-copy { min-width:0; }
-    .product-copy h3 {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.2;
-      letter-spacing: -.045em;
-      font-weight: 600;
-    }
-    .product-copy p {
-      margin: 6px 0 0;
-      color: var(--text-dim);
-      font-size: 13px;
-      line-height: 1.65;
-      word-break: keep-all;
-    }
-    .product-meta {
-      display: grid;
-      grid-template-columns: 104px 106px;
-      gap: 12px;
-      align-items: center;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-    .product-platform { color:var(--text-dim); }
+
     .product-status {
       --status-dot: var(--text-dim);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      min-height:28px;
-      padding:5px 9px;
-      border-radius:7px;
-      background:var(--product-pill-bg);
-      text-align:center;
-      line-height:1.4;
+      /* 줄이지 못하게 막으면 좁은 폭에서 알약이 타일 밖으로 빠져나가 옆 타일을 덮는다.
+         남는 폭이 모자랄 때는 알약 안에서 줄을 바꾼다(마크가 더 높아 줄 높이는 그대로다). */
+      flex: 0 1 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 3px;
+      padding: 4px 9px 4px 8px;
+      border-radius: 999px;
+      background: var(--product-pill-bg);
+      color: var(--text-dim);
+      font-size: .68rem;
+      line-height: 1.35;
+      letter-spacing: -.01em;
+      white-space: nowrap;
     }
     .product-status::before {
       content:"";
       flex:none;
-      width:7px;
-      height:7px;
+      width:6px;
+      height:6px;
       border-radius:50%;
       background:var(--status-dot);
       box-shadow:0 0 0 3px color-mix(in srgb, var(--status-dot) 18%, transparent);
@@ -779,8 +797,54 @@
     .product-status.is-upcoming { --status-dot:#b77713; }
     [data-theme="dark"] .product-status.is-public { --status-dot:#5ac897; }
     [data-theme="dark"] .product-status.is-upcoming { --status-dot:#e8b657; }
-    .product-arrow { text-align:right; font-size:18px; line-height:1; }
-    a.product-row .product-arrow { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--product-pill-bg); }
+
+    .tile-body { margin-top: auto; }
+    .product-copy { display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+    .product-copy h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.2;
+      letter-spacing: -.045em;
+      font-weight: 600;
+    }
+    .product-arrow {
+      flex: none;
+      font-size: .95rem;
+      line-height: 1;
+      color: var(--text-dim);
+      transition: transform .25s ease, color .2s ease;
+    }
+    a.product-tile:hover .product-arrow,
+    .product-grid > li:hover > a.product-tile .product-arrow { color:var(--text); transform:translate(2px, -2px); }
+    /* 설명 높이를 세 줄로 고정한다. 문구 길이가 달라도 제품명 위치가 어긋나지 않아야
+       격자로 읽힌다. 세 줄이면 기존 설명을 한 글자도 줄이지 않고 그대로 쓸 수 있다. */
+    .product-desc {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      min-height: calc(3 * 1.5em);
+      margin: 7px 0 0;
+      color: var(--text-dim);
+      font-size: .8rem;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+    .product-platform {
+      margin: 11px 0 0;
+      color: var(--text-dim);
+      font-size: .66rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .product-tile, .product-arrow { transition: none; }
+      a.product-tile:hover,
+      .product-grid > li:hover > a.product-tile { transform: none; }
+      a.product-tile:hover .product-arrow,
+      .product-grid > li:hover > a.product-tile .product-arrow { transform: none; }
+    }
 
     /* Research — 카드 대신 편집형 인덱스로 제품 영역과 다른 리듬을 만든다. */
     section.research-modern { padding: 7.5rem 3rem 8rem; }
@@ -1158,16 +1222,14 @@
       .footer-bottom { margin-right:-1.5rem; margin-left:-1.5rem; padding-right:1.5rem; padding-left:1.5rem; }
     }
 
-    @media (max-width: 900px) {
-      .product-row {
-        grid-template-columns:56px minmax(0,1fr) 32px;
-        grid-template-areas:"mark copy arrow" ". meta arrow";
-        gap:10px 20px;
-      }
-      .product-mark { grid-area:mark; align-self:start; }
-      .product-copy { grid-area:copy; }
-      .product-meta { grid-area:meta; display:flex; flex-wrap:wrap; gap:8px 12px; }
-      .product-arrow { grid-area:arrow; align-self:center; }
+    /* 4열을 1100px 까지만 쓴다. 그 아래로 가면 타일 폭이 230px 밑으로 떨어져
+       제품명과 설명이 답답해진다. */
+    @media (max-width: 1099.98px) {
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 759.98px) {
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 620px) {
@@ -1175,26 +1237,26 @@
       .product-section-head { padding-inline:8px; }
       .product-section-head { margin-bottom: 2.5rem; }
       .product-section-head h2 { font-size: 2rem; }
-      .product-row {
-        grid-template-columns:44px minmax(0,1fr) 24px;
-        grid-template-areas:"mark copy arrow" ". meta arrow";
-        gap:12px 14px;
-        min-height:132px;
-        padding:20px 14px;
-        border-radius:12px;
+      /* 480px 에서도 2열을 유지한다. 1열로 내려가면 세로가 길어져 이 형식의
+         유일한 장점이 사라지므로, 열 수 대신 타일 내부 치수를 줄인다. */
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap:8px; }
+      .product-tile {
+        --mark-box:52px;
+        --mark-img:52px;
+        min-height:196px;
+        padding:16px;
+        border-radius:14px;
       }
-      .product-mark { grid-area:mark; align-self:start; width:44px; height:44px; border-radius:11px; }
-      .product-mark img { width:44px; height:44px; }
-      .product--devdock .product-mark img { width:49px; height:49px; }
-      .product--ascend .product-mark img { width:54px; height:54px; }
-      .product--branch .product-mark img { width:42px; height:42px; }
-      .product-copy { grid-area:copy; }
-      .product-copy h3 { font-size:22px; }
-      .product-copy p { font-size:12px; }
-      .product-meta { grid-area:meta; display:flex; flex-wrap:wrap; gap:8px 10px; font-size:11px; }
-      .product-status { min-height:26px; padding:4px 8px; }
-      .product-arrow { grid-area:arrow; align-self:center; }
-      a.product-row .product-arrow { width:24px; height:24px; font-size:15px; }
+      .product--ascend { --mark-img:63px; }
+      .product--branch { --mark-img:48px; }
+      .product--devdock { --mark-img:58px; }
+      .product--pogae { --mark-img:68px; }
+      .tile-head { margin-bottom:18px; }
+      .product-mark { border-radius:13px; }
+      .product-status { gap:5px; padding:3px 7px 3px 6px; font-size:.62rem; }
+      .product-copy h3 { font-size:1.08rem; }
+      .product-desc { font-size:.75rem; margin-top:5px; }
+      .product-platform { margin-top:9px; font-size:.6rem; letter-spacing:.08em; }
       .research-intro h2 { font-size:2.35rem; }
       .research-row {
         grid-template-columns:40px minmax(0,1fr) auto;
@@ -1210,8 +1272,14 @@
       .footer-bottom span:last-child { display:block; margin-top:8px; }
     }
 
+    /* 360px 아래에서는 "비공개 테스트" 같은 긴 상태가 한 줄로는 타일을 빠져나가
+       옆 타일을 덮는다(320px 에서 16.7px). 줄바꿈을 허용해 타일 안에 가둔다.
+       마크(52px)가 두 줄 알약보다 높아 타일 높이는 그대로다. */
+    @media (max-width: 360px) {
+      .product-status { white-space: normal; text-align: center; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .product-row,
       .contact-btn { transition:none; }
       .contact-btn:hover { transform:none; }
       .research-row::before,
@@ -1335,61 +1403,112 @@
         <h2>쓰이는 것을 만듭니다.</h2>
         <p>작은 문제를 발견하고, 실제로 쓰이는 제품으로 만듭니다.</p>
       </div>
-      <ul class="product-directory" role="list">
+      <ul class="product-grid" role="list">
         <li>
-          <a class="product-row product--ascend" href="./ascend/">
-            <span class="product-mark"><img src="./assets/products/ascend-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-            <div class="product-copy"><h3>Ascend</h3><p>운동 기록을 더 빠르고 간단하게.</p></div>
-            <span class="product-meta"><span class="product-platform">iPhone</span><span class="product-status">비공개 테스트</span></span>
-            <span class="product-arrow" aria-hidden="true">→</span>
+          <a class="product-tile product--ascend" href="./ascend/">
+            <div class="tile-body">
+              <div class="product-copy"><h3>Ascend</h3><span class="product-arrow" aria-hidden="true">→</span></div>
+              <p class="product-desc">운동 기록을 더 빠르고 간단하게.</p>
+              <p class="product-platform">iPhone</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/ascend-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
+              <span class="product-status">비공개 테스트</span>
+            </div>
           </a>
         </li>
         <li>
-          <a class="product-row product--branch" id="product-branch" href="./branch/" aria-label="Branch 소개 페이지">
-            <span class="product-mark"><img src="./assets/products/branch-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-            <div class="product-copy"><h3>Branch</h3><p>저장소, 브랜치, 커밋을 한곳에서 관리하는 Git 클라이언트.</p></div>
-            <span class="product-meta"><span class="product-platform">Desktop</span><span class="product-status is-upcoming">출시 준비 중</span></span>
-            <span class="product-arrow" aria-hidden="true">→</span>
+          <a class="product-tile product--branch" id="product-branch" href="./branch/">
+            <div class="tile-body">
+              <div class="product-copy"><h3>Branch</h3><span class="product-arrow" aria-hidden="true">→</span></div>
+              <p class="product-desc">저장소, 브랜치, 커밋을 한곳에서 관리하는 Git 클라이언트.</p>
+              <p class="product-platform">Desktop</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/branch-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
+              <span class="product-status is-upcoming">출시 준비 중</span>
+            </div>
           </a>
         </li>
         <li>
-          <a class="product-row product--querybase" href="./querybase/" aria-label="QueryBase 소개 페이지">
-            <span class="product-mark"><img src="./assets/products/querybase-mark.svg" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
-            <div class="product-copy"><h3>QueryBase</h3><p>데이터베이스 탐색부터 SQL 실행까지, 하나의 작업 공간.</p></div>
-            <span class="product-meta"><span class="product-platform">Desktop</span><span class="product-status is-upcoming">개발 중</span></span>
-            <span class="product-arrow" aria-hidden="true">→</span>
+          <a class="product-tile product--querybase" href="./querybase/">
+            <div class="tile-body">
+              <div class="product-copy"><h3>QueryBase</h3><span class="product-arrow" aria-hidden="true">→</span></div>
+              <p class="product-desc">데이터베이스 탐색부터 SQL 실행까지, 하나의 작업 공간.</p>
+              <p class="product-platform">Desktop</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/querybase-mark.svg" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+              <span class="product-status is-upcoming">개발 중</span>
+            </div>
           </a>
         </li>
         <li>
-          <a class="product-row product--hanpage" href="./hanpage/" aria-label="HanPage 소개 페이지">
-            <span class="product-mark"><img src="./assets/products/hanpage-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-            <div class="product-copy"><h3>HanPage</h3><p>웹과 데스크톱에서 HWP·HWPX 문서를 열고 편집해요.</p></div>
-            <span class="product-meta"><span class="product-platform">Web · Desktop</span><span class="product-status is-public">운영 중</span></span>
-            <span class="product-arrow" aria-hidden="true">→</span>
+          <a class="product-tile product--hanpage" href="./hanpage/">
+            <div class="tile-body">
+              <div class="product-copy"><h3>HanPage</h3><span class="product-arrow" aria-hidden="true">→</span></div>
+              <p class="product-desc">웹과 데스크톱에서 HWP·HWPX 문서를 열고 편집해요.</p>
+              <p class="product-platform">Web · Desktop</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/hanpage-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
+              <span class="product-status is-public">운영 중</span>
+            </div>
           </a>
         </li>
         <li>
-          <a class="product-row product--nemo" href="https://nemo.paldyn.com/" target="_blank" rel="noopener" aria-label="Nemo 사이트, 새 창에서 열기">
-            <span class="product-mark"><img src="./assets/products/nemo-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-            <div class="product-copy"><h3>Nemo</h3><p>노트와 저널을 한곳에 모으는 작업 공간.</p></div>
-            <span class="product-meta"><span class="product-platform">Web</span><span class="product-status is-public">운영 중</span></span>
-            <span class="product-arrow" aria-hidden="true">↗</span>
+          <a class="product-tile product--pogae" href="./pogae/">
+            <div class="tile-body">
+              <div class="product-copy"><h3>POGAE</h3><span class="product-arrow" aria-hidden="true">→</span></div>
+              <p class="product-desc">두 사람이 함께한 시간과 사진, 추억을 한 겹씩 포개요.</p>
+              <p class="product-platform">Web</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/pogae-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
+              <span class="product-status is-public">운영 중</span>
+            </div>
           </a>
         </li>
         <li>
-          <a class="product-row product--baro" href="https://baro.paldyn.com/" target="_blank" rel="noopener" aria-label="BARO 사이트, 새 창에서 열기">
-            <span class="product-mark"><img src="./assets/products/baro-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-            <div class="product-copy"><h3>BARO</h3><p>자주 쓰는 링크를 한곳에 모으는 나만의 시작 페이지.</p></div>
-            <span class="product-meta"><span class="product-platform">Web</span><span class="product-status is-public">운영 중</span></span>
-            <span class="product-arrow" aria-hidden="true">↗</span>
+          <a class="product-tile product--nemo" href="https://nemo.paldyn.com/" target="_blank" rel="noopener">
+            <div class="tile-body">
+              <div class="product-copy"><h3>Nemo</h3><span class="product-arrow" aria-hidden="true">↗</span></div>
+              <p class="product-desc">노트와 저널을 한곳에 모으는 작업 공간.</p>
+              <p class="product-platform">Web</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/nemo-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
+              <span class="product-status is-public">운영 중</span>
+            </div>
+            <span class="visually-hidden">새 창에서 열기</span>
           </a>
         </li>
         <li>
-          <a class="product-row product--devdock" href="https://devdock.paldyn.com/" target="_blank" rel="noopener" aria-label="DevDock 사이트, 새 창에서 열기">
-            <span class="product-mark"><img src="./assets/products/devdock-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-            <div class="product-copy"><h3>DevDock</h3><p>JSON · JWT · 해시 · UUID를 한 탭에서.</p></div>
-            <span class="product-meta"><span class="product-platform">Web</span><span class="product-status is-public">운영 중</span></span>
-            <span class="product-arrow" aria-hidden="true">↗</span>
+          <a class="product-tile product--baro" href="https://baro.paldyn.com/" target="_blank" rel="noopener">
+            <div class="tile-body">
+              <div class="product-copy"><h3>BARO</h3><span class="product-arrow" aria-hidden="true">↗</span></div>
+              <p class="product-desc">자주 쓰는 링크를 한곳에 모으는 나만의 시작 페이지.</p>
+              <p class="product-platform">Web</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/baro-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
+              <span class="product-status is-public">운영 중</span>
+            </div>
+            <span class="visually-hidden">새 창에서 열기</span>
+          </a>
+        </li>
+        <li>
+          <a class="product-tile product--devdock" href="https://devdock.paldyn.com/" target="_blank" rel="noopener">
+            <div class="tile-body">
+              <div class="product-copy"><h3>DevDock</h3><span class="product-arrow" aria-hidden="true">↗</span></div>
+              <p class="product-desc">JSON · JWT · 해시 · UUID를 한 탭에서.</p>
+              <p class="product-platform">Web</p>
+            </div>
+            <div class="tile-head">
+              <span class="product-mark"><img src="./assets/products/devdock-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
+              <span class="product-status is-public">운영 중</span>
+            </div>
+            <span class="visually-hidden">새 창에서 열기</span>
           </a>
         </li>
       </ul>
@@ -1490,7 +1609,7 @@
         <a class="footer-brand-link" href="./" aria-label="PALDYN 홈"><img class="logo-light" src="./assets/logo-symbol-dark.png" alt=""><img class="logo-dark" src="./assets/logo-symbol-light.png" alt=""><span>PALDYN</span></a>
         <p>소프트웨어 제품과 디지털 서비스를 직접 만들고 운영합니다.</p>
       </div>
-      <div class="footer-col"><h3>Products</h3><a href="./ascend/">Ascend</a><a href="./branch/">Branch</a><a href="./querybase/">QueryBase</a><a href="./hanpage/">HanPage</a><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo ↗</a><a href="https://baro.paldyn.com/" target="_blank" rel="noopener">BARO ↗</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock ↗</a></div>
+      <div class="footer-col"><h3>Products</h3><a href="./ascend/">Ascend</a><a href="./branch/">Branch</a><a href="./querybase/">QueryBase</a><a href="./hanpage/">HanPage</a><a href="./pogae/">POGAE</a><a href="https://nemo.paldyn.com/" target="_blank" rel="noopener">Nemo ↗</a><a href="https://baro.paldyn.com/" target="_blank" rel="noopener">BARO ↗</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">DevDock ↗</a></div>
       <div class="footer-col"><h3>Research</h3><a href="https://ailab.paldyn.com/" target="_blank" rel="noopener">AI Lab ↗</a><a href="https://techblog.paldyn.com/" target="_blank" rel="noopener">Tech Blog ↗</a></div>
       <div class="footer-col"><h3>PALDYN Network</h3><a href="https://nbyte.xyz/" target="_blank" rel="noopener" aria-label="PALDYN 네트워크 회사 NBYTE 공식 사이트, 새 창">NBYTE ↗</a><a href="https://honey-peanut.github.io/Oriduck-s-Tools/" target="_blank" rel="noopener" aria-label="PALDYN 네트워크 Oriduck, 새 창">Oriduck ↗</a></div>
       <div class="footer-col"><h3>Company</h3><a href="mailto:contact@paldyn.com">Contact</a><a href="./cnt/privacy/">Privacy</a></div>

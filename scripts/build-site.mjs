@@ -14,6 +14,7 @@ const publicEntries = [
   'hanpage',
   'branch',
   'querybase',
+  'pogae',
   'cnt',
   'drafts',
 ];
