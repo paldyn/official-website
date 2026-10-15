@@ -16,7 +16,6 @@ const publicEntries = [
   'querybase',
   'pogae',
   'cnt',
-  'drafts',
 ];
 
 const mimeTypes = {
