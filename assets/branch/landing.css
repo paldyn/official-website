@@ -80,6 +80,23 @@ h2{font-size:clamp(28px,3.1vw,40px);line-height:1.3;font-weight:600;letter-spaci
 .button{display:inline-flex;justify-content:center;align-items:center;gap:24px;min-height:50px;padding:14px 21px;font-size:14px;font-family:var(--font);line-height:1.5;font-weight:500;border-radius:8px}
 .release-button{width:100%;min-height:56px;background:#232735;border:1px solid #232735;color:#fff;opacity:1;cursor:default}
 .release-action p{text-align:center;margin-top:12px;font-size:11px;line-height:1.8;color:#606879}
+.requirements-panel{margin-top:24px;padding:30px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.requirements-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:24px}
+.requirements-heading h3{font-size:20px;line-height:1.5;font-weight:600;letter-spacing:-.6px}
+.requirements-heading p{font-size:12px;line-height:1.8;color:var(--muted)}
+.requirements-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;border-block:1px solid var(--line)}
+.requirements-facts>div{min-width:0;padding:17px 20px}
+.requirements-facts>div:first-child{padding-left:0}
+.requirements-facts>div+div{border-left:1px solid var(--line)}
+.requirements-facts dt{margin-bottom:7px;font-size:11px;line-height:1.6;color:var(--muted)}
+.requirements-facts dd{margin:0;font-size:16px;line-height:1.5;font-weight:600;letter-spacing:-.3px}
+.requirements-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;margin-top:24px}
+.requirements-details h4{margin:0 0 9px;font-size:14px;line-height:1.5;font-weight:600;letter-spacing:-.3px}
+.requirements-details p{font-size:13px;line-height:1.85;color:var(--muted)}
+.requirements-details p+p{margin-top:9px}
+.requirements-note{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:11px;line-height:1.8;color:var(--muted)}
+.requirements-link{color:var(--violet);border-bottom:1px solid var(--violet-line)}
+.requirements-link:hover{color:var(--violet-hover);border-color:var(--violet)}
 .faq-section{display:grid;grid-template-columns:1fr 1.6fr;gap:64px}
 .faq-heading h2{font-size:29px;letter-spacing:-1px}
 .faq-heading>a{display:inline-block;min-height:44px;margin-top:14px;padding-block:10px;font-size:12px;line-height:24px;color:var(--violet)}
@@ -116,6 +133,11 @@ h2{font-size:clamp(28px,3.1vw,40px);line-height:1.3;font-weight:600;letter-spaci
 .details-grid{grid-template-columns:1fr;gap:32px}.details-heading h2{font-size:28px;letter-spacing:-1.1px}.details-heading>p:last-child{font-size:14px;margin-top:16px}.detail-list{gap:25px}.detail-list article{gap:14px}.detail-icon{width:36px;height:36px;border-radius:9px}.detail-list h3{font-size:16px}.detail-list p{font-size:13px}
 .release-section{padding-bottom:0}.release-panel{padding:29px 24px;border-radius:13px;gap:24px}.release-copy .section-label{font-size:11px;letter-spacing:1px}.release-copy h2{font-size:26px;line-height:1.4;letter-spacing:-1px}.release-copy>p:last-child{font-size:13px;margin-top:14px}.release-copy>p:last-child br{display:none}.release-action{max-width:none}.release-button{font-size:12px;min-height:52px;padding-inline:10px}.release-action p{font-size:11px;line-height:1.7;text-align:center}
 .faq-section{grid-template-columns:1fr;gap:25px}.faq-heading h2{font-size:28px}.faq-heading>a{font-size:12px;margin-top:10px}.faq-list summary{font-size:14px;padding-block:20px;gap:18px}.faq-list details p{font-size:13px;padding-right:16px}.site-footer{padding-block:23px 25px;flex-direction:column;align-items:flex-start;gap:12px}.footer-brand{font-size:16px}.footer-links{gap:22px;font-size:11px}
+}
+@media(max-width:700px){
+.requirements-panel{margin-top:20px;padding:24px 22px;border-radius:13px}.requirements-heading{display:block;margin-bottom:20px}.requirements-heading h3{font-size:19px}.requirements-heading p{margin-top:7px}
+.requirements-facts{grid-template-columns:1fr}.requirements-facts>div,.requirements-facts>div:first-child{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0}.requirements-facts>div+div{border-left:0;border-top:1px solid var(--line)}.requirements-facts dt{margin:0}.requirements-facts dd{font-size:15px;text-align:right}
+.requirements-details{grid-template-columns:1fr;gap:22px;margin-top:22px}.requirements-note{margin-top:22px;padding-top:15px}
 }
 @media(max-width:360px){.container{width:calc(100% - 32px)}h1{font-size:43px;letter-spacing:-2.4px}.signature-tile{width:155px;height:155px}.workspace-copy h2{font-size:26px}.workspace-copy .description{font-size:13px}.workflow-card{padding:22px}.workflow-card h3{font-size:20px}.release-panel{padding:27px 20px}.release-copy h2{font-size:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
