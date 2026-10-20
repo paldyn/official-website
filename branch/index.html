@@ -22,28 +22,28 @@
   <link rel="icon" href="../assets/branch/favicon.png?v=20261007-full-icon" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-os">
+  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-hero-os">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
   <header class="site-header">
     <nav class="container nav" aria-label="Branch 주 메뉴">
       <a class="brand" href="./" aria-label="Branch 소개 홈"><img src="../assets/products/branch-mark.png" alt="" width="256" height="256"><span>Branch</span></a>
-      <div class="nav-links"><a class="nav-workflow" href="#workflow">워크플로</a><a class="nav-preview" href="#app-preview">앱 화면</a><a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a><a class="nav-release" href="#release">다운로드 <span aria-hidden="true">↓</span></a></div>
+      <div class="nav-links"><a class="nav-workflow" href="#workflow">워크플로</a><a class="nav-preview" href="#app-preview">앱 화면</a><a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a><a class="nav-release" href="#requirements">지원 환경 <span aria-hidden="true">↓</span></a></div>
     </nav>
   </header>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero-main">
-          <div class="hero-copy"><p class="eyebrow">GIT, TIED TOGETHER.</p><h1 id="hero-title">흩어진 작업을, <br><span class="hero-accent">하나로.</span></h1></div>
-          <div class="signature-tile"><img src="../assets/products/branch-mark.png" alt="Branch 심볼" width="256" height="256" decoding="async"></div>
-          <div class="hero-bottom"><p>당신의 프로젝트가 모이는 <br>데스크톱 Git 클라이언트.</p>
+          <div class="hero-copy"><p class="eyebrow">GIT, TIED TOGETHER.</p><h1 id="hero-title">흩어진 작업을, <br><span class="hero-accent">하나로.</span></h1><p class="hero-description">당신의 프로젝트가 모이는 <br>데스크톱 Git 클라이언트.</p></div>
+          <div class="hero-aside">
+            <div class="signature-tile"><img src="../assets/products/branch-mark.png" alt="Branch 심볼" width="256" height="256" decoding="async"></div>
             <div class="hero-downloads" id="download">
               <h2 class="sr-only">운영체제별 다운로드</h2>
               <div class="os-buttons">
-                <a class="os-button os-ready" href="https://github.com/paldyn/Branch-releases/releases/latest/download/Branch_0.1.0_aarch64.dmg" aria-describedby="hero-release-meta" data-release-download><span class="os-label"><strong>Mac용 다운로드</strong><small>Apple silicon</small></span><svg class="os-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
-                <p class="os-button os-soon"><span class="os-label"><strong>Windows</strong><small>준비 중이에요</small></span></p>
+                <a class="os-button os-ready" href="https://github.com/paldyn/Branch-releases/releases/latest/download/Branch_0.1.0_aarch64.dmg" aria-label="Apple silicon Mac용 Branch 다운로드" aria-describedby="hero-release-meta" data-release-download><svg class="os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="os-label"><strong>Mac 다운로드</strong><small>Apple silicon</small></span><svg class="os-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
+                <p class="os-button os-soon"><svg class="os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span class="os-label"><strong>Windows</strong><small>준비 중이에요</small></span></p>
               </div>
               <p class="hero-release-meta" id="hero-release-meta"><span data-release-version>버전 0.1.0</span> · macOS 11 이상 · 무료 공개 베타 · <a href="#requirements">지원 환경</a></p>
               <p class="hero-legal">설치하거나 사용하면 <a href="terms/">이용약관</a>에 동의하는 것으로 봅니다.</p>
