@@ -34,14 +34,14 @@
   <link rel="icon" href="../assets/branch/favicon.png?v=20261007-full-icon" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-filled-nav">
+  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-navigation-cleanup">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
   <header class="site-header">
     <nav class="container nav" aria-label="Branch 주 메뉴">
       <a class="brand" href="./" aria-label="Branch 소개 홈"><img src="../assets/products/branch-mark.png" alt="" width="256" height="256"><span>Branch</span></a>
-      <div class="nav-links"><a class="nav-workflow" href="#workflow">워크플로</a><a class="nav-preview" href="#app-preview">앱 화면</a><a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a><a class="nav-release" href="#getting-started">시작 가이드 <span aria-hidden="true">↓</span></a></div>
+      <div class="nav-links"><a class="nav-workflow" href="#workflow">워크플로</a><a class="nav-preview" href="#app-preview">앱 화면</a><a class="nav-release" href="#getting-started">시작 가이드 <span aria-hidden="true">↓</span></a></div>
     </nav>
   </header>
   <main id="main">
@@ -55,7 +55,7 @@
                 <a class="os-button os-ready" href="https://github.com/paldyn/Branch-releases/releases/latest/download/Branch_0.1.0_aarch64.dmg" aria-label="Mac 다운로드, Apple silicon용 Branch" aria-describedby="hero-release-meta" data-release-download><svg class="os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="os-label"><strong>Mac 다운로드</strong><small>Apple silicon</small></span><svg class="os-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
                 <p class="os-button os-soon"><svg class="os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span class="os-label"><strong>Windows</strong><small>준비 중이에요</small></span></p>
               </div>
-              <p class="hero-release-meta" id="hero-release-meta"><a href="https://github.com/paldyn/Branch-releases/releases/latest" target="_blank" rel="noopener"><span data-release-version>버전 0.1.0</span> <span aria-hidden="true">↗</span><span class="sr-only"> 릴리즈 노트, 새 창</span></a> · macOS 11 이상 · 무료 공개 베타 · <a href="#requirements">지원 환경</a></p>
+              <p class="hero-release-meta" id="hero-release-meta"><a href="https://github.com/paldyn/Branch-releases/releases/latest" target="_blank" rel="noopener"><span data-release-version>버전 0.1.0</span> <span aria-hidden="true">↗</span><span class="sr-only"> 릴리즈 노트, 새 창</span></a> · macOS 11 이상 · 무료 공개 베타</p>
               <p class="hero-legal">설치하거나 사용하면 <a href="terms/">이용약관</a>에 동의하는 것으로 봅니다.</p>
             </div>
           </div>
@@ -99,28 +99,15 @@
           <li><span aria-hidden="true">03</span><div><h3>첫 변경 살펴보기</h3><p>파일의 Diff와 커밋 그래프에서 작업의 흐름을 확인하세요.</p></div></li>
         </ol>
       </div>
-      <section class="requirements-panel" id="requirements" aria-labelledby="requirements-title">
-        <div class="requirements-heading"><h3 id="requirements-title">지원 환경</h3><p>첫 공개 베타를 설치하기 전에 확인해 주세요.</p></div>
-        <dl class="requirements-facts">
-          <div><dt>Mac</dt><dd>Apple silicon</dd></div>
-          <div><dt>운영체제</dt><dd>macOS 11 이상</dd></div>
-          <div><dt>WebKit</dt><dd>16.2 이상</dd></div>
-        </dl>
-        <div class="requirements-details">
-          <article><h4>Git 실행 환경</h4><p>macOS 12 이상에서는 Git과 Git LFS가 앱에 포함되어 별도 Git 설치 없이 사용할 수 있어요.</p><p>macOS 11에서는 시스템 Git 2.38 이상이 필요해요. 다른 macOS에서도 원하면 설정에서 시스템 Git을 선택할 수 있어요.</p></article>
-          <article><h4>원격 저장소 인증</h4><p>기존 Git·SSH·키체인 설정을 사용해요. 앱 내 로그인은 제공하지 않으므로 원격 작업 전에 인증을 준비해 주세요.</p><p>새 Mac으로 옮긴 뒤에도 인증은 별도로 설정해야 해요.</p></article>
-          <article><h4>설치와 업데이트</h4><p>내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 끌어다 놓으세요. macOS가 앱을 확인할 수 없다거나 손상되었다고 알리면 열지 말고, 파일을 지운 뒤 <a class="requirements-link" href="mailto:support@paldyn.com?subject=Branch">알려 주세요</a>.</p><p>설치한 뒤에는 Branch가 새 버전을 확인하고 내려받아요(설정 → 업데이트에서 바꿀 수 있어요). 설치는 직접 확인한 뒤에만 진행돼요.</p></article>
-        </div>
-        <p class="requirements-note">Windows 버전은 준비 중이에요. Intel Mac과 Linux는 첫 공개 베타에서 지원하지 않아요.</p>
-      </section>
     </section>
 
     <section class="faq-section section container" aria-labelledby="faq-title"><div class="faq-heading"><p class="section-label">시작하기 전에</p><h2 id="faq-title">궁금한 점이 있나요?</h2><a href="mailto:support@paldyn.com?subject=Branch">문의하기 <span aria-hidden="true">↗</span></a></div><div class="faq-list">
       <details><summary>웹에서도 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>Branch는 내 컴퓨터의 저장소를 다루는 데스크톱 Git 클라이언트예요. 웹 버전은 없고, 이 페이지에서 Mac용 앱을 내려받을 수 있어요.</p></details>
-      <details><summary>Windows에서도 쓸 수 있나요?<span aria-hidden="true">+</span></summary><p>Windows 버전을 준비하고 있어요. 공개되면 이 페이지 맨 위의 Windows 버튼에서 내려받을 수 있어요. 지금은 Apple silicon Mac용 첫 공개 베타만 제공해요. <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
-      <details><summary>Git을 따로 설치해야 하나요?<span aria-hidden="true">+</span></summary><p>macOS 12 이상에서는 앱에 포함된 Git과 Git LFS를 사용할 수 있어요. macOS 11에서는 시스템 Git 2.38 이상이 필요해요. 기존 SSH 키와 Git 인증 설정, 커밋 훅과 서명 설정도 그대로 쓸 수 있어요. <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
-      <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>네. 첫 공개 베타를 이 페이지에서 내려받을 수 있어요. Apple silicon Mac과 macOS 11 이상이 필요해요. 내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 옮기면 돼요. <a class="requirements-link" href="#download">다운로드로 이동</a> · <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
-      <details><summary>요금이 있나요?<span aria-hidden="true">+</span></summary><p>베타 기간에는 무료로 쓸 수 있어요. 유료 플랜을 도입하거나 무료로 제공하는 범위를 바꾸게 되면 적용일 30일 전까지 이 페이지와 업데이트 릴리즈 노트로 알려 드려요. <a class="requirements-link" href="terms/#a4">이용약관 제4조 보기</a></p></details>
+      <details><summary>어떤 컴퓨터에서 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>첫 공개 베타는 Apple silicon Mac에서 사용할 수 있어요. macOS 11 이상과 WebKit 16.2 이상이 필요해요.</p><p>Windows 버전은 준비 중이에요. Intel Mac과 Linux는 아직 지원하지 않아요.</p></details>
+      <details><summary>Git을 따로 설치해야 하나요?<span aria-hidden="true">+</span></summary><p>macOS 12 이상에서는 앱에 포함된 Git과 Git LFS를 사용할 수 있어요. macOS 11에서는 시스템 Git 2.38 이상이 필요해요.</p><p>필요하면 설정에서 시스템 Git을 선택할 수 있어요. 기존 커밋 훅과 서명 설정도 그대로 쓸 수 있어요.</p></details>
+      <details><summary>원격 저장소는 어떻게 연결하나요?<span aria-hidden="true">+</span></summary><p>기존 Git·SSH·키체인 설정을 사용해요. 앱 내 로그인은 제공하지 않으므로 원격 작업 전에 인증을 준비해 주세요. 새 Mac으로 옮긴 뒤에도 인증은 별도로 설정해야 해요.</p></details>
+      <details><summary>설치와 업데이트는 어떻게 하나요?<span aria-hidden="true">+</span></summary><p>내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 옮기세요. <a class="faq-link" href="#download">Mac 다운로드로 이동</a></p><p>macOS가 앱을 확인할 수 없다거나 손상되었다고 알리면 열지 말고, 파일을 지운 뒤 <a class="faq-link" href="mailto:support@paldyn.com?subject=Branch">알려 주세요</a>.</p><p>앱이 새 버전을 확인하고 내려받으며, 설정 → 업데이트에서 바꿀 수 있어요. 설치는 직접 확인한 뒤에만 진행돼요.</p></details>
+      <details><summary>요금이 있나요?<span aria-hidden="true">+</span></summary><p>베타 기간에는 무료로 쓸 수 있어요. 유료 플랜을 도입하거나 무료로 제공하는 범위를 바꾸게 되면 적용일 30일 전까지 이 페이지와 업데이트 릴리즈 노트로 알려 드려요. <a class="faq-link" href="terms/#a4">이용약관 제4조 보기</a></p></details>
     </div></section>
   </main>
   <footer class="site-footer container"><a class="footer-brand" href="./">Branch <span>by PALDYN</span></a><div class="footer-links"><a href="../">PALDYN</a><a href="mailto:support@paldyn.com?subject=Branch">문의</a><a href="terms/">이용약관</a><span>© 2026 PALDYN</span></div></footer>
