@@ -22,7 +22,7 @@
   <link rel="icon" href="../assets/branch/favicon.png?v=20261007-full-icon" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-hero-os">
+  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-refined">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -36,19 +36,18 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero-main">
-          <div class="hero-copy"><p class="eyebrow">GIT, TIED TOGETHER.</p><h1 id="hero-title">흩어진 작업을, <br><span class="hero-accent">하나로.</span></h1><p class="hero-description">당신의 프로젝트가 모이는 <br>데스크톱 Git 클라이언트.</p></div>
-          <div class="hero-aside">
-            <div class="signature-tile"><img src="../assets/products/branch-mark.png" alt="Branch 심볼" width="256" height="256" decoding="async"></div>
+          <div class="hero-copy"><p class="eyebrow">GIT, TIED TOGETHER.</p><h1 id="hero-title">흩어진 작업을, <br><span class="hero-accent">하나로.</span></h1><p class="hero-description">당신의 프로젝트가 모이는 <br>데스크톱 Git 클라이언트.</p>
             <div class="hero-downloads" id="download">
               <h2 class="sr-only">운영체제별 다운로드</h2>
-              <div class="os-buttons">
+              <div class="os-buttons" id="release">
                 <a class="os-button os-ready" href="https://github.com/paldyn/Branch-releases/releases/latest/download/Branch_0.1.0_aarch64.dmg" aria-label="Mac 다운로드, Apple silicon용 Branch" aria-describedby="hero-release-meta" data-release-download><svg class="os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="os-label"><strong>Mac 다운로드</strong><small>Apple silicon</small></span><svg class="os-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
                 <p class="os-button os-soon"><svg class="os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span class="os-label"><strong>Windows</strong><small>준비 중이에요</small></span></p>
               </div>
-              <p class="hero-release-meta" id="hero-release-meta"><span data-release-version>버전 0.1.0</span> · macOS 11 이상 · 무료 공개 베타 · <a href="#requirements">지원 환경</a></p>
+              <p class="hero-release-meta" id="hero-release-meta"><a href="https://github.com/paldyn/Branch-releases/releases/latest" target="_blank" rel="noopener"><span data-release-version>버전 0.1.0</span> <span aria-hidden="true">↗</span><span class="sr-only"> 릴리즈 노트, 새 창</span></a> · macOS 11 이상 · 무료 공개 베타 · <a href="#requirements">지원 환경</a></p>
               <p class="hero-legal">설치하거나 사용하면 <a href="terms/">이용약관</a>에 동의하는 것으로 봅니다.</p>
             </div>
           </div>
+          <div class="hero-aside" aria-hidden="true"><div class="signature-tile"><img src="../assets/products/branch-mark.png" alt="" width="256" height="256" decoding="async"></div></div>
         </div>
         <div class="workspace-preview" id="app-preview">
           <div class="workspace-copy"><p class="eyebrow">YOUR WORKSPACE.</p><h2>열린 작업들 사이에, <br>선명한 흐름.</h2><p class="description">저장소를 정리하고, 변경을 비교하고, <br>커밋까지 자연스럽게 이어가세요.</p><p class="preview-status">macOS · 첫 공개 베타</p></div>
@@ -79,15 +78,14 @@
       </div>
     </div></section>
 
-    <section class="release-section section container" id="release" aria-labelledby="release-title">
-      <div class="release-panel">
-        <div class="release-copy"><p class="section-label">BRANCH FOR MAC</p><h2 id="release-title">당신의 다음 커밋을 위해.</h2><p>Branch의 첫 공개 베타를 내려받으세요. <br>베타 기간에는 개인 작업과 업무 모두에 무료로 쓸 수 있어요.</p></div>
-        <div class="release-action">
-          <a class="button release-button" href="https://github.com/paldyn/Branch-releases/releases/latest/download/Branch_0.1.0_aarch64.dmg" aria-describedby="release-meta" data-release-download><span>Mac용 다운로드</span><svg class="release-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
-          <p class="release-meta" id="release-meta"><span data-release-version>버전 0.1.0</span> · Apple silicon · macOS 11 이상 · DMG</p>
-          <a class="release-secondary" href="https://github.com/paldyn/Branch-releases/releases/latest">GitHub 릴리즈 페이지 <span aria-hidden="true">↗</span></a>
-          <p class="release-legal">설치하거나 사용하면 <a href="terms/">이용약관</a>에 동의하는 것으로 봅니다.</p>
-        </div>
+    <section class="start-section section container" id="getting-started" aria-labelledby="start-title">
+      <div class="start-panel">
+        <div class="start-copy"><p class="section-label">처음 시작하는 Branch</p><h2 id="start-title">내 프로젝트로,<br>가볍게 시작하세요.</h2><p>작업하던 저장소를 그대로 열고,<br>Branch에서 다음 변경을 확인하세요.</p></div>
+        <ol class="start-steps">
+          <li><span aria-hidden="true">01</span><div><h3>앱 설치하기</h3><p>내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 옮기세요.</p></div></li>
+          <li><span aria-hidden="true">02</span><div><h3>저장소 열기</h3><p>내 컴퓨터의 Git 저장소를 열어 작업 공간에 모아보세요.</p></div></li>
+          <li><span aria-hidden="true">03</span><div><h3>첫 변경 살펴보기</h3><p>파일의 Diff와 커밋 그래프에서 작업의 흐름을 확인하세요.</p></div></li>
+        </ol>
       </div>
       <section class="requirements-panel" id="requirements" aria-labelledby="requirements-title">
         <div class="requirements-heading"><h3 id="requirements-title">지원 환경</h3><p>첫 공개 베타를 설치하기 전에 확인해 주세요.</p></div>
@@ -109,7 +107,7 @@
       <details><summary>웹에서도 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>Branch는 내 컴퓨터의 저장소를 다루는 데스크톱 Git 클라이언트예요. 웹 버전은 없고, 이 페이지에서 Mac용 앱을 내려받을 수 있어요.</p></details>
       <details><summary>Windows에서도 쓸 수 있나요?<span aria-hidden="true">+</span></summary><p>Windows 버전을 준비하고 있어요. 공개되면 이 페이지 맨 위의 Windows 버튼에서 내려받을 수 있어요. 지금은 Apple silicon Mac용 첫 공개 베타만 제공해요. <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
       <details><summary>Git을 따로 설치해야 하나요?<span aria-hidden="true">+</span></summary><p>macOS 12 이상에서는 앱에 포함된 Git과 Git LFS를 사용할 수 있어요. macOS 11에서는 시스템 Git 2.38 이상이 필요해요. 기존 SSH 키와 Git 인증 설정, 커밋 훅과 서명 설정도 그대로 쓸 수 있어요. <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
-      <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>네. 첫 공개 베타를 이 페이지에서 내려받을 수 있어요. Apple silicon Mac과 macOS 11 이상이 필요해요. 내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 옮기면 돼요. <a class="requirements-link" href="#release">다운로드로 이동</a> · <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
+      <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>네. 첫 공개 베타를 이 페이지에서 내려받을 수 있어요. Apple silicon Mac과 macOS 11 이상이 필요해요. 내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 옮기면 돼요. <a class="requirements-link" href="#download">다운로드로 이동</a> · <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
       <details><summary>요금이 있나요?<span aria-hidden="true">+</span></summary><p>베타 기간에는 무료로 쓸 수 있어요. 유료 플랜을 도입하거나 무료로 제공하는 범위를 바꾸게 되면 적용일 30일 전까지 이 페이지와 업데이트 릴리즈 노트로 알려 드려요. <a class="requirements-link" href="terms/#a4">이용약관 제4조 보기</a></p></details>
     </div></section>
   </main>
@@ -119,7 +117,7 @@
     // Apple silicon DMG를 찾아 버튼 주소와 버전 표시를 맞춘다. 스크립트가 없으면 위 주소가 그대로 남고,
     // 확인하지 못하면 끊겼을지 모를 파일 주소 대신 릴리즈 페이지로 보낸다.
     (async () => {
-      // 첫 화면의 Mac 버튼과 아래 다운로드 영역의 버튼을 함께 맞춘다.
+      // 첫 화면의 다운로드 버튼과 버전 표시를 최신 릴리즈에 맞춘다.
       const buttons = [...document.querySelectorAll('[data-release-download]')];
       const versions = [...document.querySelectorAll('[data-release-version]')];
       if (!buttons.length) return;
