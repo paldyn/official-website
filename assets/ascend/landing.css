@@ -16,8 +16,9 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-mark { width:32px; height:32px; border-radius:9px; display:grid; place-items:center; flex-shrink:0; background:var(--dr-orange); box-shadow:0 0 0 1px #FFFFFF66 inset; }
 #ascend-daily-focus .dr-mark img { display:block; width:26px; height:26px; object-fit:contain; }
 #ascend-daily-focus .dr-header-right { display:flex; align-items:center; gap:26px; }
-#ascend-daily-focus .dr-provider { font-size:11px; letter-spacing:.08em; text-decoration:none; color:var(--dr-muted)!important; }
-#ascend-daily-focus .dr-header-action { display:inline-flex; align-items:center; border:0; background:transparent; min-height:44px; padding:8px 0; font-size:12px; font-weight:600; color:var(--dr-ink); text-decoration:none; }
+#ascend-daily-focus .dr-page .dr-header-action { display:inline-flex; align-items:center; justify-content:center; gap:12px; border:1px solid var(--dr-orange); border-radius:9px; background:var(--dr-orange); min-height:44px; padding:8px 16px; font-size:12px; font-weight:600; color:var(--dr-ink); text-decoration:none; white-space:nowrap; }
+#ascend-daily-focus .dr-page .dr-header-action:hover { box-shadow:0 5px 14px #FF6B002E; }
+#ascend-daily-focus .dr-page .dr-header-action:focus-visible { outline:2px solid var(--dr-ink); outline-offset:4px; }
 #ascend-daily-focus .dr-page main { display:block; }
 #ascend-daily-focus .dr-kicker { font-size:11px; letter-spacing:.12em; font-weight:600; line-height:1.6; color:var(--dr-label); }
 #ascend-daily-focus .dr-title { font-size:57px; letter-spacing:-.045em; line-height:1.14; font-weight:var(--dr-weight); }
@@ -102,7 +103,6 @@ body { margin:0; background:#FFFFFF; }
   #ascend-daily-focus .dr-art img { object-position:83% center; }
 }
 @media(max-width:760px) {
-  #ascend-daily-focus .dr-provider { display:none; }
   #ascend-daily-focus .dr-page { --dr-column-gap:32px; }
   #ascend-daily-focus .dr-title { font-size:44px; }
   #ascend-daily-focus .dr-copy { font-size:14px; }
@@ -140,7 +140,7 @@ body { margin:0; background:#FFFFFF; }
   #ascend-daily-focus .dr-brand { font-size:12px; letter-spacing:.13em; gap:8px; }
   #ascend-daily-focus .dr-mark { width:28px; height:28px; border-radius:7px; }
   #ascend-daily-focus .dr-mark img { width:23px; height:23px; }
-  #ascend-daily-focus .dr-header-action { font-size:11px; }
+  #ascend-daily-focus .dr-page .dr-header-action { font-size:11px; }
   #ascend-daily-focus .dr-title { font-size:39px; }
   #ascend-daily-focus .dr-trust { padding:20px var(--dr-inset); display:grid; grid-template-columns:1fr; gap:12px; justify-content:start; }
   #ascend-daily-focus .dr-trust p { font-size:12px; }
