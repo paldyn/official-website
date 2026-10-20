@@ -19,7 +19,6 @@ h1,h2,h3,p,figure{margin:0}
 .nav-links{display:flex;align-items:center;gap:30px;font-size:14px;font-weight:600}
 .nav-links a{transition:color .2s}
 .nav-links a:hover{color:var(--app-blue);background:#fff}
-.nav-paldyn{font-size:12px;letter-spacing:.5px;color:var(--muted)}
 .nav-links .nav-start{display:inline-flex;gap:12px;align-items:center;background:var(--app-blue);color:#fff;border:1px solid var(--app-blue);border-radius:9px;padding:11px 16px;box-shadow:0 3px 10px rgba(var(--app-blue-rgb),.08);transition:background .2s,border-color .2s,box-shadow .2s}
 .nav-links .nav-start:hover{background:var(--app-blue-hover);border-color:var(--app-blue-hover);color:#fff;box-shadow:0 5px 14px rgba(var(--app-blue-rgb),.14)}
 .hero{background:radial-gradient(ellipse at 50% 75%,rgba(var(--app-blue-rgb),.16) 0,transparent 65%),linear-gradient(rgba(var(--app-blue-rgb),.045) 0%,rgba(var(--app-blue-rgb),.075) 65%,#fff 100%);padding-top:54px}
@@ -147,7 +146,7 @@ h2{font-size:clamp(28px,3.15vw,42px);font-weight:700;line-height:1.3;letter-spac
   .brand-mark,.brand-mark img{width:32px;height:32px}
   .brand-mark{border-radius:9px}
   .nav-links{font-size:12px;gap:15px}
-  .nav-feature,.nav-paldyn,.nav-download{display:none}
+  .nav-feature,.nav-download{display:none}
   .nav-links .nav-start{font-size:11px;gap:8px;padding:10px 12px;white-space:nowrap}
   .hero{padding-top:38px}
   .eyebrow{font-size:11px}
