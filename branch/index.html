@@ -22,7 +22,7 @@
   <link rel="icon" href="../assets/branch/favicon.png?v=20261007-full-icon" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261023-download">
+  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-os">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -38,7 +38,17 @@
         <div class="hero-main">
           <div class="hero-copy"><p class="eyebrow">GIT, TIED TOGETHER.</p><h1 id="hero-title">흩어진 작업을, <br><span class="hero-accent">하나로.</span></h1></div>
           <div class="signature-tile"><img src="../assets/products/branch-mark.png" alt="Branch 심볼" width="256" height="256" decoding="async"></div>
-          <div class="hero-bottom"><p>당신의 프로젝트가 모이는 <br>데스크톱 Git 클라이언트.</p><a class="text-link" href="#app-preview">Branch 만나보기 <span aria-hidden="true">↘</span></a></div>
+          <div class="hero-bottom"><p>당신의 프로젝트가 모이는 <br>데스크톱 Git 클라이언트.</p>
+            <div class="hero-downloads" id="download">
+              <h2 class="sr-only">운영체제별 다운로드</h2>
+              <div class="os-buttons">
+                <a class="os-button os-ready" href="https://github.com/paldyn/Branch-releases/releases/latest/download/Branch_0.1.0_aarch64.dmg" aria-describedby="hero-release-meta" data-release-download><span class="os-label"><strong>Mac용 다운로드</strong><small>Apple silicon</small></span><svg class="os-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
+                <p class="os-button os-soon"><span class="os-label"><strong>Windows</strong><small>준비 중이에요</small></span></p>
+              </div>
+              <p class="hero-release-meta" id="hero-release-meta"><span data-release-version>버전 0.1.0</span> · macOS 11 이상 · 무료 공개 베타 · <a href="#requirements">지원 환경</a></p>
+              <p class="hero-legal">설치하거나 사용하면 <a href="terms/">이용약관</a>에 동의하는 것으로 봅니다.</p>
+            </div>
+          </div>
         </div>
         <div class="workspace-preview" id="app-preview">
           <div class="workspace-copy"><p class="eyebrow">YOUR WORKSPACE.</p><h2>열린 작업들 사이에, <br>선명한 흐름.</h2><p class="description">저장소를 정리하고, 변경을 비교하고, <br>커밋까지 자연스럽게 이어가세요.</p><p class="preview-status">macOS · 첫 공개 베타</p></div>
@@ -91,12 +101,13 @@
           <article><h4>원격 저장소 인증</h4><p>기존 Git·SSH·키체인 설정을 사용해요. 앱 내 로그인은 제공하지 않으므로 원격 작업 전에 인증을 준비해 주세요.</p><p>새 Mac으로 옮긴 뒤에도 인증은 별도로 설정해야 해요.</p></article>
           <article><h4>설치와 업데이트</h4><p>내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 끌어다 놓으세요. macOS가 앱을 확인할 수 없다거나 손상되었다고 알리면 열지 말고, 파일을 지운 뒤 <a class="requirements-link" href="mailto:support@paldyn.com?subject=Branch">알려 주세요</a>.</p><p>설치한 뒤에는 Branch가 새 버전을 확인하고 내려받아요(설정 → 업데이트에서 바꿀 수 있어요). 설치는 직접 확인한 뒤에만 진행돼요.</p></article>
         </div>
-        <p class="requirements-note">Intel Mac, Windows, Linux는 첫 공개 베타에서 지원하지 않아요.</p>
+        <p class="requirements-note">Windows 버전은 준비 중이에요. Intel Mac과 Linux는 첫 공개 베타에서 지원하지 않아요.</p>
       </section>
     </section>
 
     <section class="faq-section section container" aria-labelledby="faq-title"><div class="faq-heading"><p class="section-label">시작하기 전에</p><h2 id="faq-title">궁금한 점이 있나요?</h2><a href="mailto:support@paldyn.com?subject=Branch">문의하기 <span aria-hidden="true">↗</span></a></div><div class="faq-list">
       <details><summary>웹에서도 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>Branch는 내 컴퓨터의 저장소를 다루는 데스크톱 Git 클라이언트예요. 웹 버전은 없고, 이 페이지에서 Mac용 앱을 내려받을 수 있어요.</p></details>
+      <details><summary>Windows에서도 쓸 수 있나요?<span aria-hidden="true">+</span></summary><p>Windows 버전을 준비하고 있어요. 공개되면 이 페이지 맨 위의 Windows 버튼에서 내려받을 수 있어요. 지금은 Apple silicon Mac용 첫 공개 베타만 제공해요. <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
       <details><summary>Git을 따로 설치해야 하나요?<span aria-hidden="true">+</span></summary><p>macOS 12 이상에서는 앱에 포함된 Git과 Git LFS를 사용할 수 있어요. macOS 11에서는 시스템 Git 2.38 이상이 필요해요. 기존 SSH 키와 Git 인증 설정, 커밋 훅과 서명 설정도 그대로 쓸 수 있어요. <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
       <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>네. 첫 공개 베타를 이 페이지에서 내려받을 수 있어요. Apple silicon Mac과 macOS 11 이상이 필요해요. 내려받은 DMG를 열고 Branch를 응용 프로그램 폴더로 옮기면 돼요. <a class="requirements-link" href="#release">다운로드로 이동</a> · <a class="requirements-link" href="#requirements">지원 환경 확인하기</a></p></details>
       <details><summary>요금이 있나요?<span aria-hidden="true">+</span></summary><p>베타 기간에는 무료로 쓸 수 있어요. 유료 플랜을 도입하거나 무료로 제공하는 범위를 바꾸게 되면 적용일 30일 전까지 이 페이지와 업데이트 릴리즈 노트로 알려 드려요. <a class="requirements-link" href="terms/#a4">이용약관 제4조 보기</a></p></details>
@@ -108,12 +119,15 @@
     // Apple silicon DMG를 찾아 버튼 주소와 버전 표시를 맞춘다. 스크립트가 없으면 위 주소가 그대로 남고,
     // 확인하지 못하면 끊겼을지 모를 파일 주소 대신 릴리즈 페이지로 보낸다.
     (async () => {
-      const button = document.querySelector('[data-release-download]');
-      const version = document.querySelector('[data-release-version]');
-      if (!button || !version) return;
+      // 첫 화면의 Mac 버튼과 아래 다운로드 영역의 버튼을 함께 맞춘다.
+      const buttons = [...document.querySelectorAll('[data-release-download]')];
+      const versions = [...document.querySelectorAll('[data-release-version]')];
+      if (!buttons.length) return;
       const releases = 'https://github.com/paldyn/Branch-releases/releases/';
+      const point = (href) => buttons.forEach((button) => { button.href = href; });
+      const label = (text) => versions.forEach((version) => { version.textContent = text; });
       // 확인하는 동안에는 늘 열리는 릴리즈 페이지로 두고, 최신 DMG를 찾았을 때만 파일 주소로 바꾼다.
-      button.href = `${releases}latest`;
+      point(`${releases}latest`);
       let timer;
       try {
         const controller = new AbortController();
@@ -132,11 +146,11 @@
         if (!shown || typeof url !== 'string' || !url.startsWith(`${releases}download/`) || !url.endsWith(`/${dmg.name}`)) {
           throw new Error('No Apple silicon DMG in the latest release');
         }
-        button.href = url;
-        version.textContent = `버전 ${shown[1]}`;
+        point(url);
+        label(`버전 ${shown[1]}`);
       } catch (error) {
-        button.href = `${releases}latest`;
-        version.textContent = '최신 버전';
+        point(`${releases}latest`);
+        label('최신 버전');
       } finally {
         clearTimeout(timer);
       }
