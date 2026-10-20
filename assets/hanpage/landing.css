@@ -100,13 +100,15 @@ h2{font-size:clamp(28px,3.15vw,42px);font-weight:700;line-height:1.3;letter-spac
 .document-detail-number{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:8px;background:#e7effd;color:var(--blue);font-size:10px;font-weight:650}
 .document-details h3{font-size:15px;line-height:22px;font-weight:650}
 .document-details p{margin-top:3px;color:var(--muted);font-size:12px;line-height:20px}
-.download-button{display:flex;flex-direction:column;justify-content:center;min-height:56px;padding:14px 16px;background:linear-gradient(135deg,#2268df,#1854bd);color:#fff;border:1px solid #1c5dcf;border-radius:12px;box-shadow:0 5px 14px #2268df20,inset 0 1px 0 #ffffff1a;transition:background .2s,border-color .2s,box-shadow .2s}
-.download-button[data-download="mac"]{background:linear-gradient(135deg,#34425d,#202d46);border-color:#25354f;box-shadow:0 5px 14px #202e451a,inset 0 1px 0 #ffffff1a}
+.download-button{display:flex;flex-direction:column;justify-content:center;min-height:56px;padding:14px 16px;background:#fff;color:var(--ink);border:1px solid #dce3ee;border-radius:12px;box-shadow:inset 0 1px 0 #ffffff1a;transition:background .2s,border-color .2s,box-shadow .2s}
 .download-button-heading{display:grid;grid-template-columns:22px minmax(0,1fr) 16px;align-items:center;gap:9px;font-size:15px;line-height:22px;font-weight:650;white-space:nowrap}
 .download-os-icon{display:block;width:22px;height:22px}
-.download-arrow{display:block;width:16px;height:16px;color:#eff5ff}
-.download-button:hover{background:linear-gradient(135deg,#1c5ecf,#1248a8);border-color:#154eb5;box-shadow:0 7px 20px #2268df30,inset 0 1px 0 #ffffff1a}
-.download-button[data-download="mac"]:hover{background:linear-gradient(135deg,#2b3851,#17243c);border-color:#1c2b43;box-shadow:0 7px 20px #202e4526,inset 0 1px 0 #ffffff1a}
+.download-arrow{display:block;width:16px;height:16px;color:inherit}
+.download-button:hover{background:#f1f5fc;border-color:#bccce6}
+[data-download-os="mac"] .download-button[data-download="mac"]{background:linear-gradient(135deg,#34425d,#202d46);color:#fff;border-color:#25354f;box-shadow:0 5px 14px #202e451a,inset 0 1px 0 #ffffff1a}
+[data-download-os="mac"] .download-button[data-download="mac"]:hover{background:linear-gradient(135deg,#2b3851,#17243c);border-color:#1c2b43;box-shadow:0 7px 20px #202e4526,inset 0 1px 0 #ffffff1a}
+[data-download-os="windows"] .download-button[data-download="windows"]{background:linear-gradient(135deg,#2268df,#1854bd);color:#fff;border-color:#1c5dcf;box-shadow:0 5px 14px #2268df20,inset 0 1px 0 #ffffff1a}
+[data-download-os="windows"] .download-button[data-download="windows"]:hover{background:linear-gradient(135deg,#1c5ecf,#1248a8);border-color:#154eb5;box-shadow:0 7px 20px #2268df30,inset 0 1px 0 #ffffff1a}
 .hero-actions .hero-download{min-height:56px;padding:14px 16px;text-align:left}
 .hero-download .download-button-heading{gap:8px}
 .faq-section{display:grid;grid-template-columns:1fr 1.6fr;gap:64px}

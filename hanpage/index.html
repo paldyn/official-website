@@ -7,6 +7,18 @@
   <meta name="description" content="웹에서도, 데스크톱에서도. HanPage로 HWP·HWPX 문서를 열고 편집하세요. 웹에서 바로 시작하거나 macOS·Windows 앱을 다운로드하세요.">
   <meta name="theme-color" content="#2268df">
   <meta name="color-scheme" content="light">
+  <script id="download-platform">
+    (() => {
+      const hints = navigator.userAgentData;
+      const platform = String(hints?.platform || navigator.platform || '');
+      const userAgent = String(navigator.userAgent || '');
+      const mac = /^Mac/i.test(platform) || (!platform && /Macintosh|Mac OS X/i.test(userAgent));
+      const mobile = hints?.mobile === true || /Android|iPhone|iPad|iPod|Mobile|Windows Phone/i.test(userAgent)
+        || (mac && navigator.maxTouchPoints > 1);
+      const windows = /^Win/i.test(platform) || (!platform && /Windows NT/i.test(userAgent));
+      document.documentElement.dataset.downloadOs = mobile ? 'other' : windows ? 'windows' : mac ? 'mac' : 'other';
+    })();
+  </script>
   <link rel="canonical" href="https://paldyn.com/hanpage/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
@@ -22,7 +34,7 @@
   <link rel="icon" href="../assets/hanpage/favicon.png?v=20261007-clean-edge" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261007-document">
+  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261020-platform">
   <script defer src="../assets/hanpage/landing.js?v=20261007-hero"></script>
 </head>
 <body>
