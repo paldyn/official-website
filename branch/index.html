@@ -7,6 +7,18 @@
   <meta name="description" content="저장소부터 커밋까지, 하나의 데스크톱 작업 공간. Branch는 저장소 관리, 커밋 그래프, 변경 비교를 함께 제공하는 Git 클라이언트입니다. Apple silicon Mac용 첫 공개 베타를 내려받을 수 있습니다.">
   <meta name="theme-color" content="#f8f9fc">
   <meta name="color-scheme" content="light">
+  <script id="download-platform">
+    (() => {
+      const hints = navigator.userAgentData;
+      const platform = String(hints?.platform || navigator.platform || '');
+      const userAgent = String(navigator.userAgent || '');
+      const mac = /^Mac/i.test(platform) || (!platform && /Macintosh|Mac OS X/i.test(userAgent));
+      const mobile = hints?.mobile === true || /Android|iPhone|iPad|iPod|Mobile|Windows Phone/i.test(userAgent)
+        || (mac && navigator.maxTouchPoints > 1);
+      const windows = /^Win/i.test(platform) || (!platform && /Windows NT/i.test(userAgent));
+      document.documentElement.dataset.downloadOs = mobile ? 'other' : windows ? 'windows' : mac ? 'mac' : 'other';
+    })();
+  </script>
   <link rel="canonical" href="https://paldyn.com/branch/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
@@ -22,14 +34,14 @@
   <link rel="icon" href="../assets/branch/favicon.png?v=20261007-full-icon" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-refined">
+  <link rel="stylesheet" href="../assets/branch/landing.css?v=20261020-platform">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
   <header class="site-header">
     <nav class="container nav" aria-label="Branch 주 메뉴">
       <a class="brand" href="./" aria-label="Branch 소개 홈"><img src="../assets/products/branch-mark.png" alt="" width="256" height="256"><span>Branch</span></a>
-      <div class="nav-links"><a class="nav-workflow" href="#workflow">워크플로</a><a class="nav-preview" href="#app-preview">앱 화면</a><a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a><a class="nav-release" href="#requirements">지원 환경 <span aria-hidden="true">↓</span></a></div>
+      <div class="nav-links"><a class="nav-workflow" href="#workflow">워크플로</a><a class="nav-preview" href="#app-preview">앱 화면</a><a class="nav-paldyn" href="../">PALDYN <span aria-hidden="true">↗</span></a><a class="nav-release" href="#getting-started">시작 가이드 <span aria-hidden="true">↓</span></a></div>
     </nav>
   </header>
   <main id="main">
