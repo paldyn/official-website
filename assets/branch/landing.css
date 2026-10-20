@@ -18,8 +18,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .nav-links a{transition:color .2s}
 .nav-links a:hover{color:var(--violet)}
 .nav-paldyn{font-size:11px;letter-spacing:.5px;color:var(--muted)}
-.nav-release{display:inline-flex;align-items:center;gap:14px;padding:11px 16px;border:1px solid var(--violet-line);border-radius:7px;background:var(--violet-soft);color:var(--violet)}
-.nav-links .nav-release:hover{color:var(--violet-hover);border-color:var(--violet)}
+.nav-release{display:inline-flex;align-items:center;gap:14px;padding:11px 16px;border:1px solid var(--violet);border-radius:7px;background:var(--violet);color:#fff}
+.nav-links .nav-release:hover{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 5px 14px rgba(var(--violet-rgb),.18)}
 .hero{background:var(--paper)}
 .hero-main{display:grid;grid-template-columns:minmax(0,1fr) 340px;align-items:center;gap:72px;min-height:470px;padding:48px 0 52px;border-bottom:1px solid var(--line)}
 .eyebrow{font-size:11px;line-height:20px;font-weight:600;letter-spacing:1.8px;color:var(--muted)}

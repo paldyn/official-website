@@ -18,7 +18,8 @@ a:focus-visible,summary:focus-visible{outline:3px solid var(--app-teal);outline-
 .nav-links{display:flex;align-items:center;gap:28px;font-size:13px;font-weight:550}
 .nav-links a:hover{color:var(--app-teal)}
 .nav-paldyn{font-size:11px;letter-spacing:.4px;color:var(--muted)}
-.nav-release{display:inline-flex;align-items:center;gap:16px;padding:11px 16px;border:1px solid var(--teal-line);border-radius:7px;background:var(--teal-soft);color:var(--app-teal)}
+.nav-release{display:inline-flex;align-items:center;gap:16px;padding:11px 16px;border:1px solid var(--app-teal);border-radius:7px;background:var(--app-teal);color:var(--app-teal-ink)}
+.nav-links .nav-release:hover{background:var(--app-teal);border-color:var(--app-teal);color:var(--app-teal-ink);box-shadow:0 5px 14px rgba(var(--app-teal-rgb),.18)}
 .hero{padding:60px 0 0;background:radial-gradient(ellipse at 50% 52%,rgba(var(--app-teal-rgb),.06) 0,transparent 66%)}
 .hero-copy{text-align:center}
 .eyebrow{font-size:11px;line-height:22px;font-weight:650;letter-spacing:1.8px;color:var(--app-teal)}
