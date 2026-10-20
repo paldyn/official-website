@@ -112,6 +112,8 @@
       const version = document.querySelector('[data-release-version]');
       if (!button || !version) return;
       const releases = 'https://github.com/paldyn/Branch-releases/releases/';
+      // 확인하는 동안에는 늘 열리는 릴리즈 페이지로 두고, 최신 DMG를 찾았을 때만 파일 주소로 바꾼다.
+      button.href = `${releases}latest`;
       let timer;
       try {
         const controller = new AbortController();
