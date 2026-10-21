@@ -48,9 +48,8 @@ h1{margin-top:17px;font-size:clamp(58px,5.5vw,76px);line-height:1.13;font-weight
 [data-download-os="mac"] .os-ready,[data-download-os="windows"] .os-soon{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 5px 15px rgba(var(--violet-rgb),.16)}
 [data-download-os="mac"] .os-ready:hover{background:var(--violet-hover);border-color:var(--violet-hover)}
 [data-download-os="mac"] .os-ready small,[data-download-os="windows"] .os-soon small,[data-download-os="windows"] .os-soon .os-icon{color:#fff}
-.hero-release-meta{margin-top:13px;font-size:11px;line-height:1.8;color:#616a7c}
-.hero-release-meta a,.hero-legal a{color:var(--violet);border-bottom:1px solid var(--violet-line)}
-.hero-release-meta a:hover,.hero-legal a:hover{color:var(--violet-hover);border-color:var(--violet)}
+.hero-legal a{color:var(--violet);border-bottom:1px solid var(--violet-line)}
+.hero-legal a:hover{color:var(--violet-hover);border-color:var(--violet)}
 .hero-legal{margin-top:4px;font-size:10px;line-height:1.8;color:#606879}
 .workspace-preview{display:grid;grid-template-columns:1fr 1.7fr;align-items:center;gap:48px;padding:48px 0 72px}
 .workspace-copy h2{font-size:32px;line-height:1.35;letter-spacing:-1.3px;font-weight:600;margin-top:14px}
