@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevDock — 개발 사이, 필요한 도구.</title>
+  <meta name="description" content="JSON 정리부터 JWT 확인, 해시와 UUID 생성까지. 매일 쓰는 개발 유틸리티를 한 탭에서 만나는 웹 작업 공간, DevDock.">
+  <meta name="theme-color" content="#171c1b">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://paldyn.com/devdock/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="DevDock">
+  <meta property="og:title" content="DevDock — 개발 사이, 필요한 도구.">
+  <meta property="og:description" content="포맷팅, 변환, 확인, 생성. 매일의 개발 작업에 필요한 도구를 한곳에서.">
+  <meta property="og:url" content="https://paldyn.com/devdock/">
+  <meta property="og:image" content="https://paldyn.com/assets/products/devdock-mark.png">
+  <meta property="og:image:alt" content="DevDock 앵커 아이콘">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../assets/devdock/favicon.svg?v=20261023" type="image/svg+xml">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
+  <link rel="stylesheet" href="../assets/devdock/landing.css?v=20261023-workbench">
+  <script src="../assets/devdock/landing.js?v=20261023-workbench" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="DevDock 주 메뉴">
+      <a class="brand" href="./" aria-label="DevDock 소개 홈"><span class="brand-mark"><img src="../assets/products/devdock-mark.png" alt="" width="256" height="256"></span><span>DevDock</span></a>
+      <span class="nav-caption mono">A PLACE FOR YOUR TOOLS</span>
+      <div class="nav-links"><a class="nav-index" href="#tools">도구 살펴보기</a><a class="open-link" href="https://devdock.paldyn.com/" target="_blank" rel="noopener" aria-label="DevDock 서비스 열기, 새 창">DevDock 열기 <span aria-hidden="true">↗</span></a></div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="section-id mono"><span><i aria-hidden="true"></i> DEVELOPER UTILITIES</span><span>WORKSPACE / 01</span></div>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <h1 id="hero-title">작은 작업은,<br>빠르게 끝내세요<span class="period">.</span></h1>
+          <p>JSON 정리부터 토큰 확인, 값 생성까지.<br>개발 사이에 필요한 도구를 한 탭에 모았습니다.</p>
+          <a class="primary-link" href="https://devdock.paldyn.com/" target="_blank" rel="noopener" aria-label="DevDock 작업 공간 열기, 새 창">작업 공간 열기 <span aria-hidden="true">↗</span></a>
+          <span class="hero-footnote mono">WEB APP <span aria-hidden="true">/</span> 브라우저에서 바로 시작</span>
+        </div>
+
+        <figure class="workbench" aria-labelledby="demo-caption">
+          <div class="bench-top"><span class="bench-name mono"><span class="bench-file" aria-hidden="true">{ }</span> example.json</span><span class="bench-version mono">JSON / FORMAT</span></div>
+          <div class="bench-body">
+            <nav class="tool-rail" aria-label="예시에 나온 실제 도구 열기">
+              <a class="rail-tool is-current" href="https://devdock.paldyn.com/json-formatter" target="_blank" rel="noopener" aria-label="JSON 포맷터 열기, 새 창"><span class="rail-symbol" aria-hidden="true">{ }</span><span>JSON</span></a>
+              <a class="rail-tool" href="https://devdock.paldyn.com/jwt-decoder" target="_blank" rel="noopener" aria-label="JWT 디코더 열기, 새 창"><span class="rail-symbol jwt" aria-hidden="true">≋</span><span>JWT</span></a>
+              <a class="rail-tool" href="https://devdock.paldyn.com/hash-generator" target="_blank" rel="noopener" aria-label="해시 생성기 열기, 새 창"><span class="rail-symbol hash" aria-hidden="true">#</span><span>HASH</span></a>
+              <a class="rail-tool" href="https://devdock.paldyn.com/uuid-generator" target="_blank" rel="noopener" aria-label="UUID 생성기 열기, 새 창"><span class="rail-symbol uuid" aria-hidden="true">⌘</span><span>UUID</span></a>
+            </nav>
+            <div class="editor">
+              <div class="editor-heading mono"><span>INPUT → OUTPUT</span><span class="editor-json">JSON</span></div>
+              <div class="editor-field"><span class="line-numbers mono" aria-hidden="true">1
+2
+3
+4</span><textarea id="json-example" aria-label="정리할 예제 JSON" spellcheck="false" wrap="off">{"project":"DevDock",
+"tools":["JSON","JWT","Hash","UUID"],
+"workflow":{"input":"paste","output":"ready"},
+"ready":true}</textarea></div>
+              <div class="editor-controls"><button type="button" class="format-button" data-format>포맷 정리 <span aria-hidden="true">↵</span></button><button type="button" class="reset-button" data-reset>예시 다시 보기</button></div>
+            </div>
+          </div>
+          <div class="bench-bottom mono"><span class="demo-status" role="status" aria-live="polite">예제 JSON을 정리해 보세요.</span><span class="key-hint">⌘ / Ctrl + Enter</span></div>
+          <figcaption id="demo-caption">JSON 포맷팅 사용 예시 <span aria-hidden="true">·</span> 전체 도구는 실제 서비스에서 사용할 수 있어요.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="task-strip" aria-label="DevDock에서 할 수 있는 작업"><div class="container"><span class="mono">FORMAT</span><span aria-hidden="true">/</span><span class="mono">CONVERT</span><span aria-hidden="true">/</span><span class="mono">INSPECT</span><span aria-hidden="true">/</span><span class="mono">GENERATE</span><span class="strip-caption">필요한 순간, 필요한 도구.</span></div></div>
+
+    <section class="tool-index container" id="tools" aria-labelledby="tools-title">
+      <div class="index-heading"><p class="eyebrow mono">TOOLS / INDEX</p><h2 id="tools-title">찾는 도구까지,<br>한 번에.</h2><p>형식을 다듬거나,<br>내용을 들여다보거나.<br>지금 할 일에서 시작하세요.</p><span class="index-note mono">SELECT A TOOL <span aria-hidden="true">↗</span></span></div>
+      <div class="tool-directory">
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol format" aria-hidden="true">{ }</span><div><span class="group-number mono">01 / FORMAT</span><h3>읽기 좋은 형태로.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/json-formatter" target="_blank" rel="noopener">JSON 포맷터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/sql-formatter" target="_blank" rel="noopener">SQL 포맷터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/json-csv-converter" target="_blank" rel="noopener">JSON ↔ CSV <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol convert" aria-hidden="true">⇄</span><div><span class="group-number mono">02 / CONVERT</span><h3>필요한 형식으로.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/base64-tool" target="_blank" rel="noopener">Base64 인코더·디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/url-tool" target="_blank" rel="noopener">URL 인코더·디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/case-converter" target="_blank" rel="noopener">문자열 케이스 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol inspect" aria-hidden="true">⌕</span><div><span class="group-number mono">03 / INSPECT</span><h3>내용을 더 정확하게.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/jwt-decoder" target="_blank" rel="noopener">JWT 디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/regex-tester" target="_blank" rel="noopener">정규표현식 테스터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/diff-checker" target="_blank" rel="noopener">텍스트 비교 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol generate" aria-hidden="true">#</span><div><span class="group-number mono">04 / GENERATE</span><h3>다음 작업에 쓸 값.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/uuid-generator" target="_blank" rel="noopener">UUID 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/hash-generator" target="_blank" rel="noopener">해시 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/timestamp-converter" target="_blank" rel="noopener">타임스탬프 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+      </div>
+    </section>
+
+    <section class="next-task container" aria-labelledby="next-title"><div class="next-surface"><div class="next-copy"><p class="eyebrow mono">KEEP YOUR FLOW.</p><h2 id="next-title">개발하다 잠깐,<br>필요한 바로 그 도구.</h2><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener" class="light-link" aria-label="DevDock 서비스 열기, 새 창">DevDock 열기 <span aria-hidden="true">↗</span></a></div><div class="command-stack" aria-hidden="true"><div><span class="command-icon">{ }</span><span>Format JSON</span><kbd>↵</kbd></div><div><span class="command-icon jwt">≋</span><span>Decode JWT</span><kbd>↗</kbd></div><div><span class="command-icon uuid">⌘</span><span>Generate UUID</span><kbd>↗</kbd></div><p class="mono">ONE TAB. YOUR NEXT TASK.</p></div></div></section>
+  </main>
+
+  <footer class="site-footer container"><a class="footer-brand" href="./">DevDock <span>by PALDYN</span></a><div class="footer-links"><a href="../">PALDYN</a><a href="mailto:support@paldyn.com?subject=DevDock">문의</a><a href="https://devdock.paldyn.com/" target="_blank" rel="noopener">서비스 열기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><span>© 2026 PALDYN</span></div></footer>
+</body>
+</html>
