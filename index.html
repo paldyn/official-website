@@ -1305,8 +1305,9 @@
     @media (max-width: 332.98px) {
       .tile-head { flex-wrap: wrap; row-gap: 6px; }
       .product-status { width: 100%; margin-top: 0; }
-      /* 가장 긴 플랫폼 문구("APPLE SILICON MAC")가 두 줄이 되면 그 타일만 키가 커진다.
-         자간을 조이면 한 줄에 들어간다 — 대문자 라벨이라 자간을 줄여도 읽힌다. */
+      /* 플랫폼 문구가 두 줄이 되면 그 타일만 키가 커진다. 지금 가장 긴 문구("MAC · WINDOWS",
+         "WEB · DESKTOP")는 320px에서 자간을 조이지 않아도 한 줄이지만(106px 칸에 약 87px),
+         더 긴 문구가 와도 한 줄에 들어가도록 자간을 조여 둔다 — 대문자 라벨이라 자간을 줄여도 읽힌다. */
       .product-platform { letter-spacing: .04em; }
     }
 
