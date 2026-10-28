@@ -9,6 +9,17 @@
 .terms-meta>div{display:flex;gap:10px}
 .terms-meta dt{color:var(--muted)}
 .terms-meta dd{margin:0;font-weight:500}
+/* 개정 안내(현재 약관)와 시행본 안내(보관한 이전 약관). 머리말 바로 아래, 목차 위에 둔다. */
+.terms-notice{margin-top:32px;padding:24px 26px;background:var(--violet-soft);border:1px solid var(--violet-line);border-radius:14px;scroll-margin-top:16px}
+.terms-notice h2{font-size:17px;line-height:1.5;font-weight:650;letter-spacing:-.4px}
+.terms-notice h3{margin-top:18px;font-size:14px;line-height:1.5;font-weight:650;letter-spacing:-.3px}
+.terms-notice p,.terms-notice li{font-size:14px;line-height:1.8;color:#3e4352}
+.terms-notice p{margin:10px 0 0}
+.terms-notice ul{margin:10px 0 0;padding-left:1.25em}
+.terms-notice li{margin-bottom:6px;padding-left:2px}
+.terms-notice li::marker{color:var(--violet)}
+.terms-notice strong{font-weight:650;color:var(--ink)}
+.terms-notice+.terms-toc{margin-top:16px}
 .terms-toc{margin-top:32px;padding:24px 26px;background:#fff;border:1px solid var(--line);border-radius:14px}
 .terms-toc h2{margin-bottom:12px;font-size:14px;line-height:1.5;font-weight:600;letter-spacing:-.3px}
 .terms-toc ol{margin:0;padding:0;list-style:none;columns:2;column-gap:32px;font-size:13px;line-height:1.6}
@@ -24,7 +35,8 @@
 .terms-body li{margin-bottom:10px;padding-left:3px}
 .terms-body li::marker{color:var(--muted);font-variant-numeric:tabular-nums}
 .terms-body li>p{margin:10px 0 0}
-.terms-body code{padding:1px 5px;background:#eef1f7;border-radius:4px;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink);word-break:normal;overflow-wrap:anywhere}
+.terms-body code,.terms-notice code{padding:1px 5px;background:#eef1f7;border-radius:4px;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink);word-break:normal;overflow-wrap:anywhere}
+.terms-notice code{background:#fff}
 .terms a:focus-visible{outline-offset:3px}
 @media(max-width:700px){
 .terms{width:calc(100% - 40px);padding-bottom:64px}
@@ -32,6 +44,9 @@
 .terms-head h1{font-size:28px;letter-spacing:-1px;margin-top:10px}
 .terms-meta{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin-top:18px}
 .terms-meta>div{display:contents}
+.terms-notice{margin-top:24px;padding:20px}
+.terms-notice h2{font-size:16px}
+.terms-notice p,.terms-notice li{font-size:13px;line-height:1.75}
 .terms-toc{margin-top:24px;padding:20px 20px}
 .terms-toc ol{columns:1}
 .terms-body section{padding-top:36px}
