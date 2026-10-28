@@ -39,11 +39,30 @@
       <h1>Branch End User License Agreement (Beta)</h1>
       <dl class="terms-meta">
         <div><dt>Effective</dt><dd>20 October 2026</dd></div>
-        <div><dt>Amended</dt><dd>[[REVISION EFFECTIVE DATE]]</dd></div>
+        <div><dt>Amendment effective</dt><dd>[[REVISION EFFECTIVE DATE]]</dd></div>
         <div><dt>Language</dt><dd>English · <a href="../" hreflang="ko" lang="ko">한국어</a> (prevails)</dd></div>
         <div><dt>Contact</dt><dd><a href="mailto:support@paldyn.com?subject=Branch">support@paldyn.com</a></dd></div>
       </dl>
     </div>
+    <section class="terms-notice" id="revision" aria-labelledby="revision-title">
+      <h2 id="revision-title">Notice of changes to these terms</h2>
+      <p>We have amended this Agreement to cover Branch for Windows and the features added since. The amended Agreement on this page takes effect on <strong>[[REVISION EFFECTIVE DATE]]</strong>.</p>
+      <ul>
+        <li><strong>Branch for Windows</strong>: the amended Agreement applies from the time you install or use it.</li>
+        <li><strong>Branch for macOS</strong>: <a href="2026-10-20/">the Agreement of 20 October 2026</a> continues to apply until that date.</li>
+      </ul>
+      <h3>What changed</h3>
+      <ul>
+        <li><strong>Windows support</strong>: the Agreement applies to Branch for macOS and for Windows, and states what differs on Windows, such as where information is stored, the included Git (MinGit, Git LFS and Git Credential Manager) and how sign-ins are stored, and the Microsoft Edge WebView2 Runtime. (Sections 1, 7 and 10)</li>
+        <li><strong>Automatic Fetch</strong>: only if you choose an interval in Settings → Git (it is Off by default), Branch fetches the repositories open in the current workspace at that interval while it runs. You can turn it off for each repository; it uses only sign-ins that are already saved and does not change your working files or local branches. (Sections 7.2 and 7.3)</li>
+        <li><strong>Information stored on your device</strong>: the activity history, conflict resolution drafts, discard recovery copies, settings snapshots, practice repositories and more are now listed, with where they are kept and their retention limits. All of it stays on your device and is not sent to PALDYN. (Section 7.4)</li>
+        <li><strong>Git settings Branch writes</strong>: your author name and email, signing settings and pull method are written to your Git configuration only when you save them in Branch. Setting up Git LFS in a repository writes its settings and creates a <code>pre-push</code> hook if there is none, and changing tracking rules edits <code>.gitattributes</code>. (Section 7.4, item 3)</li>
+        <li><strong>Signature checks</strong>: when the details of a signed commit are shown, the signing program set in your Git configuration (<code>gpg</code> or <code>ssh-keygen</code> unless you set another) checks the signature on your device. Because the current commit is selected when a repository opens, this can happen without your choosing a commit, and depending on your GnuPG configuration, GnuPG may connect to a key server to find the signer's public key. (Section 7.3)</li>
+        <li><strong>Saved sign-ins</strong>: a credential helper may connect to the remote service's sign-in and authentication addresses when it refreshes or checks a saved sign-in, and may delete a saved sign-in that the remote service rejects. This also applies during automatic Fetch, and the deleted item may be one that other Git apps use as well. (Section 7.3)</li>
+        <li><strong>Also</strong>: downloading Git LFS content is now listed among the remote operations, and the temporary copies passed to external comparison and merge tools, and their deletion, are described. (Sections 7.3 and 7.5)</li>
+      </ul>
+      <p>PALDYN still does not collect your information through the Software, and the Software stays free of charge during the Beta Period. If you keep using the Software after the effective date, you are deemed to have accepted the changes; if you do not accept them, you may stop using the Software and terminate this Agreement (Section 14.3).</p>
+    </section>
     <nav class="terms-toc" aria-labelledby="toc-title">
       <h2 id="toc-title">Contents</h2>
       <ol>
