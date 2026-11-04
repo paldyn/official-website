@@ -7,6 +7,18 @@
   <meta name="description" content="연결부터 SQL 작성과 결과 확인까지, 하나의 데이터베이스 워크스페이스. QueryBase는 데스크톱 데이터베이스 클라이언트입니다.">
   <meta name="theme-color" content="#00b8a9">
   <meta name="color-scheme" content="light">
+  <script id="download-platform">
+    (() => {
+      const hints = navigator.userAgentData;
+      const platform = String(hints?.platform || navigator.platform || '');
+      const userAgent = String(navigator.userAgent || '');
+      const mac = /^Mac/i.test(platform) || (!platform && /Macintosh|Mac OS X/i.test(userAgent));
+      const mobile = hints?.mobile === true || /Android|iPhone|iPad|iPod|Mobile|Windows Phone/i.test(userAgent)
+        || (mac && navigator.maxTouchPoints > 1);
+      const windows = /^Win/i.test(platform) || (!platform && /Windows NT/i.test(userAgent));
+      document.documentElement.dataset.downloadOs = mobile ? 'other' : windows ? 'windows' : mac ? 'mac' : 'other';
+    })();
+  </script>
   <link rel="canonical" href="https://paldyn.com/querybase/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
@@ -23,7 +35,7 @@
   <link rel="icon" href="../assets/querybase/favicon.svg?v=20261007" type="image/svg+xml" sizes="any">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/querybase/landing.css?v=20261104-downloads">
+  <link rel="stylesheet" href="../assets/querybase/landing.css?v=20261104-os-downloads">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -43,8 +55,15 @@
           <p class="eyebrow">YOUR DATABASE WORKSPACE.</p>
           <h1 id="hero-title">데이터베이스 작업을,<br><span>하나의 워크스페이스에서.</span></h1>
           <p class="hero-description">연결하고, SQL을 작성하고, 결과를 확인하세요.<br>매일의 데이터베이스 작업을 위한 데스크톱 앱, QueryBase.</p>
-          <div class="hero-downloads" id="downloads"><a class="download-button" data-download="mac" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-mac-arm64.dmg" aria-label="Mac 다운로드, Apple silicon용 QueryBase"><span class="download-button-heading"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Mac 다운로드</span></span></a><a class="download-button" data-download="windows" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-win-x64.exe" aria-label="Windows 다운로드, Windows x64용 QueryBase"><span class="download-button-heading"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span>Windows 다운로드</span></span></a></div>
-          <p class="hero-platform">macOS · Apple Silicon <span aria-hidden="true">/</span> Windows · x64 <span aria-hidden="true">/</span> <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">Intel Mac · Windows ARM</a></p>
+          <div class="hero-downloads" id="downloads">
+            <h2 class="sr-only">운영체제별 다운로드</h2>
+            <div class="os-buttons">
+              <a class="download-button os-mac" data-download="mac" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-mac-arm64.dmg" aria-label="Mac 다운로드, macOS 13 이상 Apple silicon용 QueryBase"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="download-label"><strong>Mac 다운로드</strong><small>macOS 13 이상 · Apple silicon</small></span><svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
+              <a class="download-button os-windows" data-download="windows" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-win-x64.exe" aria-label="Windows 다운로드, Windows 10·11 x64용 QueryBase"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span class="download-label"><strong>Windows 다운로드</strong><small>Windows 10·11 x64</small></span><svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
+            </div>
+            <p class="hero-note">Windows에서 "Windows의 PC 보호" 창이 뜨면 <strong>추가 정보 → 실행</strong>을 누르세요. <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">Intel Mac · Windows ARM용 파일</a></p>
+            <p class="hero-legal">설치하거나 사용하면 <a href="https://github.com/paldyn/QueryBase-releases/blob/main/EULA.ko.md">이용약관</a>에 동의하는 것으로 봅니다.</p>
+          </div>
           <a class="button hero-link" href="#workspace">작업 공간 둘러보기 <span aria-hidden="true">↓</span></a>
           <p class="hero-status"><span aria-hidden="true"></span> Desktop app · 개인·업무 모두 무료</p>
         </div>
