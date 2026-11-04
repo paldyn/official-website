@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QueryBase — 나의 데이터베이스 워크스페이스.</title>
-  <meta name="description" content="연결부터 SQL 작성과 결과 확인까지, 하나의 데이터베이스 워크스페이스. QueryBase는 개발 중인 데스크톱 데이터베이스 클라이언트입니다.">
+  <meta name="description" content="연결부터 SQL 작성과 결과 확인까지, 하나의 데이터베이스 워크스페이스. QueryBase는 데스크톱 데이터베이스 클라이언트입니다.">
   <meta name="theme-color" content="#00b8a9">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://paldyn.com/querybase/">
@@ -12,7 +12,7 @@
   <meta property="og:locale" content="ko_KR">
   <meta property="og:site_name" content="QueryBase">
   <meta property="og:title" content="QueryBase — 나의 데이터베이스 워크스페이스.">
-  <meta property="og:description" content="데이터베이스를 연결하고, SQL을 작성하고, 결과를 확인하세요. 개발 중인 데스크톱 앱, QueryBase.">
+  <meta property="og:description" content="데이터베이스를 연결하고, SQL을 작성하고, 결과를 확인하세요. 데스크톱 앱, QueryBase.">
   <meta property="og:url" content="https://paldyn.com/querybase/">
   <meta property="og:image" content="https://paldyn.com/assets/querybase/workspace-preview.png">
   <meta property="og:image:width" content="2880">
@@ -23,7 +23,7 @@
   <link rel="icon" href="../assets/querybase/favicon.svg?v=20261007" type="image/svg+xml" sizes="any">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/querybase/landing.css?v=20261021-hero-downloads">
+  <link rel="stylesheet" href="../assets/querybase/landing.css?v=20261104-downloads">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -32,7 +32,7 @@
       <a class="brand" href="./" aria-label="QueryBase 소개 홈"><img src="../assets/products/querybase-mark.svg" alt="" width="64" height="64"><span>QueryBase</span></a>
       <div class="nav-links">
         <a class="nav-features" href="#features">기능 소개</a>
-        <a class="nav-release" href="#release">개발 안내 <span aria-hidden="true">↓</span></a>
+        <a class="nav-release" href="#downloads">다운로드 <span aria-hidden="true">↓</span></a>
       </div>
     </nav>
   </header>
@@ -43,12 +43,10 @@
           <p class="eyebrow">YOUR DATABASE WORKSPACE.</p>
           <h1 id="hero-title">데이터베이스 작업을,<br><span>하나의 워크스페이스에서.</span></h1>
           <p class="hero-description">연결하고, SQL을 작성하고, 결과를 확인하세요.<br>매일의 데이터베이스 작업을 위한 데스크톱 앱, QueryBase.</p>
-          <!-- 아직 배포 전이라 받을 파일이 없다. 링크가 아니라 자리만 잡아 둔 비활성 표시다.
-               공개되면 이 span 을 a[href] 로 바꾸고 is-pending 과 안의 준비 중 칩만 빼면 된다. -->
-          <div class="hero-downloads" id="downloads"><span class="download-button is-pending" data-download="mac"><span class="download-button-heading"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Mac 다운로드</span><span class="download-soon">준비 중</span></span></span><span class="download-button is-pending" data-download="windows"><span class="download-button-heading"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span>Windows 다운로드</span><span class="download-soon">준비 중</span></span></span></div>
-          <p class="hero-platform">macOS · Apple Silicon <span aria-hidden="true">/</span> Windows · x64</p>
+          <div class="hero-downloads" id="downloads"><a class="download-button" data-download="mac" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-mac-arm64.dmg" aria-label="Mac 다운로드, Apple silicon용 QueryBase"><span class="download-button-heading"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Mac 다운로드</span></span></a><a class="download-button" data-download="windows" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-win-x64.exe" aria-label="Windows 다운로드, Windows x64용 QueryBase"><span class="download-button-heading"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span>Windows 다운로드</span></span></a></div>
+          <p class="hero-platform">macOS · Apple Silicon <span aria-hidden="true">/</span> Windows · x64 <span aria-hidden="true">/</span> <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">Intel Mac · Windows ARM</a></p>
           <a class="button hero-link" href="#workspace">작업 공간 둘러보기 <span aria-hidden="true">↓</span></a>
-          <p class="hero-status"><span aria-hidden="true"></span> Desktop app · 개발 중</p>
+          <p class="hero-status"><span aria-hidden="true"></span> Desktop app · 개인·업무 모두 무료</p>
         </div>
         <figure class="workspace-preview" id="workspace">
           <div class="preview-frame"><img src="../assets/querybase/workspace-preview.png" alt="QueryBase 실제 개발 화면. 왼쪽의 SQLite 샘플 데이터베이스 탐색기, 중앙의 주문 조회 SQL, 아래의 6행 조회 결과를 함께 보여줍니다." width="2880" height="1920" fetchpriority="high" decoding="async"></div>
@@ -97,15 +95,15 @@
     </section>
 
     <section class="release-section section container" id="release" aria-labelledby="release-title">
-      <div class="release-panel"><div class="release-copy"><p class="section-label">QUERYBASE FOR DESKTOP</p><h2 id="release-title">다음 쿼리를 위한 공간.<br>지금 만들고 있어요.</h2><p>macOS, Windows, Linux를 위한 데스크톱 앱을 개발 중이에요.<br>다운로드와 지원 환경은 공개 배포 시 이곳에서 안내합니다.</p></div><div class="release-status"><span class="development-badge"><span aria-hidden="true"></span> 개발 중</span><p>아직 공개 배포 전입니다.</p></div></div>
+      <div class="release-panel"><div class="release-copy"><p class="section-label">QUERYBASE FOR DESKTOP</p><h2 id="release-title">다음 쿼리를 위한 공간.<br>지금 내려받을 수 있어요.</h2><p>macOS와 Windows용 데스크톱 앱을 개인과 업무 모두 무료로 쓸 수 있어요.<br>Linux용은 다음 버전부터 제공합니다.</p></div><div class="release-status"><a class="development-badge" href="https://github.com/paldyn/QueryBase-releases/releases/latest"><span aria-hidden="true"></span> 최신 버전 보기</a><p>새 버전은 앱이 알아서 알려 줍니다.</p></div></div>
     </section>
 
     <section class="faq-section section container" aria-labelledby="faq-title">
       <div class="faq-heading"><p class="section-label">알아두면 좋아요</p><h2 id="faq-title">궁금한 점이 있나요?</h2><a href="mailto:support@paldyn.com?subject=QueryBase">문의하기 <span aria-hidden="true">↗</span></a></div>
       <div class="faq-list">
-        <details><summary>웹에서도 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>QueryBase는 데스크톱 데이터베이스 클라이언트예요. 이 페이지는 제품과 개발 중인 기능을 소개합니다.</p></details>
-        <details><summary>어떤 데이터베이스를 연결할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 SQLite, PostgreSQL, MySQL, Oracle의 연결과 SQL 실행을 구현했어요. 공개 버전의 지원 범위와 환경은 배포 시 안내할 예정입니다.</p></details>
-        <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 개발 중으로 공개 설치 파일은 아직 제공하지 않아요. 소개된 기능과 화면은 출시 과정에서 달라질 수 있습니다.</p></details>
+        <details><summary>웹에서도 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>QueryBase는 데스크톱 데이터베이스 클라이언트예요. 웹 버전은 없고, Mac이나 Windows에 설치해서 사용합니다.</p></details>
+        <details><summary>어떤 데이터베이스를 연결할 수 있나요?<span aria-hidden="true">+</span></summary><p>SQLite, PostgreSQL, MySQL, MariaDB, Oracle, SQL Server를 연결할 수 있어요. SQL Server는 아직 일부 기능을 제공하지 않습니다. 자세한 범위는 <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">릴리스 노트</a>에서 확인해 주세요.</p></details>
+        <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>네, 위의 다운로드 버튼으로 최신 버전을 받을 수 있어요. Mac은 DMG를 열어 QueryBase를 응용 프로그램 폴더로 옮기고, Windows는 설치 파일을 실행하세요. Windows 설치 파일에는 코드 서명이 없어서 처음 실행할 때 SmartScreen 경고가 나오면 추가 정보, 실행 순서로 누르면 됩니다. Intel Mac과 Windows ARM용 파일은 <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">릴리스 페이지</a>에 있어요.</p></details>
       </div>
     </section>
   </main>
