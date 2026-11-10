@@ -699,6 +699,9 @@
       --text-dim: var(--product-text-dim);
       display: flex;
       flex-direction: column;
+      /* 격자 칸은 같은 줄에서 가장 높은 카드에 맞춰 늘어나지만, 그 안의 <a> 는
+         내용 높이만 갖는다. 100% 를 줘야 카드가 칸을 꽉 채워 높이가 맞는다. */
+      height: 100%;
       min-height: 200px;
       padding: 20px;
       border: 1px solid color-mix(in srgb, var(--product-accent) var(--product-border-tint), var(--product-tile-border));
@@ -766,7 +769,16 @@
     .product--baro .product-mark { background:#fff; box-shadow:inset 0 0 0 1px #ededee; }
 
 
-    .tile-body { margin-top: auto; }
+    /* 본문을 통째로 바닥에 밀면 설명 줄 수가 다를 때 제품명 높이가 어긋난다.
+       그래서 전에는 설명에 줄 수를 예약해 맞췄는데, 그 예약값이 폭마다 달라
+       구간별 매직 넘버가 쌓이고 카피를 고칠 때마다 조용히 깨졌다.
+       대신 본문을 마크 바로 아래에 두고 플랫폼 줄만 바닥에 고정한다.
+       제품명은 마크 높이로 결정돼 저절로 맞고, 설명은 몇 줄이든 자유롭다. */
+    .tile-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
     .product-copy { display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
     .product-copy h3 {
       margin: 0;
@@ -784,16 +796,19 @@
     }
     a.product-tile:hover .product-arrow,
     .product-grid > li:hover > a.product-tile .product-arrow { color:var(--text); transform:translate(2px, -2px); }
-    /* 설명 높이를 예약해 고정한다. 문구 길이가 달라도 제품명 위치가 어긋나지 않아야
-       격자로 읽힌다. 예약 줄 수는 그 폭에서 실제로 필요한 최대 줄과 같아야 한다.
-       남으면 카드마다 빈칸이 생기고, 모자라면 제품명 높이가 어긋나 격자가 깨진다.
-       480px 이상에서는 여덟 개 모두 두 줄 안에 들어간다(실측). */
+    /* 설명 높이는 예약하지 않는다. 전에는 폭마다 줄 수를 예약해 제품명을 맞췄는데,
+       예약값이 모자라면 설명이 조용히 잘리고 남으면 카드마다 빈칸이 생겨
+       구간별 매직 넘버가 쌓였다. 지금은 .tile-body 와 .product-platform 이 정렬을
+       맡으므로 설명은 몇 줄이든 자유롭다. */
     .product-desc {
+      /* clamp 는 정렬 수단이 아니라 넉넉한 상한이다. 정렬은 위 .tile-body 가 맡는다.
+         296~1440px 어디서도 설명이 다섯 줄을 넘지 않으므로 다섯은 지금 렌더에
+         아무 영향이 없다. 딱 맞게(넷) 잡으면 320px 에서 여유가 0 줄이라,
+         카피가 한 단어만 길어져도 말없이 잘린다. 상한은 느슨하게 둔다. */
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 5;
       overflow: hidden;
-      min-height: calc(2 * 1.5em);
       margin: 7px 0 0;
       color: var(--text-dim);
       font-size: .8rem;
@@ -806,7 +821,11 @@
       display: flex;
       align-items: center;
       gap: 11px;
-      margin: 14px 0 0;
+      /* auto 로 카드 바닥에 붙인다. 설명과의 최소 간격은 margin 이 아니라
+         아래 padding-top 이 만든다 — 설명이 길어 남는 공간이 0 이 되어도
+         이 padding 은 남으므로 두 줄이 붙지 않는다. */
+      margin: auto 0 0;
+      padding-top: 14px;
       color: var(--text-dim);
     }
     /* 세 마크의 광학 상자를 맞춘다. 글로브는 24 중 18.4, 윈도우는 18 을 쓰는데
@@ -1238,7 +1257,7 @@
       .product-desc { font-size:.75rem; margin-top:5px; }
       /* 아이콘도 다른 치수와 같이 줄인다. 여기만 20px 로 두면 카드가 좁은 폭에서
          오히려 커져, 여백을 줄이려던 목적이 뒤집힌다. 17px 은 기존 15px 보다는 크다. */
-      .product-platform { margin-top:9px; gap:9px; }
+      .product-platform { margin-top:auto; padding-top:9px; gap:9px; }
       .product-platform .os-icon { width:17px; height:17px; }
       .research-intro h2 { font-size:2.35rem; }
       .research-row {
@@ -1253,15 +1272,6 @@
       .footer-brand { grid-column:1 / -1; grid-row:auto; margin-bottom:18px; }
       .footer-bottom { display:block; margin-top:56px; }
       .footer-bottom span:last-child { display:block; margin-top:8px; }
-    }
-
-    /* 좁아지면 설명이 세 줄까지 간다. 예약도 세 줄로 올려야 제품명 높이가 어긋나지 않는다.
-       경계는 1px 단위로 실측해 잡았다 — 433px 까지는 여덟 장 모두 두 줄이고,
-       432px 에서 HanPage 가 처음 세 줄이 된다.
-       ★ 이보다 낮게 잡으면 그 사이 폭에서 설명이 조용히 잘린다. 높게 잡으면
-         쓰이지 않는 한 줄이 카드마다 빈칸으로 남는다. 둘 다 실제로 겪었다. */
-    @media (max-width: 432.98px) {
-      .product-desc { -webkit-line-clamp: 3; min-height: calc(3 * 1.5em); }
     }
 
     /* 좁은 폭에서는 마크를 줄인다. 제품별 광학 보정은 같은 비율로 함께 줄여
