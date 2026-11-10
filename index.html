@@ -830,7 +830,10 @@
       margin: 3px 0 0;
       color: var(--text-dim);
     }
-    /* 세 마크의 광학 상자를 맞춘다. 글로브는 24 중 18.4, 윈도우는 18 을 쓰는데
+    /* 마크 하나에 뜻 하나씩 붙인다 — 글로브=웹, 폰=iPhone, 애플=Mac, 창=Windows.
+       애플 마크는 회사 마크지 OS 마크가 아니라서 iOS 와 macOS 에 똑같이 쓰면
+       한 줄 안에서 뜻이 겹친다. Ascend 만 폰 실루엣으로 떼어 내 겹침을 없앴다.
+       광학 상자도 맞춘다. 글로브는 24 중 18.4, 폰은 18.8, 윈도우는 18 을 쓰는데
        애플 글리프만 24 를 꽉 채워 한 줄에서 혼자 커 보였다. 그래서 애플 path 에만
        matrix(.82) 를 걸어 19.7(≈20px 상자에서 16.4px)로 낮췄다. 여기서 더 줄이면
        (0.77 이하) 이번엔 윈도우보다 작아져 되레 위축돼 보인다. */
@@ -1436,7 +1439,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/ascend-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path transform="matrix(.82 0 0 .82 2.16 2.16)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="visually-hidden">iPhone</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="2.6" width="10" height="18.8" rx="2.8"/><path d="M10.4 5.9h3.2"/></svg><span class="visually-hidden">iPhone</span></p>
             </div>
           </a>
         </li>
