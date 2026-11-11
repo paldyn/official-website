@@ -833,15 +833,16 @@
     /* 기기 모양이 폼팩터를, 안의 로고가 OS 를 말한다 — 폰+애플=iOS, 모니터+애플=macOS,
        모니터+창=Windows, 글로브=웹. 애플 마크는 회사 마크지 OS 마크가 아니라서
        맨몸으로 쓰면 iOS 와 macOS 가 구분되지 않는다. 기기를 껍데기로 씌워 그 둘을 갈랐다.
-       선 굵기 2.1 은 글로브(2.3)와 한 줄에서 무게가 맞는 값이다. 더 굵히면 안쪽 로고가
-       들어갈 자리가 줄고, 더 가늘면 글로브 옆에서 혼자 여위어 보인다.
-       안쪽 로고는 20px 에서 약 9.6px, 400px 이하의 16px 에서 약 7.7px 로 떨어진다 —
-       실제 픽셀을 확대해 확인한 하한이다. 아이콘을 더 줄이면 로고가 먼저 뭉개진다. */
+       네 글리프 모두 24 상자를 꽉 채운다. 전에는 폰이 상자의 절반(12/24)만 쓰고
+       안쪽 로고는 상자의 48% 였다 — 테두리 여백이 그림보다 넓어 위축돼 보였다.
+       지금은 폰 14x22.4, 모니터 22.4x21, 글로브 반지름 10.6 이고 선 굵기는 2.1 로 묶었다.
+       상자도 20 → 24px 로 키웠다(좁은 폭은 21 → 18px). 안쪽 로고는 24px 에서 약 12px,
+       18px 에서 약 9px — 실제 렌더 픽셀을 확대해 읽히는지 확인한 값이다. */
     .product-platform .os-icon {
       display: block;
       flex: none;
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
     }
     @media (prefers-reduced-motion: reduce) {
       .product-tile, .product-arrow { transition: none; }
@@ -1262,7 +1263,7 @@
       /* 아이콘도 다른 치수와 같이 줄인다. 여기만 20px 로 두면 카드가 좁은 폭에서
          오히려 커져, 여백을 줄이려던 목적이 뒤집힌다. 17px 은 기존 15px 보다는 크다. */
       .product-platform { margin-top:2px; gap:9px; }
-      .product-platform .os-icon { width:17px; height:17px; }
+      .product-platform .os-icon { width:21px; height:21px; }
       .research-intro h2 { font-size:2.35rem; }
       .research-row {
         grid-template-columns:40px minmax(0,1fr) auto;
@@ -1284,8 +1285,10 @@
        실제 한계는 366px 이고 400px 은 여유를 둔 값이다 — 1px 차이로 깨지는 구간을
        경계 바로 위에 두지 않는다. 20px → 17px → 16px 로 폭을 따라 줄어든다. */
     @media (max-width: 400px) {
-      .product-platform { gap:7px; }
-      .product-platform .os-icon { width:16px; height:16px; }
+      /* 마크와 아이콘 사이도 같이 좁힌다 — 떨어뜨려 둘 폭이 없다. */
+      .tile-head { gap:8px; }
+      .product-platform { gap:6px; }
+      .product-platform .os-icon { width:18px; height:18px; }
     }
 
     /* 좁은 폭에서는 마크를 줄인다. 제품별 광학 보정은 같은 비율로 함께 줄여
@@ -1439,7 +1442,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/ascend-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="6" y="2" width="12" height="20" rx="2.7"/><g fill="currentColor" stroke="none"><path transform="matrix(.4792 0 0 .4792 6.25 6.25)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><span class="visually-hidden">iPhone</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y=".8" width="14" height="22.4" rx="3.2"/><g fill="currentColor" stroke="none"><path transform="matrix(.5 0 0 .5 6 6)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><span class="visually-hidden">iPhone</span></p>
             </div>
           </a>
         </li>
@@ -1451,7 +1454,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/branch-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="1.7" y="2.9" width="20.6" height="14.4" rx="2.3"/><path d="M12 17.3v3.1M8.5 21h7"/><g fill="currentColor" stroke="none"><path transform="matrix(.4375 0 0 .4375 6.75 4.85)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="1.7" y="2.9" width="20.6" height="14.4" rx="2.3"/><path d="M12 17.3v3.1M8.5 21h7"/><g fill="currentColor" stroke="none"><path transform="matrix(.55 0 0 .55 5.4 3.5)" d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></g></svg><span class="visually-hidden">Mac · Windows</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x=".8" y="1.65" width="22.4" height="16" rx="2.6"/><path d="M12 17.65v2.6M7.5 20.25h9"/><g fill="currentColor" stroke="none"><path transform="matrix(.4833 0 0 .4833 6.2 3.85)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x=".8" y="1.65" width="22.4" height="16" rx="2.6"/><path d="M12 17.65v2.6M7.5 20.25h9"/><g fill="currentColor" stroke="none"><path transform="matrix(.6111 0 0 .6111 4.667 2.317)" d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></g></svg><span class="visually-hidden">Mac · Windows</span></p>
             </div>
           </a>
         </li>
@@ -1463,7 +1466,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/querybase-mark.svg" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="1.7" y="2.9" width="20.6" height="14.4" rx="2.3"/><path d="M12 17.3v3.1M8.5 21h7"/><g fill="currentColor" stroke="none"><path transform="matrix(.4375 0 0 .4375 6.75 4.85)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="1.7" y="2.9" width="20.6" height="14.4" rx="2.3"/><path d="M12 17.3v3.1M8.5 21h7"/><g fill="currentColor" stroke="none"><path transform="matrix(.55 0 0 .55 5.4 3.5)" d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></g></svg><span class="visually-hidden">Mac · Windows</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x=".8" y="1.65" width="22.4" height="16" rx="2.6"/><path d="M12 17.65v2.6M7.5 20.25h9"/><g fill="currentColor" stroke="none"><path transform="matrix(.4833 0 0 .4833 6.2 3.85)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x=".8" y="1.65" width="22.4" height="16" rx="2.6"/><path d="M12 17.65v2.6M7.5 20.25h9"/><g fill="currentColor" stroke="none"><path transform="matrix(.6111 0 0 .6111 4.667 2.317)" d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></g></svg><span class="visually-hidden">Mac · Windows</span></p>
             </div>
           </a>
         </li>
@@ -1475,7 +1478,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/hanpage-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.4 2.5 3.7 5.8 3.7 9.2s-1.3 6.7-3.7 9.2c-2.4-2.5-3.7-5.8-3.7-9.2s1.3-6.7 3.7-9.2z"/></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="1.7" y="2.9" width="20.6" height="14.4" rx="2.3"/><path d="M12 17.3v3.1M8.5 21h7"/><g fill="currentColor" stroke="none"><path transform="matrix(.4375 0 0 .4375 6.75 4.85)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="1.7" y="2.9" width="20.6" height="14.4" rx="2.3"/><path d="M12 17.3v3.1M8.5 21h7"/><g fill="currentColor" stroke="none"><path transform="matrix(.55 0 0 .55 5.4 3.5)" d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></g></svg><span class="visually-hidden">웹 · Mac · Windows</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6"/><path d="M1.4 12h21.2M12 1.4c2.77 2.88 4.26 6.68 4.26 10.6s-1.49 7.72-4.26 10.6c-2.77-2.88-4.26-6.68-4.26-10.6s1.49-7.72 4.26-10.6z"/></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x=".8" y="1.65" width="22.4" height="16" rx="2.6"/><path d="M12 17.65v2.6M7.5 20.25h9"/><g fill="currentColor" stroke="none"><path transform="matrix(.4833 0 0 .4833 6.2 3.85)" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></g></svg><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x=".8" y="1.65" width="22.4" height="16" rx="2.6"/><path d="M12 17.65v2.6M7.5 20.25h9"/><g fill="currentColor" stroke="none"><path transform="matrix(.6111 0 0 .6111 4.667 2.317)" d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></g></svg><span class="visually-hidden">웹 · Mac · Windows</span></p>
             </div>
           </a>
         </li>
@@ -1487,7 +1490,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/pogae-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.4 2.5 3.7 5.8 3.7 9.2s-1.3 6.7-3.7 9.2c-2.4-2.5-3.7-5.8-3.7-9.2s1.3-6.7 3.7-9.2z"/></svg><span class="visually-hidden">웹</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6"/><path d="M1.4 12h21.2M12 1.4c2.77 2.88 4.26 6.68 4.26 10.6s-1.49 7.72-4.26 10.6c-2.77-2.88-4.26-6.68-4.26-10.6s1.49-7.72 4.26-10.6z"/></svg><span class="visually-hidden">웹</span></p>
             </div>
           </a>
         </li>
@@ -1499,7 +1502,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/nemo-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.4 2.5 3.7 5.8 3.7 9.2s-1.3 6.7-3.7 9.2c-2.4-2.5-3.7-5.8-3.7-9.2s1.3-6.7 3.7-9.2z"/></svg><span class="visually-hidden">웹</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6"/><path d="M1.4 12h21.2M12 1.4c2.77 2.88 4.26 6.68 4.26 10.6s-1.49 7.72-4.26 10.6c-2.77-2.88-4.26-6.68-4.26-10.6s1.49-7.72 4.26-10.6z"/></svg><span class="visually-hidden">웹</span></p>
             </div>
           </a>
         </li>
@@ -1511,7 +1514,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/baro-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.4 2.5 3.7 5.8 3.7 9.2s-1.3 6.7-3.7 9.2c-2.4-2.5-3.7-5.8-3.7-9.2s1.3-6.7 3.7-9.2z"/></svg><span class="visually-hidden">웹</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6"/><path d="M1.4 12h21.2M12 1.4c2.77 2.88 4.26 6.68 4.26 10.6s-1.49 7.72-4.26 10.6c-2.77-2.88-4.26-6.68-4.26-10.6s1.49-7.72 4.26-10.6z"/></svg><span class="visually-hidden">웹</span></p>
             </div>
           </a>
         </li>
@@ -1523,7 +1526,7 @@
             </div>
             <div class="tile-head">
               <span class="product-mark"><img src="./assets/products/devdock-mark.png" alt="" width="256" height="256" loading="lazy" decoding="async"></span>
-              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.4 2.5 3.7 5.8 3.7 9.2s-1.3 6.7-3.7 9.2c-2.4-2.5-3.7-5.8-3.7-9.2s1.3-6.7 3.7-9.2z"/></svg><span class="visually-hidden">웹</span></p>
+              <p class="product-platform"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6"/><path d="M1.4 12h21.2M12 1.4c2.77 2.88 4.26 6.68 4.26 10.6s-1.49 7.72-4.26 10.6c-2.77-2.88-4.26-6.68-4.26-10.6s1.49-7.72 4.26-10.6z"/></svg><span class="visually-hidden">웹</span></p>
             </div>
           </a>
         </li>
