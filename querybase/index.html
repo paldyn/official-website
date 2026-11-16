@@ -35,7 +35,8 @@
   <link rel="icon" href="../assets/querybase/favicon.svg?v=20261007" type="image/svg+xml" sizes="any">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/querybase/landing.css?v=20261104-os-downloads">
+  <link rel="stylesheet" href="../assets/querybase/landing.css?v=20261116-os-split">
+  <script defer src="../assets/download-menu.js?v=20261116"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -58,10 +59,27 @@
           <div class="hero-downloads" id="downloads">
             <h2 class="sr-only">운영체제별 다운로드</h2>
             <div class="os-buttons">
-              <a class="download-button os-mac" data-download="mac" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-mac-arm64.dmg" aria-label="Mac 다운로드, macOS 13 이상 Apple silicon용 QueryBase"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="download-label"><strong>Mac 다운로드</strong><small>macOS 13 이상 · Apple silicon</small></span><svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
-              <a class="download-button os-windows" data-download="windows" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-win-x64.exe" aria-label="Windows 다운로드, Windows 10·11 x64용 QueryBase"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span class="download-label"><strong>Windows 다운로드</strong><small>Windows 10·11 x64</small></span><svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
+              <div class="os-split os-mac" data-arch-picker="mac">
+                <a class="download-button" data-download="mac" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-mac-arm64.dmg" aria-label="Mac 다운로드, macOS 13 이상 Apple Silicon용 QueryBase"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="download-label"><strong>Mac 다운로드</strong><small>macOS 13+ · Apple Silicon</small></span><svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
+                <button class="os-split-toggle" type="button" data-arch-toggle aria-expanded="false" aria-controls="qb-menu-mac" aria-label="Mac 다른 아키텍처 선택"><svg class="os-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg></button>
+                <div class="arch-menu" id="qb-menu-mac" data-arch-menu role="menu" hidden>
+                  <div class="arch-menu-head">macOS 설치 파일 선택 (macOS 13 이상)</div>
+                  <a class="arch-item" role="menuitem" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-mac-arm64.dmg"><span class="arch-item-text"><span class="arch-item-title">Apple Silicon <span class="arch-badge">권장</span></span><span class="arch-item-sub">M 시리즈</span></span><span class="arch-ext">.dmg</span></a>
+                  <a class="arch-item" role="menuitem" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-mac-x64.dmg"><span class="arch-item-text"><span class="arch-item-title">Intel 프로세서</span><span class="arch-item-sub">x86_64 Mac</span></span><span class="arch-ext">.dmg</span></a>
+                </div>
+              </div>
+              <div class="os-split os-windows" data-arch-picker="windows">
+                <a class="download-button" data-download="windows" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-win-x64.exe" aria-label="Windows 다운로드, Windows 10·11 64비트 x64용 QueryBase"><svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg><span class="download-label"><strong>Windows 다운로드</strong><small>Win 10·11 · 64비트 (x64)</small></span><svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>
+                <button class="os-split-toggle" type="button" data-arch-toggle aria-expanded="false" aria-controls="qb-menu-windows" aria-label="Windows 다른 아키텍처 선택"><svg class="os-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg></button>
+                <div class="arch-menu" id="qb-menu-windows" data-arch-menu role="menu" hidden>
+                  <div class="arch-menu-head">Windows 설치 파일 선택 (Windows 10·11)</div>
+                  <a class="arch-item" role="menuitem" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-win-x64.exe"><span class="arch-item-text"><span class="arch-item-title">64비트 (x64) <span class="arch-badge">권장</span></span><span class="arch-item-sub">Intel / AMD 일반 PC</span></span><span class="arch-ext">.exe</span></a>
+                  <a class="arch-item" role="menuitem" href="https://github.com/paldyn/QueryBase-releases/releases/latest/download/QueryBase-win-arm64.exe"><span class="arch-item-text"><span class="arch-item-title">ARM64 (64비트)</span><span class="arch-item-sub">Snapdragon 등 ARM PC</span></span><span class="arch-ext">.exe</span></a>
+                </div>
+              </div>
             </div>
-            <p class="hero-note">Windows에서 "Windows의 PC 보호" 창이 뜨면 <strong>추가 정보 → 실행</strong>을 누르세요. <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">Intel Mac · Windows ARM용 파일</a></p>
+            <p class="hero-arch-hint">다른 칩을 쓰시나요? 각 버튼 오른쪽 <strong>▾</strong>에서 <a href="#qb-menu-mac" data-arch-open="mac">Intel Mac</a> · <a href="#qb-menu-windows" data-arch-open="windows">Windows ARM64</a>용 파일을 선택할 수 있어요.</p>
+            <p class="hero-note">Windows에서 "Windows의 PC 보호" 창이 뜨면 <strong>추가 정보 → 실행</strong>을 누르세요.</p>
             <p class="hero-legal">설치하거나 사용하면 <a href="https://github.com/paldyn/QueryBase-releases/blob/main/EULA.ko.md">이용약관</a>에 동의하는 것으로 봅니다.</p>
           </div>
           <a class="button hero-link" href="#workspace">작업 공간 둘러보기 <span aria-hidden="true">↓</span></a>
@@ -122,7 +140,7 @@
       <div class="faq-list">
         <details><summary>웹에서도 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>QueryBase는 데스크톱 데이터베이스 클라이언트예요. 웹 버전은 없고, Mac이나 Windows에 설치해서 사용합니다.</p></details>
         <details><summary>어떤 데이터베이스를 연결할 수 있나요?<span aria-hidden="true">+</span></summary><p>SQLite, PostgreSQL, MySQL, MariaDB, Oracle, SQL Server를 연결할 수 있어요. SQL Server는 아직 일부 기능을 제공하지 않습니다. 자세한 범위는 <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">릴리스 노트</a>에서 확인해 주세요.</p></details>
-        <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>네, 위의 다운로드 버튼으로 최신 버전을 받을 수 있어요. Mac은 DMG를 열어 QueryBase를 응용 프로그램 폴더로 옮기고, Windows는 설치 파일을 실행하세요. Windows 설치 파일에는 코드 서명이 없어서 처음 실행할 때 SmartScreen 경고가 나오면 추가 정보, 실행 순서로 누르면 됩니다. Intel Mac과 Windows ARM용 파일은 <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">릴리스 페이지</a>에 있어요.</p></details>
+        <details><summary>지금 다운로드할 수 있나요?<span aria-hidden="true">+</span></summary><p>네, 위의 다운로드 버튼으로 최신 버전을 받을 수 있어요. Mac은 DMG를 열어 QueryBase를 응용 프로그램 폴더로 옮기고, Windows는 설치 파일을 실행하세요. Windows 설치 파일에는 코드 서명이 없어서 처음 실행할 때 SmartScreen 경고가 나오면 추가 정보, 실행 순서로 누르면 됩니다. Intel Mac과 Windows ARM64용 파일은 다운로드 버튼 오른쪽 <strong>▾</strong> 또는 <a href="https://github.com/paldyn/QueryBase-releases/releases/latest">릴리스 페이지</a>에서 받을 수 있어요.</p></details>
       </div>
     </section>
   </main>

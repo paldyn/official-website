@@ -34,8 +34,9 @@
   <link rel="icon" href="../assets/hanpage/favicon.png?v=20261007-clean-edge" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261021-solid-document-2">
+  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261116-os-split">
   <script defer src="../assets/hanpage/landing.js?v=20261007-hero"></script>
+  <script defer src="../assets/download-menu.js?v=20261116"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -60,22 +61,68 @@
         <h1 id="hero-title">한글 문서를, <span>어디서든.</span></h1>
         <p class="hero-description">웹에서도, 데스크톱에서도.<br class="mobile-break"> 문서를 열고 편집하는 새로운 작업 공간.</p>
         <div class="hero-actions" id="downloads">
-          <a class="download-button hero-download" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.8/HanPage_0.8.8_aarch64.dmg" aria-label="macOS Apple Silicon용 HanPage 다운로드">
-            <span class="download-button-heading">
+          <div class="os-split" data-arch-picker="mac">
+            <a class="download-button" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_aarch64.dmg" aria-label="macOS Apple Silicon용 HanPage 다운로드">
               <svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-              <span>Mac 다운로드</span>
+              <span class="download-label">
+                <strong>Mac 다운로드</strong>
+                <small>Apple Silicon</small>
+              </span>
               <svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
-            </span>
-          </a>
-          <a class="download-button hero-download" data-download="windows" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.8/HanPage_0.8.8_x64-setup.exe" aria-label="Windows x64용 HanPage 다운로드">
-            <span class="download-button-heading">
+            </a>
+            <button class="os-split-toggle" type="button" data-arch-toggle aria-expanded="false" aria-controls="hp-menu-mac" aria-label="Mac 다른 아키텍처 선택">
+              <svg class="os-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg>
+            </button>
+            <div class="arch-menu" id="hp-menu-mac" data-arch-menu role="menu" hidden>
+              <div class="arch-menu-head">macOS 설치 파일 선택</div>
+              <a class="arch-item" role="menuitem" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_aarch64.dmg">
+                <span class="arch-item-text">
+                  <span class="arch-item-title">Apple Silicon <span class="arch-badge">권장</span></span>
+                  <span class="arch-item-sub">M 시리즈</span>
+                </span>
+                <span class="arch-ext">.dmg</span>
+              </a>
+              <div class="arch-item is-disabled" role="menuitem" aria-disabled="true">
+                <span class="arch-item-text">
+                  <span class="arch-item-title">Intel 프로세서 <span class="arch-badge arch-badge--muted">미지원</span></span>
+                  <span class="arch-item-sub">아직 지원하지 않아요</span>
+                </span>
+                <span class="arch-ext">—</span>
+              </div>
+            </div>
+          </div>
+          <div class="os-split" data-arch-picker="windows">
+            <a class="download-button" data-download="windows" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_x64-setup.exe" aria-label="Windows 10·11 64비트 x64용 HanPage 다운로드">
               <svg class="download-os-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg>
-              <span>Windows 다운로드</span>
+              <span class="download-label">
+                <strong>Windows 다운로드</strong>
+                <small>Win 10·11 · 64비트 (x64)</small>
+              </span>
               <svg class="download-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
-            </span>
-          </a>
+            </a>
+            <button class="os-split-toggle" type="button" data-arch-toggle aria-expanded="false" aria-controls="hp-menu-windows" aria-label="Windows 다른 아키텍처 선택">
+              <svg class="os-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg>
+            </button>
+            <div class="arch-menu" id="hp-menu-windows" data-arch-menu role="menu" hidden>
+              <div class="arch-menu-head">Windows 설치 파일 선택</div>
+              <a class="arch-item" role="menuitem" data-download="windows" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_x64-setup.exe">
+                <span class="arch-item-text">
+                  <span class="arch-item-title">64비트 (x64) <span class="arch-badge">권장</span></span>
+                  <span class="arch-item-sub">Windows 10·11 · Intel / AMD</span>
+                </span>
+                <span class="arch-ext">.exe</span>
+              </a>
+              <div class="arch-item is-disabled" role="menuitem" aria-disabled="true">
+                <span class="arch-item-text">
+                  <span class="arch-item-title">ARM64 (64비트) <span class="arch-badge arch-badge--muted">미지원</span></span>
+                  <span class="arch-item-sub">아직 지원하지 않아요</span>
+                </span>
+                <span class="arch-ext">—</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="platform-line">Mac · Apple Silicon <span aria-hidden="true">/</span> Windows · x64</p>
+        <p class="platform-line">다른 칩을 쓰시나요? <a href="#hp-menu-mac" data-arch-open="mac">Intel Mac</a> · <a href="#hp-menu-windows" data-arch-open="windows">Windows ARM64</a> 지원 여부를 버튼 오른쪽 <strong>▾</strong>에서 확인하세요.</p>
         <figure class="editor-preview">
           <div class="preview-window">
             <div class="window-bar" aria-hidden="true"><span class="window-dots"><i></i><i></i><i></i></span><span>HanPage · 문서 편집 화면</span><span class="window-label">HWP + HWPX</span></div>
@@ -144,8 +191,8 @@
       <div class="faq-heading"><p class="section-label">알아두면 좋아요</p><h2 id="faq-title">궁금한 점이 있나요?</h2><a href="https://github.com/paldyn/HanPage/issues" target="_blank" rel="noopener">의견 보내기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div>
       <div class="faq-list">
         <details><summary>어떤 문서를 열 수 있나요?<span aria-hidden="true">+</span></summary><p>HWP와 HWPX 문서를 열고 편집할 수 있어요. 글자와 문단 서식, 표, 그림 등 문서 편집 도구를 제공합니다.</p></details>
-        <details><summary>데스크톱 앱은 어떤 컴퓨터에서 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 macOS Apple Silicon(M 시리즈)과 Windows x64용 설치 파일을 제공합니다. 페이지 상단에서 내 컴퓨터에 맞는 다운로드 버튼을 선택해주세요.</p></details>
-        <details><summary>업데이트는 어디서 확인하나요?<span aria-hidden="true">+</span></summary><p>데스크톱 <span data-release-version>v0.8.8</span>의 변경 내용은 <a data-release-link href="https://github.com/paldyn/HanPage/releases/tag/hanpage-desktop-v0.8.8" target="_blank" rel="noopener">릴리스 노트<span class="sr-only">, 새 창</span></a>에서 확인할 수 있어요.</p></details>
+        <details><summary>데스크톱 앱은 어떤 컴퓨터에서 사용할 수 있나요?<span aria-hidden="true">+</span></summary><p>현재 macOS Apple Silicon(M 시리즈)과 Windows 10·11(64비트, x64)용 설치 파일을 제공합니다. Intel Mac과 Windows ARM64 네이티브 버전은 아직 지원하지 않아요. 페이지 상단에서 내 컴퓨터에 맞는 다운로드 버튼을 선택해주세요.</p></details>
+        <details><summary>업데이트는 어디서 확인하나요?<span aria-hidden="true">+</span></summary><p>데스크톱 <span data-release-version>v0.8.12</span>의 변경 내용은 <a data-release-link href="https://github.com/paldyn/HanPage/releases/tag/hanpage-desktop-v0.8.12" target="_blank" rel="noopener">릴리스 노트<span class="sr-only">, 새 창</span></a>에서 확인할 수 있어요.</p></details>
       </div>
     </section>
 
