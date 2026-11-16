@@ -34,9 +34,9 @@
   <link rel="icon" href="../assets/hanpage/favicon.png?v=20261007-clean-edge" type="image/png" sizes="128x128">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261116-os-split">
+  <link rel="stylesheet" href="../assets/hanpage/landing.css?v=20261116-os-split-2">
   <script defer src="../assets/hanpage/landing.js?v=20261007-hero"></script>
-  <script defer src="../assets/download-menu.js?v=20261116"></script>
+  <script defer src="../assets/download-menu.js?v=20261116-arch"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -75,14 +75,14 @@
             </button>
             <div class="arch-menu" id="hp-menu-mac" data-arch-menu role="menu" hidden>
               <div class="arch-menu-head">macOS 설치 파일 선택</div>
-              <a class="arch-item" role="menuitem" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_aarch64.dmg">
+              <a class="arch-item" role="menuitem" data-arch="arm64" data-download="mac" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_aarch64.dmg">
                 <span class="arch-item-text">
-                  <span class="arch-item-title">Apple Silicon <span class="arch-badge">권장</span></span>
+                  <span class="arch-item-title">Apple Silicon <span class="arch-badge arch-badge--rec">권장</span></span>
                   <span class="arch-item-sub">M 시리즈</span>
                 </span>
                 <span class="arch-ext">.dmg</span>
               </a>
-              <div class="arch-item is-disabled" role="menuitem" aria-disabled="true">
+              <div class="arch-item is-disabled" role="menuitem" data-arch="x64" aria-disabled="true">
                 <span class="arch-item-text">
                   <span class="arch-item-title">Intel 프로세서 <span class="arch-badge arch-badge--muted">미지원</span></span>
                   <span class="arch-item-sub">아직 지원하지 않아요</span>
@@ -105,14 +105,14 @@
             </button>
             <div class="arch-menu" id="hp-menu-windows" data-arch-menu role="menu" hidden>
               <div class="arch-menu-head">Windows 설치 파일 선택</div>
-              <a class="arch-item" role="menuitem" data-download="windows" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_x64-setup.exe">
+              <a class="arch-item" role="menuitem" data-arch="x64" data-download="windows" href="https://github.com/paldyn/HanPage/releases/download/hanpage-desktop-v0.8.12/HanPage_0.8.12_x64-setup.exe">
                 <span class="arch-item-text">
-                  <span class="arch-item-title">64비트 (x64) <span class="arch-badge">권장</span></span>
+                  <span class="arch-item-title">64비트 (x64) <span class="arch-badge arch-badge--rec">권장</span></span>
                   <span class="arch-item-sub">Windows 10·11 · Intel / AMD</span>
                 </span>
                 <span class="arch-ext">.exe</span>
               </a>
-              <div class="arch-item is-disabled" role="menuitem" aria-disabled="true">
+              <div class="arch-item is-disabled" role="menuitem" data-arch="arm64" aria-disabled="true">
                 <span class="arch-item-text">
                   <span class="arch-item-title">ARM64 (64비트) <span class="arch-badge arch-badge--muted">미지원</span></span>
                   <span class="arch-item-sub">아직 지원하지 않아요</span>

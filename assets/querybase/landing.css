@@ -108,6 +108,11 @@ h2{font-size:clamp(28px,3.3vw,41px);line-height:1.3;font-weight:650;letter-spaci
 .arch-item-title{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:650;line-height:1.35}
 .arch-item-sub{font-size:11px;line-height:1.35;color:var(--muted)}
 .arch-badge{padding:2px 6px;border-radius:5px;background:var(--teal-soft);color:#007a70;font-size:10px;font-weight:650;line-height:1.2}
+.arch-badge--rec{display:none}
+[data-download-os="mac"]:not([data-download-arch="x64"]) .os-mac [data-arch="arm64"] .arch-badge--rec,
+[data-download-os="mac"][data-download-arch="x64"] .os-mac [data-arch="x64"] .arch-badge--rec,
+[data-download-os="windows"]:not([data-download-arch="arm64"]) .os-windows [data-arch="x64"] .arch-badge--rec,
+[data-download-os="windows"][data-download-arch="arm64"] .os-windows [data-arch="arm64"] .arch-badge--rec{display:inline-flex}
 .arch-ext{font:500 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);flex:none}
 .hero-arch-hint{margin-top:11px;color:var(--muted);font-size:11px;line-height:1.65}
 .hero-arch-hint a{color:#007a70;text-decoration:underline;text-underline-offset:2px}
