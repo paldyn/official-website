@@ -99,7 +99,7 @@ h2{font-size:clamp(28px,3.3vw,41px);line-height:1.3;font-weight:650;letter-spaci
 [data-download-os="mac"] .os-mac .download-button:hover,[data-download-os="windows"] .os-windows .download-button:hover,[data-download-os="mac"] .os-mac .os-split-toggle:hover,[data-download-os="windows"] .os-windows .os-split-toggle:hover{background:rgba(6,28,26,.08)}
 [data-download-os="mac"] .os-mac small,[data-download-os="windows"] .os-windows small{color:var(--app-teal-ink);opacity:.92}
 [data-download-os="mac"] .os-mac .os-split-toggle,[data-download-os="windows"] .os-windows .os-split-toggle{border-left-color:rgba(6,28,26,.18);color:var(--app-teal-ink)}
-.arch-menu{position:absolute;top:calc(100% + 8px);left:0;right:0;min-width:248px;z-index:30;padding:6px;background:#fff;border:1px solid var(--line);border-radius:11px;box-shadow:0 16px 34px -12px rgba(23,35,38,.18),0 4px 10px rgba(0,0,0,.04);color:var(--ink);text-align:left}
+.arch-menu{position:absolute;top:calc(100% + 8px);left:-1px;right:-1px;z-index:30;padding:6px;background:#fff;border:1px solid var(--line);border-radius:9px;box-shadow:0 16px 34px -12px rgba(23,35,38,.18),0 4px 10px rgba(0,0,0,.04);color:var(--ink);text-align:left}
 .arch-menu[hidden]{display:none}
 .arch-menu-head{padding:6px 10px 7px;margin-bottom:4px;border-bottom:1px solid #eef4f2;font-size:10.5px;font-weight:650;color:var(--muted)}
 .arch-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:7px;transition:background-color .15s}
