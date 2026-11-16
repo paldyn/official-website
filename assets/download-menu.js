@@ -61,4 +61,33 @@
     const toggle = openPicker.querySelector('[data-arch-toggle]');
     if (toggle) toggle.focus();
   });
+
+  // Chromium 기반 브라우저에서는 CPU 아키텍처(Apple Silicon / Intel, Windows x64 / ARM64)까지 감지해
+  // 해당 빌드가 있을 경우 주력 다운로드 버튼과 권장 표시를 자동으로 맞춘다.
+  // (Safari·Firefox는 개인정보 보호상 MacIntel 등으로 고정되어 OS 단위로만 기본 추천이 적용된다.)
+  const root = document.documentElement;
+  const os = root.dataset.downloadOs;
+  if ((os === 'mac' || os === 'windows') && navigator.userAgentData?.getHighEntropyValues) {
+    navigator.userAgentData.getHighEntropyValues(['architecture', 'bitness'])
+      .then((info) => {
+        const arch = String(info?.architecture || '').toLowerCase();
+        const bitness = String(info?.bitness || '');
+        let detected = '';
+        if ((arch === 'arm' || arch === 'arm64') && (!bitness || bitness === '64')) detected = 'arm64';
+        else if ((arch === 'x86' || arch === 'x86_64') && bitness === '64') detected = 'x64';
+        if (!detected) return;
+
+        root.dataset.downloadArch = detected;
+        const picker = document.querySelector(`[data-arch-picker="${os}"]`);
+        const item = picker?.querySelector(`[data-arch-menu] a[data-arch="${detected}"]`);
+        const main = picker?.querySelector('.os-split-main, .download-button');
+        if (!picker || !item || !main) return;
+
+        main.href = item.href;
+        if (item.dataset.archAria) main.setAttribute('aria-label', item.dataset.archAria);
+        const sub = main.querySelector('small');
+        if (sub && item.dataset.archLabel) sub.textContent = item.dataset.archLabel;
+      })
+      .catch(() => {});
+  }
 })();
