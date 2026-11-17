@@ -20,8 +20,8 @@
   <link rel="icon" href="../assets/baro/favicon.svg?v=20261023" type="image/svg+xml">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="../assets/baro/landing.css?v=20261023-app-colors">
-  <script src="../assets/baro/landing.js?v=20261023" defer></script>
+  <link rel="stylesheet" href="../assets/baro/landing.css?v=20261117-ws">
+  <script src="../assets/baro/landing.js?v=20261117-ws" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -43,12 +43,25 @@
       <div class="browser-board">
         <div class="browser-bar" aria-hidden="true"><div class="browser-dots"><i></i><i></i><i></i></div><span>MY START PAGE</span><span class="browser-corner">↗</span></div>
         <div class="workspace-content">
-          <div class="workspace-greeting"><div><span class="workspace-date">MY EVERYDAY LINKS</span><p>오늘도, 좋은 시작.</p></div><div class="workspace-weather" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="1.8"/><path d="M16 2v4m0 20v4M2 16h4m20 0h4M6.1 6.1l2.8 2.8m14.2 14.2 2.8 2.8M6.1 25.9l2.8-2.8M23.1 8.9l2.8-2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>MAKE IT YOURS.</span></div></div>
-          <div class="demo-search" role="search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><label class="sr-only" for="bookmark-search">예시 북마크 검색</label><input id="bookmark-search" type="search" placeholder="어디로 가볼까요? 링크를 검색해 보세요." autocomplete="off" spellcheck="false"><span class="search-hint" aria-hidden="true">SEARCH LINKS</span></div>
-          <div class="demo-filters" aria-label="예시 링크 분류"><button type="button" data-filter="all" aria-pressed="true">전체 <span>8</span></button><button type="button" data-filter="work" aria-pressed="false">일할 때</button><button type="button" data-filter="learn" aria-pressed="false">배울 때</button><button type="button" data-filter="inspire" aria-pressed="false">영감이 필요할 때</button><button type="button" data-filter="daily" aria-pressed="false">일상 속에서</button></div>
-          <div class="bookmark-grid" id="bookmark-grid">
-            <article class="bookmark" data-category="work" data-search="github 깃허브 github.com 코드 개발"><span class="bookmark-icon icon-github">GH</span><div><h3>GitHub</h3><p>github.com</p></div><span class="bookmark-star" role="img" aria-label="즐겨찾기">✦</span></article>
-            <article class="bookmark" data-category="work" data-search="notion 노션 notion.so 문서 정리"><span class="bookmark-icon icon-notion">N</span><div><h3>Notion</h3><p>notion.so</p></div><span class="bookmark-star" role="img" aria-label="즐겨찾기">✦</span></article>
+          <div class="ws-head" aria-hidden="true">
+              <span class="ws-profile"><i>데</i> 데모님, 환영합니다!</span>
+              <span class="ws-brand"><img src="../assets/products/baro-mark.png" alt="" width="256" height="256"> BARO</span>
+              <span class="ws-head-right"><span class="ws-setstart">시작페이지로 설정</span><svg viewBox="0 0 24 24" fill="none" class="ws-gear"><circle cx="12" cy="12" r="3.1" stroke="currentColor" stroke-width="1.7"/><path d="M12 3.6v2.2M12 18.2v2.2M3.6 12h2.2M18.2 12h2.2M6.1 6.1l1.6 1.6M16.3 16.3l1.6 1.6M6.1 17.9l1.6-1.6M16.3 7.7l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            </div>
+            <div class="ws-websearch" aria-hidden="true">
+              <span class="ws-web-input"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c2.4 2.5 3.7 5.8 3.7 9s-1.3 6.5-3.7 9c-2.4-2.5-3.7-5.8-3.7-9S9.6 5.5 12 3z" stroke="currentColor" stroke-width="1.7"/></svg>검색어 또는 URL 입력…</span>
+              <span class="ws-engine">Google <i>▾</i></span>
+              <span class="ws-web-go"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.9"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+            </div>
+            <div class="ws-row">
+              <div class="ws-tabs" aria-hidden="true"><span class="is-on">북마크</span><span>그룹</span></div>
+              <div class="demo-search" role="search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><label class="sr-only" for="bookmark-search">예시 북마크 검색</label><input id="bookmark-search" type="search" placeholder="북마크 검색…" autocomplete="off" spellcheck="false"></div>
+              <span class="ws-add" aria-hidden="true">+</span>
+            </div>
+            <div class="demo-filters" aria-label="예시 링크 분류"><button type="button" data-filter="all" aria-pressed="true">전체 <span>8</span></button><button type="button" data-filter="fav" aria-pressed="false">즐겨찾기 <span>2</span></button><button type="button" data-filter="work" aria-pressed="false">일할 때 <span>3</span></button><button type="button" data-filter="learn" aria-pressed="false">배울 때 <span>2</span></button><button type="button" data-filter="inspire" aria-pressed="false">영감이 필요할 때 <span>1</span></button><button type="button" data-filter="daily" aria-pressed="false">일상 속에서 <span>2</span></button></div>
+            <div class="bookmark-grid" id="bookmark-grid">
+            <article class="bookmark" data-category="work" data-search="github 깃허브 github.com 코드 개발" data-fav="1"><span class="bookmark-icon icon-github">GH</span><div><h3>GitHub</h3><p>github.com</p></div><span class="bookmark-star" role="img" aria-label="즐겨찾기">✦</span></article>
+            <article class="bookmark" data-category="work" data-search="notion 노션 notion.so 문서 정리" data-fav="1"><span class="bookmark-icon icon-notion">N</span><div><h3>Notion</h3><p>notion.so</p></div><span class="bookmark-star" role="img" aria-label="즐겨찾기">✦</span></article>
             <article class="bookmark" data-category="work" data-search="figma 피그마 figma.com 디자인"><span class="bookmark-icon icon-figma">F</span><div><h3>Figma</h3><p>figma.com</p></div><span class="bookmark-arrow" aria-hidden="true">↗</span></article>
             <article class="bookmark" data-category="learn" data-search="mdn 문서 개발 developer.mozilla.org 웹"><span class="bookmark-icon icon-mdn">M</span><div><h3>MDN Web Docs</h3><p>developer.mozilla.org</p></div><span class="bookmark-arrow" aria-hidden="true">↗</span></article>
             <article class="bookmark" data-category="learn" data-search="wikipedia 위키백과 wikipedia.org 지식"><span class="bookmark-icon icon-wiki">W</span><div><h3>Wikipedia</h3><p>wikipedia.org</p></div><span class="bookmark-arrow" aria-hidden="true">↗</span></article>
