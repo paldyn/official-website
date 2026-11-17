@@ -16,6 +16,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .brand{display:inline-flex;align-items:center;gap:10px;font-size:25px;line-height:1.2;letter-spacing:-.9px;font-weight:700;white-space:nowrap}
 .brand img{width:34px;height:34px;flex:none}
 .nav-links{display:flex;align-items:center;gap:28px;font-size:13px;font-weight:550}
+.nav-links a{transition:color .2s}
 .nav-links a:hover{color:var(--app-teal)}
 .nav-release{display:inline-flex;align-items:center;gap:16px;padding:11px 16px;border:1px solid var(--app-teal);border-radius:7px;background:var(--app-teal);color:var(--app-teal-ink)}
 .nav-links .nav-release:hover{background:var(--app-teal);border-color:var(--app-teal);color:var(--app-teal-ink);box-shadow:0 5px 14px rgba(var(--app-teal-rgb),.18)}
@@ -148,7 +149,7 @@ h2{font-size:clamp(28px,3.3vw,41px);line-height:1.3;font-weight:650;letter-spaci
   .brand{font-size:22px;gap:8px}
   .brand img{width:31px;height:31px}
   .nav-links{gap:15px;font-size:12px}
-  .nav-features{display:none}
+  .nav-features,.nav-preview{display:none}
   .nav-release{gap:10px;padding:9px 12px;font-size:11px;white-space:nowrap}
   .hero{padding-top:37px}
   .eyebrow{font-size:9px;letter-spacing:1.25px}
