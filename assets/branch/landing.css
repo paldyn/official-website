@@ -65,7 +65,9 @@ a.arch-item:hover{background:var(--violet-soft)}
 .arch-badge{padding:2px 6px;border-radius:5px;background:var(--violet-soft);color:var(--violet);font-size:10px;font-weight:650;line-height:1.2}
 .arch-badge--rec{display:none}
 [data-download-os="mac"]:not([data-download-arch="x64"]) .os-mac [data-arch="arm64"] .arch-badge--rec,
-[data-download-os="windows"]:not([data-download-arch="arm64"]) .os-windows [data-arch="x64"] .arch-badge--rec{display:inline-flex}
+[data-download-os="windows"]:not([data-download-arch="arm64"]) .os-windows [data-arch="x64"] .arch-badge--rec,
+[data-download-os="mac"][data-download-arch="x64"] .os-mac [data-arch="x64"] .arch-badge--rec,
+[data-download-os="windows"][data-download-arch="arm64"] .os-windows [data-arch="arm64"] .arch-badge--rec{display:inline-flex}
 .arch-badge--muted{background:#eef0f6;color:#606879}
 .arch-ext{font:500 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:#606879;flex:none}
 .hero-arch-hint{margin-top:9px;font-size:11px;line-height:1.65;color:#606879}

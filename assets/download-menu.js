@@ -84,6 +84,8 @@
         if (!picker || !item || !main) return;
 
         main.href = item.href;
+        // 주 버튼이 감지한 칩의 파일을 계속 가리키도록, 최신 릴리즈 주소를 늦게 맞추는 페이지(Branch)도 이 값을 따른다.
+        if (item.dataset.releaseDownload) main.dataset.releaseDownload = item.dataset.releaseDownload;
         if (item.dataset.archAria) main.setAttribute('aria-label', item.dataset.archAria);
         const sub = main.querySelector('small');
         if (sub && item.dataset.archLabel) sub.textContent = item.dataset.archLabel;
