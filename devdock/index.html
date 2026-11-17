@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevDock — 개발 사이, 필요한 도구.</title>
-  <meta name="description" content="JSON 정리부터 JWT 확인, 해시와 UUID 생성까지. 매일 쓰는 개발 유틸리티를 한 탭에서 만나는 웹 작업 공간, DevDock.">
+  <meta name="description" content="포맷터·변환기·디코더·생성기 19가지와 메모를 한 탭에. 붙여 넣은 값은 브라우저 안에서 처리하는 개발 유틸리티 작업 공간, DevDock.">
   <meta name="theme-color" content="#fafafa">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://paldyn.com/devdock/">
@@ -29,7 +29,7 @@
     <nav class="container nav" aria-label="DevDock 주 메뉴">
       <a class="brand" href="./" aria-label="DevDock 소개 홈"><span class="brand-mark"><img src="../assets/products/devdock-mark.png" alt="" width="256" height="256"></span><span>DevDock</span></a>
       <span class="nav-caption mono">A PLACE FOR YOUR TOOLS</span>
-      <div class="nav-links"><a class="nav-index" href="#tools">도구 살펴보기</a><a class="open-link" href="https://devdock.paldyn.com/" target="_blank" rel="noopener" aria-label="DevDock 서비스 열기, 새 창">DevDock 열기 <span aria-hidden="true">↗</span></a></div>
+      <div class="nav-links"><a class="nav-index" href="#tools">도구 살펴보기</a><a class="nav-desk" href="#desk">작업 공간</a><a class="open-link" href="https://devdock.paldyn.com/" target="_blank" rel="noopener" aria-label="DevDock 서비스 열기, 새 창">DevDock 열기 <span aria-hidden="true">↗</span></a></div>
     </nav>
   </header>
 
@@ -41,17 +41,17 @@
           <h1 id="hero-title">작은 작업은,<br>빠르게 끝내세요<span class="period">.</span></h1>
           <p>JSON 정리부터 토큰 확인, 값 생성까지. <br>개발 사이에 필요한 도구를 한 탭에 모았습니다.</p>
           <a class="primary-link" href="https://devdock.paldyn.com/" target="_blank" rel="noopener" aria-label="DevDock 작업 공간 열기, 새 창">작업 공간 열기 <span aria-hidden="true">↗</span></a>
-          <span class="hero-footnote mono">WEB APP <span aria-hidden="true">/</span> 브라우저에서 바로 시작</span>
+          <span class="hero-footnote mono">WEB APP <span aria-hidden="true">/</span> 설치 없이 브라우저에서</span>
         </div>
 
         <figure class="workbench" aria-labelledby="demo-caption">
           <div class="bench-top"><span class="bench-name mono"><span class="bench-file" aria-hidden="true">{ }</span> example.json</span><span class="bench-version mono">JSON / FORMAT</span></div>
           <div class="bench-body">
             <nav class="tool-rail" aria-label="예시에 나온 실제 도구 열기">
-              <a class="rail-tool is-current" href="https://devdock.paldyn.com/json-formatter" target="_blank" rel="noopener" aria-label="JSON 포맷터 열기, 새 창"><span class="rail-symbol" aria-hidden="true">{ }</span><span>JSON</span></a>
-              <a class="rail-tool" href="https://devdock.paldyn.com/jwt-decoder" target="_blank" rel="noopener" aria-label="JWT 디코더 열기, 새 창"><span class="rail-symbol jwt" aria-hidden="true">≋</span><span>JWT</span></a>
-              <a class="rail-tool" href="https://devdock.paldyn.com/hash-generator" target="_blank" rel="noopener" aria-label="해시 생성기 열기, 새 창"><span class="rail-symbol hash" aria-hidden="true">#</span><span>HASH</span></a>
-              <a class="rail-tool" href="https://devdock.paldyn.com/uuid-generator" target="_blank" rel="noopener" aria-label="UUID 생성기 열기, 새 창"><span class="rail-symbol uuid" aria-hidden="true">⌘</span><span>UUID</span></a>
+              <a class="rail-tool is-current" href="https://devdock.paldyn.com/jsonformatter" target="_blank" rel="noopener" aria-label="JSON 포맷터 열기, 새 창"><span class="rail-symbol" aria-hidden="true">{ }</span><span>JSON</span></a>
+              <a class="rail-tool" href="https://devdock.paldyn.com/jwtdecoder" target="_blank" rel="noopener" aria-label="JWT 디코더 열기, 새 창"><span class="rail-symbol jwt" aria-hidden="true">≋</span><span>JWT</span></a>
+              <a class="rail-tool" href="https://devdock.paldyn.com/hashgenerator" target="_blank" rel="noopener" aria-label="해시 생성기 열기, 새 창"><span class="rail-symbol hash" aria-hidden="true">#</span><span>HASH</span></a>
+              <a class="rail-tool" href="https://devdock.paldyn.com/uuidgenerator" target="_blank" rel="noopener" aria-label="UUID 생성기 열기, 새 창"><span class="rail-symbol uuid" aria-hidden="true">⌘</span><span>UUID</span></a>
             </nav>
             <div class="editor">
               <div class="editor-heading mono"><span>INPUT → OUTPUT</span><span class="editor-json">JSON</span></div>
@@ -76,10 +76,29 @@
     <section class="tool-index container" id="tools" aria-labelledby="tools-title">
       <div class="index-heading"><p class="eyebrow mono">TOOLS / INDEX</p><h2 id="tools-title">찾는 도구까지,<br>한 번에.</h2><p>형식을 다듬거나, <br>내용을 들여다보거나. <br>지금 할 일에서 시작하세요.</p><span class="index-note mono">SELECT A TOOL <span aria-hidden="true">↗</span></span></div>
       <div class="tool-directory">
-        <article class="tool-group"><div class="group-heading"><span class="group-symbol format" aria-hidden="true">{ }</span><div><span class="group-number mono">01 / FORMAT</span><h3>읽기 좋은 형태로.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/json-formatter" target="_blank" rel="noopener">JSON 포맷터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/sql-formatter" target="_blank" rel="noopener">SQL 포맷터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/json-csv-converter" target="_blank" rel="noopener">JSON ↔ CSV <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
-        <article class="tool-group"><div class="group-heading"><span class="group-symbol convert" aria-hidden="true">⇄</span><div><span class="group-number mono">02 / CONVERT</span><h3>필요한 형식으로.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/base64-tool" target="_blank" rel="noopener">Base64 인코더·디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/url-tool" target="_blank" rel="noopener">URL 인코더·디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/case-converter" target="_blank" rel="noopener">문자열 케이스 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
-        <article class="tool-group"><div class="group-heading"><span class="group-symbol inspect" aria-hidden="true">⌕</span><div><span class="group-number mono">03 / INSPECT</span><h3>내용을 더 정확하게.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/jwt-decoder" target="_blank" rel="noopener">JWT 디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/regex-tester" target="_blank" rel="noopener">정규표현식 테스터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/diff-checker" target="_blank" rel="noopener">텍스트 비교 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
-        <article class="tool-group"><div class="group-heading"><span class="group-symbol generate" aria-hidden="true">#</span><div><span class="group-number mono">04 / GENERATE</span><h3>다음 작업에 쓸 값.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/uuid-generator" target="_blank" rel="noopener">UUID 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/hash-generator" target="_blank" rel="noopener">해시 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/timestamp-converter" target="_blank" rel="noopener">타임스탬프 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol format" aria-hidden="true">{ }</span><div><span class="group-number mono">01 / FORMAT</span><h3>읽기 좋은 형태로.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/jsonformatter" target="_blank" rel="noopener">JSON 포맷터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/sqlformatter" target="_blank" rel="noopener">SQL 포맷터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/codeminifier" target="_blank" rel="noopener">코드 압축기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/markdownpreview" target="_blank" rel="noopener">Markdown 미리보기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol convert" aria-hidden="true">⇄</span><div><span class="group-number mono">02 / CONVERT</span><h3>필요한 형식으로.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/base64tool" target="_blank" rel="noopener">Base64 인코더·디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/urltool" target="_blank" rel="noopener">URL 인코더·디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/caseconverter" target="_blank" rel="noopener">문자열 케이스 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/jsoncsvconverter" target="_blank" rel="noopener">JSON ↔ CSV 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/imagebase64" target="_blank" rel="noopener">이미지 Base64 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/timestampconverter" target="_blank" rel="noopener">타임스탬프 변환 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol inspect" aria-hidden="true">⌕</span><div><span class="group-number mono">03 / INSPECT</span><h3>내용을 더 정확하게.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/jwtdecoder" target="_blank" rel="noopener">JWT 디코더 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/regextester" target="_blank" rel="noopener">정규표현식 테스터 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/diffchecker" target="_blank" rel="noopener">텍스트 비교 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/colorpicker" target="_blank" rel="noopener">컬러 피커 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+        <article class="tool-group"><div class="group-heading"><span class="group-symbol generate" aria-hidden="true">#</span><div><span class="group-number mono">04 / GENERATE</span><h3>다음 작업에 쓸 값.</h3></div></div><div class="tool-links"><a href="https://devdock.paldyn.com/uuidgenerator" target="_blank" rel="noopener">UUID 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/hashgenerator" target="_blank" rel="noopener">해시 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/passwordgenerator" target="_blank" rel="noopener">비밀번호 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/qrgenerator" target="_blank" rel="noopener">QR 코드 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a><a href="https://devdock.paldyn.com/loremgenerator" target="_blank" rel="noopener">Lorem Ipsum 생성기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></div></article>
+      </div>
+    </section>
+
+    <section class="desk-section container" id="desk" aria-labelledby="desk-title">
+      <div class="index-heading"><p class="eyebrow mono">BEYOND THE TOOLS</p><h2 id="desk-title">도구만 있는 건<br>아닙니다.</h2><p>쓰던 자리를 기억하고, <br>남길 것은 남겨 둡니다.</p></div>
+      <div class="desk-list">
+        <article class="desk-card"><span class="desk-icon" aria-hidden="true">✎</span><span class="group-number mono">MEMO</span><h3>메모</h3><p>카테고리로 나눠 쓰는 메모와, 날짜에 매이지 않는 빠른 메모. 제목으로 검색해 다시 찾습니다.</p><a href="https://devdock.paldyn.com/memo" target="_blank" rel="noopener">메모 열기 <span aria-hidden="true">↗</span><span class="sr-only">, 새 창</span></a></article>
+        <article class="desk-card"><span class="desk-icon" aria-hidden="true">↺</span><span class="group-number mono">HISTORY</span><h3>최근 기록</h3><p>도구마다 최근에 다룬 것이 남습니다. 방금 넣은 값으로 되돌아가거나, 기록을 비울 수 있어요.</p></article>
+        <article class="desk-card"><span class="desk-icon" aria-hidden="true">⠿</span><span class="group-number mono">YOUR ORDER</span><h3>내 순서</h3><p>자주 쓰는 도구를 끌어서 앞으로. 바꾼 순서는 이 브라우저에 남고, 언제든 처음으로 되돌릴 수 있어요.</p></article>
+      </div>
+    </section>
+
+    <section class="faq-section container" aria-labelledby="faq-title">
+      <div class="index-heading"><p class="eyebrow mono">BEFORE YOU START</p><h2 id="faq-title">먼저 알아두면<br>좋아요.</h2><p>쓰기 전에 자주 묻는 것들을 <br>모았습니다.</p></div>
+      <div class="faq-list">
+        <details><summary>로그인이 필요한가요?<span aria-hidden="true">+</span></summary><p>네. Google 계정이나 이메일로 로그인한 뒤에 쓸 수 있어요. 설치할 것은 없고, 브라우저에서 바로 열립니다.</p></details>
+        <details><summary>붙여 넣은 값이 서버로 가나요?<span aria-hidden="true">+</span></summary><p>도구는 브라우저 안에서 동작합니다. JSON·JWT·해시처럼 값을 다루는 작업은 이 탭을 벗어나지 않아요. 계정에 저장되는 것은 직접 작성하신 메모뿐입니다.</p></details>
+        <details><summary>도구 순서를 바꿀 수 있나요?<span aria-hidden="true">+</span></summary><p>홈에서 도구를 끌어 옮기면 순서가 바뀝니다. 바뀐 순서는 쓰시는 브라우저에 남으므로 다른 기기에서는 처음 순서로 보여요. 되돌리는 버튼도 있습니다.</p></details>
+        <details><summary>모바일에서도 쓸 수 있나요?<span aria-hidden="true">+</span></summary><p>웹 앱이라 모바일 브라우저에서도 열립니다. 다만 텍스트를 길게 다루는 도구는 넓은 화면이 편해요.</p></details>
       </div>
     </section>
 
