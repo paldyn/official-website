@@ -1,51 +1,44 @@
 (() => {
   const input = document.querySelector('#json-example');
+  const output = document.querySelector('#json-output');
   const format = document.querySelector('[data-format]');
+  const minify = document.querySelector('[data-minify]');
   const reset = document.querySelector('[data-reset]');
   const status = document.querySelector('.demo-status');
-  const numbers = document.querySelector('.line-numbers');
-  if (!input || !format || !reset || !status || !numbers) return;
+  if (!input || !output || !format || !minify || !reset || !status) return;
 
   const example = input.value;
-  const showLineNumbers = () => {
-    const lines = input.value.split('\n').length;
-    numbers.textContent = Array.from({ length: Math.min(lines, 100) }, (_, index) => index + 1).join('\n');
+  const say = (text, error) => {
+    status.classList.toggle('is-error', Boolean(error));
+    status.textContent = text;
   };
-  const formatJson = () => {
+  // 앱과 같은 흐름이다 — 입력은 그대로 두고 결과만 출력 칸에 쌓인다.
+  const run = (pretty) => {
     try {
-      input.value = JSON.stringify(JSON.parse(input.value), null, 2);
-      input.scrollTop = 0;
-      input.scrollLeft = 0;
-      showLineNumbers();
-      status.classList.remove('is-error');
-      status.textContent = 'JSON 정리를 완료했어요.';
+      const parsed = JSON.parse(input.value);
+      output.textContent = pretty ? JSON.stringify(parsed, null, 2) : JSON.stringify(parsed);
+      output.classList.remove('is-empty');
+      say(pretty ? 'JSON 정리를 완료했어요.' : 'JSON 을 한 줄로 압축했어요.');
     } catch {
-      status.classList.add('is-error');
-      status.textContent = 'JSON 형식을 확인해 주세요.';
+      say('JSON 형식을 확인해 주세요.', true);
     }
   };
-  format.addEventListener('click', formatJson);
+  format.addEventListener('click', () => run(true));
+  minify.addEventListener('click', () => run(false));
   reset.addEventListener('click', () => {
     input.value = example;
+    output.textContent = '';
+    output.classList.add('is-empty');
     input.scrollTop = 0;
     input.scrollLeft = 0;
-    showLineNumbers();
-    status.classList.remove('is-error');
-    status.textContent = '예제 JSON을 다시 불러왔어요.';
+    say('예제 JSON을 다시 불러왔어요.');
   });
-  input.addEventListener('input', () => {
-    showLineNumbers();
-    status.classList.remove('is-error');
-    status.textContent = '포맷 정리를 눌러 확인하세요.';
-  });
+  input.addEventListener('input', () => say('포맷팅을 눌러 확인하세요.'));
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
       event.preventDefault();
-      formatJson();
+      run(true);
     }
   });
-  input.addEventListener('scroll', () => {
-    numbers.scrollTop = input.scrollTop;
-  });
-  showLineNumbers();
+  output.classList.add('is-empty');
 })();
