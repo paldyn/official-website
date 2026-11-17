@@ -82,7 +82,7 @@ h2{font-size:clamp(28px,3.2vw,40px);line-height:1.3;font-weight:650;letter-spaci
 .theme-options li{display:flex;align-items:flex-start;gap:12px;font-size:12px;line-height:1.6;color:var(--sub)}
 .theme-options strong{display:block;color:var(--ink);font-size:13px;font-weight:600;letter-spacing:-.3px;margin-bottom:2px}
 .theme-swatch{flex:none;width:28px;height:28px;border-radius:8px;border:1px solid var(--line)}
-.theme-swatch-paper{background:linear-gradient(140deg,#fffdf8 42%,var(--coral) 42%)}
+.theme-swatch-paper{background:linear-gradient(140deg,#fffdf8 42%,var(--accent) 42%)}
 .theme-swatch-block{background:linear-gradient(140deg,var(--lime) 50%,var(--lavender) 50%)}
 .theme-note>p{padding:13px 19px;margin-top:12px;border-top:1px solid #ece7da;color:#6c7a66;font-size:10px;line-height:1.7}
 .flow-details{border-top:1px solid #d6cfbd}
