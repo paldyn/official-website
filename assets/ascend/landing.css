@@ -5,7 +5,7 @@ body { margin:0; background:#FFFFFF; }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 #ascend-daily-focus { color-scheme:light; }
-#ascend-daily-focus .dr-page { --dr-paper:#FFFFFF; --dr-ink:#0D1117; --dr-muted:#6B7280; --dr-orange:#FF6B00; --dr-label:var(--dr-orange); --dr-soft:#F7F8FA; --dr-line:#E5E7EB; --dr-weight:650; --dr-radius:20px; --dr-gutter:clamp(24px,5%,64px); --dr-inset:max(var(--dr-gutter),calc((100% - 1120px)/2)); --dr-hero-inset:max(var(--dr-gutter),calc((100% - 1440px)/2)); --dr-column-gap:48px; position:relative; color:var(--dr-ink); background:var(--dr-paper); display:flex; flex-direction:column; text-align:left; font-family:'Wanted Sans Variable','Wanted Sans',sans-serif; }
+#ascend-daily-focus .dr-page { --dr-paper:#FFFFFF; --dr-ink:#0D1117; --dr-muted:#6B7280; --dr-orange:#FF6B00; --dr-label:#B24D00; --dr-icon:#E05E00; --dr-soft:#F7F8FA; --dr-line:#E5E7EB; --dr-weight:650; --dr-radius:20px; --dr-gutter:clamp(24px,5%,64px); --dr-inset:max(var(--dr-gutter),calc((100% - 1120px)/2)); --dr-hero-inset:max(var(--dr-gutter),calc((100% - 1440px)/2)); --dr-column-gap:48px; position:relative; color:var(--dr-ink); background:var(--dr-paper); display:flex; flex-direction:column; text-align:left; font-family:'Wanted Sans Variable','Wanted Sans',sans-serif; }
 #ascend-daily-focus .dr-page * { box-sizing:border-box; }
 #ascend-daily-focus .dr-page h1,#ascend-daily-focus .dr-page h2,#ascend-daily-focus .dr-page h3,#ascend-daily-focus .dr-page p,#ascend-daily-focus .dr-page figure { margin:0; }
 #ascend-daily-focus .dr-page a { color:inherit; }
@@ -29,7 +29,7 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-hero { position:relative; isolation:isolate; padding:0; display:flex; align-items:center; min-height:max(640px,100svh,42vw); background:#F4EADB; }
 #ascend-daily-focus .dr-hero-top { position:relative; z-index:1; width:48%; min-width:0; padding:120px 24px 96px var(--dr-hero-inset); display:flex; flex-direction:column; justify-content:center; }
 #ascend-daily-focus .dr-hero .dr-title { font-size:clamp(56px,5.8vw,88px); line-height:1.12; font-weight:650; letter-spacing:-.045em; }
-#ascend-daily-focus .dr-hero .dr-title span:last-child { color:var(--dr-orange); }
+#ascend-daily-focus .dr-hero .dr-title span:last-child { color:var(--dr-label); }
 #ascend-daily-focus .dr-hero .dr-hero-lead { margin-top:28px; font-size:16px; line-height:1.8; color:#54483C; }
 #ascend-daily-focus .dr-hero .dr-cta { margin-top:36px; }
 #ascend-daily-focus .dr-hero .dr-store { min-height:52px; padding-inline:24px; border-radius:12px; font-size:14px; }
@@ -49,11 +49,11 @@ body { margin:0; background:#FFFFFF; }
 #ascend-daily-focus .dr-section-head > p { max-width:280px; font-size:13px; line-height:1.8; color:var(--dr-muted); }
 #ascend-daily-focus .dr-feature-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:32px; }
 #ascend-daily-focus .dr-feature { background:var(--dr-soft); border-radius:var(--dr-radius); padding:28px 24px; }
-#ascend-daily-focus .dr-feature-icon { display:flex; align-items:center; color:var(--dr-label); margin-bottom:20px; }
+#ascend-daily-focus .dr-feature-icon { display:flex; align-items:center; color:var(--dr-icon); margin-bottom:20px; }
 #ascend-daily-focus .dr-feature-icon svg { width:24px; height:24px; }
 #ascend-daily-focus .dr-feature h3 { font-size:21px; line-height:1.35; font-weight:600; letter-spacing:-.025em; }
 #ascend-daily-focus .dr-feature p { margin-top:12px; font-size:13px; line-height:1.8; color:var(--dr-muted); }
-#ascend-daily-focus .dr-preview { --dr-muted:var(--dr-ink); --dr-label:var(--dr-ink); padding:56px var(--dr-inset); background:var(--dr-orange); display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:var(--dr-column-gap); align-items:center; }
+#ascend-daily-focus .dr-preview { --dr-muted:var(--dr-ink); --dr-label:var(--dr-ink); --dr-icon:var(--dr-ink); padding:56px var(--dr-inset); background:var(--dr-orange); display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:var(--dr-column-gap); align-items:center; }
 #ascend-daily-focus .dr-preview-copy { min-width:0; }
 #ascend-daily-focus .dr-preview-copy .dr-kicker { margin-bottom:16px; }
 #ascend-daily-focus .dr-preview-copy .dr-copy { margin-top:24px; }
