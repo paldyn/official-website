@@ -12,7 +12,8 @@
     const term = search.value.trim().toLocaleLowerCase('ko-KR');
     let count = 0;
     bookmarks.forEach((bookmark) => {
-      const matchesCategory = category === 'all' || bookmark.dataset.category === category;
+      const matchesCategory = category === 'all'
+        || (category === 'fav' ? bookmark.dataset.fav === '1' : bookmark.dataset.category === category);
       const matchesTerm = !term || bookmark.dataset.search.toLocaleLowerCase('ko-KR').includes(term);
       bookmark.hidden = !(matchesCategory && matchesTerm);
       if (!bookmark.hidden) count += 1;
