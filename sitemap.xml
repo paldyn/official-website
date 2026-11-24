@@ -55,6 +55,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://paldyn.com/branch/terms/2026-11-25/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://paldyn.com/branch/terms/2026-11-24/</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>yearly</changefreq>
@@ -67,6 +73,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://paldyn.com/branch/terms/en/2026-11-25/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://paldyn.com/branch/terms/en/2026-11-24/</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>yearly</changefreq>
@@ -74,13 +86,13 @@
   </url>
   <url>
     <loc>https://paldyn.com/branch/terms/2026-10-20/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://paldyn.com/branch/terms/en/2026-10-20/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
